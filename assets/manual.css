@@ -1,0 +1,80 @@
+/* Review badges, emitted by scripts/docs/mkdocs_hooks.py.
+ *
+ * Deliberately quiet. Review does not gate publication, so a badge is an
+ * annotation on otherwise normal content — not a warning the reader has to
+ * clear before proceeding. Loud admonition blocks read as "something is broken
+ * here", which is exactly the wrong message for a page that is simply newer
+ * than its last read-through.
+ */
+
+.review-badge {
+  font-size: 0.72rem;
+  line-height: 1.5;
+  padding: 0.4em 0.75em;
+  margin: 0 0 1.4em;
+  border-left: 3px solid var(--rb-accent, #999);
+  border-radius: 0 2px 2px 0;
+  background: var(--rb-bg, rgba(128, 128, 128, 0.08));
+  color: var(--md-default-fg-color--light);
+}
+
+.review-badge a {
+  white-space: nowrap;
+}
+
+.review-badge strong {
+  color: var(--md-default-fg-color);
+  font-weight: 600;
+}
+
+.review-badge--changed {
+  --rb-accent: #c8a020;
+  --rb-bg: rgba(200, 160, 32, 0.10);
+}
+
+.review-badge--draft {
+  --rb-accent: #b06030;
+  --rb-bg: rgba(176, 96, 48, 0.10);
+}
+
+.review-badge--reviewed {
+  --rb-accent: #5a8fa8;
+  --rb-bg: rgba(90, 143, 168, 0.10);
+}
+
+/* Footer disclaimers.
+ *
+ * `copyright` in mkdocs.yml renders into .md-copyright inside the footer meta
+ * row. With extra.generator:false that block is alone in the row, so it can be
+ * centred and given the full width instead of sitting left at 75%.
+ */
+.md-footer-meta__inner {
+  justify-content: center;
+}
+
+.md-copyright {
+  width: 100%;
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 0.4rem 0;
+  text-align: center;
+  font-size: 0.62rem;
+  line-height: 1.6;
+}
+
+.md-copyright__highlight {
+  color: var(--md-footer-fg-color--light);
+}
+
+.md-copyright a {
+  color: var(--md-footer-fg-color);
+  text-decoration: underline;
+  white-space: nowrap;
+}
+
+.md-copyright__highlight p {
+  margin: 0 0 0.4em;
+}
+.md-copyright__highlight p:last-child {
+  margin-bottom: 0;
+}

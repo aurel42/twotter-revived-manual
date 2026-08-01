@@ -1,0 +1,2452 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Manual and system reference for the Twotter Revived mod">
+      
+      
+      
+        <link rel="canonical" href="https://aurel42.github.io/twotter-revived-manual/aircraft/systems/autopilot/kap-140/">
+      
+      
+        <link rel="prev" href="../approaches-and-vnav/">
+      
+      
+        <link rel="next" href="../../electrical/generators/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>The KAP 140 Autopilot - Twotter Revived</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../css/print-site.css">
+    
+      <link rel="stylesheet" href="../../../../css/print-site-material.css">
+    
+      <link rel="stylesheet" href="../../../../assets/manual.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <meta name="docs-page" content="aircraft/systems/autopilot/kap-140.md">
+</head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#the-kap-140-autopilot" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="Twotter Revived" class="md-header__button md-logo" aria-label="Twotter Revived" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Twotter Revived
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              The KAP 140 Autopilot
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="amber"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="amber"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="Twotter Revived" class="md-nav__button md-logo" aria-label="Twotter Revived" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Twotter Revived
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Project
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Project
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../project/history/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Project history
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../project/plans/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plans
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../project/known-issues/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Known issues
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../project/references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    References
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../project/legal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Legal
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aircraft
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Aircraft
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../flight-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flight model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Systems
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Systems
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../avionics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Avionics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../brakes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Brakes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cabin-climate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cabin climate
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chronometer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chronometer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../egpws/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EGPWS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fuel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fuel system
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hydraulics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hydraulic system
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ice-protection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bleed air and ice protection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lighting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lighting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pitot-static/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pitot-static
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../suspension/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Suspension
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_12" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_12" id="__nav_3_2_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Autopilot
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_12_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Autopilot
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../approaches-and-vnav/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Approaches, VNAV and the GNS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The KAP 140 Autopilot
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The KAP 140 Autopilot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#from-the-readme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        From the README
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#under-the-hood" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Under the hood
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#from-the-release-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        From the release notes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="From the release notes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kap-140-autopilot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        KAP 140 autopilot
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kap-140-autopilot-custom-gauge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        KAP 140 autopilot (custom gauge)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#autopilot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Autopilot
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kap-140-autopilot_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        KAP-140 autopilot
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#config-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Config options
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Config options">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#disable-autopilot-auto-arm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Disable Autopilot Auto-ARM
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#disable-relaxed-nav-arming" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Disable relaxed NAV arming
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#disable-flight-director" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Disable Flight Director
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_13" id="__nav_3_2_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Electrical
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Electrical
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../electrical/generators/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generators and the GCU
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_14" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_14" id="__nav_3_2_14_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Engines
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_14">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Engines
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../engines/engine-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Engine Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mod
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Mod
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../mod/installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../mod/mods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Additional Mods
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../mod/configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configurable settings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Features
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Features
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../mod/features/checklists/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Checklists
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../mod/features/efb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The EFB app
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../mod/features/persistence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cockpit and aircraft persistence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../mod/features/sound/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sound
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../mod/features/variants/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Variants
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../mod/features/wear-and-tear/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Wear and tear
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sim
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Sim
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Radio
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Radio
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../sim/radio/adf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADF and the KR 87
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../sim/radio/navigation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Radio navigation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../../flight-model/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Aircraft
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../avionics/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Systems
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../approaches-and-vnav/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Autopilot
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+<div class="review-badge review-badge--draft"><strong>Draft</strong> — this page has not been reviewed yet.</div>
+
+
+                
+                  
+
+
+
+<h1 id="the-kap-140-autopilot">The KAP 140 Autopilot<a class="headerlink" href="#the-kap-140-autopilot" title="Permanent link">&para;</a></h1>
+<h2 id="from-the-readme">From the README<a class="headerlink" href="#from-the-readme" title="Permanent link">&para;</a></h2>
+<p>The autopilot is one of the areas where I'm claiming artistic license. While I fixed a couple of "realism gaps" with the default KAP 140, I also created new ones. Aerosoft put the KAP 140 in the Twotter for two reasons, afaik: users are familiar with it and the mission statement for the 2020 version was to use default avionics wherever possible. The visual model has all the remnants of the Collins AP-106 (I think) simulated in the Aerosoft Twin Otter X Extended: the annunciators, the mode and altitude panels, the multifunction "knob" on the control column pedestal, the YD button. The 2020 Twotter's AP is already an unholy abomination, and I leaned into that.</p>
+<p>The main realism features are:
+- capture only when armed (this was a bitch to get right);
+- "Vertical Trim": tapping UP/DN nudges the aircraft in steps of 20 ft (another bitch) and
+- holding UP/DN initiates a climb/descend at 500 fpm that is maintained until the button is released (yeah, a bitch, as well);
+- obnoxiously long pre-flight test followed by
+- a 30s pitch lockout (a red P on display replaces the dedicated warning light which is missing from our visual model).</p>
+<p>The main realism gaps are:
+- from the Collins AP, we inherit support for IAS/FLC mode, yaw damper, flight director,
+- mode buttons and altitude selector are synced with the KAP 140 and
+- the Collins annunciators are somehow magically driven by the KAP 140.</p>
+<p>Known issues: underneath, we use the sim's AP with all its quirks. The AP still uses the Captain's HSI baro instead of its own.</p>
+<ul>
+<li>Altitude alerter runs a 3-second self-test.</li>
+<li>Pitch-trim arrow indicator is now a runaway-trim warning indicator (flashes for end-of-travel and same-direction-≥2 s commands).</li>
+<li>Enabled autopilot annunciators for approach arm/capture when using GPS navigation.</li>
+<li>Three-row LCD layout matching the physical hardware. PFT timing matches a reference video (≈40 s).</li>
+<li>Preflight test plays a completion chime when it ends.</li>
+<li>Daylight-aware unpowered LCD rendering: the display shows the dim ghost segments of an unlit LCD.</li>
+<li>Yaw-Damper (YD) annunciator support.</li>
+<li>Flashing AP-master annunciator with a 5-second flash on disconnect; cavalry-charge tone wired to the disconnect event.</li>
+<li>Held UP/DN ramps the vertical reference; short presses "nudge" by 20 ft (ALT mode), 100 fpm (VS mode) or 5 kts (FLC).</li>
+<li>FLC mode displays the selected airspeed; using UP/DN snaps the reference to the nearest 5 kt boundary.</li>
+<li>Sticky BARO reminder flashes after the preflight test until the pilot acknowledges by pressing BARO or changing the setting.</li>
+<li>Pitch-axis lockout (blinking "P" indicator) for 30 seconds after the preflight test and after every in-flight power cycle, while the accelerometer settles.</li>
+<li>G-load monitor auto-disengages the autopilot if the pilot pulls or pushes through a threshold.</li>
+<li>Experimental: NAV "pre-arm" allows arming NAV when the sim AP refuses it. While "pre-armed", the NAV ARM flag blinks in a slow rhythm. When it fails to capture, toggle NAV mode off and on again.</li>
+<li>The flight director command bars on the attitude indicator can be hidden via the <strong>Disable Flight Director</strong> toggle in the EFB Config tab.</li>
+<li>Lateral and altitude-capture logic now runs natively inside the Working Title GNS 530/430 flight directors, which fly the mod's own VOR/LOC/GS signal.</li>
+<li>the NAV "pre-arm" bullet above (~262): relaxed NAV arming can now be switched off with the new "Disable relaxed NAV arming" Config-tab option.</li>
+</ul>
+<p>A two-axis rate autopilot with altitude preselect — pitch and roll, no yaw
+damper, no autothrottle, a 25° bank limit, and a small LCD that tells you
+exactly what it is doing and nothing more. This page covers the unit itself;
+<a href="../approaches-and-vnav/">Approaches, VNAV and the GNS</a> covers flying it against
+the navigators.</p>
+<p>One piece of history you will notice in the cockpit: the visual model carries
+leftovers from the Collins AP-106 this panel once held — an IAS button, a YD
+button and annunciator, flight-director bars, Collins-style annunciator strips.
+We deliberately kept the ones the cockpit hints at working (IAS mode, the FD
+bars, the secondary mode panel) rather than blanking them. Where this page says
+a feature "is not on the real KAP 140", that is why it exists anyway.</p>
+<h2 id="operation">Operation<a class="headerlink" href="#operation" title="Permanent link">&para;</a></h2>
+<p><strong>Power-up runs a real preflight test.</strong> On avionics power the unit runs its
+self-test sequence — about forty seconds, timed against footage of real
+hardware, not the ~14 s of the stock sim unit. The AP cannot be engaged until
+PFT completes, and for 30 seconds afterwards the pitch axis is locked out — a
+blinking red <strong>P</strong> on the display. The red P is also the G-limit indicator:
+exceeding roughly +2.0/−0.5 g while engaged locks pitch engagement, and a
+serious exceedance disconnects the autopilot outright. Pulling avionics power
+in flight buys you a fresh PFT and a longer, randomized lockout — the real
+manual warns the accelerometers may need minutes to settle. Loading into a
+flight already in progress skips all of this, as a warm, tested unit should.</p>
+<p><strong>Engage and you get ROL and VS.</strong> The AP button engages wing-leveling and
+holds your current vertical speed — whatever it is. The unit does not level
+off for you and does not know what you meant; check the VS readout immediately
+after engaging. Disengaging flashes the AP annunciator for five seconds.
+The autopilot also lets go on its own if its attitude source dies — a failed
+or spun-down gyro takes the AP with it.</p>
+<p><strong>Lateral modes.</strong> HDG flies the heading bug — and only the bug; set it before
+you press the button. When you arm NAV or APR from heading mode, the HDG
+annunciator flashes for five seconds as a reminder that the bug no longer
+steers the aircraft. NAV tracks whatever the HSI shows: a VOR radial, a
+localizer, or — when the CDI source is GPS — the flight plan, annunciated
+<strong>GPS</strong> and flown with proper turn anticipation. REV is the back-course mode:
+front-course set on the OBS, reverse sensing handled by the unit.</p>
+<p><strong>NAV arms until you are established.</strong> Press NAV well off the radial and you
+get <strong>NAV ARM</strong>: the unit keeps wings level (or your heading, if you keep HDG
+engaged toward an intercept) until the needle comes alive and the capture
+criteria hold — then it captures and turns on course. Intercepts beyond about
+45° are not recommended, same as the real unit. A capture that never becomes
+possible — wrong radial, dead receiver — stays armed rather than lunging at
+noise; see the radio note below. With <strong>Strict NAV arm</strong> enabled in the EFB
+Config tab, arming additionally requires a usable signal at press time, so a
+press against a dead needle is rejected immediately instead of armed
+indefinitely.</p>
+<p><strong>Vertical modes.</strong> UP/DN in VS mode: a tap is 100 fpm, holding the button
+ramps at about 300 fpm per second. ALT holds the altitude at engagement; taps
+nudge it 20 ft, holding ramps at 500 fpm. IAS — the AP-106 leftover — holds
+airspeed with pitch: taps 5 kt, held ramps 15 kt/s. The rotary knobs set the
+altitude preselect, shown on the drum above the unit.</p>
+<p><strong>The altitude preselect captures automatically — unless you ask it not to.</strong>
+By default the sim's behavior stands: set the preselect, climb or descend at
+it, and the unit captures. With <strong>Realistic altitude arm</strong> enabled (EFB Config
+tab), the unit behaves like the real two-axis KAP 140: the preselected
+altitude must be <strong>armed</strong> — the ARM button toggles it, <strong>ALT ARM</strong> annunciates
+— or the aircraft flies straight through the target. You may arm any altitude,
+including one behind you; capture simply waits until the geometry makes sense.
+Capture clears the arm; each new target needs a new press. This is the single
+biggest workload change the config tab offers — with it on, every level-off is
+yours to arrange.</p>
+<p><strong>The altitude alerter works like the book says.</strong> Approaching the preselect,
+the alert light comes on 1000 ft out and extinguishes at 200 ft; after
+capture, deviating more than 200 ft flashes it. The alert tone sounds
+approaching 1000 ft to go and when departing an altitude by 200 ft.</p>
+<p><strong>BARO.</strong> A short press shows the altimeter setting for three seconds so you
+can adjust it with the knob; holding for two seconds toggles between inches
+and hectopascals. The preselect logic uses its own blind encoder — your
+altimeter mis-set is your problem, as in the real installation.</p>
+<p><strong>What it will not do.</strong> There are no voice callouts (the audio bank cannot be
+extended), the pitch-trim (PT) annunciator stays dark outside the lamp test,
+and the unit engages on a simple press rather than the late-software 0.25 s
+hold — all recorded decisions, not oversights.</p>
+<h2 id="under-the-hood">Under the hood<a class="headerlink" href="#under-the-hood" title="Permanent link">&para;</a></h2>
+<p>The autopilot is a stack: the sim provides only a servo, the WorkingTitle GNS
+framework provides the brain (its directors compute bank and pitch commands —
+we have patched them extensively, see the approaches page), and our own code
+provides the KAP 140 itself — every button, mode decision, arm gate, watchdog
+and annunciation runs in the aircraft's C++ module, driven identically whether
+you press the faceplate, a hardware panel, a key binding, or send the event
+from FSUIPC. That "identically" is load-bearing: every AP-related key event is
+intercepted at the SimConnect level and funneled through one state machine per
+axis, which is why a Bravo button and a mouse click can never disagree.</p>
+<p>Fidelity is anchored on the Honeywell Pilot's Guide: the PFT sequence and
+timings, the pitch lockout and G-limits, the ARM workflow, the alerter bands,
+the UP/DN tap-and-hold rates, and the HDG flash are all implemented to the
+book's numbers. Known divergences, stated plainly: the alert tone is a single
+tone rather than the book's five short tones; the PT annunciator has no
+honest data source in the sim (a previous approximation false-alarmed and was
+removed); voice messages are absent; the IAS mode, FD bars and secondary
+panel are deliberate AP-106 anachronisms; and the heading law is better than
+the real unit's — a turn-rate-anticipated capture that does not overshoot at
+high latitude, one of the things we fixed rather than emulated.</p>
+<p>A complete C++ reimplementation of the lateral axis — modes, capture gates
+and control laws with no JavaScript in the loop — exists behind a
+development-only configuration flag, off by default, as part of ongoing work
+to retire the framework layer entirely. With the flag at its shipping default,
+nothing of it is active.</p>
+<h2 id="from-the-release-notes">From the release notes<a class="headerlink" href="#from-the-release-notes" title="Permanent link">&para;</a></h2>
+<p>Verbatim from <code>docs/release-notes-*.md</code>, grouped by the section they appeared in. The tag is the version each item first appeared in.</p>
+<h3 id="kap-140-autopilot">KAP 140 autopilot<a class="headerlink" href="#kap-140-autopilot" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Lateral and vertical mode logic moved from the JS gauge into CBDHC6 WASM subsystems, and every external entry path (faceplate, secondary AP panel, hardware AP panels, FSUIPC, SimConnect clients) now funnels through the same state machine. <em>(v2024.2.134)</em></li>
+<li>APR pre-arm removed. <em>(v2024.2.134)</em></li>
+<li>"No Auto-ARM" now refuses to arm "behind" the aircraft. If the bug is in the past relative to current motion (&gt;100 ft gap, &gt;50 fpm against the bug), ARM is rejected. Without this guard, ARM was collapsing the rolling alt-target back to the displayed value and reversing FLC's commanded direction. <em>(v2024.2.134)</em></li>
+<li>GS capture clears ALT ARM. <em>(v2024.2.134)</em></li>
+<li>GS display is gated on <code>APPROACH HOLD</code>. <em>(v2024.2.134)</em></li>
+<li>FLC engage now pins selected IAS for 3 s in the right block. <em>(v2024.2.134)</em></li>
+<li>Post-PFT Baro reminder accepts external events. <em>(v2024.2.134)</em></li>
+<li>HDG-flash state machine moved to WASM. <em>(v2024.2.134)</em></li>
+<li>NAV/APR/ALT/BC face buttons emit H-events instead of firing K-events directly. <em>(v2024.2.134)</em></li>
+<li>Moved the KAP 140 gauge into a dedicated namespace so it no longer overrides the stock KAP 140 used by other aircraft. <em>(v2024.2.142)</em></li>
+<li>Fixed the display sometimes showing "888"/"88.888" characters when starting in a cold-and-dark cockpit. <em>(v2024.2.142)</em></li>
+<li>Pressing ARM a second time now correctly cancels the armed altitude. <em>(v2024.2.142)</em></li>
+<li>Fixed lateral mode reverting to ROL when cancelling NAV ARM or APR ARM while in HDG mode. <em>(v2024.2.142)</em></li>
+<li>New EFB Config toggle "Disable Flight Director". When enabled, the pitch and roll command bars on the attitude indicator are removed; raw autopilot annunciators remain. <em>(v2024.3.19)</em></li>
+<li>Work on an overhaul of lateral modes was reverted for this release. But I shall show this AP that I can be its master. I shall perfect my own race of AP modes, a race of atomic super-modes that will conquer the AP! <em>(v2024.3.19)</em></li>
+</ul>
+<h3 id="kap-140-autopilot-custom-gauge">KAP 140 autopilot (custom gauge)<a class="headerlink" href="#kap-140-autopilot-custom-gauge" title="Permanent link">&para;</a></h3>
+<ul>
+<li>capture only when armed (this was a bitch to get right); <em>(v2024.2.x)</em></li>
+<li>"Vertical Trim": tapping UP/DN nudges the aircraft in steps of 20 ft (another bitch) and <em>(v2024.2.x)</em></li>
+<li>holding UP/DN initiates a climb/descend at 500 fpm that is maintained until the button is released (yeah, a bitch, as well); <em>(v2024.2.x)</em></li>
+<li>obnoxiously long pre-flight test followed by <em>(v2024.2.x)</em></li>
+<li>a 30s pitch lockout (a red P on display replaces the dedicated warning light which is missing from our visual model). <em>(v2024.2.x)</em></li>
+<li>IAS/FLC mode, <em>(v2024.2.x)</em></li>
+<li>mode buttons and altitude selector are synced with the KAP 140 and <em>(v2024.2.x)</em></li>
+<li>the Collins annunciators are somehow magically driven by the KAP 140. <em>(v2024.2.x)</em></li>
+<li>[NEW] Altitude alerter runs a 3-second self-test. <em>(v2024.2.x)</em></li>
+<li>[CHANGED] Pitch-trim arrow indicator is now a runaway-trim warning indicator (flashes for end-of-travel and same-direction-≥2 s commands). <em>(v2024.2.x)</em></li>
+<li>Enabled autopilot annunciators for approach arm/capture when using GPS navigation. <em>(v2024.2.x)</em></li>
+<li>[NEW] Three-row LCD layout matching the physical hardware. PFT timing matches a reference video (≈40 s). <em>(v2024.2.x)</em></li>
+<li>[NEW] Preflight test plays a completion chime when it ends. <em>(v2024.2.x)</em></li>
+<li>[NEW] Daylight-aware unpowered LCD rendering: the display shows the dim ghost segments of an unlit LCD. <em>(v2024.2.x)</em></li>
+<li>[NEW] Yaw-Damper (YD) annunciator support. <em>(v2024.2.x)</em></li>
+<li>[NEW] Flashing AP-master annunciator with a 5-second flash on disconnect; cavalry-charge tone wired to the disconnect event. <em>(v2024.2.x)</em></li>
+<li>[NEW] Held UP/DN ramps the vertical reference; short presses "nudge" by 20 ft (ALT mode), 100 fpm (VS mode) or 5 kts (FLC). <em>(v2024.2.x)</em></li>
+<li>[NEW] FLC mode displays the selected airspeed; using UP/DN snaps the reference to the nearest 5 kt boundary. <em>(v2024.2.x)</em></li>
+<li>[NEW] Sticky BARO reminder flashes after the preflight test until the pilot acknowledges by pressing BARO or changing the setting. <em>(v2024.2.x)</em></li>
+<li>[NEW] Pitch-axis lockout (blinking "P" indicator) for 30 seconds after the preflight test and after every in-flight power cycle, while the accelerometer settles. <em>(v2024.2.x)</em></li>
+<li>[NEW] G-load monitor auto-disengages the autopilot if the pilot pulls or pushes through a threshold. <em>(v2024.2.x)</em></li>
+<li>[NEW] Experimental: NAV "pre-arm" allows arming NAV when the sim AP refuses it. While "pre-armed", the NAV ARM flag blinks in a slow rhythm. When it fails to capture, toggle NAV mode off and on again. <em>(v2024.2.x)</em></li>
+</ul>
+<h3 id="autopilot">Autopilot<a class="headerlink" href="#autopilot" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Took ownership of the GNS 530/430 gauges and moved the custom lateral modes and altitude capture to run natively inside their flight directors. <em>(v2024.3.124)</em></li>
+<li>The AP now flies our own VOR / localizer / glideslope signal. <em>(v2024.3.124)</em></li>
+<li>New EFB Config option to disable relaxed NAV arming ("pre-ARM", the slow-blinking NAV ARM flag). <em>(v2024.3.124)</em></li>
+<li>Fixed the KAP-140 incorrectly reverting to wings-level (ROL/PIT) mode during ILS localizer handoffs. <em>(v2024.3.130)</em></li>
+<li>Fixed the autopilot performing an S-turn when capturing VOR or localizer courses at shallow angles. <em>(v2024.3.130)</em></li>
+<li>Fixed the glideslope arm and capture annunciators failing to illuminate under certain conditions. <em>(v2024.3.130)</em></li>
+<li><strong>Steadier heading hold.</strong> Damped out a slow heading-hold oscillation. Further refinement of the experimental "Alternative lateral modes". <em>(v2024.3.68)</em></li>
+<li>Known issue: some oscillation on the glideslope needs to be fixed. <em>(v2024.3.68)</em></li>
+<li>Damped (dampened?) an oscillation along pitch. Still work in progress. <em>(v2024.3.99)</em></li>
+</ul>
+<h3 id="kap-140-autopilot_1">KAP-140 autopilot<a class="headerlink" href="#kap-140-autopilot_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>New EFB Config toggle "Alternative lateral modes"</strong>. When off, lateral AP behaves as before. When on, the AP will (hopefully) stop overshooting (especially when flying near or beyond the polar circles) and capture radials, ILS, and the magenta with less drama. <em>(v2024.3.47)</em></li>
+<li>CCM did some AP tuning, I did some AP tuning (thanks to CCM "unlocking" it for me by pointing out that ai.cfg contributes to the AP config). It works, but it probably can use more refinement. <em>(v2024.3.47)</em></li>
+<li>More work on the Alternative lateral modes: a more responsive, less wandery heading bug, and less over-banking in turns at low airspeed. Still work in progress. <em>(v2024.3.47)</em></li>
+<li>Fixed a long-standing bug that sometimes swallowed Vertical Trim (UP/DN) presses in FLC and VS modes. <em>(v2024.3.47)</em></li>
+<li>Fixed FLC mode sometimes showing a vertical speed in fpm instead of a selected speed in kts when first engaged. <em>(v2024.3.47)</em></li>
+<li>Known issue: AP still uses Cpt HSI baro instead of its own. <em>(v2024.3.47)</em></li>
+</ul>
+<h2 id="config-options">Config options<a class="headerlink" href="#config-options" title="Permanent link">&para;</a></h2>
+<p>Set from the EFB <strong>Config</strong> tab. Each option is documented on exactly one page; see <a href="../../../../mod/configuration/">Configuration</a> for how profiles and the per-variant override work.</p>
+<h3 id="disable-autopilot-auto-arm">Disable Autopilot Auto-ARM<a class="headerlink" href="#disable-autopilot-auto-arm" title="Permanent link">&para;</a></h3>
+<p><code>DHC6_CFG_AP_DISABLE_AUTO_ARM</code> — default: <strong>off</strong></p>
+<p>Stops the autopilot from automatically arming Altitude capture. You have to press ARM yourself.</p>
+<h3 id="disable-relaxed-nav-arming">Disable relaxed NAV arming<a class="headerlink" href="#disable-relaxed-nav-arming" title="Permanent link">&para;</a></h3>
+<p><code>DHC6_CFG_AP_STRICT_NAVARM</code> — default: <strong>off</strong></p>
+<p>Removes the KAP-140's NAV pre-arm. NAV arming is handed straight to the GPS/NAV autopilot: a localizer arms and waits to capture; a VOR engages and flies the intercept immediately.</p>
+<h3 id="disable-flight-director">Disable Flight Director<a class="headerlink" href="#disable-flight-director" title="Permanent link">&para;</a></h3>
+<p><code>DHC6_CFG_DISABLE_FD</code> — default: <strong>off</strong></p>
+<p>Hides the flight-director command bars on the attitude indicator.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../approaches-and-vnav/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Approaches, VNAV and the GNS">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Approaches, VNAV and the GNS
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../electrical/generators/" class="md-footer__link md-footer__link--next" aria-label="Next: Generators and the GCU">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Generators and the GCU
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      <p>Twotter Revived is a non-commercial fan project, not affiliated with, endorsed by, supported by, or even acknowledged by Microsoft, Asobo, or Aerosoft. Twotter Revived is not endorsed or certified by De Havilland Aircraft of Canada. Twotter Revived is not approved by anyone in any way, shape, or form for training or any other real-world application. Any real-world references are provided for entertainment and educational simulation use only and may be incomplete, outdated, configuration-specific, or inaccurate.</p>
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.sections", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.path", "navigation.indexes", "toc.follow", "toc.integrate", "content.code.copy"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../../../js/print-site.js"></script>
+      
+    
+  </body>
+</html>

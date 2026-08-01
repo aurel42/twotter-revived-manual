@@ -1,0 +1,1000 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Manual and system reference for the Twotter Revived mod">
+      
+      
+      
+        <link rel="canonical" href="https://aurel42.github.io/twotter-revived-manual/print_page/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Twotter Revived — Manual - Twotter Revived</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../css/print-site.css">
+    
+      <link rel="stylesheet" href="../css/print-site-material.css">
+    
+      <link rel="stylesheet" href="../assets/manual.css">
+    
+    <script>__md_scope=new URL("/twotter-revived-manual/",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  
+        <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            remove_material_navigation();remove_mkdocs_theme_navigation();generate_toc();
+        })
+        </script>
+        </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#index" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Twotter Revived" class="md-header__button md-logo" aria-label="Twotter Revived" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Twotter Revived
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Twotter Revived — Manual
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="amber"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="amber"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Twotter Revived" class="md-nav__button md-logo" aria-label="Twotter Revived" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Twotter Revived
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aircraft
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Aircraft
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aircraft/flight-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flight model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Project
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Project
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../project/history/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Project history
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../project/known-issues/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Known issues
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../project/legal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Legal
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../project/plans/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plans
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../project/references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    References
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<div id="print-site-page" class="">
+        <section class="print-page">
+            <div id="print-page-toc" data-toc-depth="2">
+                <nav role='navigation' class='print-page-toc-nav'>
+                <h1 class='print-page-toc-title'>Contents</h1>
+                </nav>
+            </div>
+        </section>
+        <section class="print-page" id="index" heading-number="1"><h1 id="index-twotter-revived">Twotter Revived<a class="headerlink" href="#index-twotter-revived" title="Permanent link">&para;</a></h1>
+<p>Twotter Revived is a free, community-created "total overhaul" mod for Aerosoft's Twin Otter for MSFS (2020).
+Our custom code is open-source and only restricted by licenses of bundled components.</p>
+<p>The goals of the project have changed over time. It started as an attempt to fix some of the issues the <em>Aerosoft Twin Otter (MSFS)</em> started showing in MSFS 2024.</p>
+<p>Then the goal became restoring the glory of the <em>Aerosoft Twin Otter X Extended</em> for FSX/P3D, the best rendition of the Twotter in the Microsoft Flight Simulator ecosystem.</p>
+<p>Currently, the goal is to attempt a faithful recreation of this legendary aircraft, leveraging the latest systems in MSFS 2024 and replacing stock sim systems with custom code wherever sim restrictions would hinder us from achieving the stated goal.</p>
+<h2 id="index-scope">Scope<a class="headerlink" href="#index-scope" title="Permanent link">&para;</a></h2>
+<p>I cannot modify the 3D model of the actual aircraft in any meaningful way. Everything else is on the table.</p>
+<h2 id="index-recommended-reading">Recommended Reading<a class="headerlink" href="#index-recommended-reading" title="Permanent link">&para;</a></h2>
+<ul>
+<li>If you're interested in how this project came about and where it stands: <a href="#project-history">Project history</a></li>
+<li>Links to the project pages and reference manuals: <a href="#project-references">References</a></li>
+</ul>
+<h2 id="index-thanks">Thanks<a class="headerlink" href="#index-thanks" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>CCM</strong> — for continuous input, advice, testing, and the flight model.</li>
+<li><strong>Conti</strong> — for pointing to libradio, which unblocked signal-first navaid handling.</li>
+<li><strong>JoseColme</strong> — for sharing his experience flying the type.</li>
+<li><strong>Bagolu</strong> — for the wheel-chock visual model.</li>
+<li><strong>hobanagerik</strong> — for tireless support and encouragement, better lights and cameras.</li>
+<li><strong>Black Square</strong> and <strong>Boris Audio Works</strong> — for their kind permission to use the Turbine Duke soundbank.</li>
+</ul></section>
+                    <section class='print-page md-section' id='section-2' heading-number='2'>
+                        <h1>Aircraft<a class='headerlink' href='#section-2' title='Permanent link'></a>
+                        </h1>
+                    <section class="print-page" id="aircraft-flight-model" heading-number="2.1"><h1 id="aircraft-flight-model-flight-model">Flight model<a class="headerlink" href="#aircraft-flight-model-flight-model" title="Permanent link">&para;</a></h1>
+<p>The flight model (including ground handling) has been redone and refined over multiple iterations by CanadianCaptainMoustache.</p>
+<ul>
+<li>decreased nosewheel steering sensitivity at medium to high speeds</li>
+<li>adjusted main gear springiness to stop the rolling back and forth and make it sit slightly nose-low on the ground</li>
+<li>drastically increased wing incidence angle</li>
+<li>removed the invisible spoiler</li>
+<li>added prop drag</li>
+<li>decreased elevator and rudder sensitivity around neutral</li>
+<li>increased fuselage side-area</li>
+<li>added ground friction and crosswind numbers</li>
+<li>increased icing physical impact to 400%</li>
+<li>decreased overall rudder maximum effectiveness</li>
+<li>increased elevator trim effectiveness</li>
+<li>decreased gyro stability around all axes</li>
+<li>doubled flap lift</li>
+<li>added 40% to flap drag</li>
+<li>decreased blade angle on the ground to minimize aircraft rolling at idle and quasi-simulate beta range</li>
+</ul>
+<p>CCM explains:</p>
+<blockquote>
+<p>This leads to a Twotter that looks and handles much more like the real thing. Expect that iconic DHC nose-down on approach. Expect massive amounts of both lift and drag beyond 20 degrees of flap. The plane will also handle far better on the ground, both in the taxi and on takeoff. I’m by no means claiming this is the be-all, perfect flight model for this plane and it will likely evolve some but for now we’re hitting book numbers in most cases within 1-2% and the plane is a sheer joy to fly.</p>
+</blockquote></section></section>
+                    <section class='print-page md-section' id='section-3' heading-number='3'>
+                        <h1>Project<a class='headerlink' href='#section-3' title='Permanent link'></a>
+                        </h1>
+                    <section class="print-page" id="project-history" heading-number="3.1"><h1 id="project-history-project-history">Project history</h1><h2 id="project-pre-history">Project Pre-History<a class="headerlink" href="#project-history-project-pre-history" title="Permanent link">&para;</a></h2>
+<p>You know how you have your best flight simming moments that you will (hopefully) never forget and that, after years and years, still fill you with joy when you recall them? One of those moments for me was my first hot start in a Twin Otter in FSX or P3D, about a decade ago. That was the day I learned to treat engines with respect. I started actively looking for aircraft that could break if treated badly, discovered RealAir and A2A, and learned to appreciate deeper simulation.</p>
+<p>So the history of this project started, in a way, with the incredible <em>Aerosoft Twin Otter X Extended</em> for FSX/P3D. Aerosoft already had a Twin Otter add-on for FSX (released in 2008), and out of some stroke of genius, they tasked Finn Jacobsen with creating an improved version of it. They gave him carte blanche to define the feature set and the result, released in 2013, showed how passionate he was about the project. It was an amalgamation of existing and new concepts coming together in a complete, well-rounded package. And it was not only supported but actively improved and extended for years.</p>
+<p>The Twotter Revived project inherits a design philosophy from the "TwotterX": don't accept sim limitations as blockers, fix them using custom systems.</p>
+<p>In 2022, Aerosoft released the <em>Aerosoft Twin Otter (MSFS)</em> to mixed reception. As a TwotterX user, I felt right at home in the cockpit. The KAP 140 seemed like an odd choice for an aircraft of this size, but the visual model overall was excellent. The flight model and systems were intentionally simplified to allow for quicker development and easy accessibility, targeting the mass market created by the release of MSFS on PC and later on Xbox.</p>
+<p>The community tried to fix issues with the initial release, but Aerosoft took a heavy-handed stance and had the mod taken down from flightsim.to.</p>
+<h2 id="project-history-history-has-consequences">History has Consequences<a class="headerlink" href="#project-history-history-has-consequences" title="Permanent link">&para;</a></h2>
+<p>Twotter Revived takes extensive steps to avoid distributing any original intellectual property so we don't give the current, as of yet undetermined, rights holder reason to object to the project. Instead of distributing any modified files, we distribute machine-readable instructions on how the files need to be modified ("insert the character X in this position, delete that line").</p>
+<p><strong>What this means for you</strong></p>
+<ul>
+<li>To use Twotter Revived, you will need to have a pristine, unmodified version of the last official release (v1.1.1) of the base aircraft installed in your Community/ folder, which means that the mod cannot work if you purchased the aircraft on the in-game Marketplace.</li>
+<li>To activate, or more precisely, assemble the mod, you need to run the install script in the mod folder. Point the script at the <code>aerosoft-aircraft-twin-otter</code> folder. The files in this folder will not be modified in any way. The install script reads the original files, applies the changes using <code>xdelta</code>, a standard tool commonly used for this task in many modding communities, and creates the actual mod on your disk. You cannot redistribute the mod in the <em>assembled form,</em> because it contains intellectual property of the rights holder of the base aircraft.</li>
+</ul>
+<h2 id="project-history-actual-project-history">Actual Project History<a class="headerlink" href="#project-history-actual-project-history" title="Permanent link">&para;</a></h2>
+<ul>
+<li>The work on Twotter Revived started in March 2026.</li>
+<li>The initial public release (v2024.0.26) on 20/03/2026 came with Working Title's GNS, hot start "theater", cockpit persistence, an EFB load manager, modular fuel system, and it fixed a few v1.1.1 bugs that had never been addressed. The first five-star review is dated 19/03/2026, probably a timezone thing.</li>
+<li>In April, I broke the original Aerosoft WASM module that was still driving the hydraulics pump, TAWS, and the two clocks. Instead of trying to fix it, I started to replace it. Up to that point, I had maintained a quick release schedule with small iterations, but for the next four weeks, the Twotter was grounded. Your mechanic ripped out the electrical and hydraulic system and rebuilt them from the ground up using the modern, more capable 2024 systems. I started moving systems that had become hard to maintain from classic (hard to read, hard to test) RPN-XML to the WASM module. I built a testing harness so all the C++ code could be checked offline (without having to load the sim), making development not just much quicker, but also more robust.</li>
+<li>In May, v2024.2.113 saw the light of day. It had all those drastic changes, a first attempt at an autopilot overhaul (focused on the KAP 140), extensive work to make instruments feel more authentic, and the first version of the custom engine simulation. </li>
+<li>The v2024.2.x release cycle ended with "The Dunce Cap Release". The EFB app I had created for Twotter Revived had two bugs that played together to famously "cripple the TriStar". The first bug kept the app active when other aircraft were loaded, the second bug caused the app to change the state of an electrical circuit on some of these aircraft. When I got reports by community members that had bisected problems with the recently released TriStar and found my mod was responsible, I contacted iniBuilds support and worked with them to localize and fix the issue within a day. Lesson learned.</li>
+<li>v2024.3.19 added a vertical slice of the planned Wear/Tear/Damage system.</li>
+<li>v2024.3.47 released with an all new flight model contributed by CanadianCaptainMoustache. It overhauled flight model, flaps, props, steering, and suspension. This was a game changer for the mod. It restored the classic nose-down Twotter stance and added a new level of authenticity and credibility to the mod. ADF/RMI got the first overhaul, leading to more drastic changes down the line.</li>
+<li>v2024.3.68 was the first "milestone release". The milestone was that the glareshield annunciators now dimmed when the starter was engaged. All Twotter add-ons have this effect and implement it as "if the starter is running, then dim". The milestone goal had been to create this behavior organically, using the new electrical system and the effect of a physically plausible power draw of a starter-generator (trying to get a turbine moving) on the battery. For most users, it's a tiny thing. For me, it proved that plausibly reverse-engineered custom systems combine organically to let plausible behavior emerge and that the groundwork paid off.</li>
+<li>In v2024.3.99, we committed to the custom engine simulation and dropped support for the "legacy" flight model. We replaced the stock sim navaids with custom radio code. Other features include a custom checklist system that brought back autocomplete and interactive modes.</li>
+<li>v2024.3.174 brought another game changer: an optional sound mod lets owners of the Black Square Turbine Duke re-use its beautiful soundbank by Boris Audio Works for the Twotter. The audio is wired up to the custom systems and actually reflects the aircraft state.</li>
+<li>Current status: we're in the v2024.3.x cycle, still adding and refining systems.</li>
+</ul></section><section class="print-page" id="project-known-issues" heading-number="3.2"><h1 id="project-known-issues-known-issues">Known issues<a class="headerlink" href="#project-known-issues-known-issues" title="Permanent link">&para;</a></h1>
+<h2 id="project-known-issues-from-the-readme">From the README<a class="headerlink" href="#project-known-issues-from-the-readme" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Default audio is shit. Aerosoft's Wwise sound bank limits what I can do.
+  Example #1: engine startup sounds are inconsistent and don't adapt to the physics; the sound bank fades between effects based only on prop RPM, it doesn't care about turbine RPM at all. That's why an engine start with feathered props sounds so horrible. Also, the interior and exterior sounds are wildly different (just compare the interior starter sounds with the exterior version) and switching between interior and exterior can "restart" audio effects. [The sound mod now addresses all of these issues.]
+  Example #2: Stock flap sounds are not continuous.</li>
+<li>There are four "phantom tanks" visible in the Weight &amp; Balance screen of the EFB. I added them to maintain compatibility with FSEconomy after enabling the modular fuel system. This is a purely cosmetical flaw.</li>
+<li>On the world map, the aircraft thumbnail is missing and a default MSFS2024 thumbnail is showing instead. To fix this, I would have to create and maintain a separate set of "modern" (MSFS2024-style) thumbnails for each variant. That doesn't seem worth it. On most other menu screens (e.g. when selecting a variant), the sim should use the existing "legacy" thumbnails.</li>
+<li>Generator load sharing: only one starter-generator actually supplies the bus at a time. As far as I can tell, MSFS 2024's V2 electrical system has no mechanism for two paralleled DC generators to share load. The cockpit loadmeter therefore shows Gen 1 near full load and Gen 2 near zero in normal operation; that's expected, not a bug. If anyone knows how to get real V2 load sharing working, I'd love to hear about it.</li>
+<li>ADF: the system can't react to lightning. The sim doesn't expose the necessary data.</li>
+<li>FLC mode works when the pitot tube is frozen. Somehow, it knows. Sim quirk. (The groundwork to fix this has been done.)</li>
+<li>Pilot and Copilot avatars are not visible.</li>
+<li>KA 51 Slaving Accessory is missing.</li>
+</ul></section><section class="print-page" id="project-legal" heading-number="3.3"><h1 id="project-legal-legal">Legal<a class="headerlink" href="#project-legal-legal" title="Permanent link">&para;</a></h1>
+<h2 id="project-legal-disclaimer">Disclaimer<a class="headerlink" href="#project-legal-disclaimer" title="Permanent link">&para;</a></h2>
+<p>Twotter Revived is a non-commercial fan project, not affiliated with,
+endorsed by, supported by, or even acknowledged by Microsoft, Asobo,
+or Aerosoft. We don't accept monetary donations, but we're happy to
+accept code or assets for use in the mod.</p>
+<p>Twotter Revived is not endorsed or certified by De Havilland Aircraft
+of Canada.</p>
+<p>Twotter Revived is not approved by anyone in any way, shape, or form
+for training or any other real-world application. Any real-world
+references are provided for entertainment and educational simulation
+use only and may be incomplete, outdated, configuration-specific, or
+inaccurate.</p>
+<h2 id="project-legal-the-base-aircraft">The base aircraft<a class="headerlink" href="#project-legal-the-base-aircraft" title="Permanent link">&para;</a></h2>
+<p>The base aircraft is <strong>not</strong> redistributed by this project. The mod
+ships as binary deltas that are applied to your own copy of the
+Aerosoft Twin Otter v1.1.1 on your own machine. The original add-on
+remains the property of its rights holder: Aerosoft or Microsoft; the
+ownership situation is genuinely unclear.</p>
+<p>The practical consequence: <strong>the assembled mod cannot be
+redistributed.</strong> Once the installer has run, the folder on your disk
+contains reconstructed derivatives of files you licensed from
+Aerosoft. Only the unassembled form — the <code>.xdelta</code> patches plus our
+own new files — may be distributed.</p>
+<p>Modified sim assets are used under Microsoft's <a href="https://www.xbox.com/developers/rules">Game Content Usage
+Rules</a> and Working Title's
+MIT-like license.</p>
+<h2 id="project-legal-our-own-code">Our own code<a class="headerlink" href="#project-legal-our-own-code" title="Permanent link">&para;</a></h2>
+<p>The complete project source cannot be published, because CFG and XML
+files still contain fragments of the base aircraft. What is published
+is the WASM module source, which is the heart of the mod.</p>
+<p>The custom code written for this project, other than the bundled
+components listed below, is placed in the <strong>public domain</strong>. Take it
+apart, use it, modify it, redistribute it.</p>
+<p>I only ask that you report bugs so I can fix them for Twotter
+Revived. This is just a polite request, not a legal requirement.</p>
+<h2 id="project-legal-licenses">Licenses<a class="headerlink" href="#project-legal-licenses" title="Permanent link">&para;</a></h2>
+<p>Third-party code included in, or shipped alongside, the mod.</p>
+<h3 id="project-legal-libradio">libradio<a class="headerlink" href="#project-legal-libradio" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>License:</strong> <a href="https://opensource.org/license/cddl-1-0">CDDL-1.0</a> — SPDX
+  <code>CDDL-1.0</code> — covering <strong>the parts of libradio we ship</strong> (see below), not the
+  underlying ITM code</li>
+<li><strong>Attribution:</strong> the thread-safety modification present in these files is
+  <strong>Saso Kiselkov's</strong> contribution</li>
+<li><strong>Obtained from:</strong> <a href="https://github.com/skiselkov/libradio">libradio</a> by Saso
+  Kiselkov, vendored byte-identical and unmodified</li>
+<li><strong>Underlying algorithm:</strong> created by the U.S. Department of Commerce
+  <strong>NTIA/ITS</strong>, Institute for Telecommunication Sciences</li>
+</ul>
+<p>The two files we ship carry an NTIA banner and <strong>no copyright notice
+or license block of any kind</strong>. That is deliberate upstream: libradio
+has no repository-level license.</p>
+<p>Our own glue is separate and not derived from those files: the bridge
+wrapper is an independent reimplementation of the shim libradio ships
+as CDDL-headered code, and the surface-constants table was
+reimplemented from ITU-R P.527 rather than copied.</p>
+<h3 id="project-legal-puff-deflate-inflate">puff — DEFLATE inflate<a class="headerlink" href="#project-legal-puff-deflate-inflate" title="Permanent link">&para;</a></h3>
+<p>Decompresses the terrain tiles, so the WASM module needs no zlib at runtime.</p>
+<ul>
+<li><strong>License:</strong> <a href="https://opensource.org/license/zlib">zlib</a> — SPDX <code>Zlib</code></li>
+<li><strong>Copyright:</strong> © 2002–2013 Mark Adler, all rights reserved (version 2.3, 21 Jan 2013)</li>
+<li><strong>Upstream:</strong> <a href="https://github.com/madler/zlib">zlib</a>, <code>contrib/puff</code></li>
+</ul>
+<p>Clause 2 of the license requires that altered versions be plainly marked, so:
+<strong>this copy is altered.</strong> The <code>&lt;setjmp.h&gt;</code> dependency was removed — the MSFS wasm
+sysroot ships no <code>setjmp.h</code> — and the original <code>setjmp</code>/<code>longjmp</code> "out of input"
+escape was replaced with an overrun flag and an error return. The inflate
+algorithm and its output are unchanged, and the changes are marked in the source.</p>
+<p>Clause 1 invites, without requiring, an acknowledgment:
+<em>this product includes software written by Mark Adler.</em></p>
+<h3 id="project-legal-working-title-gns-430530">Working Title GNS 430/530<a class="headerlink" href="#project-legal-working-title-gns-430530" title="Permanent link">&para;</a></h3>
+<p>The GNS 530 and GNS 430 units in the panel. Vendored and patched in-tree.</p>
+<ul>
+<li><strong>License:</strong> MIT with a field-of-use restriction —
+  <a href="https://github.com/microsoft/msfs-avionics-mirror/blob/main/LICENSE">full text</a>.</li>
+<li><strong>Copyright:</strong> Microsoft Corporation. Authored by Working Title Simulations.</li>
+<li><strong>Upstream:</strong> <a href="https://github.com/microsoft/msfs-avionics-mirror/">msfs-avionics-mirror</a></li>
+</ul>
+<p>The restriction is the part that matters: it grants the usual MIT
+permissions — use, modify, distribute, sublicense, sell — but only for
+use <em>within Microsoft Flight Simulator</em>. Licensing for anything else
+is prohibited.</p>
+<p>The GNS bundle also carries <code>msfssdk.js</code> and <code>garminsdk.js</code>, built
+from <code>@microsoft/msfs-sdk</code> and <code>@microsoft/msfs-garminsdk</code>, under the
+same license.</p>
+<h3 id="project-legal-xdelta3">xdelta3<a class="headerlink" href="#project-legal-xdelta3" title="Permanent link">&para;</a></h3>
+<p>Reconstructs the modified aircraft files on your machine during
+installation.  Shipped as <code>xdelta3.exe</code> in the mod folder — an
+unmodified upstream binary, distributed alongside our work rather than
+linked into it.</p>
+<ul>
+<li><strong>License:</strong> <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.html">GPL-2.0-or-later</a>
+  — SPDX <code>GPL-2.0-or-later</code></li>
+<li><strong>Copyright:</strong> Josh MacDonald</li>
+<li><strong>Upstream:</strong> <a href="https://github.com/jmacd/xdelta-devel">xdelta</a></li>
+</ul>
+<p>The installer explicitly invites you to replace the bundled copy with a build you
+have obtained and verified yourself.</p>
+<h2 id="project-legal-bundled-audio">Bundled audio<a class="headerlink" href="#project-legal-bundled-audio" title="Permanent link">&para;</a></h2>
+<h3 id="project-legal-flybywire-simulations-cc-by-nc-sa-40">FlyByWire Simulations — CC BY-NC-SA 4.0<a class="headerlink" href="#project-legal-flybywire-simulations-cc-by-nc-sa-40" title="Permanent link">&para;</a></h3>
+<p>The <code>fbw_egpws_*</code> callout files and <code>fbw_flap_actuator.wav</code> derive from
+FlyByWire Simulations' <a href="https://github.com/flybywiresim/a32nx-wwise">a32nx-wwise</a>,
+under <strong>Creative Commons Attribution-NonCommercial-ShareAlike 4.0</strong>.</p>
+<p>Most modifications are pure format conversions to 16-bit mono PCM; the
+terrain, glideslope and terrain-ahead clips were additionally cut by
+hand from a longer source clip. All remain CC BY-NC-SA 4.0.</p>
+<p>Two obligations follow, and they attach to the mod as distributed, not merely to
+the files:</p>
+<ul>
+<li><strong>NonCommercial.</strong> This mod may not be sold or distributed commercially.</li>
+<li><strong>ShareAlike.</strong> Derivatives of those audio files carry the same license.</li>
+</ul>
+<h3 id="project-legal-black-square-boris-audio-works">Black Square / Boris Audio Works<a class="headerlink" href="#project-legal-black-square-boris-audio-works" title="Permanent link">&para;</a></h3>
+<p>The optional Turbine Duke sound mod re-uses the Turbine Duke's Wwise
+soundbank with kind permission from Black Square and Boris Audio
+Works. You must own the Black Square Turbine Duke, no bank content is
+redistributed.</p>
+<h3 id="project-legal-project-owned-callouts">Project-owned callouts<a class="headerlink" href="#project-legal-project-owned-callouts" title="Permanent link">&para;</a></h3>
+<p>The custom TAWS bank and the copilot checklist responses, were
+generated by a commercial TTS service for this project and since no
+person was involved in creating them, nobody can claim any rights for
+them. Whether it was ethical to <em>base</em> them on the voice of a person
+is beyond my paygrade. If anyone feels offended, let me know.</p>
+<h2 id="project-legal-data">Data<a class="headerlink" href="#project-legal-data" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>License</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ETOPO 2022</strong> 60″ global surface DEM (NOAA NCEI) — terrain elevation</td>
+<td>U.S. Government work, public domain</td>
+</tr>
+<tr>
+<td><strong>Natural Earth</strong> 1:10m ocean / lakes / glaciated areas — coastlines, water, ice</td>
+<td>public domain</td>
+</tr>
+<tr>
+<td><strong>ESA WorldCover 2021 v200</strong> — land cover</td>
+<td><strong>CC BY 4.0</strong>, attribution required</td>
+</tr>
+<tr>
+<td><strong>OurAirports</strong> <code>navaids.csv</code> — navaid coverage</td>
+<td>public domain</td>
+</tr>
+<tr>
+<td><strong>FlightGear</strong> <code>nav.dat</code> — navaid service ranges, historic NDB database</td>
+<td><strong>GPL-2.0-or-later</strong></td>
+</tr>
+</tbody>
+</table>
+<p>ESA WorldCover: © ESA WorldCover project / contributors.</p>
+<p>FlightGear's <code>nav.dat</code> originates in the X-Plane navdata compiled by <strong>Robin A.
+Peel</strong>. The shipped artifacts are derived data — service-range tables and the
+historic NDB database — baked at build time; the GPL source itself is not
+redistributed and the WASM build does not depend on it.</p>
+<h2 id="project-legal-in-practice">In practice<a class="headerlink" href="#project-legal-in-practice" title="Permanent link">&para;</a></h2>
+<p>If you are redistributing or building on this project:</p>
+<ul>
+<li>The mod as distributed is <strong>NonCommercial</strong>, because of the FlyByWire audio.</li>
+<li>The assembled mod folder <strong>cannot</strong> be redistributed at all — it contains
+  reconstructed Aerosoft-derived files.</li>
+<li>Attribution is required for ESA WorldCover and for the FlyByWire audio.</li>
+<li>CDDL and GPL components carry source-availability obligations, met by the
+  published WASM source and by xdelta3 being an unmodified upstream binary.</li>
+</ul></section><section class="print-page" id="project-plans" heading-number="3.4"><h1 id="project-plans-plans">Plans<a class="headerlink" href="#project-plans-plans" title="Permanent link">&para;</a></h1>
+<h2 id="project-plans-ongoing-started-but-not-yet-completed">Ongoing (started, but not yet completed)<a class="headerlink" href="#project-plans-ongoing-started-but-not-yet-completed" title="Permanent link">&para;</a></h2>
+<ul>
+<li>System modernization: as Asobo improves sim systems, I adopt the new systems to unlock more authentic behavior and simplify custom code</li>
+<li>Custom engine simulation: constant refinements as reference material becomes available</li>
+<li>Wear/tear/damage: the scaffolding is present, individual systems have been wired up as proof of concept (glareshield annunciators can burn out when they're past their lifetime, pitot probe heaters can fail when they are powered for an extended time without cooling)</li>
+<li>Implement the full feature set of the TwotterX</li>
+<li>Instrument behavior: some instruments are missing correct power-up behavior or real-world idiosyncrasies, they're updated and refined as I discover new reference material</li>
+</ul>
+<h2 id="project-plans-system-replacements">System replacements<a class="headerlink" href="#project-plans-system-replacements" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Icing: I tried to make all the de-icing equipment useful, but the whole system funnels into a single simvar. To simulate the authentic behavior of the de-icing and anti-ice equipment, the icing model of the sim has to be replaced with custom code.</li>
+<li>Pitot-static system: the stock sim system is limited and probably needs to be replaced with a custom implementation.</li>
+</ul>
+<h2 id="project-plans-needs-research-references-resources">Needs research, references, resources<a class="headerlink" href="#project-plans-needs-research-references-resources" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Support for four-blade props</li>
+<li>DHC-6-100 performance, currently guesstimated purely based on SHP</li>
+<li>Needle vibrations</li>
+<li>Wind flutter of control surfaces in walkaround</li>
+<li>Yaw damper: real-world behavior vs stock sim implementation</li>
+<li>Post-shutdown ticking of cooling exhaust/engine</li>
+<li>Brake heat</li>
+<li>Why does crosswind affect the efficiency of the brakes?</li>
+<li>Improve handling of amphibian and float variants in water</li>
+</ul>
+<h2 id="project-plans-unexplored-concepts">Unexplored concepts<a class="headerlink" href="#project-plans-unexplored-concepts" title="Permanent link">&para;</a></h2>
+<ul>
+<li>GPS/GNS spoofing and jamming</li>
+</ul></section><section class="print-page" id="project-references" heading-number="3.5"><h1 id="project-references-references">References<a class="headerlink" href="#project-references-references" title="Permanent link">&para;</a></h1>
+<h2 id="project-references-the-project">The project<a class="headerlink" href="#project-references-the-project" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://flightsim.to/addon/106069/twotter-revived-beta">Project page</a> on flightsim.to</li>
+<li><a href="https://forums.flightsimulator.com/t/twotter-revived-msfs2024-mod-for-aerosoft-twin-otter-msfs-2020/764913">Discussion thread</a> on the official  MSFS forums</li>
+<li><a href="https://drive.google.com/drive/folders/1LLd9T7sm3Z3mlowvuzzTSBcMUh5oqerS?usp=sharing">Previews, release candidates, WASM source</a> on Google Drive</li>
+</ul>
+<h2 id="project-references-aircraft-manuals">Aircraft manuals<a class="headerlink" href="#project-references-aircraft-manuals" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>Microsoft DHC-6 Twin Otter</p>
+<ul>
+<li><a href="https://flightsimulator.azureedge.net/wp-content/uploads/2024/11/MSFS2024_DHC-6_TWIN_OTTER_AOM.pdf">Aircraft Operating Manual</a> (PDF)</li>
+<li><a href="https://flightsimulator.azureedge.net/wp-content/uploads/2024/11/MSFS2024_DHC-6_TWIN_OTTER_CHECKLISTS.pdf">Checklists</a> (PDF)</li>
+<li><a href="https://flightsimulator.azureedge.net/wp-content/uploads/2024/11/MSFS2024_DHC-6_TWIN_OTTER_INTRO_FLIGHT.pdf">Introduction flight</a> (PDF)</li>
+</ul>
+</li>
+<li>
+<p>Aerosoft DHC-6 Twin Otter</p>
+<ul>
+<li><a href="https://manuals.aerosoft.com/files/Manual_Aerosoft-Aircraft-Twin-Otter_MSFS_eng.pdf">Product Manual MSFS</a> (PDF)</li>
+<li><a href="https://www.aerosoft2.de/downloads/twotter/Manual_DHC6_TwinOtter_engl.pdf">Product Manual FSX</a> (PDF)</li>
+</ul>
+</li>
+</ul></section></section></div><style>.print-site-enumerate-headings #index > h1:before { content: '1 ' }
+
+                .print-site-enumerate-headings #index h2:before { content: '1.' counter(counter-index-2) ' ' }
+                .print-site-enumerate-headings #index h2 {  counter-increment: counter-index-2 }
+            
+.print-site-enumerate-headings #section-2 > h1:before { content: '2 ' }
+.print-site-enumerate-headings #aircraft-flight-model > h1:before { content: '2.1 ' }
+
+.print-site-enumerate-headings #section-3 > h1:before { content: '3 ' }
+.print-site-enumerate-headings #project-history > h1:before { content: '3.1 ' }
+
+.print-site-enumerate-headings #project-known-issues > h1:before { content: '3.2 ' }
+
+.print-site-enumerate-headings #project-legal > h1:before { content: '3.3 ' }
+
+.print-site-enumerate-headings #project-plans > h1:before { content: '3.4 ' }
+
+.print-site-enumerate-headings #project-references > h1:before { content: '3.5 ' }
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      <p>Twotter Revived is a non-commercial fan project, not affiliated with, endorsed by, supported by, or even acknowledged by Microsoft, Asobo, or Aerosoft. Twotter Revived is not endorsed or certified by De Havilland Aircraft of Canada. Twotter Revived is not approved by anyone in any way, shape, or form for training or any other real-world application. Any real-world references are provided for entertainment and educational simulation use only and may be incomplete, outdated, configuration-specific, or inaccurate.</p>
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "/twotter-revived-manual/", "features": ["navigation.sections", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.path", "navigation.indexes", "toc.follow", "toc.integrate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../js/print-site.js"></script>
+      
+    
+  </body>
+</html>

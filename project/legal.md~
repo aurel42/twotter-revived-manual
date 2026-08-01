@@ -1,0 +1,223 @@
+---
+title: Legal
+---
+
+# Legal
+
+## Disclaimer
+
+Twotter Revived is a non-commercial fan project, not affiliated with,
+endorsed by, supported by, or even acknowledged by Microsoft, Asobo,
+or Aerosoft. We don't accept monetary donations, but we're happy to
+accept code or assets for use in the mod.
+
+Twotter Revived is not endorsed or certified by De Havilland Aircraft
+of Canada.
+
+Twotter Revived is not approved by anyone in any way, shape, or form
+for training or any other real-world application. Any real-world
+references are provided for entertainment and educational simulation
+use only and may be incomplete, outdated, configuration-specific, or
+inaccurate.
+
+## The base aircraft
+
+The base aircraft is **not** redistributed by this project. The mod
+ships as binary deltas that are applied to your own copy of the
+Aerosoft Twin Otter v1.1.1 on your own machine. The original add-on
+remains the property of its rights holder: Aerosoft or Microsoft; the
+ownership situation is genuinely unclear.
+
+The practical consequence: **the assembled mod cannot be
+redistributed.** Once the installer has run, the folder on your disk
+contains reconstructed derivatives of files you licensed from
+Aerosoft. Only the unassembled form — the `.xdelta` patches plus our
+own new files — may be distributed.
+
+Modified sim assets are used under Microsoft's [Game Content Usage
+Rules](https://www.xbox.com/developers/rules) and Working Title's
+MIT-like license.
+
+## Our own code
+
+Everything written for this project, other than the bundled components
+listed below, is placed in the **public domain**. Take it apart, use
+it, modify it, redistribute it.
+
+I only ask that you report bugs so I can fix them for Twotter
+Revived. This is just a polite request, not a legal requirement.
+
+Note that if you keep certain bundled components in your version of
+the code, you might be bound by their licenses. Specifically the radio
+code has libradio in its heritage and all current and future versions
+inherit the CDDL license from it.
+
+The complete project source cannot be published, because CFG and XML
+files still contain fragments of the base aircraft. What is published
+is the WASM module source, which is the heart of the mod.
+
+## Licenses
+
+Third-party code included in, or shipped alongside, the mod. Each entry gives the
+copyright holder, the license with a link to its canonical text, and where the
+component came from.
+
+### Irregular Terrain Model (Longley-Rice) — parts of libradio
+
+Radio propagation over terrain — the reason VOR, NDB and DME signal strength
+depends on what sits between you and the station.
+
+- **License:** [CDDL-1.0](https://opensource.org/license/cddl-1-0) — SPDX
+  `CDDL-1.0` — covering **the parts of libradio we ship** (see below), not the
+  underlying ITM code
+- **Attribution:** the thread-safety modification present in these files is
+  **Saso Kiselkov's** contribution to libradio
+- **Obtained from:** [libradio](https://github.com/skiselkov/libradio) by Saso
+  Kiselkov, vendored byte-identical and unmodified
+- **Underlying algorithm:** created by the U.S. Department of Commerce
+  **NTIA/ITS**, Institute for Telecommunication Sciences
+
+The two files we ship carry an NTIA banner and **no copyright notice or license
+block of any kind**. That is deliberate upstream: libradio has no
+repository-level license and headers Kiselkov's own sources file by file —
+`itm_c.cc` and `navrad.c` each open with a CDDL block and an explicit copyright
+line — and those headers are pointedly absent from the ITM files. We do not ship
+either of the CDDL-headered files.
+
+What we *do* redistribute of his is the **thread-safety refactor** inside the ITM
+sources, which replaced the original's function-`static` cross-call state with a
+single state struct. That contribution is his, and CDDL-1.0 is the license under
+which libradio distributes his work — which is why CDDL-1.0 is listed here, and
+why its full text ships with the WASM source.
+
+**CDDL-1.0 is not asserted over the NTIA/ITS code itself, and this project
+asserts no license of its own over any of it.** The banner names NTIA/ITS as
+author of the FORTRAN reference, not of this C++ translation, whose authorship is
+unstated upstream — so no claim is made about the translation's status either.
+
+Our own glue is separate and not derived from those files: the bridge wrapper is
+an independent reimplementation of the shim libradio ships as CDDL-headered code,
+and the surface-constants table was reimplemented from ITU-R P.527 rather than
+copied.
+
+### puff — DEFLATE inflate
+
+Decompresses the terrain tiles, so the WASM module needs no zlib at runtime.
+
+- **License:** [zlib](https://opensource.org/license/zlib) — SPDX `Zlib`
+- **Copyright:** © 2002–2013 Mark Adler, all rights reserved (version 2.3, 21 Jan 2013)
+- **Upstream:** [zlib](https://github.com/madler/zlib), `contrib/puff`
+
+Clause 2 of the license requires that altered versions be plainly marked, so:
+**this copy is altered.** The `<setjmp.h>` dependency was removed — the MSFS wasm
+sysroot ships no `setjmp.h` — and the original `setjmp`/`longjmp` "out of input"
+escape was replaced with an overrun flag and an error return. The inflate
+algorithm and its output are unchanged, and the changes are marked in the source.
+
+Clause 1 invites, without requiring, an acknowledgment:
+*this product includes software written by Mark Adler.*
+
+### Working Title GNS 430/530
+
+The GNS 530 and GNS 430 units in the panel. Vendored and patched in-tree rather
+than taken as an external package dependency.
+
+- **License:** MIT with a field-of-use restriction —
+  [full text](https://github.com/microsoft/msfs-avionics-mirror/blob/main/LICENSE).
+  Declared as "Modified MIT"; **not** a standard SPDX identifier.
+- **Copyright:** Microsoft Corporation. Authored by Working Title Simulations, LLC
+- **Upstream:** [msfs-avionics-mirror](https://github.com/microsoft/msfs-avionics-mirror/)
+
+The restriction is the part that matters: it grants the usual MIT permissions —
+use, modify, distribute, sublicense, sell — but only for use *within Microsoft
+Flight Simulator*. Licensing for anything else is prohibited. So this is not a
+component you can lift out of the mod and reuse elsewhere, unlike our own code.
+
+The GNS bundle also carries `msfssdk.js` and `garminsdk.js`, built from
+`@microsoft/msfs-sdk` and `@microsoft/msfs-garminsdk`, under the same license.
+
+### xdelta3
+
+Reconstructs the modified aircraft files on your machine during installation.
+Shipped as `xdelta3.exe` in the mod folder — an unmodified upstream binary,
+distributed alongside our work rather than linked into it.
+
+- **License:** [GPL-2.0-or-later](https://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
+  — SPDX `GPL-2.0-or-later`
+- **Copyright:** Josh MacDonald
+- **Upstream:** [xdelta](https://github.com/jmacd/xdelta-devel)
+
+The installer explicitly invites you to replace the bundled copy with a build you
+have obtained and verified yourself.
+
+## Bundled audio
+
+### FlyByWire Simulations — CC BY-NC-SA 4.0
+
+The `fbw_egpws_*` callout files and `fbw_flap_actuator.wav` derive from
+FlyByWire Simulations' [a32nx-wwise](https://github.com/flybywiresim/a32nx-wwise),
+under **Creative Commons Attribution-NonCommercial-ShareAlike 4.0**.
+
+Most are pure format conversions to 16-bit mono PCM; the terrain, glideslope and
+terrain-ahead clips were additionally cut by hand from a longer source clip. All
+remain CC BY-NC-SA 4.0.
+
+Two obligations follow, and they attach to the mod as distributed, not merely to
+the files:
+
+- **NonCommercial.** This mod may not be sold or distributed commercially.
+- **ShareAlike.** Derivatives of those audio files carry the same license.
+
+These files ship regardless of which audio bank you select in the EFB — the
+setting chooses which bank plays, not what is installed.
+
+### Black Square / Boris Audio Works
+
+The optional Turbine Duke sound mod re-uses the Turbine Duke's Wwise soundbank
+**by permission** from Black Square and Boris Audio Works. That is a permission
+granted to this project, not a license you inherit. It requires that you own the
+Black Square Turbine Duke, and no bank content is redistributed.
+
+### Project-owned callouts
+
+The `cb_egpws_*` and `cb_chk_*` sets — the Custom TAWS bank and the copilot
+checklist responses — were generated for this project and are owned by it. No
+third-party attribution attaches to them.
+
+## Data
+
+| Source | License |
+|---|---|
+| **ETOPO 2022** 60″ global surface DEM (NOAA NCEI) — terrain elevation | U.S. Government work, public domain |
+| **Natural Earth** 1:10m ocean / lakes / glaciated areas — coastlines, water, ice | public domain |
+| **ESA WorldCover 2021 v200** — land cover | **CC BY 4.0**, attribution required |
+| **OurAirports** `navaids.csv` — navaid coverage | public domain |
+| **FlightGear** `nav.dat` — navaid service ranges, historic NDB database | **GPL-2.0-or-later** |
+
+ESA WorldCover: © ESA WorldCover project / contributors.
+
+FlightGear's `nav.dat` originates in the X-Plane navdata compiled by **Robin A.
+Peel**. The shipped artifacts are derived data — service-range tables and the
+historic NDB database — baked at build time; the GPL source itself is not
+redistributed and the WASM build does not depend on it.
+
+## In practice
+
+If you are redistributing or building on this project:
+
+- The mod as distributed is **NonCommercial**, because of the FlyByWire audio.
+- The assembled mod folder **cannot** be redistributed at all — it contains
+  reconstructed Aerosoft-derived files.
+- Attribution is required for ESA WorldCover and for the FlyByWire audio.
+- CDDL and GPL components carry source-availability obligations, met by the
+  published WASM source and by xdelta3 being an unmodified upstream binary.
+
+## Thanks
+
+- **CCM** — continuous input, advice, testing, and the flight model.
+- **Conti** — for pointing to libradio, which unblocked signal-first navaid handling.
+- **JoseColme** — for sharing their experience flying the type.
+- **Bagolu** — for the wheel-chock model.
+- **hobanagerik** — for tireless support and encouragement, better lights and cameras.
+- **Black Square** and **Boris Audio Works** — for their kind permission on the
+  Turbine Duke soundbank.
