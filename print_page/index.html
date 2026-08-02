@@ -1429,6 +1429,8 @@
       
         
       
+        
+      
     
     
     
@@ -1514,6 +1516,34 @@
     
   
     The EFB app
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mod/features/objects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3D Objects
   
 
     
@@ -4263,7 +4293,22 @@ The non-default settings strive to be more realistic, and frequently end up bein
 <li>Added Radio tab listing NAV1 / NAV2 / ADF / DME with station ident, name and class, signal state, signal-quality bars and metrics for your educational or amusement purposes. <em>(v2024.3.99)</em></li>
 <li>Interactive map of the surrounding stations: click any navaid for some generic information, click a tuned navaid for details. Tune an ILS and the map centers and zooms on the runway and localizer beam fan. <em>(v2024.3.99)</em></li>
 <li>Path-loss breakdown for the active signal exposes some of the factors that went into the calculation. <em>(v2024.3.99)</em></li>
-</ul></section><section class="print-page" id="mod-features-persistence" heading-number="4.4.3"><h1 id="mod-features-persistence-cockpit-and-aircraft-persistence">Cockpit and aircraft persistence<a class="headerlink" href="#mod-features-persistence-cockpit-and-aircraft-persistence" title="Permanent link">&para;</a></h1>
+</ul></section><section class="print-page" id="mod-features-objects" heading-number="4.4.3"><h1 id="mod-features-objects-3d-objects">3D Objects<a class="headerlink" href="#mod-features-objects-3d-objects" title="Permanent link">&para;</a></h1>
+<h2 id="mod-features-objects-context">Context<a class="headerlink" href="#mod-features-objects-context" title="Permanent link">&para;</a></h2>
+<p>Without access to the project source (which we obviously don't have),
+we can't modify the visual model of the base aircraft. What we can do,
+is place arbitrary objects into the game world close to the
+aircraft. Since they are placed relative to the world and not relative
+to the aircraft (= the objects don't move automatically with the
+aircraft), this makes most sense for static ground objects.</p>
+<p>Thanks to asset donations by Bagolu, we can show <strong>wheel chocks</strong> and a
+<strong>GPU cart</strong> while the aircraft is parked.</p>
+<h2 id="mod-features-objects-limitations">Limitations<a class="headerlink" href="#mod-features-objects-limitations" title="Permanent link">&para;</a></h2>
+<p>We place the objects so they align with the plane (in the geometrical
+sense) the aircraft sits on. This means they work best on a flat
+apron. If the aircraft sits on a sloped surface or the terrain around
+it is irregular, objects might float in the air or sink into the
+ground.</p></section><section class="print-page" id="mod-features-persistence" heading-number="4.4.4"><h1 id="mod-features-persistence-cockpit-and-aircraft-persistence">Cockpit and aircraft persistence<a class="headerlink" href="#mod-features-persistence-cockpit-and-aircraft-persistence" title="Permanent link">&para;</a></h1>
 <h2 id="mod-features-persistence-from-the-readme">From the README<a class="headerlink" href="#mod-features-persistence-from-the-readme" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>The state saving is mostly opt-in.</strong> (Only a few select states persist unconditionally, e.g. engine block temperatures, cosmetic airframe variations.)</li>
@@ -4329,7 +4374,7 @@ This is a selection, not the full list — the aircraft defines around a thousan
 <td>The aircraft spawned cold and dark</td>
 </tr>
 </tbody>
-</table></section><section class="print-page" id="mod-features-sound" heading-number="4.4.4"><h1 id="mod-features-sound-sound">Sound<a class="headerlink" href="#mod-features-sound-sound" title="Permanent link">&para;</a></h1>
+</table></section><section class="print-page" id="mod-features-sound" heading-number="4.4.5"><h1 id="mod-features-sound-sound">Sound<a class="headerlink" href="#mod-features-sound-sound" title="Permanent link">&para;</a></h1>
 <h2 id="mod-features-sound-from-the-readme">From the README<a class="headerlink" href="#mod-features-sound-from-the-readme" title="Permanent link">&para;</a></h2>
 <ul>
 <li>[NEW] Optional companion sound mod swaps in the Black Square Turbine Duke's engine and gyro sounds.</li>
@@ -4385,7 +4430,7 @@ This is a selection, not the full list — the aircraft defines around a thousan
 <td>RAM air lever — a cockpit control exists, but it is a natural hardware binding</td>
 </tr>
 </tbody>
-</table></section><section class="print-page" id="mod-features-variants" heading-number="4.4.5"><h1 id="mod-features-variants-variants">Variants<a class="headerlink" href="#mod-features-variants-variants" title="Permanent link">&para;</a></h1>
+</table></section><section class="print-page" id="mod-features-variants" heading-number="4.4.6"><h1 id="mod-features-variants-variants">Variants<a class="headerlink" href="#mod-features-variants-variants" title="Permanent link">&para;</a></h1>
 <h2 id="mod-features-variants-from-the-readme">From the README<a class="headerlink" href="#mod-features-variants-from-the-readme" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Tundra Pax and Cargo: committed to the tundra tires feel.</li>
@@ -4401,7 +4446,7 @@ This is a selection, not the full list — the aircraft defines around a thousan
 <li>Tundra Pax and Cargo: committed to the tundra tires feel. <em>(v2024.2.x)</em></li>
 <li>All Pax variants: added passenger layout with individual seats. <em>(v2024.2.x)</em></li>
 <li>Amphibian and float variants: increased parasitic drag for the floats. <em>(v2024.2.x)</em></li>
-</ul></section><section class="print-page" id="mod-features-wear-and-tear" heading-number="4.4.6"><h1 id="mod-features-wear-and-tear-wear-and-tear">Wear and tear<a class="headerlink" href="#mod-features-wear-and-tear-wear-and-tear" title="Permanent link">&para;</a></h1>
+</ul></section><section class="print-page" id="mod-features-wear-and-tear" heading-number="4.4.7"><h1 id="mod-features-wear-and-tear-wear-and-tear">Wear and tear<a class="headerlink" href="#mod-features-wear-and-tear-wear-and-tear" title="Permanent link">&para;</a></h1>
 <h2 id="mod-features-wear-and-tear-from-the-readme">From the README<a class="headerlink" href="#mod-features-wear-and-tear-from-the-readme" title="Permanent link">&para;</a></h2>
 <p>The aircraft now has an optional Wear &amp; Tear system that ages and damages individual components. This is a vertical slice, covering only two systems:</p>
 <ul>
@@ -4673,13 +4718,15 @@ State: Mostly complete. The custom signal now drives the steam gauges and the au
 
 .print-site-enumerate-headings #mod-features-efb > h1:before { content: '4.4.2 ' }
 
-.print-site-enumerate-headings #mod-features-persistence > h1:before { content: '4.4.3 ' }
+.print-site-enumerate-headings #mod-features-objects > h1:before { content: '4.4.3 ' }
 
-.print-site-enumerate-headings #mod-features-sound > h1:before { content: '4.4.4 ' }
+.print-site-enumerate-headings #mod-features-persistence > h1:before { content: '4.4.4 ' }
 
-.print-site-enumerate-headings #mod-features-variants > h1:before { content: '4.4.5 ' }
+.print-site-enumerate-headings #mod-features-sound > h1:before { content: '4.4.5 ' }
 
-.print-site-enumerate-headings #mod-features-wear-and-tear > h1:before { content: '4.4.6 ' }
+.print-site-enumerate-headings #mod-features-variants > h1:before { content: '4.4.6 ' }
+
+.print-site-enumerate-headings #mod-features-wear-and-tear > h1:before { content: '4.4.7 ' }
 
 .print-site-enumerate-headings #section-5 > h1:before { content: '5 ' }
 .print-site-enumerate-headings #section-5-1 > h1:before { content: '5.1 ' }
