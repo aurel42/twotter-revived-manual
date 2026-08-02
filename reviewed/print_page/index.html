@@ -370,12 +370,6 @@
       
         
       
-        
-      
-        
-      
-        
-      
     
     
     
@@ -399,7 +393,7 @@
   <span class="md-ellipsis">
     
   
-    Project
+    Mod
   
 
     
@@ -412,6 +406,133 @@
         
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Mod
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mod/installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mod/mods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Additional Mods
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Project
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -613,12 +734,14 @@ Our custom code is open-source and only restricted by licenses of bundled compon
 <ul>
 <li>If you're interested in how this project came about and where it stands: <a href="#project-history">Project history</a></li>
 <li>Links to the project pages and reference manuals: <a href="#project-references">References</a></li>
+<li><a href="#mod-installation">Installation</a></li>
 </ul>
 <h2 id="index-thanks">Thanks<a class="headerlink" href="#index-thanks" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>CCM</strong> — for continuous input, advice, testing, and the flight model.</li>
 <li><strong>JoseColme</strong> — for sharing his experience flying the type.</li>
-<li><strong>Bagolu</strong> — for the wheel-chock visual model.</li>
+<li><strong>Bagolu</strong> — for the wheel-chock visual model, and for fitting the ground power unit to the aircraft.</li>
+<li><strong>omri_ha_muglob</strong> — for the <a href="https://sketchfab.com/3d-models/gpu-aiport-ground-power-unit-b18e62dda2e04e97a95312bb6a284f1c">ground power unit model</a>, used under CC BY 4.0.</li>
 <li><strong>hobanagerik</strong> — for tireless support and encouragement, better lights and cameras.</li>
 <li><strong>Black Square</strong> and <strong>Boris Audio Works</strong> — for their kind permission to use the Turbine Duke soundbank.</li>
 </ul></section>
@@ -647,11 +770,81 @@ Our custom code is open-source and only restricted by licenses of bundled compon
 <p>CCM explains:</p>
 <blockquote>
 <p>This leads to a Twotter that looks and handles much more like the real thing. Expect that iconic DHC nose-down on approach. Expect massive amounts of both lift and drag beyond 20 degrees of flap. The plane will also handle far better on the ground, both in the taxi and on takeoff. I’m by no means claiming this is the be-all, perfect flight model for this plane and it will likely evolve some but for now we’re hitting book numbers in most cases within 1-2% and the plane is a sheer joy to fly.</p>
-</blockquote></section></section>
+</blockquote>
+<p>The Captain has since contributed several rounds of refinements to the flight model, based on Twotter driver and user feedback.</p>
+<h2 id="aircraft-flight-model-known-issues">Known issues<a class="headerlink" href="#aircraft-flight-model-known-issues" title="Permanent link">&para;</a></h2>
+<p>One important feature is currently missing from the flight model: a mechanical linkage between the flaps and a dedicated trim tab compensates for the extra lift those barndoors create. Currently, that compensation is partially baked into the flight model. I prefer to actually simulate the mechanical linkage, I <em>just</em> have to convince CCM that's the way to go.</p></section></section>
                     <section class='print-page md-section' id='section-3' heading-number='3'>
-                        <h1>Project<a class='headerlink' href='#section-3' title='Permanent link'></a>
+                        <h1>Mod<a class='headerlink' href='#section-3' title='Permanent link'></a>
                         </h1>
-                    <section class="print-page" id="project-history" heading-number="3.1"><h1 id="project-history-project-history">Project history</h1><h2 id="project-pre-history">Project Pre-History<a class="headerlink" href="#project-history-project-pre-history" title="Permanent link">&para;</a></h2>
+                    <section class="print-page" id="mod-installation" heading-number="3.1"><h1 id="mod-installation-installation">Installation<a class="headerlink" href="#mod-installation-installation" title="Permanent link">&para;</a></h1>
+<p>Because of <a href="#project-history">previous drama</a>, this mod is
+distributed as an archive containing xdelta files and an install
+script. You will need an original, unmodded installation of the
+<em>Aerosoft Twin Otter 1.1.1</em> (installed using <em>Aerosoft One,</em> the
+legacy Aerosoft installer, or by other means) so the installation
+process can <strong>read</strong> the original files and <strong>write</strong> the changed
+files to the mod folder. <strong>Your original files will not be modified.</strong></p>
+<div class="admonition important">
+<p class="admonition-title">Until the install script has been executed, the mod will be inactive.</p>
+</div>
+<p>You will still need to have the base model — the <code>aerosoft-aircraft-twin-otter</code>
+folder — in your <code>Community/</code> folder for the mod to work.</p>
+<h2 id="mod-installation-contents-of-the-distributed-archive">Contents of the distributed archive<a class="headerlink" href="#mod-installation-contents-of-the-distributed-archive" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>charliebravo-aircraftmod-twin-otter</code> — this is all you need. You must
+  unpack this to use the mod; the rest is optional.</li>
+<li><code>charliebravo-soundmod-twin-otter-turbineduke</code> — an optional sound mod.
+  Requires that you own the Black Square Turbine Duke.</li>
+<li><code>z_aerosoft-twin-otter_propblur_mod</code> — an optional mod that makes props
+  blurry when you're close.</li>
+<li><code>z_aerosoft-twin-otter_flat_cameras</code> — an optional mod that levels out the
+  cockpit camera views (the close pilot view and the three captain's instrument
+  views), instead of having them tilted down at the panel.</li>
+<li><strong><code>historic_ndb_userpoints.csv</code></strong> — can be imported in Little Navmap to show
+  historic (decommissioned) NDB beacons.</li>
+</ul>
+<h2 id="mod-installation-step-by-step">Step by step<a class="headerlink" href="#mod-installation-step-by-step" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Unpack</strong> directly into <code>Community/</code>, or wherever you keep your Community
+   add-ons.</li>
+<li><strong>Open</strong> the folder <code>charliebravo-aircraftmod-twin-otter</code>.</li>
+<li><em>Optionally, if you're paranoid or they are actually after you:</em> <strong>examine</strong>
+   <code>install.bat</code> and <code>install.ps1</code>, and overwrite the xdelta executable with a
+   version you trust.</li>
+<li><strong>Double-click</strong> <code>install.bat</code>.</li>
+<li><strong>Follow the prompts</strong> and select an unmodified <code>aerosoft-aircraft-twin-otter</code>
+   folder.</li>
+</ol>
+<p>In a perfect world, the changes are applied and you end up with a working mod.</p>
+<h2 id="mod-installation-the-sound-mod">The sound mod<a class="headerlink" href="#mod-installation-the-sound-mod" title="Permanent link">&para;</a></h2>
+<p>If you unpacked the soundmod:</p>
+<ol>
+<li><strong>Open</strong> the folder <code>charliebravo-soundmod-twin-otter</code>.</li>
+<li><strong>Double-click</strong> <code>install.bat</code>.</li>
+<li><strong>Follow the prompts</strong> and select your <code>bksq-aircraft-turbineduke</code> folder.</li>
+</ol>
+<h2 id="mod-installation-liveries">Liveries<a class="headerlink" href="#mod-installation-liveries" title="Permanent link">&para;</a></h2>
+<p>Legacy liveries for the Aerosoft model might work, if the loading
+order is carefully managed. Pink textures are supposedly fixed by
+using a layout generator tool to regenerate layout.json for MSFS2024.</p>
+<h2 id="mod-installation-if-it-goes-wrong">If it goes wrong<a class="headerlink" href="#mod-installation-if-it-goes-wrong" title="Permanent link">&para;</a></h2>
+<p>Before you report an installation error, please try reinstalling a
+fresh copy of the Aerosoft Twin Otter and trying with that folder. If
+the error persists, please get in touch so we can figure out what's
+happening happen. The installer should work with all popular versions
+of v1.1.1.</p></section><section class="print-page" id="mod-mods" heading-number="3.2"><h1 id="mod-mods-additional-mods">Additional Mods<a class="headerlink" href="#mod-mods-additional-mods" title="Permanent link">&para;</a></h1>
+<p>These mods are distributed in the same archive as the main mod. They are optional.</p>
+<h2 id="mod-mods-prop-blur-mod-ccm">Prop blur mod (CCM)<a class="headerlink" href="#mod-mods-prop-blur-mod-ccm" title="Permanent link">&para;</a></h2>
+<p><code>z_aerosoft-twin-otter-propblur_mod</code> mitigates the "wagon wheel effect" by making the blurred prop phases more transparent, only for the close-up LOD, so screenshots taken from the outside at some distance still get the cinematic look.</p>
+<h2 id="mod-mods-flat-camera-mod-hobanagerik">Flat camera mod (Hobanagerik)<a class="headerlink" href="#mod-mods-flat-camera-mod-hobanagerik" title="Permanent link">&para;</a></h2>
+<p><code>z_aerosoft-twin-otter-flat_camers</code> replaces some of the default tilted camera views with flat views at the instruments.</p>
+<h2 id="mod-mods-sound-mod-for-turbine-duke-owners">Sound mod for Turbine Duke owners<a class="headerlink" href="#mod-mods-sound-mod-for-turbine-duke-owners" title="Permanent link">&para;</a></h2>
+<p><code>charliebravo-soundmod-twin-otter-turbineduke</code> replaces the default engine sounds and a few other effects with much better versions from the Black Square Turbine Duke. You need to own the Turbine Duke and have it installed somewhere on your system. We don't distribute any part of the soundbank. To activate the mod, you must run the install script in its folder and point it at your Turbine Duke folder. It will copy the soundbank and modify it in order to prevent collisions with the actual Turbine Duke.</p></section></section>
+                    <section class='print-page md-section' id='section-4' heading-number='4'>
+                        <h1>Project<a class='headerlink' href='#section-4' title='Permanent link'></a>
+                        </h1>
+                    <section class="print-page" id="project-history" heading-number="4.1"><h1 id="project-history-project-history">Project history</h1><h2 id="project-pre-history">Project Pre-History<a class="headerlink" href="#project-history-project-pre-history" title="Permanent link">&para;</a></h2>
 <p>You know how you have your best flight simming moments that you will (hopefully) never forget and that, after years and years, still fill you with joy when you recall them? One of those moments for me was my first hot start in a Twin Otter in FSX or P3D, about a decade ago. That was the day I learned to treat engines with respect. I started actively looking for aircraft that could break if treated badly, discovered RealAir and A2A, and learned to appreciate deeper simulation.</p>
 <p>So the history of this project started, in a way, with the incredible <em>Aerosoft Twin Otter X Extended</em> for FSX/P3D. Aerosoft already had a Twin Otter add-on for FSX (released in 2008), and out of some stroke of genius, they tasked Finn Jacobsen with creating an improved version of it. They gave him carte blanche to define the feature set and the result, released in 2013, showed how passionate he was about the project. It was an amalgamation of existing and new concepts coming together in a complete, well-rounded package. And it was not only supported but actively improved and extended for years.</p>
 <p>The Twotter Revived project inherits a design philosophy from the "TwotterX": don't accept sim limitations as blockers, fix them using custom systems.</p>
@@ -677,7 +870,7 @@ Our custom code is open-source and only restricted by licenses of bundled compon
 <li>In v2024.3.99, we committed to the custom engine simulation and dropped support for the "legacy" flight model. We replaced the stock sim navaids with custom radio code. Other features include a custom checklist system that brought back autocomplete and interactive modes.</li>
 <li>v2024.3.174 brought another game changer: an optional sound mod lets owners of the Black Square Turbine Duke re-use its beautiful soundbank by Boris Audio Works for the Twotter. The audio is wired up to the custom systems and actually reflects the aircraft state.</li>
 <li>Current status: we're in the v2024.3.x cycle, still adding and refining systems.</li>
-</ul></section><section class="print-page" id="project-known-issues" heading-number="3.2"><h1 id="project-known-issues-known-issues">Known issues<a class="headerlink" href="#project-known-issues-known-issues" title="Permanent link">&para;</a></h1>
+</ul></section><section class="print-page" id="project-known-issues" heading-number="4.2"><h1 id="project-known-issues-known-issues">Known issues<a class="headerlink" href="#project-known-issues-known-issues" title="Permanent link">&para;</a></h1>
 <h2 id="project-known-issues-from-the-readme">From the README<a class="headerlink" href="#project-known-issues-from-the-readme" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Default audio is shit. Aerosoft's Wwise sound bank limits what I can do.
@@ -690,7 +883,7 @@ Our custom code is open-source and only restricted by licenses of bundled compon
 <li>FLC mode works when the pitot tube is frozen. Somehow, it knows. Sim quirk. (The groundwork to fix this has been done.)</li>
 <li>Pilot and Copilot avatars are not visible.</li>
 <li>KA 51 Slaving Accessory is missing.</li>
-</ul></section><section class="print-page" id="project-legal" heading-number="3.3"><h1 id="project-legal-legal">Legal<a class="headerlink" href="#project-legal-legal" title="Permanent link">&para;</a></h1>
+</ul></section><section class="print-page" id="project-legal" heading-number="4.3"><h1 id="project-legal-legal">Legal<a class="headerlink" href="#project-legal-legal" title="Permanent link">&para;</a></h1>
 <h2 id="project-legal-disclaimer">Disclaimer<a class="headerlink" href="#project-legal-disclaimer" title="Permanent link">&para;</a></h2>
 <p>Twotter Revived is a non-commercial fan project, not affiliated with,
 endorsed by, supported by, or even acknowledged by Microsoft, Asobo,
@@ -759,8 +952,6 @@ reimplemented from ITU-R P.527 rather than copied.</p>
 sysroot ships no <code>setjmp.h</code> — and the original <code>setjmp</code>/<code>longjmp</code> "out of input"
 escape was replaced with an overrun flag and an error return. The inflate
 algorithm and its output are unchanged, and the changes are marked in the source.</p>
-<p>Clause 1 invites, without requiring, an acknowledgment:
-<em>this product includes software written by Mark Adler.</em></p>
 <h3 id="project-legal-working-title-gns-430530">Working Title GNS 430/530<a class="headerlink" href="#project-legal-working-title-gns-430530" title="Permanent link">&para;</a></h3>
 <p>The GNS 530 and GNS 430 units in the panel. Vendored and patched in-tree.</p>
 <ul>
@@ -787,8 +978,6 @@ linked into it.</p>
 <li><strong>Copyright:</strong> Josh MacDonald</li>
 <li><strong>Upstream:</strong> <a href="https://github.com/jmacd/xdelta-devel">xdelta</a></li>
 </ul>
-<p>The installer explicitly invites you to replace the bundled copy with a build you
-have obtained and verified yourself.</p>
 <h2 id="project-legal-bundled-audio">Bundled audio<a class="headerlink" href="#project-legal-bundled-audio" title="Permanent link">&para;</a></h2>
 <h3 id="project-legal-flybywire-simulations-cc-by-nc-sa-40">FlyByWire Simulations — CC BY-NC-SA 4.0<a class="headerlink" href="#project-legal-flybywire-simulations-cc-by-nc-sa-40" title="Permanent link">&para;</a></h3>
 <p>The <code>fbw_egpws_*</code> callout files and <code>fbw_flap_actuator.wav</code> derive from
@@ -814,6 +1003,13 @@ generated by a commercial TTS service for this project and since no
 person was involved in creating them, nobody can claim any rights for
 them. Whether it was ethical to <em>base</em> them on the voice of a person
 is beyond my paygrade. If anyone feels offended, let me know.</p>
+<h2 id="project-legal-bundled-models">Bundled models<a class="headerlink" href="#project-legal-bundled-models" title="Permanent link">&para;</a></h2>
+<h3 id="project-legal-ground-power-unit-cc-by-40">Ground power unit — CC BY 4.0<a class="headerlink" href="#project-legal-ground-power-unit-cc-by-40" title="Permanent link">&para;</a></h3>
+<p>The GPU cart that appears beside the aircraft is
+<a href="https://sketchfab.com/3d-models/gpu-aiport-ground-power-unit-b18e62dda2e04e97a95312bb6a284f1c">"GPU (Aiport Ground Power Unit)"</a>
+by <strong>omri_ha_muglob</strong>, under <strong>Creative Commons Attribution 4.0</strong>. Bagolu fitted
+it to the Twin Otter.</p>
+<p>The wheel chocks are Bagolu's own model, donated to the project.</p>
 <h2 id="project-legal-data">Data<a class="headerlink" href="#project-legal-data" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -856,10 +1052,11 @@ redistributed and the WASM build does not depend on it.</p>
 <li>The mod as distributed is <strong>NonCommercial</strong>, because of the FlyByWire audio.</li>
 <li>The assembled mod folder <strong>cannot</strong> be redistributed at all — it contains
   reconstructed Aerosoft-derived files.</li>
-<li>Attribution is required for ESA WorldCover and for the FlyByWire audio.</li>
+<li>Attribution is required for ESA WorldCover, for the FlyByWire audio, and for the
+  ground power unit model.</li>
 <li>CDDL and GPL components carry source-availability obligations, met by the
   published WASM source and by xdelta3 being an unmodified upstream binary.</li>
-</ul></section><section class="print-page" id="project-plans" heading-number="3.4"><h1 id="project-plans-plans">Plans<a class="headerlink" href="#project-plans-plans" title="Permanent link">&para;</a></h1>
+</ul></section><section class="print-page" id="project-plans" heading-number="4.4"><h1 id="project-plans-plans">Plans<a class="headerlink" href="#project-plans-plans" title="Permanent link">&para;</a></h1>
 <h2 id="project-plans-ongoing-started-but-not-yet-completed">Ongoing (started, but not yet completed)<a class="headerlink" href="#project-plans-ongoing-started-but-not-yet-completed" title="Permanent link">&para;</a></h2>
 <ul>
 <li>System modernization: as Asobo improves sim systems, I adopt the new systems to unlock more authentic behavior and simplify custom code</li>
@@ -888,7 +1085,7 @@ redistributed and the WASM build does not depend on it.</p>
 <h2 id="project-plans-unexplored-concepts">Unexplored concepts<a class="headerlink" href="#project-plans-unexplored-concepts" title="Permanent link">&para;</a></h2>
 <ul>
 <li>GPS/GNS spoofing and jamming</li>
-</ul></section><section class="print-page" id="project-references" heading-number="3.5"><h1 id="project-references-references">References<a class="headerlink" href="#project-references-references" title="Permanent link">&para;</a></h1>
+</ul></section><section class="print-page" id="project-references" heading-number="4.5"><h1 id="project-references-references">References<a class="headerlink" href="#project-references-references" title="Permanent link">&para;</a></h1>
 <h2 id="project-references-the-project">The project<a class="headerlink" href="#project-references-the-project" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://flightsim.to/addon/106069/twotter-revived-beta">Project page</a> on flightsim.to</li>
@@ -921,15 +1118,20 @@ redistributed and the WASM build does not depend on it.</p>
 .print-site-enumerate-headings #aircraft-flight-model > h1:before { content: '2.1 ' }
 
 .print-site-enumerate-headings #section-3 > h1:before { content: '3 ' }
-.print-site-enumerate-headings #project-history > h1:before { content: '3.1 ' }
+.print-site-enumerate-headings #mod-installation > h1:before { content: '3.1 ' }
 
-.print-site-enumerate-headings #project-known-issues > h1:before { content: '3.2 ' }
+.print-site-enumerate-headings #mod-mods > h1:before { content: '3.2 ' }
 
-.print-site-enumerate-headings #project-legal > h1:before { content: '3.3 ' }
+.print-site-enumerate-headings #section-4 > h1:before { content: '4 ' }
+.print-site-enumerate-headings #project-history > h1:before { content: '4.1 ' }
 
-.print-site-enumerate-headings #project-plans > h1:before { content: '3.4 ' }
+.print-site-enumerate-headings #project-known-issues > h1:before { content: '4.2 ' }
 
-.print-site-enumerate-headings #project-references > h1:before { content: '3.5 ' }
+.print-site-enumerate-headings #project-legal > h1:before { content: '4.3 ' }
+
+.print-site-enumerate-headings #project-plans > h1:before { content: '4.4 ' }
+
+.print-site-enumerate-headings #project-references > h1:before { content: '4.5 ' }
 </style>
 
 

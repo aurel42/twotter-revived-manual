@@ -2179,6 +2179,7 @@ State: Achieved in the first Milestone release v2024.3.68.</p>
 <li>Battery terminal voltage now sags under heavy load. It's most visible during engine start — the voltmeter dips and the cockpit lighting (including the glareshield annunciators) dims as the starter pulls the bus down. Starter current tapers as the engine spools up. A weak battery cranks noticeably slower and takes longer to stabilize at a lower %Ng.</li>
 <li>Fixed the loadmeter-needle animation that barely moved under idle load; it now displays POH-correct values (the scale differs depending on whether the bus is on battery or on generator, see POH).</li>
 <li>Moved the engine starters to the battery bus to align with the POH electrical topology, and added a back-EMF starter model.</li>
+<li>The GPU cart is no longer invisible. There's a GPU button on the EFB Systems tab that calls one out to the aircraft, and selecting EXT on the DC Source selector calls one too. It parks off the rear-left fuselage with its cable plugged into the external power receptacle. Switching away from EXT does <em>not</em> send it away — press the button for that, which it refuses while EXT is selected and the cart is actually carrying the load. It leaves for good the moment you start rolling. Wheeled variants only. Many thanks to Bagolu for providing the model!</li>
 </ul>
 <p>Two starter-generators, one per engine, each feeding its own main DC bus. The
 same machine that cranks the engine becomes its generator once the start is over,
@@ -2211,6 +2212,15 @@ visible consequence: the crank pulls the battery down directly, so the voltmeter
 dips and the cockpit and glareshield lighting dim with it. Starter current tapers
 as Ng rises, and we model the back-EMF that causes it, so the sag recovers
 progressively rather than snapping back when the switch releases.</p>
+<p>There is a GPU cart, and you can see it. Selecting EXT calls one out, and so does
+the GPU button on the EFB Systems tab — the button exists because wanting a cart
+on stand and wanting to draw power from it are two different things. Once it is
+there, switching away from EXT does not send it away; press the button for that.
+It refuses while EXT is selected and the cart is carrying the load, which is the
+one case where pulling the plug would be a party trick rather than a procedure.
+Start rolling and the cart is gone for good — it is parked in the world, not
+attached to the aircraft, and the alternative was watching it skate along behind
+you. Wheeled variants only: the cable was fitted to that fuselage stance.</p>
 <div class="admonition warning">
 <p class="admonition-title">Known limitation: no load sharing</p>
 <p>Only one starter-generator actually supplies the bus at a time. As far as we

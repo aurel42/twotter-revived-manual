@@ -603,52 +603,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#from-the-release-notes" class="md-nav__link">
+  <a href="#known-issues" class="md-nav__link">
     <span class="md-ellipsis">
       
-        From the release notes
+        Known issues
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="From the release notes">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#flight-model_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Flight model
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#flight-states-ground-handling" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Flight states &amp; ground handling
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#flight-model-suspension-ap-ccm-tuning" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Flight model, suspension, AP: CCM tuning
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1994,9 +1955,6 @@
 
               
               <article class="md-content__inner md-typeset">
-<div class="review-badge review-badge--changed">Contains unreviewed changes in <strong>(intro)</strong>, <strong>From the release notes</strong>. <a href="../../reviewed/aircraft/flight-model/">See the reviewed version</a></div>
-
-
                 
                   
 
@@ -2025,28 +1983,11 @@
 <blockquote>
 <p>This leads to a Twotter that looks and handles much more like the real thing. Expect that iconic DHC nose-down on approach. Expect massive amounts of both lift and drag beyond 20 degrees of flap. The plane will also handle far better on the ground, both in the taxi and on takeoff. I’m by no means claiming this is the be-all, perfect flight model for this plane and it will likely evolve some but for now we’re hitting book numbers in most cases within 1-2% and the plane is a sheer joy to fly.</p>
 </blockquote>
-<h2 id="from-the-release-notes">From the release notes<a class="headerlink" href="#from-the-release-notes" title="Permanent link">&para;</a></h2>
-<p>Verbatim from <code>docs/release-notes-*.md</code>, grouped by the section they appeared in. The tag is the version each item first appeared in.</p>
-<h3 id="flight-model_1">Flight model<a class="headerlink" href="#flight-model_1" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Refined propeller lift characteristics. <em>(v2024.2.x)</em></li>
-<li>Restored P-factor effect on yaw. <em>(v2024.2.x)</em></li>
-<li>Changed slip indicator to be more sensitive. <em>(v2024.2.x)</em></li>
-<li>Changed spoiler-based disking hack: progressive onset, disabled on ground. <em>(v2024.2.x)</em></li>
-<li>Fixed too many entries in control surface elasticity tables (MSFS2024 complained). <em>(v2024.2.x)</em></li>
-<li>Another CCM tuning pass across all 13 variants improving beta and handling during approach, flap extension, and in crosswind. <em>(v2024.3.174)</em></li>
-</ul>
-<h3 id="flight-states-ground-handling">Flight states &amp; ground handling<a class="headerlink" href="#flight-states-ground-handling" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Fixed incorrect default lighting, avionics and system states across the spawn scenarios. <em>(v2024.3.183)</em></li>
-<li>Mitigated erratic ground steering and throttle behaviour during taxi cinematics. <em>(v2024.3.183)</em></li>
-</ul>
-<h3 id="flight-model-suspension-ap-ccm-tuning">Flight model, suspension, AP: <strong>CCM tuning</strong><a class="headerlink" href="#flight-model-suspension-ap-ccm-tuning" title="Permanent link">&para;</a></h3>
-<ul>
-<li>CCM's tuning overhauls flight model, flaps, props, steering, and suspension. It hits the numbers, provides more personality to the variants, feels more honest, and gives the Twotter its "stance", the typical nose-down attitude in cruise and descent. <em>(v2024.3.47)</em></li>
-<li>The legacy disking-drag is off for CCM (physics solves disking directly), on for Legacy. <em>(v2024.3.47)</em></li>
-<li>Beta-range annunciators rewired to harmonize with CCM's changes. <em>(v2024.3.47)</em></li>
-</ul>
+<p>The Captain has since contributed several rounds of refinements to the flight model, based on Twotter driver and user feedback.</p>
+<h2 id="known-issues">Known issues<a class="headerlink" href="#known-issues" title="Permanent link">&para;</a></h2>
+<p>One important feature is currently missing from the flight model: a mechanical linkage between the flaps and a dedicated trim tab compensates for the extra lift those barndoors create. Currently, that compensation is partially baked into the flight model. I prefer to actually simulate the mechanical linkage, I <em>just</em> have to convince CCM that's the way to go.</p>
+<hr />
+<p><em>Reviewed 2026-08-02.</em></p>
 
 
 

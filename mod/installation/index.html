@@ -1392,10 +1392,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#what-is-in-the-zip" class="md-nav__link">
+  <a href="#contents-of-the-distributed-archive" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What is in the zip
+        Contents of the distributed archive
       
     </span>
   </a>
@@ -1999,33 +1999,33 @@
 
               
               <article class="md-content__inner md-typeset">
-<div class="review-badge review-badge--draft"><strong>Draft</strong> — this page has not been reviewed yet.</div>
-
-
                 
                   
 
 
 
 <h1 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h1>
-<p>Because of previous drama around Aerosoft mods, this mod is distributed as an
-archive containing xdelta files and an install script. You will need an original,
-unmodded installation of the Twin Otter 1.1.1 (installed using Aerosoft One, the
-legacy Aerosoft installer, or by other means) so the installation process can
-READ the original files and WRITE the changed files to the mod folder. Your
-original files will not be touched.</p>
-<p><strong>Until the install script has been executed, the mod will be inactive.</strong></p>
+<p>Because of <a href="../../project/history/">previous drama</a>, this mod is
+distributed as an archive containing xdelta files and an install
+script. You will need an original, unmodded installation of the
+<em>Aerosoft Twin Otter 1.1.1</em> (installed using <em>Aerosoft One,</em> the
+legacy Aerosoft installer, or by other means) so the installation
+process can <strong>read</strong> the original files and <strong>write</strong> the changed
+files to the mod folder. <strong>Your original files will not be modified.</strong></p>
+<div class="admonition important">
+<p class="admonition-title">Until the install script has been executed, the mod will be inactive.</p>
+</div>
 <p>You will still need to have the base model — the <code>aerosoft-aircraft-twin-otter</code>
 folder — in your <code>Community/</code> folder for the mod to work.</p>
-<h2 id="what-is-in-the-zip">What is in the zip<a class="headerlink" href="#what-is-in-the-zip" title="Permanent link">&para;</a></h2>
+<h2 id="contents-of-the-distributed-archive">Contents of the distributed archive<a class="headerlink" href="#contents-of-the-distributed-archive" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong><code>charliebravo-aircraftmod-twin-otter</code></strong> — this is all you need. You must
+<li><code>charliebravo-aircraftmod-twin-otter</code> — this is all you need. You must
   unpack this to use the mod; the rest is optional.</li>
-<li><strong><code>charliebravo-soundmod-twin-otter-turbineduke</code></strong> — an optional sound mod.
+<li><code>charliebravo-soundmod-twin-otter-turbineduke</code> — an optional sound mod.
   Requires that you own the Black Square Turbine Duke.</li>
-<li><strong><code>z_aerosoft-twin-otter_propblur_mod</code></strong> — an optional mod that makes props
+<li><code>z_aerosoft-twin-otter_propblur_mod</code> — an optional mod that makes props
   blurry when you're close.</li>
-<li><strong><code>z_aerosoft-twin-otter_flat_cameras</code></strong> — an optional mod that levels out the
+<li><code>z_aerosoft-twin-otter_flat_cameras</code> — an optional mod that levels out the
   cockpit camera views (the close pilot view and the three captain's instrument
   views), instead of having them tilted down at the panel.</li>
 <li><strong><code>historic_ndb_userpoints.csv</code></strong> — can be imported in Little Navmap to show
@@ -2039,36 +2039,30 @@ folder — in your <code>Community/</code> folder for the mod to work.</p>
 <li><em>Optionally, if you're paranoid or they are actually after you:</em> <strong>examine</strong>
    <code>install.bat</code> and <code>install.ps1</code>, and overwrite the xdelta executable with a
    version you trust.</li>
-<li><strong>Double-click</strong> <code>install.bat</code>, or <strong>run</strong> <code>install.ps1</code> in PowerShell.
-   <code>install.bat</code> is just a wrapper that executes the PowerShell script.</li>
+<li><strong>Double-click</strong> <code>install.bat</code>.</li>
 <li><strong>Follow the prompts</strong> and select an unmodified <code>aerosoft-aircraft-twin-otter</code>
    folder.</li>
 </ol>
-<p>In a perfect world, the changes are applied and you end up with a working mod and
-the lawyers have no leverage against me. I apologize for this, I can assure you
-that it has been even less fun to set this up. I contacted Aerosoft and Microsoft
-to get their blessing, but, so far, I didn't receive a response. It appears our
-Twotter is in some legal limbo: Aerosoft sold the rights to Microsoft, and now
-neither party appears to have any interest in the legacy product. xdelta helps me
-to stay on the safe side.</p>
-<p>See <a href="../../project/legal/">Legal</a> for what that means for redistribution.</p>
+<p>In a perfect world, the changes are applied and you end up with a working mod.</p>
 <h2 id="the-sound-mod">The sound mod<a class="headerlink" href="#the-sound-mod" title="Permanent link">&para;</a></h2>
 <p>If you unpacked the soundmod:</p>
 <ol>
 <li><strong>Open</strong> the folder <code>charliebravo-soundmod-twin-otter</code>.</li>
-<li><strong>Double-click</strong> <code>install.bat</code>, or <strong>run</strong> <code>install.ps1</code> in PowerShell.</li>
+<li><strong>Double-click</strong> <code>install.bat</code>.</li>
 <li><strong>Follow the prompts</strong> and select your <code>bksq-aircraft-turbineduke</code> folder.</li>
 </ol>
 <h2 id="liveries">Liveries<a class="headerlink" href="#liveries" title="Permanent link">&para;</a></h2>
-<p>Legacy liveries for the Aerosoft model might work, if the loading order is
-carefully managed. You might have to rename folders to ensure the mod is loaded
-<em>after</em> base aircraft and liveries.</p>
+<p>Legacy liveries for the Aerosoft model might work, if the loading
+order is carefully managed. Pink textures are supposedly fixed by
+using a layout generator tool to regenerate layout.json for MSFS2024.</p>
 <h2 id="if-it-goes-wrong">If it goes wrong<a class="headerlink" href="#if-it-goes-wrong" title="Permanent link">&para;</a></h2>
-<p>Before you report an installation error, please consider reinstalling a fresh
-copy of the Aerosoft Twin Otter in the last release version (1.1.1) and trying
-with that folder. If the errors persist, please get in touch so we can figure out
-why they happen. The installer should now work with all popular versions of
-1.1.1.</p>
+<p>Before you report an installation error, please try reinstalling a
+fresh copy of the Aerosoft Twin Otter and trying with that folder. If
+the error persists, please get in touch so we can figure out what's
+happening happen. The installer should work with all popular versions
+of v1.1.1.</p>
+<hr />
+<p><em>Reviewed 2026-08-02.</em></p>
 
 
 
