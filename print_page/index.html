@@ -963,6 +963,8 @@
       
         
       
+        
+      
     
     
     
@@ -1012,6 +1014,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../aircraft/systems/autopilot/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../aircraft/systems/autopilot/approaches-and-vnav/" class="md-nav__link">
         
   
@@ -1047,7 +1077,7 @@
   <span class="md-ellipsis">
     
   
-    The KAP 140 Autopilot
+    KAP 140
   
 
     
@@ -3242,7 +3272,62 @@ This is a selection, not the full list — the aircraft defines around a thousan
                     <section class='print-page md-section' id='section-3-2-12' heading-number='3.2.12'>
                         <h1>Autopilot<a class='headerlink' href='#section-3-2-12' title='Permanent link'></a>
                         </h1>
-                    <section class="print-page" id="aircraft-systems-autopilot-approaches-and-vnav" heading-number="3.2.12.1"><h1 id="aircraft-systems-autopilot-approaches-and-vnav-approaches-vnav-and-the-gns">Approaches, VNAV and the GNS<a class="headerlink" href="#aircraft-systems-autopilot-approaches-and-vnav-approaches-vnav-and-the-gns" title="Permanent link">&para;</a></h1>
+                    <section class="print-page" id="aircraft-systems-autopilot-overview" heading-number="3.2.12.1"><h1 id="aircraft-systems-autopilot-overview-autopilot-overview">Autopilot overview<a class="headerlink" href="#aircraft-systems-autopilot-overview-autopilot-overview" title="Permanent link">&para;</a></h1>
+<p>The autopilot is one of the areas where I'm claiming artistic license. While I fixed a couple of "realism gaps" with the default KAP 140, I also created new ones.</p>
+<p>Aerosoft put the Bendix/King KAP 140 in the Twotter for two reasons, afaik: users are familiar with it and the mission statement for the 2020 version was to use default avionics wherever possible. The visual model has all the remnants of the Collins AP-106 (I think) simulated in the Aerosoft Twin Otter X Extended: the annunciators, the mode and altitude panels, the multifunction "knob" on the control column pedestal, the YD button.</p>
+<p>This means the 2020 Twotter's AP is already an unholy abomination, and I leaned into that.</p>
+<h2 id="aircraft-systems-autopilot-overview-history">History<a class="headerlink" href="#aircraft-systems-autopilot-overview-history" title="Permanent link">&para;</a></h2>
+<p>The autopilot is a prime example of how this project grew as I learned more about the sim. First, I used stick and carrot, controlling the stock autopilot by manipulating the selected altitude and the heading bug while showing the numbers and modes the user expected on the display. That worked well enough, but had some limitations, so I tried taking over the whole autopilot the same way the Working Title framework does, but I missed a single, important switch, causing all my experiments to fail, so I shelved this approach. I went back to stick and carrot and invented more workarounds to allow me to tune the AP behavior further.</p>
+<p>It took an embarrassing amount of time for me to notice what <em>actually</em> drove the AP in the mod since the very first version.</p>
+<div class="admonition info">
+<p class="admonition-title">The very first commit message in this project</p>
+<p>[v2024.0.1] - 2026-03-06</p>
+<ul>
+<li>Updated GNS530 to WT530</li>
+</ul>
+</div>
+<p>As I understand it, whenever Working Title avionics are in play, they put the sim AP in <em>managed mode</em> and control pitch and bank directly. So I pulled the GNS units into the mod and started customizing the directors, moving from hacks and workarounds to a proper solution. But the amount of changes were significant which, for one, makes it hard to follow Working Title's updates closely, and I'm not really comfortable working with JS/TS. So the current goal is to have the state machines that run the AP in WASM, where I can test the  thoroughly without even starting the sim, and to reduce the number of patches I apply to the Working Title code. What remains is just a thin layer around the parts I want to replace, that says "talk to WASM instead", and the actual changes to the GNS user interface.</p>
+<div class="admonition info">
+<p class="admonition-title">Don't let me confuse you</p>
+<p>Whether I use "selected altitude" or "altitude preselect", I mean
+the same thing: the "target altitude" selected by the pilot or set
+when entering alt mode.</p>
+</div>
+<h2 id="aircraft-systems-autopilot-overview-collins-ap-features">Collins AP features<a class="headerlink" href="#aircraft-systems-autopilot-overview-collins-ap-features" title="Permanent link">&para;</a></h2>
+<ul>
+<li>IAS/FLC mode, yaw damper, and flight director.</li>
+<li>The flight director command bars on the attitude indicator can be hidden via the <strong>Disable Flight Director</strong> toggle in the EFB Config tab.</li>
+<li>Mode buttons and altitude selector are synced with the KAP 140.</li>
+<li>The Collins annunciators are somehow magically driven by the KAP 140.</li>
+<li>The pitch-trim arrow indicator is now a runaway-trim warning indicator (flashes for end-of-travel and same-direction-≥2 s commands). Small trim corrections should no longer cause epileptic seizures in photosensitive pilots.</li>
+<li>Enabled autopilot annunciators for approach arm/capture when using GPS navigation.</li>
+</ul>
+<h2 id="aircraft-systems-autopilot-overview-working-title-framework-features">Working Title framework features<a class="headerlink" href="#aircraft-systems-autopilot-overview-working-title-framework-features" title="Permanent link">&para;</a></h2>
+<p>The GNS units gained two features which are completely unrealistic (they are present in the G1000NXi, but not in the much older GNS units). You can turn them off if you prefer more authentic behavior.</p>
+<ul>
+<li>Coupled VNAV: whenever you select an approach with vertical guidance, VNAV is armed.<ul>
+<li>You can disable VNAV by pressing the VNAV button on the GNS 530, enabling cursor mode, selecting "DISARM VNAV" and confirming with ENT.</li>
+<li>VNAV respects the selected altitude. VNAV will not initiate a descent if you are in ALT HOLD at the selected altitude. If VNAV is armed but cannot descend because of this restriction, the KAP 140 display will alert you by slow-blinking the VNV-ARM flag. Reduce the selected altitude to the next restraint or the expected altitude for capturing a GS or GP, and verify that VNV-ARM is no longer blinking and that the VNAV page on the GNS 530 displays a plausible time to TOD.</li>
+<li>VNAV will not engage if you're too far from course.</li>
+<li>While armed, the VNAV page on the GNS 530 should display a time to the next top of descent (TOD).</li>
+<li>While active, the VNAV page on the GNS 530 should display the next altitude restraint VNAV is descending to.</li>
+<li>Engage APR mode while descending toward the GS or GP for a smooth capture.</li>
+</ul>
+</li>
+<li>VISUAL approaches: just like in the G1000NXi, you can set up a "VISUAL" approach for any runway of any airport or airfield.<ul>
+<li>VISUAL approaches have vertical guidance, so VNAV is armed for them. Select an altitude of 800-1000 ft above field elevation for a smooth capture of the glide path (GP).</li>
+</ul>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">VISUAL approaches are guidance-only</p>
+<p>When you are using VISUAL approaches, you alone are responsible to
+ensure terrain clearance and object avoidance. In difficult
+terrain, relying on a VISUAL appraoch can and probably will kill
+you.</p>
+</div>
+<hr />
+<p><em>Reviewed 2026-08-02.</em></p></section><section class="print-page" id="aircraft-systems-autopilot-approaches-and-vnav" heading-number="3.2.12.2"><h1 id="aircraft-systems-autopilot-approaches-and-vnav-approaches-vnav-and-the-gns">Approaches, VNAV and the GNS<a class="headerlink" href="#aircraft-systems-autopilot-approaches-and-vnav-approaches-vnav-and-the-gns" title="Permanent link">&para;</a></h1>
 <p>The KAP 140 is only as good as what the needles feed it. This page covers the
 coupled behaviors that involve the GNS 530/430 and the radios: ILS and VOR
 approaches, the GPS-to-ILS handoff, RNAV glidepaths, visual approaches, and
@@ -3338,89 +3423,54 @@ from the Honeywell manual, the manual won unless this page says otherwise.</p>
 <p>Hides the GNS visual-approach option (per-runway VISUAL approaches with a 3° glidepath, flown coupled). The real GNS 530W/430W has none; enable this to keep the unit stock-faithful.</p>
 <h3 id="aircraft-systems-autopilot-approaches-and-vnav-disable-coupled-vnav">Disable coupled VNAV<a class="headerlink" href="#aircraft-systems-autopilot-approaches-and-vnav-disable-coupled-vnav" title="Permanent link">&para;</a></h3>
 <p><code>DHC6_CFG_DISABLE_GNS_COUPLED_VNAV</code> — default: <strong>off</strong></p>
-<p>By default the autopilot can fly a coupled VNAV descent (PATH) to flight-plan altitude constraints, armed from the GNS VNAV page. The real GNS 530W has advisory VNAV only — enable this to restore that. Takes effect after a GNS power cycle.</p></section><section class="print-page" id="aircraft-systems-autopilot-kap-140" heading-number="3.2.12.2"><h1 id="aircraft-systems-autopilot-kap-140-the-kap-140-autopilot">The KAP 140 Autopilot<a class="headerlink" href="#aircraft-systems-autopilot-kap-140-the-kap-140-autopilot" title="Permanent link">&para;</a></h1>
-<h2 id="aircraft-systems-autopilot-kap-140-from-the-readme">From the README<a class="headerlink" href="#aircraft-systems-autopilot-kap-140-from-the-readme" title="Permanent link">&para;</a></h2>
-<p>The autopilot is one of the areas where I'm claiming artistic license. While I fixed a couple of "realism gaps" with the default KAP 140, I also created new ones. Aerosoft put the KAP 140 in the Twotter for two reasons, afaik: users are familiar with it and the mission statement for the 2020 version was to use default avionics wherever possible. The visual model has all the remnants of the Collins AP-106 (I think) simulated in the Aerosoft Twin Otter X Extended: the annunciators, the mode and altitude panels, the multifunction "knob" on the control column pedestal, the YD button. The 2020 Twotter's AP is already an unholy abomination, and I leaned into that.</p>
-<p>The main realism features are:
-- capture only when armed (this was a bitch to get right);
-- "Vertical Trim": tapping UP/DN nudges the aircraft in steps of 20 ft (another bitch) and
-- holding UP/DN initiates a climb/descend at 500 fpm that is maintained until the button is released (yeah, a bitch, as well);
-- obnoxiously long pre-flight test followed by
-- a 30s pitch lockout (a red P on display replaces the dedicated warning light which is missing from our visual model).</p>
-<p>The main realism gaps are:
-- from the Collins AP, we inherit support for IAS/FLC mode, yaw damper, flight director,
-- mode buttons and altitude selector are synced with the KAP 140 and
-- the Collins annunciators are somehow magically driven by the KAP 140.</p>
-<p>Known issues: underneath, we use the sim's AP with all its quirks. The AP still uses the Captain's HSI baro instead of its own.</p>
-<ul>
-<li>Altitude alerter runs a 3-second self-test.</li>
-<li>Pitch-trim arrow indicator is now a runaway-trim warning indicator (flashes for end-of-travel and same-direction-≥2 s commands).</li>
-<li>Enabled autopilot annunciators for approach arm/capture when using GPS navigation.</li>
-<li>Three-row LCD layout matching the physical hardware. PFT timing matches a reference video (≈40 s).</li>
-<li>Preflight test plays a completion chime when it ends.</li>
-<li>Daylight-aware unpowered LCD rendering: the display shows the dim ghost segments of an unlit LCD.</li>
-<li>Yaw-Damper (YD) annunciator support.</li>
-<li>Flashing AP-master annunciator with a 5-second flash on disconnect; cavalry-charge tone wired to the disconnect event.</li>
-<li>Held UP/DN ramps the vertical reference; short presses "nudge" by 20 ft (ALT mode), 100 fpm (VS mode) or 5 kts (FLC).</li>
-<li>FLC mode displays the selected airspeed; using UP/DN snaps the reference to the nearest 5 kt boundary.</li>
-<li>Sticky BARO reminder flashes after the preflight test until the pilot acknowledges by pressing BARO or changing the setting.</li>
-<li>Pitch-axis lockout (blinking "P" indicator) for 30 seconds after the preflight test and after every in-flight power cycle, while the accelerometer settles.</li>
-<li>G-load monitor auto-disengages the autopilot if the pilot pulls or pushes through a threshold.</li>
-<li>Experimental: NAV "pre-arm" allows arming NAV when the sim AP refuses it. While "pre-armed", the NAV ARM flag blinks in a slow rhythm. When it fails to capture, toggle NAV mode off and on again.</li>
-<li>The flight director command bars on the attitude indicator can be hidden via the <strong>Disable Flight Director</strong> toggle in the EFB Config tab.</li>
-<li>Lateral and altitude-capture logic now runs natively inside the Working Title GNS 530/430 flight directors, which fly the mod's own VOR/LOC/GS signal.</li>
-<li>the NAV "pre-arm" bullet above (~262): relaxed NAV arming can now be switched off with the new "Disable relaxed NAV arming" Config-tab option.</li>
-</ul>
-<p>A two-axis rate autopilot with altitude preselect — pitch and roll, no yaw
-damper, no autothrottle, a 25° bank limit, and a small LCD that tells you
-exactly what it is doing and nothing more. This page covers the unit itself;
-<a href="#aircraft-systems-autopilot-approaches-and-vnav">Approaches, VNAV and the GNS</a> covers flying it against
-the navigators.</p>
-<p>One piece of history you will notice in the cockpit: the visual model carries
-leftovers from the Collins AP-106 this panel once held — an IAS button, a YD
-button and annunciator, flight-director bars, Collins-style annunciator strips.
-We deliberately kept the ones the cockpit hints at working (IAS mode, the FD
-bars, the secondary mode panel) rather than blanking them. Where this page says
-a feature "is not on the real KAP 140", that is why it exists anyway.</p>
+<p>By default the autopilot can fly a coupled VNAV descent (PATH) to flight-plan altitude constraints, armed from the GNS VNAV page. The real GNS 530W has advisory VNAV only — enable this to restore that. Takes effect after a GNS power cycle.</p></section><section class="print-page" id="aircraft-systems-autopilot-kap-140" heading-number="3.2.12.3"><h1 id="aircraft-systems-autopilot-kap-140-kap-140">KAP 140<a class="headerlink" href="#aircraft-systems-autopilot-kap-140-kap-140" title="Permanent link">&para;</a></h1>
+<p>A two-axis rate autopilot with altitude preselect. Pitch and roll, no
+yaw damper, no autothrottle, a 25° bank limit, and a small LCD that
+tells you exactly what it is doing and nothing more. It was designed
+for the <em>entry level General Aviation market</em>. To the best of my
+knowledge, the KAP 140 is not certified for installation in any twin
+engine aircraft, let alone in a twin engine turboprop of the size of
+the Twotter.</p>
 <h2 id="aircraft-systems-autopilot-kap-140-operation">Operation<a class="headerlink" href="#aircraft-systems-autopilot-kap-140-operation" title="Permanent link">&para;</a></h2>
-<p><strong>Power-up runs a real preflight test.</strong> On avionics power the unit runs its
-self-test sequence — about forty seconds, timed against footage of real
-hardware, not the ~14 s of the stock sim unit. The AP cannot be engaged until
-PFT completes, and for 30 seconds afterwards the pitch axis is locked out — a
-blinking red <strong>P</strong> on the display. The red P is also the G-limit indicator:
-exceeding roughly +2.0/−0.5 g while engaged locks pitch engagement, and a
-serious exceedance disconnects the autopilot outright. Pulling avionics power
-in flight buys you a fresh PFT and a longer, randomized lockout — the real
-manual warns the accelerometers may need minutes to settle. Loading into a
-flight already in progress skips all of this, as a warm, tested unit should.</p>
+<p><strong>Power-up runs a real preflight test.</strong> On avionics power the unit
+runs its self-test sequence — about forty seconds, timed against
+footage of real hardware, not the ~14 s of the stock sim unit. The AP
+cannot be engaged until PFT completes, and for 30 seconds afterwards
+the pitch axis is locked out — a blinking red <strong>P</strong> on the
+display. The red P is also the G-limit indicator: exceeding roughly
++2.0/−0.5 g while engaged locks pitch engagement, and a serious
+exceedance disconnects the autopilot outright. Pulling avionics power
+in flight buys you a fresh PFT and a longer, randomized lockout — the
+real manual warns the accelerometers may need minutes to
+settle. Loading into a flight already in progress skips all of this.</p>
 <p><strong>Engage and you get ROL and VS.</strong> The AP button engages wing-leveling and
 holds your current vertical speed — whatever it is. The unit does not level
 off for you and does not know what you meant; check the VS readout immediately
 after engaging. Disengaging flashes the AP annunciator for five seconds.
 The autopilot also lets go on its own if its attitude source dies — a failed
 or spun-down gyro takes the AP with it.</p>
-<p><strong>Lateral modes.</strong> HDG flies the heading bug — and only the bug; set it before
-you press the button. When you arm NAV or APR from heading mode, the HDG
-annunciator flashes for five seconds as a reminder that the bug no longer
-steers the aircraft. NAV tracks whatever the HSI shows: a VOR radial, a
-localizer, or — when the CDI source is GPS — the flight plan, annunciated
-<strong>GPS</strong> and flown with proper turn anticipation. REV is the back-course mode:
+<p><strong>Lateral modes.</strong> HDG flies the heading bug — and only the bug; set
+it before you press the button. When you arm NAV or APR from heading
+mode, the HDG annunciator flashes for five seconds as a reminder that
+you should use HDG mode to set up the aircraft for intercept. NAV
+tracks whatever the HSI shows: a VOR radial, a localizer, or — when
+the CDI source is GPS — the flight plan. REV is the back-course mode:
 front-course set on the OBS, reverse sensing handled by the unit.</p>
-<p><strong>NAV arms until you are established.</strong> Press NAV well off the radial and you
-get <strong>NAV ARM</strong>: the unit keeps wings level (or your heading, if you keep HDG
-engaged toward an intercept) until the needle comes alive and the capture
-criteria hold — then it captures and turns on course. Intercepts beyond about
-45° are not recommended, same as the real unit. A capture that never becomes
-possible — wrong radial, dead receiver — stays armed rather than lunging at
-noise; see the radio note below. With <strong>Strict NAV arm</strong> enabled in the EFB
-Config tab, arming additionally requires a usable signal at press time, so a
-press against a dead needle is rejected immediately instead of armed
-indefinitely.</p>
-<p><strong>Vertical modes.</strong> UP/DN in VS mode: a tap is 100 fpm, holding the button
-ramps at about 300 fpm per second. ALT holds the altitude at engagement; taps
-nudge it 20 ft, holding ramps at 500 fpm. IAS — the AP-106 leftover — holds
-airspeed with pitch: taps 5 kt, held ramps 15 kt/s. The rotary knobs set the
-altitude preselect, shown on the drum above the unit.</p>
+<p><strong>NAV arms until you are established.</strong> Press NAV well off the radial
+and you get <strong>NAV ARM</strong>: the unit keeps wings level (or your heading,
+if you keep HDG engaged toward an intercept) until the needle comes
+alive and the capture criteria hold — then it captures and turns on
+course. Intercepts beyond about 45° are not recommended, same as the
+real unit. A capture that never becomes possible — wrong radial, dead
+receiver — stays armed. With <strong>Relaxed NAV arm</strong> disabled in the EFB
+Config tab, arming additionally requires a usable signal at press
+time, so a press against a dead needle is rejected immediately.</p>
+<p><strong>Vertical modes.</strong> UP/DN in VS mode: a tap is 100 fpm, holding the
+button ramps at about 300 fpm per second. ALT holds the altitude at
+engagement; taps nudge it 20 ft, holding ramps at 500 fpm. IAS (our
+custom addition to the KAP 140) holds airspeed with pitch: taps 5 kt,
+held ramps 15 kt/s. The rotary knobs set the altitude preselect, shown
+on the drum above the unit.</p>
 <p><strong>The altitude preselect captures automatically — unless you ask it not to.</strong>
 By default the sim's behavior stands: set the preselect, climb or descend at
 it, and the unit captures. With <strong>Realistic altitude arm</strong> enabled (EFB Config
@@ -3428,123 +3478,57 @@ tab), the unit behaves like the real two-axis KAP 140: the preselected
 altitude must be <strong>armed</strong> — the ARM button toggles it, <strong>ALT ARM</strong> annunciates
 — or the aircraft flies straight through the target. You may arm any altitude,
 including one behind you; capture simply waits until the geometry makes sense.
-Capture clears the arm; each new target needs a new press. This is the single
-biggest workload change the config tab offers — with it on, every level-off is
-yours to arrange.</p>
+Capture clears the arm; each new target needs a new press.</p>
 <p><strong>The altitude alerter works like the book says.</strong> Approaching the preselect,
 the alert light comes on 1000 ft out and extinguishes at 200 ft; after
 capture, deviating more than 200 ft flashes it. The alert tone sounds
 approaching 1000 ft to go and when departing an altitude by 200 ft.</p>
+<p><strong>It talks, if you let it.</strong> The unit speaks five messages. Two are standard
+and always on: "Trim in motion" when the autopilot has been running the pitch
+trim one way for five seconds, and "Check pitch trim" at fifteen — the same
+condition that lights the glareshield TRIM IN MOTION lamp at two seconds and
+flashes <strong>PT</strong> with a direction arrow on the display. The other three —
+"Altitude" 1000 ft before the preselect, "Leaving altitude" 200 ft after
+departing it, and "Autopilot" on disconnect — are an installation option on
+the real unit, so they are off by default and you turn them on with <strong>Enable
+KAP-140 voice messages</strong> in the EFB Config tab. Either way the tones still
+sound; the voice is added to them, never instead of them. Because both
+settings are equally authentic, the Realistic config profile deliberately
+leaves this one alone.</p>
 <p><strong>BARO.</strong> A short press shows the altimeter setting for three seconds so you
 can adjust it with the knob; holding for two seconds toggles between inches
 and hectopascals. The preselect logic uses its own blind encoder — your
 altimeter mis-set is your problem, as in the real installation.</p>
-<p><strong>What it will not do.</strong> There are no voice callouts (the audio bank cannot be
-extended), the pitch-trim (PT) annunciator stays dark outside the lamp test,
-and the unit engages on a simple press rather than the late-software 0.25 s
-hold — all recorded decisions, not oversights.</p>
-<h2 id="aircraft-systems-autopilot-kap-140-under-the-hood">Under the hood<a class="headerlink" href="#aircraft-systems-autopilot-kap-140-under-the-hood" title="Permanent link">&para;</a></h2>
-<p>The autopilot is a stack: the sim provides only a servo, the WorkingTitle GNS
-framework provides the brain (its directors compute bank and pitch commands —
-we have patched them extensively, see the approaches page), and our own code
-provides the KAP 140 itself — every button, mode decision, arm gate, watchdog
-and annunciation runs in the aircraft's C++ module, driven identically whether
-you press the faceplate, a hardware panel, a key binding, or send the event
-from FSUIPC. That "identically" is load-bearing: every AP-related key event is
-intercepted at the SimConnect level and funneled through one state machine per
-axis, which is why a Bravo button and a mouse click can never disagree.</p>
-<p>Fidelity is anchored on the Honeywell Pilot's Guide: the PFT sequence and
-timings, the pitch lockout and G-limits, the ARM workflow, the alerter bands,
-the UP/DN tap-and-hold rates, and the HDG flash are all implemented to the
-book's numbers. Known divergences, stated plainly: the alert tone is a single
-tone rather than the book's five short tones; the PT annunciator has no
-honest data source in the sim (a previous approximation false-alarmed and was
-removed); voice messages are absent; the IAS mode, FD bars and secondary
-panel are deliberate AP-106 anachronisms; and the heading law is better than
-the real unit's — a turn-rate-anticipated capture that does not overshoot at
-high latitude, one of the things we fixed rather than emulated.</p>
-<p>A complete C++ reimplementation of the lateral axis — modes, capture gates
-and control laws with no JavaScript in the loop — exists behind a
-development-only configuration flag, off by default, as part of ongoing work
-to retire the framework layer entirely. With the flag at its shipping default,
-nothing of it is active.</p>
-<h2 id="aircraft-systems-autopilot-kap-140-from-the-release-notes">From the release notes<a class="headerlink" href="#aircraft-systems-autopilot-kap-140-from-the-release-notes" title="Permanent link">&para;</a></h2>
-<p>Verbatim from <code>docs/release-notes-*.md</code>, grouped by the section they appeared in. The tag is the version each item first appeared in.</p>
-<h3 id="aircraft-systems-autopilot-kap-140-kap-140-autopilot">KAP 140 autopilot<a class="headerlink" href="#aircraft-systems-autopilot-kap-140-kap-140-autopilot" title="Permanent link">&para;</a></h3>
+<h2 id="aircraft-systems-autopilot-kap-140-list-of-changes">List of changes<a class="headerlink" href="#aircraft-systems-autopilot-kap-140-list-of-changes" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Lateral and vertical mode logic moved from the JS gauge into CBDHC6 WASM subsystems, and every external entry path (faceplate, secondary AP panel, hardware AP panels, FSUIPC, SimConnect clients) now funnels through the same state machine. <em>(v2024.2.134)</em></li>
-<li>APR pre-arm removed. <em>(v2024.2.134)</em></li>
-<li>"No Auto-ARM" now refuses to arm "behind" the aircraft. If the bug is in the past relative to current motion (&gt;100 ft gap, &gt;50 fpm against the bug), ARM is rejected. Without this guard, ARM was collapsing the rolling alt-target back to the displayed value and reversing FLC's commanded direction. <em>(v2024.2.134)</em></li>
-<li>GS capture clears ALT ARM. <em>(v2024.2.134)</em></li>
-<li>GS display is gated on <code>APPROACH HOLD</code>. <em>(v2024.2.134)</em></li>
-<li>FLC engage now pins selected IAS for 3 s in the right block. <em>(v2024.2.134)</em></li>
-<li>Post-PFT Baro reminder accepts external events. <em>(v2024.2.134)</em></li>
-<li>HDG-flash state machine moved to WASM. <em>(v2024.2.134)</em></li>
-<li>NAV/APR/ALT/BC face buttons emit H-events instead of firing K-events directly. <em>(v2024.2.134)</em></li>
-<li>Moved the KAP 140 gauge into a dedicated namespace so it no longer overrides the stock KAP 140 used by other aircraft. <em>(v2024.2.142)</em></li>
-<li>Fixed the display sometimes showing "888"/"88.888" characters when starting in a cold-and-dark cockpit. <em>(v2024.2.142)</em></li>
-<li>Pressing ARM a second time now correctly cancels the armed altitude. <em>(v2024.2.142)</em></li>
-<li>Fixed lateral mode reverting to ROL when cancelling NAV ARM or APR ARM while in HDG mode. <em>(v2024.2.142)</em></li>
-<li>New EFB Config toggle "Disable Flight Director". When enabled, the pitch and roll command bars on the attitude indicator are removed; raw autopilot annunciators remain. <em>(v2024.3.19)</em></li>
-<li>Work on an overhaul of lateral modes was reverted for this release. But I shall show this AP that I can be its master. I shall perfect my own race of AP modes, a race of atomic super-modes that will conquer the AP! <em>(v2024.3.19)</em></li>
+<li>Capture only when armed, configurable for convenience, faithful to manual.</li>
+<li>"Vertical Trim"<ul>
+<li>Short presses "nudge" by 20 ft (ALT mode), 100 fpm (VS mode) or 5 kts (FLC), faithful to the manual (except FLC).</li>
+<li>Holding UP/DN initiates a climb/descend at 500 fpm that is maintained until the button is released, faithful to manual. In VS and FLC mode, holding the buttons quickly changes the reference fpm or speed.</li>
 </ul>
-<h3 id="aircraft-systems-autopilot-kap-140-kap-140-autopilot-custom-gauge">KAP 140 autopilot (custom gauge)<a class="headerlink" href="#aircraft-systems-autopilot-kap-140-kap-140-autopilot-custom-gauge" title="Permanent link">&para;</a></h3>
+</li>
+<li>Pre-Flight Test and initial state<ul>
+<li>Obnoxiously long pre-flight test, based on reference video of a faulty unit, needs validation.</li>
+<li>A 30s pitch lockout, faithful to manual, apart from the display: a red "P" on display replaces the dedicated warning light which is missing from our visual model.</li>
+<li>Sticky BARO reminder flashes after the preflight test until the pilot acknowledges by pressing BARO or changing the setting.</li>
+</ul>
+</li>
+<li>Voice messages, faithful to the manual: the two standard trim announcements always on, the three optional ones behind a config switch as they are behind an installation option on the real unit.</li>
+<li>The PT annunciator and its trim-direction arrows now flash on a sustained autopilot trim run, instead of sitting permanently dark.</li>
+<li>Yaw-Damper (YD) annunciator support.</li>
+<li>NAV "pre-arm" allows arming NAV prematurely (for example, long before closing in to a VOR radial). While "pre-armed", the NAV ARM flag blinks in a slow rhythm. Configurable as "Relaxed NAV arming".</li>
+<li>Display shows a "ghost" of the LED elements while not lit.</li>
+</ul>
+<h2 id="aircraft-systems-autopilot-kap-140-known-issues">Known issues<a class="headerlink" href="#aircraft-systems-autopilot-kap-140-known-issues" title="Permanent link">&para;</a></h2>
 <ul>
-<li>capture only when armed (this was a bitch to get right); <em>(v2024.2.x)</em></li>
-<li>"Vertical Trim": tapping UP/DN nudges the aircraft in steps of 20 ft (another bitch) and <em>(v2024.2.x)</em></li>
-<li>holding UP/DN initiates a climb/descend at 500 fpm that is maintained until the button is released (yeah, a bitch, as well); <em>(v2024.2.x)</em></li>
-<li>obnoxiously long pre-flight test followed by <em>(v2024.2.x)</em></li>
-<li>a 30s pitch lockout (a red P on display replaces the dedicated warning light which is missing from our visual model). <em>(v2024.2.x)</em></li>
-<li>IAS/FLC mode, <em>(v2024.2.x)</em></li>
-<li>mode buttons and altitude selector are synced with the KAP 140 and <em>(v2024.2.x)</em></li>
-<li>the Collins annunciators are somehow magically driven by the KAP 140. <em>(v2024.2.x)</em></li>
-<li>[NEW] Altitude alerter runs a 3-second self-test. <em>(v2024.2.x)</em></li>
-<li>[CHANGED] Pitch-trim arrow indicator is now a runaway-trim warning indicator (flashes for end-of-travel and same-direction-≥2 s commands). <em>(v2024.2.x)</em></li>
-<li>Enabled autopilot annunciators for approach arm/capture when using GPS navigation. <em>(v2024.2.x)</em></li>
-<li>[NEW] Three-row LCD layout matching the physical hardware. PFT timing matches a reference video (≈40 s). <em>(v2024.2.x)</em></li>
-<li>[NEW] Preflight test plays a completion chime when it ends. <em>(v2024.2.x)</em></li>
-<li>[NEW] Daylight-aware unpowered LCD rendering: the display shows the dim ghost segments of an unlit LCD. <em>(v2024.2.x)</em></li>
-<li>[NEW] Yaw-Damper (YD) annunciator support. <em>(v2024.2.x)</em></li>
-<li>[NEW] Flashing AP-master annunciator with a 5-second flash on disconnect; cavalry-charge tone wired to the disconnect event. <em>(v2024.2.x)</em></li>
-<li>[NEW] Held UP/DN ramps the vertical reference; short presses "nudge" by 20 ft (ALT mode), 100 fpm (VS mode) or 5 kts (FLC). <em>(v2024.2.x)</em></li>
-<li>[NEW] FLC mode displays the selected airspeed; using UP/DN snaps the reference to the nearest 5 kt boundary. <em>(v2024.2.x)</em></li>
-<li>[NEW] Sticky BARO reminder flashes after the preflight test until the pilot acknowledges by pressing BARO or changing the setting. <em>(v2024.2.x)</em></li>
-<li>[NEW] Pitch-axis lockout (blinking "P" indicator) for 30 seconds after the preflight test and after every in-flight power cycle, while the accelerometer settles. <em>(v2024.2.x)</em></li>
-<li>[NEW] G-load monitor auto-disengages the autopilot if the pilot pulls or pushes through a threshold. <em>(v2024.2.x)</em></li>
-<li>[NEW] Experimental: NAV "pre-arm" allows arming NAV when the sim AP refuses it. While "pre-armed", the NAV ARM flag blinks in a slow rhythm. When it fails to capture, toggle NAV mode off and on again. <em>(v2024.2.x)</em></li>
+<li>The AP still uses the Captain's HSI baro instead of its own.</li>
+<li>Preflight test plays a disconnect signal instead of a completion chime when it ends, reference needed.</li>
+<li>The unit engages on a simple press rather than the late-software 0.25s hold, to avoid issues with hardware buttons.</li>
+<li>A <em>solid</em> PT — the manual's trim-fault and stuck-trim-switch indication, as opposed to the flashing one — is never shown. Detecting it needs servo force or a switch position, and the simulator exposes neither.</li>
+<li>The trim announcements only ever fire on autopilot-commanded trim. The real unit watches the electric trim system; the simulator reports one trim position and does not say who moved it, so trimming by hand would otherwise set the warnings off.</li>
 </ul>
-<h3 id="aircraft-systems-autopilot-kap-140-autopilot">Autopilot<a class="headerlink" href="#aircraft-systems-autopilot-kap-140-autopilot" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Took ownership of the GNS 530/430 gauges and moved the custom lateral modes and altitude capture to run natively inside their flight directors. <em>(v2024.3.124)</em></li>
-<li>The AP now flies our own VOR / localizer / glideslope signal. <em>(v2024.3.124)</em></li>
-<li>New EFB Config option to disable relaxed NAV arming ("pre-ARM", the slow-blinking NAV ARM flag). <em>(v2024.3.124)</em></li>
-<li>Fixed the KAP-140 incorrectly reverting to wings-level (ROL/PIT) mode during ILS localizer handoffs. <em>(v2024.3.130)</em></li>
-<li>Fixed the autopilot performing an S-turn when capturing VOR or localizer courses at shallow angles. <em>(v2024.3.130)</em></li>
-<li>Fixed the glideslope arm and capture annunciators failing to illuminate under certain conditions. <em>(v2024.3.130)</em></li>
-<li><strong>Steadier heading hold.</strong> Damped out a slow heading-hold oscillation. Further refinement of the experimental "Alternative lateral modes". <em>(v2024.3.68)</em></li>
-<li>Known issue: some oscillation on the glideslope needs to be fixed. <em>(v2024.3.68)</em></li>
-<li>Damped (dampened?) an oscillation along pitch. Still work in progress. <em>(v2024.3.99)</em></li>
-</ul>
-<h3 id="aircraft-systems-autopilot-kap-140-kap-140-autopilot_1">KAP-140 autopilot<a class="headerlink" href="#aircraft-systems-autopilot-kap-140-kap-140-autopilot_1" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>New EFB Config toggle "Alternative lateral modes"</strong>. When off, lateral AP behaves as before. When on, the AP will (hopefully) stop overshooting (especially when flying near or beyond the polar circles) and capture radials, ILS, and the magenta with less drama. <em>(v2024.3.47)</em></li>
-<li>CCM did some AP tuning, I did some AP tuning (thanks to CCM "unlocking" it for me by pointing out that ai.cfg contributes to the AP config). It works, but it probably can use more refinement. <em>(v2024.3.47)</em></li>
-<li>More work on the Alternative lateral modes: a more responsive, less wandery heading bug, and less over-banking in turns at low airspeed. Still work in progress. <em>(v2024.3.47)</em></li>
-<li>Fixed a long-standing bug that sometimes swallowed Vertical Trim (UP/DN) presses in FLC and VS modes. <em>(v2024.3.47)</em></li>
-<li>Fixed FLC mode sometimes showing a vertical speed in fpm instead of a selected speed in kts when first engaged. <em>(v2024.3.47)</em></li>
-<li>Known issue: AP still uses Cpt HSI baro instead of its own. <em>(v2024.3.47)</em></li>
-</ul>
-<h2 id="aircraft-systems-autopilot-kap-140-config-options">Config options<a class="headerlink" href="#aircraft-systems-autopilot-kap-140-config-options" title="Permanent link">&para;</a></h2>
-<p>Set from the EFB <strong>Config</strong> tab. Each option is documented on exactly one page; see <a href="#mod-configuration">Configuration</a> for how profiles and the per-variant override work.</p>
-<h3 id="aircraft-systems-autopilot-kap-140-disable-autopilot-auto-arm">Disable Autopilot Auto-ARM<a class="headerlink" href="#aircraft-systems-autopilot-kap-140-disable-autopilot-auto-arm" title="Permanent link">&para;</a></h3>
-<p><code>DHC6_CFG_AP_DISABLE_AUTO_ARM</code> — default: <strong>off</strong></p>
-<p>Stops the autopilot from automatically arming Altitude capture. You have to press ARM yourself.</p>
-<h3 id="aircraft-systems-autopilot-kap-140-disable-relaxed-nav-arming">Disable relaxed NAV arming<a class="headerlink" href="#aircraft-systems-autopilot-kap-140-disable-relaxed-nav-arming" title="Permanent link">&para;</a></h3>
-<p><code>DHC6_CFG_AP_STRICT_NAVARM</code> — default: <strong>off</strong></p>
-<p>Removes the KAP-140's NAV pre-arm. NAV arming is handed straight to the GPS/NAV autopilot: a localizer arms and waits to capture; a VOR engages and flies the intercept immediately.</p>
-<h3 id="aircraft-systems-autopilot-kap-140-disable-flight-director">Disable Flight Director<a class="headerlink" href="#aircraft-systems-autopilot-kap-140-disable-flight-director" title="Permanent link">&para;</a></h3>
-<p><code>DHC6_CFG_DISABLE_FD</code> — default: <strong>off</strong></p>
-<p>Hides the flight-director command bars on the attitude indicator.</p></section></section>
+<hr />
+<p><em>Reviewed 2026-08-02.</em></p></section></section>
                     <section class='print-page md-section' id='section-3-2-13' heading-number='3.2.13'>
                         <h1>Electrical<a class='headerlink' href='#section-3-2-13' title='Permanent link'></a>
                         </h1>
@@ -4048,8 +4032,9 @@ script. You will need an original, unmodded installation of the
 legacy Aerosoft installer, or by other means) so the installation
 process can <strong>read</strong> the original files and <strong>write</strong> the changed
 files to the mod folder. <strong>Your original files will not be modified.</strong></p>
-<div class="admonition important">
-<p class="admonition-title">Until the install script has been executed, the mod will be inactive.</p>
+<div class="admonition warning">
+<p class="admonition-title">Mod is distributed inert</p>
+<p>Until the install script has been executed, the mod will be inactive.</p>
 </div>
 <p>You will still need to have the base model — the <code>aerosoft-aircraft-twin-otter</code>
 folder — in your <code>Community/</code> folder for the mod to work.</p>
@@ -4154,6 +4139,9 @@ The non-default settings strive to be more realistic, and frequently end up bein
 <li>The TAWS section gained settings to select the soundbank and set the volume.</li>
 <li>Disable relaxed NAV arming: hands NAV arming straight to the GPS/NAV autopilot.</li>
 <li>Enable historic NDBs: adds decommissioned/historical NDB beacons that modern navdata dropped.</li>
+<li>[NEW] <strong>Enable KAP-140 voice messages</strong>
+  default: the autopilot's three optional spoken messages are off — you get the tones only
+  when turned on: it also says "Altitude" 1000 ft before the preselect, "Leaving altitude" 200 ft after departing it, and "Autopilot" on disconnect. The voice accompanies the tones rather than replacing them. On the real unit this is an installation option, so both settings are authentic — which is why the <em>realistic</em> profile leaves it alone. The two standard trim messages are not affected by this setting and are always on.</li>
 <li>[NEW] Config profiles: start from a named profile — <em>classic</em> is closest to the base aircraft, <em>recommended</em> is what I fly.</li>
 </ul>
 <h2 id="mod-configuration-from-the-release-notes">From the release notes<a class="headerlink" href="#mod-configuration-from-the-release-notes" title="Permanent link">&para;</a></h2>
@@ -4258,6 +4246,7 @@ The non-default settings strive to be more realistic, and frequently end up bein
 <li>Added DME unit to the Systems tab, Radio tab, TAWS tab. <em>(v2024.3.99)</em></li>
 <li>Added a "max tailwind for landing exceeded" warning (over 10 kt) to the Flight tab, and moved the radio table to the Radio tab. <em>(v2024.3.99)</em></li>
 <li>Removed "Alternate ITT calculation" from Config tab and expanded TAWS section. <em>(v2024.3.99)</em></li>
+<li>New Config toggle "Enable KAP-140 voice messages" (see Autopilot). Off by default, on in the <em>recommended</em> profile; <em>realistic</em> leaves it alone, because the real unit makes it an installation option.</li>
 </ul>
 <h3 id="mod-features-efb-efb-twin-otter-app">EFB "Twin Otter" app<a class="headerlink" href="#mod-features-efb-efb-twin-otter-app" title="Permanent link">&para;</a></h3>
 <ul>
@@ -4308,7 +4297,9 @@ aircraft), this makes most sense for static ground objects.</p>
 sense) the aircraft sits on. This means they work best on a flat
 apron. If the aircraft sits on a sloped surface or the terrain around
 it is irregular, objects might float in the air or sink into the
-ground.</p></section><section class="print-page" id="mod-features-persistence" heading-number="4.4.4"><h1 id="mod-features-persistence-cockpit-and-aircraft-persistence">Cockpit and aircraft persistence<a class="headerlink" href="#mod-features-persistence-cockpit-and-aircraft-persistence" title="Permanent link">&para;</a></h1>
+ground.</p>
+<hr />
+<p><em>Reviewed 2026-08-02.</em></p></section><section class="print-page" id="mod-features-persistence" heading-number="4.4.4"><h1 id="mod-features-persistence-cockpit-and-aircraft-persistence">Cockpit and aircraft persistence<a class="headerlink" href="#mod-features-persistence-cockpit-and-aircraft-persistence" title="Permanent link">&para;</a></h1>
 <h2 id="mod-features-persistence-from-the-readme">From the README<a class="headerlink" href="#mod-features-persistence-from-the-readme" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>The state saving is mostly opt-in.</strong> (Only a few select states persist unconditionally, e.g. engine block temperatures, cosmetic airframe variations.)</li>
@@ -4696,9 +4687,11 @@ State: Mostly complete. The custom signal now drives the steam gauges and the au
 .print-site-enumerate-headings #aircraft-systems-suspension > h1:before { content: '3.2.11 ' }
 
 .print-site-enumerate-headings #section-3-2-12 > h1:before { content: '3.2.12 ' }
-.print-site-enumerate-headings #aircraft-systems-autopilot-approaches-and-vnav > h1:before { content: '3.2.12.1 ' }
+.print-site-enumerate-headings #aircraft-systems-autopilot-overview > h1:before { content: '3.2.12.1 ' }
 
-.print-site-enumerate-headings #aircraft-systems-autopilot-kap-140 > h1:before { content: '3.2.12.2 ' }
+.print-site-enumerate-headings #aircraft-systems-autopilot-approaches-and-vnav > h1:before { content: '3.2.12.2 ' }
+
+.print-site-enumerate-headings #aircraft-systems-autopilot-kap-140 > h1:before { content: '3.2.12.3 ' }
 
 .print-site-enumerate-headings #section-3-2-13 > h1:before { content: '3.2.13 ' }
 .print-site-enumerate-headings #aircraft-systems-electrical-generators > h1:before { content: '3.2.13.1 ' }

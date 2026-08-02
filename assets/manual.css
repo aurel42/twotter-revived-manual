@@ -42,6 +42,39 @@
   --rb-bg: rgba(90, 143, 168, 0.10);
 }
 
+/* Admonitions at body size.
+ *
+ * Material sets .64rem on the box against the .8rem of .md-typeset, so an
+ * admonition renders at 80% of the prose around it. The colour and family
+ * already match (--md-admonition-fg-color is --md-default-fg-color), so the
+ * size is the whole difference. Everything inside inherits it — title, body,
+ * lists, and code, which is sized in em.
+ *
+ * `details` is the ??? collapsible form and carries the same rule upstream.
+ * The title icon is positioned in em and tracks the new size on its own.
+ */
+.md-typeset .admonition,
+.md-typeset details {
+  font-size: 0.8rem;
+}
+
+/* Never-reviewed pages in the sidebar, classed by scripts/docs/mkdocs_hooks.py.
+ *
+ * Same reasoning as the badges: a draft is published and readable, so this is a
+ * hint about where the finished work is, not a barrier. Opacity rather than a
+ * colour so it follows both palettes, and hover restores it in full so nothing
+ * ever looks disabled. The current page keeps its accent even when it is a
+ * draft — dimming where you are standing just reads as a rendering fault.
+ */
+.md-nav__link--draft:not(.md-nav__link--active) {
+  opacity: 0.5;
+}
+
+.md-nav__link--draft:hover,
+.md-nav__link--draft:focus {
+  opacity: 1;
+}
+
 /* Footer disclaimers.
  *
  * `copyright` in mkdocs.yml renders into .md-copyright inside the footer meta
