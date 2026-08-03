@@ -362,6 +362,8 @@
       
         
       
+        
+      
     
     
     
@@ -495,6 +497,125 @@
   
     <li class="md-nav__item">
       <a href="../../../aircraft/systems/autopilot/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_2" id="__nav_2_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Avionics
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Avionics
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../aircraft/systems/avionics/gns/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GNS 530/430
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../aircraft/systems/avionics/overview/" class="md-nav__link">
         
   
   
@@ -1163,9 +1284,13 @@ aircraft), this makes most sense for static ground objects.</p>
 <h2 id="limitations">Limitations<a class="headerlink" href="#limitations" title="Permanent link">&para;</a></h2>
 <p>We place the objects so they align with the plane (in the geometrical
 sense) the aircraft sits on. This means they work best on a flat
-apron. If the aircraft sits on a sloped surface or the terrain around
-it is irregular, objects might float in the air or sink into the
-ground.</p>
+apron. If the terrain around the aircraft is irregular, objects might
+float in the air or sink into the ground.</p>
+<div class="admonition note">
+<p class="admonition-title">For devs</p>
+<p>If you're curious how we spawn objects on a sloped surface, have a
+look at the Sidecar WASM system.</p>
+</div>
 
 
 
