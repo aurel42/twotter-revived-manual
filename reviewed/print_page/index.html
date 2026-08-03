@@ -554,6 +554,8 @@
       
         
       
+        
+      
     
     
     
@@ -598,6 +600,34 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mod/configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configurable settings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -676,10 +706,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
         
           
-          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
             
   
   
@@ -697,8 +727,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_3">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -829,7 +859,7 @@
   <span class="md-ellipsis">
     
   
-    Project history
+    Project History
   
 
     
@@ -1080,21 +1110,21 @@ off for you and does not know what you meant; check the VS readout immediately
 after engaging. Disengaging flashes the AP annunciator for five seconds.
 The autopilot also lets go on its own if its attitude source dies — a failed
 or spun-down gyro takes the AP with it.</p>
-<p><strong>Lateral modes.</strong> HDG flies the heading bug — and only the bug; set
-it before you press the button. When you arm NAV or APR from heading
-mode, the HDG annunciator flashes for five seconds as a reminder that
-you should use HDG mode to set up the aircraft for intercept. NAV
-tracks whatever the HSI shows: a VOR radial, a localizer, or — when
-the CDI source is GPS — the flight plan. REV is the back-course mode:
-front-course set on the OBS, reverse sensing handled by the unit.</p>
+<p><strong>Lateral modes.</strong> HDG flies the heading bug; set it before you press
+the button. When you arm NAV or APR from heading mode, the HDG
+annunciator flashes for five seconds as a reminder that you should use
+HDG mode to set up the aircraft for intercept. NAV tracks whatever the
+HSI shows: a VOR radial, a localizer, or — when the CDI source is GPS
+— the flight plan. REV is the back-course mode: front-course set on
+the OBS, reverse sensing handled by the unit.</p>
 <p><strong>NAV arms until you are established.</strong> Press NAV well off the radial
 and you get <strong>NAV ARM</strong>: the unit keeps wings level (or your heading,
 if you keep HDG engaged toward an intercept) until the needle comes
 alive and the capture criteria hold — then it captures and turns on
 course. Intercepts beyond about 45° are not recommended, same as the
 real unit. A capture that never becomes possible — wrong radial, dead
-receiver — stays armed. With <strong>Relaxed NAV arm</strong> disabled in the EFB
-Config tab, arming additionally requires a usable signal at press
+receiver — stays armed. With <strong>Relaxed NAV arming</strong> disabled on the
+EFB Config tab, arming additionally requires a usable signal at press
 time, so a press against a dead needle is rejected immediately.</p>
 <p><strong>Vertical modes.</strong> UP/DN in VS mode: a tap is 100 fpm, holding the
 button ramps at about 300 fpm per second. ALT holds the altitude at
@@ -1114,18 +1144,26 @@ Capture clears the arm; each new target needs a new press.</p>
 the alert light comes on 1000 ft out and extinguishes at 200 ft; after
 capture, deviating more than 200 ft flashes it. The alert tone sounds
 approaching 1000 ft to go and when departing an altitude by 200 ft.</p>
-<p><strong>It talks, if you let it.</strong> The unit speaks five messages. Two are standard
-and always on: "Trim in motion" when the autopilot has been running the pitch
-trim one way for five seconds, and "Check pitch trim" at fifteen — the same
-condition that lights the glareshield TRIM IN MOTION lamp at two seconds and
-flashes <strong>PT</strong> with a direction arrow on the display. The other three —
-"Altitude" 1000 ft before the preselect, "Leaving altitude" 200 ft after
-departing it, and "Autopilot" on disconnect — are an installation option on
-the real unit, so they are off by default and you turn them on with <strong>Enable
-KAP-140 voice messages</strong> in the EFB Config tab. Either way the tones still
-sound; the voice is added to them, never instead of them. Because both
-settings are equally authentic, the Realistic config profile deliberately
-leaves this one alone.</p>
+<p><strong>Voice callouts.</strong> According to the manual, the KAP 140 has a few
+voice callouts which play on the intercom (as opposed to the "beeps"
+which play over the cockpit speaker). I could not find any reference,
+so I don't know what they sound like. Consider the present set of
+samples a placeholder. Two trim warnings are unconditional, the other
+three messages are optional and whether they play is either decided
+when the unit is certified for an airframe or when the unit is
+installed in the airframe (not sure). In the mod, they can be enabled
+on the EFB Config tab.</p>
+<ul>
+<li>"Trim in motion" when the autopilot has been running the pitch
+  trim one way for five seconds</li>
+<li>"Check pitch trim" after fifteen seconds of continuous one way trim</li>
+<li>"Altitude" 1000 ft before the preselect</li>
+<li>"Leaving altitude" 200 ft after departing it</li>
+<li>"Autopilot" on disconnect</li>
+</ul>
+<p>The voice is currently played simultaneously with the beep altitude
+alerter beeps and the disconnect signal. Without reference, I cannot
+say whether that behavior is correct.</p>
 <p><strong>BARO.</strong> A short press shows the altimeter setting for three seconds so you
 can adjust it with the knob; holding for two seconds toggles between inches
 and hectopascals. The preselect logic uses its own blind encoder — your
@@ -1150,12 +1188,15 @@ altimeter mis-set is your problem, as in the real installation.</p>
 <li>NAV "pre-arm" allows arming NAV prematurely (for example, long before closing in to a VOR radial). While "pre-armed", the NAV ARM flag blinks in a slow rhythm. Configurable as "Relaxed NAV arming".</li>
 <li>Display shows a "ghost" of the LED elements while not lit.</li>
 </ul>
+<div class="admonition info">
+<p class="admonition-title">ALT nudging changes the reference altitude</p>
+<p>Note that nudging in ALT HOLD mode changes the <em>altitude hold reference,</em> while the display keeps showing the <em>altitude alerter reference.</em> To see the effect of the nudge, you will have to check the altimeter; there is no feedback on the KAP 140 display.</p>
+</div>
 <h2 id="aircraft-systems-autopilot-kap-140-known-issues">Known issues<a class="headerlink" href="#aircraft-systems-autopilot-kap-140-known-issues" title="Permanent link">&para;</a></h2>
 <ul>
 <li>The AP still uses the Captain's HSI baro instead of its own.</li>
 <li>Preflight test plays a disconnect signal instead of a completion chime when it ends, reference needed.</li>
 <li>The unit engages on a simple press rather than the late-software 0.25s hold, to avoid issues with hardware buttons.</li>
-<li>A <em>solid</em> PT — the manual's trim-fault and stuck-trim-switch indication, as opposed to the flashing one — is never shown. Detecting it needs servo force or a switch position, and the simulator exposes neither.</li>
 <li>The trim announcements only ever fire on autopilot-commanded trim. The real unit watches the electric trim system; the simulator reports one trim position and does not say who moved it, so trimming by hand would otherwise set the warnings off.</li>
 </ul></section><section class="print-page" id="aircraft-systems-autopilot-overview" heading-number="2.2.1.2"><h1 id="aircraft-systems-autopilot-overview-autopilot-overview">Autopilot overview<a class="headerlink" href="#aircraft-systems-autopilot-overview-autopilot-overview" title="Permanent link">&para;</a></h1>
 <p>The autopilot is one of the areas where I'm claiming artistic license. While I fixed a couple of "realism gaps" with the default KAP 140, I also created new ones.</p>
@@ -1214,7 +1255,339 @@ you.</p>
                     <section class='print-page md-section' id='section-3' heading-number='3'>
                         <h1>Mod<a class='headerlink' href='#section-3' title='Permanent link'></a>
                         </h1>
-                    <section class="print-page" id="mod-installation" heading-number="3.1"><h1 id="mod-installation-installation">Installation<a class="headerlink" href="#mod-installation-installation" title="Permanent link">&para;</a></h1>
+                    <section class="print-page" id="mod-configuration" heading-number="3.1"><h1 id="mod-configuration-configurable-settings">Configurable settings<a class="headerlink" href="#mod-configuration-configurable-settings" title="Permanent link">&para;</a></h1>
+<p>Everything on this page is set on the Config tab in the EFB app.</p>
+<p>The default settings are either sim defaults or they enable convenience features.
+The non-default settings strive to be more realistic, and might end up being more annoying.</p>
+<h2 id="mod-configuration-profiles">Profiles<a class="headerlink" href="#mod-configuration-profiles" title="Permanent link">&para;</a></h2>
+<p>The profile buttons at the top of the Config tab reset most of your settings to one of these:</p>
+<ul>
+<li><strong>Classic</strong>: the original Aerosoft experience. Convenience features on, realism features off, full TAWS with the Aerosoft sound bank, stock-faithful GNS.</li>
+<li><strong>Recommended</strong>: what I fly. Realistic battery, generators, gyros and parking brake, with the GNS and HSI convenience features kept.</li>
+<li><strong>Realistic</strong>: All realism options are on. Every convenience beyond the real KAP-140, GNS 530W and KI-525A is switched off.</li>
+</ul>
+<p>Pressing a button asks whether to apply the profile to this variant only or fleet-wide. If your settings match none of the three, the tab reports the profile as <em>Custom</em>.</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Classic</th>
+<th>Recommended</th>
+<th>Realistic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Disable Autopilot Auto-ARM</td>
+<td>off</td>
+<td>on</td>
+<td>on</td>
+</tr>
+<tr>
+<td>Disable relaxed NAV arming</td>
+<td>off</td>
+<td>off</td>
+<td>on</td>
+</tr>
+<tr>
+<td>Enable KAP-140 voice messages</td>
+<td>off</td>
+<td>on</td>
+<td><em>untouched</em></td>
+</tr>
+<tr>
+<td>Disable Flight Director</td>
+<td>off</td>
+<td>on</td>
+<td>on</td>
+</tr>
+<tr>
+<td>Enable historic NDBs</td>
+<td>off</td>
+<td>on</td>
+<td>off</td>
+</tr>
+<tr>
+<td>Disable visual approaches</td>
+<td>on</td>
+<td>off</td>
+<td>on</td>
+</tr>
+<tr>
+<td>Disable coupled VNAV</td>
+<td>on</td>
+<td>off</td>
+<td>on</td>
+</tr>
+<tr>
+<td>TAWS installation</td>
+<td>Full</td>
+<td>Reduced</td>
+<td>Legal minimum</td>
+</tr>
+<tr>
+<td>TAWS sound bank</td>
+<td>Aerosoft</td>
+<td>Custom</td>
+<td>Custom</td>
+</tr>
+<tr>
+<td>TAWS volume</td>
+<td><em>untouched</em></td>
+<td>-3 dB</td>
+<td>-3 dB</td>
+</tr>
+<tr>
+<td>Realistic battery capacity</td>
+<td>off</td>
+<td>on</td>
+<td>on</td>
+</tr>
+<tr>
+<td>Realistic parking brake</td>
+<td>off</td>
+<td>on</td>
+<td>on</td>
+</tr>
+<tr>
+<td>Generators can trip</td>
+<td>off</td>
+<td>on</td>
+<td>on</td>
+</tr>
+<tr>
+<td>Gyros take time to spin up</td>
+<td>off</td>
+<td>on</td>
+<td>on</td>
+</tr>
+<tr>
+<td>Disable Auto Fast-Erect</td>
+<td>off</td>
+<td>on</td>
+<td>on</td>
+</tr>
+<tr>
+<td>Disable OBS Auto-Slew</td>
+<td>off</td>
+<td>off</td>
+<td>on</td>
+</tr>
+<tr>
+<td>Disable ADF Card Slaving</td>
+<td>off</td>
+<td>off</td>
+<td>on</td>
+</tr>
+</tbody>
+</table>
+<p>Two of the gaps are deliberate. Classic leaves the TAWS volume alone because the
+Aerosoft sound bank ignores it. Realistic leaves the KAP-140 voice messages
+alone because the real unit's voice is an installation option: a silent unit and
+a speaking one are equally authentic, and the realism axis has nothing to say
+about it.</p>
+<p>Some options are in no profile at all, they're personal preference:
+<strong>Use FDR switch as Avionics switch</strong>, <strong>Mute copilot callouts</strong>,
+<strong>Battery Replacement (NiCad to SLA)</strong>, and <strong>Reliability</strong>. Set them
+according to your personal preferences.</p>
+<h2 id="mod-configuration-options">Options<a class="headerlink" href="#mod-configuration-options" title="Permanent link">&para;</a></h2>
+<p>Each option has an override checkbox on the left: leave it unchecked
+and the setting is shared across all variants that don't override it;
+check it and that variant keeps its own value, independent of the
+rest.</p>
+<p>Both values exist the whole time. The checkbox swaps which one is live, so
+toggling it never discards the other side, and unchecking it later gives you the
+fleet-wide value back exactly as you left it.</p>
+<p>Every switch below is off by default. That is deliberate: out of the box you get
+the aircraft as it was, and you turn realism on one piece at a time.</p>
+<h3 id="mod-configuration-avionics">Avionics<a class="headerlink" href="#mod-configuration-avionics" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>What turning it on does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Use FDR switch as Avionics switch<br><code>DHC6_CFG_FDR_AS_AVIONICS_MASTER</code></td>
+<td>Repurposes the unused Flight Data Recorder switch as an avionics master for the aftermarket stack: GNS 530/430, KAP-140, transponder, ADF and audio panel. Round gauges are unaffected.</td>
+</tr>
+<tr>
+<td>Disable Autopilot Auto-ARM<br><code>DHC6_CFG_AP_DISABLE_AUTO_ARM</code></td>
+<td>The autopilot stops arming altitude capture for you. Press ARM yourself, or fly straight through the preselect.</td>
+</tr>
+<tr>
+<td>Disable relaxed NAV arming<br><code>DHC6_CFG_AP_STRICT_NAVARM</code></td>
+<td>Removes the KAP-140's NAV pre-arm. NAV mode will be rejected if not in range of the course.</td>
+</tr>
+<tr>
+<td>Enable KAP-140 voice messages<br><code>DHC6_CFG_KAP140_VOICE</code></td>
+<td>Adds the unit's three optional spoken messages: "Altitude" 1000 ft before the preselect, "Leaving altitude" 200 ft after departing it, and "Autopilot" on disconnect. They accompany the tones rather than replacing them. The two standard trim messages are always on either way.</td>
+</tr>
+<tr>
+<td>Disable Flight Director<br><code>DHC6_CFG_DISABLE_FD</code></td>
+<td>Hides the command bars on the attitude indicator. The flight director itself still engages.</td>
+</tr>
+<tr>
+<td>Disable visual approaches<br><code>DHC6_CFG_DISABLE_GNS_VISUAL_APPR</code></td>
+<td>Hides the GNS per-runway VISUAL approaches. The real 530W/430W has none, so this is the stock-faithful setting.</td>
+</tr>
+<tr>
+<td>Disable coupled VNAV<br><code>DHC6_CFG_DISABLE_GNS_COUPLED_VNAV</code></td>
+<td>Takes away the coupled VNAV (PATH) descent, leaving the advisory-only VNAV the real 530W has.</td>
+</tr>
+<tr>
+<td>Enable historic NDBs<br><code>DHC6_CFG_NDB_SOURCE</code></td>
+<td>Adds historic NDB beacons that modern navdata has dropped. These take precedence, and the sim's navdata is used only for beacons the historic set doesn't have.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition bug">
+<p class="admonition-title">Bug</p>
+<p>The GNS options only take effect when the GNS starts
+up. Currently, this needs you to start (or restart) a
+flight. A power cycle will most likely not do.</p>
+</div>
+<h3 id="mod-configuration-taws">TAWS<a class="headerlink" href="#mod-configuration-taws" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Positions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Installation<br><code>DHC6_CFG_GPWS</code></td>
+<td><strong>Full</strong> (default) — Class A on every aircraft, the full callout set. <strong>Reduced</strong> — passenger variants get Class A, cargo and utility get Class B. <strong>Legal minimum</strong> — passenger variants get Class A, everything else gets nothing. <strong>Class B</strong> — no terrain, glideslope or bank-angle alerts anywhere. <strong>Off</strong> — all callouts muted.</td>
+</tr>
+<tr>
+<td>Sound bank<br><code>DHC6_CFG_GPWS_AUDIOBANK</code></td>
+<td>Aerosoft (default), FlyByWire, Custom</td>
+</tr>
+<tr>
+<td>Volume<br><code>DHC6_CFG_GPWS_VOLUME</code></td>
+<td>You know how a volume slider works.</td>
+</tr>
+</tbody>
+</table>
+<p>Volume applies to the FlyByWire and Custom banks only. The Aerosoft bank ignores
+it.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Letting go of the Volume slider plays a callout so you can hear the level.
+It picks one at random from the full set, which includes "Pull up" and
+"Terrain ahead, pull up". Pro tip: Don't change the volume while airborne.</p>
+</div>
+<h3 id="mod-configuration-systems">Systems<a class="headerlink" href="#mod-configuration-systems" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>What turning it on does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Realistic battery capacity<br><code>DHC6_CFG_REALISTIC_BATTERY</code></td>
+<td>Gives the battery a real amp-hour budget that the enabled consumers draw down. Off means unlimited capacity. If you flatten it, change the chemistry or set the source switch to EXT to summon a GPU cart.</td>
+</tr>
+<tr>
+<td>Battery Replacement (NiCad to SLA)<br><code>DHC6_CFG_BATTERY_SLA</code></td>
+<td>Swaps the standard NiCad pack for a sealed lead-acid one: different chemistry, more capacity, more weight.</td>
+</tr>
+<tr>
+<td>Realistic parking brake<br><code>DHC6_CFG_REALISTIC_PARKING_BRAKE</code></td>
+<td>Models the real DHC-6 sequence: fully depress both toe brakes, pull the lever, release the toe brakes. If the latch doesn't catch, the handle snaps back and you try again.</td>
+</tr>
+</tbody>
+</table>
+<p>The SLA pack weighs 20 lb more, and that weight is added to the
+aircraft as soon as you select it.</p>
+<h3 id="mod-configuration-engines">Engines<a class="headerlink" href="#mod-configuration-engines" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>What turning it on does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Generators can trip<br><code>DHC6_CFG_GCU_LATCH</code></td>
+<td>Generators have a small chance to trip when they come online. The annunciator will stay illuminated. A tripped generator stays off until you RESET it: hold the GEN switch to RESET, release to ON.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="mod-configuration-instruments">Instruments<a class="headerlink" href="#mod-configuration-instruments" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>What turning it on does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gyros take time to spin up<br><code>DHC6_CFG_REAL_GYROS</code></td>
+<td>Gyros spool up from rest instead of coming up aligned, which takes a couple of minutes from cold. Pull to Erect shortens it for the attitude indicator, and the HSI can be synced to the whiskey compass from the EFB Systems tab.</td>
+</tr>
+<tr>
+<td>Disable Auto Fast-Erect<br><code>DHC6_CFG_DISABLE_AUTO_FAST_ERECT</code></td>
+<td>Stops the attitude indicator from pulling its own fast-erect knob during cold-and-dark erection. Pull it yourself or wait a long time for the horizon to settle.</td>
+</tr>
+<tr>
+<td>Disable OBS Auto-Slew<br><code>DHC6_CFG_DISABLE_OBS_AUTO_SLEW</code></td>
+<td>The HSI course pointer stops rotating itself to the active GPS leg. Set the course yourself.</td>
+</tr>
+<tr>
+<td>Disable ADF Card Slaving<br><code>DHC6_CFG_DISABLE_ADF_CARD_SLAVE</code></td>
+<td>The ADF compass card stops following the HSI heading, turning a KI-227-01 into a KI-227-00 you set with the HDG knob.</td>
+</tr>
+</tbody>
+</table>
+<p>Disable Auto Fast-Erect only means anything with realistic spin-up on, so the
+tab greys it out when Gyros take time to spin up is off. It keeps its stored
+value while greyed.</p>
+<h3 id="mod-configuration-checklists">Checklists<a class="headerlink" href="#mod-configuration-checklists" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>What turning it on does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mute copilot callouts<br><code>DHC6_CFG_COPILOT_MUTE</code></td>
+<td>Silences the copilot's spoken checklist responses, including "Checklist complete". The checklist still runs at the same pace.</td>
+</tr>
+</tbody>
+</table>
+<p>This is the same setting as the <strong>Mute</strong> button in the Checklist tab. Either one
+moves the other.</p>
+<h3 id="mod-configuration-wear-tear">Wear &amp; Tear<a class="headerlink" href="#mod-configuration-wear-tear" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Positions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Reliability<br><code>DHC6_CFG_RELIABILITY</code></td>
+<td><strong>Off</strong> (default) — the wear and tear system is disabled and the Maintenance tab is hidden. <strong>Reliable</strong> — nominal wear rate, experienced mechanic, risk-averse management. <strong>Unreliable</strong> — 4× wear. <strong>Not Airworthy</strong> — 16× wear, an inexperienced mechanic and poor access to new parts.</td>
+</tr>
+</tbody>
+</table>
+<p>Reliability is stored per airframe out of the box, so each variant ages on its
+own unless you uncheck its override.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Wear &amp; Tear &amp; Damage is work in progess, and only few systems have been hooked up to it.</p>
+</div></section><section class="print-page" id="mod-installation" heading-number="3.2"><h1 id="mod-installation-installation">Installation<a class="headerlink" href="#mod-installation-installation" title="Permanent link">&para;</a></h1>
 <p>Because of <a href="#project-history">previous drama</a>, this mod is
 distributed as an archive containing xdelta files and an install
 script. You will need an original, unmodded installation of the
@@ -1271,7 +1644,7 @@ using a layout generator tool to regenerate layout.json for MSFS2024.</p>
 fresh copy of the Aerosoft Twin Otter and trying with that folder. If
 the error persists, please get in touch so we can figure out what's
 happening happen. The installer should work with all popular versions
-of v1.1.1.</p></section><section class="print-page" id="mod-mods" heading-number="3.2"><h1 id="mod-mods-additional-mods">Additional Mods<a class="headerlink" href="#mod-mods-additional-mods" title="Permanent link">&para;</a></h1>
+of v1.1.1.</p></section><section class="print-page" id="mod-mods" heading-number="3.3"><h1 id="mod-mods-additional-mods">Additional Mods<a class="headerlink" href="#mod-mods-additional-mods" title="Permanent link">&para;</a></h1>
 <p>These mods are distributed in the same archive as the main mod. They are optional.</p>
 <h2 id="mod-mods-prop-blur-mod-ccm">Prop blur mod (CCM)<a class="headerlink" href="#mod-mods-prop-blur-mod-ccm" title="Permanent link">&para;</a></h2>
 <p><code>z_aerosoft-twin-otter-propblur_mod</code> mitigates the "wagon wheel effect" by making the blurred prop phases more transparent, only for the close-up LOD, so screenshots taken from the outside at some distance still get the cinematic look.</p>
@@ -1279,10 +1652,10 @@ of v1.1.1.</p></section><section class="print-page" id="mod-mods" heading-number
 <p><code>z_aerosoft-twin-otter-flat_camers</code> replaces some of the default tilted camera views with flat views at the instruments.</p>
 <h2 id="mod-mods-sound-mod-for-turbine-duke-owners">Sound mod for Turbine Duke owners<a class="headerlink" href="#mod-mods-sound-mod-for-turbine-duke-owners" title="Permanent link">&para;</a></h2>
 <p><code>charliebravo-soundmod-twin-otter-turbineduke</code> replaces the default engine sounds and a few other effects with much better versions from the Black Square Turbine Duke. You need to own the Turbine Duke and have it installed somewhere on your system. We don't distribute any part of the soundbank. To activate the mod, you must run the install script in its folder and point it at your Turbine Duke folder. It will copy the soundbank and modify it in order to prevent collisions with the actual Turbine Duke.</p></section>
-                    <section class='print-page md-section' id='section-3-3' heading-number='3.3'>
-                        <h1>Features<a class='headerlink' href='#section-3-3' title='Permanent link'></a>
+                    <section class='print-page md-section' id='section-3-4' heading-number='3.4'>
+                        <h1>Features<a class='headerlink' href='#section-3-4' title='Permanent link'></a>
                         </h1>
-                    <section class="print-page" id="mod-features-objects" heading-number="3.3.1"><h1 id="mod-features-objects-3d-objects">3D Objects<a class="headerlink" href="#mod-features-objects-3d-objects" title="Permanent link">&para;</a></h1>
+                    <section class="print-page" id="mod-features-objects" heading-number="3.4.1"><h1 id="mod-features-objects-3d-objects">3D Objects<a class="headerlink" href="#mod-features-objects-3d-objects" title="Permanent link">&para;</a></h1>
 <h2 id="mod-features-objects-context">Context<a class="headerlink" href="#mod-features-objects-context" title="Permanent link">&para;</a></h2>
 <p>Without access to the project source (which we obviously don't have),
 we can't modify the visual model of the base aircraft. What we can do,
@@ -1301,7 +1674,8 @@ ground.</p></section></section></section>
                     <section class='print-page md-section' id='section-4' heading-number='4'>
                         <h1>Project<a class='headerlink' href='#section-4' title='Permanent link'></a>
                         </h1>
-                    <section class="print-page" id="project-history" heading-number="4.1"><h1 id="project-history-project-history">Project history</h1><h2 id="project-pre-history">Project Pre-History<a class="headerlink" href="#project-history-project-pre-history" title="Permanent link">&para;</a></h2>
+                    <section class="print-page" id="project-history" heading-number="4.1"><h1 id="project-history-history">History<a class="headerlink" href="#project-history-history" title="Permanent link">&para;</a></h1>
+<h2 id="project-history-pre-history">Pre-History<a class="headerlink" href="#project-history-pre-history" title="Permanent link">&para;</a></h2>
 <p>You know how you have your best flight simming moments that you will (hopefully) never forget and that, after years and years, still fill you with joy when you recall them? One of those moments for me was my first hot start in a Twin Otter in FSX or P3D, about a decade ago. That was the day I learned to treat engines with respect. I started actively looking for aircraft that could break if treated badly, discovered RealAir and A2A, and learned to appreciate deeper simulation.</p>
 <p>So the history of this project started, in a way, with the incredible <em>Aerosoft Twin Otter X Extended</em> for FSX/P3D. Aerosoft already had a Twin Otter add-on for FSX (released in 2008), and out of some stroke of genius, they tasked Finn Jacobsen with creating an improved version of it. They gave him carte blanche to define the feature set and the result, released in 2013, showed how passionate he was about the project. It was an amalgamation of existing and new concepts coming together in a complete, well-rounded package. And it was not only supported but actively improved and extended for years.</p>
 <p>The Twotter Revived project inherits a design philosophy from the "TwotterX": don't accept sim limitations as blockers, fix them using custom systems.</p>
@@ -1581,12 +1955,14 @@ redistributed and the WASM build does not depend on it.</p>
 .print-site-enumerate-headings #aircraft-systems-autopilot-overview > h1:before { content: '2.2.1.2 ' }
 
 .print-site-enumerate-headings #section-3 > h1:before { content: '3 ' }
-.print-site-enumerate-headings #mod-installation > h1:before { content: '3.1 ' }
+.print-site-enumerate-headings #mod-configuration > h1:before { content: '3.1 ' }
 
-.print-site-enumerate-headings #mod-mods > h1:before { content: '3.2 ' }
+.print-site-enumerate-headings #mod-installation > h1:before { content: '3.2 ' }
 
-.print-site-enumerate-headings #section-3-3 > h1:before { content: '3.3 ' }
-.print-site-enumerate-headings #mod-features-objects > h1:before { content: '3.3.1 ' }
+.print-site-enumerate-headings #mod-mods > h1:before { content: '3.3 ' }
+
+.print-site-enumerate-headings #section-3-4 > h1:before { content: '3.4 ' }
+.print-site-enumerate-headings #mod-features-objects > h1:before { content: '3.4.1 ' }
 
 .print-site-enumerate-headings #section-4 > h1:before { content: '4 ' }
 .print-site-enumerate-headings #project-history > h1:before { content: '4.1 ' }

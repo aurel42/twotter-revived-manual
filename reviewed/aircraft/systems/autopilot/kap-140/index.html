@@ -639,6 +639,8 @@
       
         
       
+        
+      
     
     
     
@@ -683,6 +685,34 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../mod/configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configurable settings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -761,10 +791,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
         
           
-          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
             
   
   
@@ -782,8 +812,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_3">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -914,7 +944,7 @@
   <span class="md-ellipsis">
     
   
-    Project history
+    Project History
   
 
     
@@ -1185,21 +1215,21 @@ off for you and does not know what you meant; check the VS readout immediately
 after engaging. Disengaging flashes the AP annunciator for five seconds.
 The autopilot also lets go on its own if its attitude source dies — a failed
 or spun-down gyro takes the AP with it.</p>
-<p><strong>Lateral modes.</strong> HDG flies the heading bug — and only the bug; set
-it before you press the button. When you arm NAV or APR from heading
-mode, the HDG annunciator flashes for five seconds as a reminder that
-you should use HDG mode to set up the aircraft for intercept. NAV
-tracks whatever the HSI shows: a VOR radial, a localizer, or — when
-the CDI source is GPS — the flight plan. REV is the back-course mode:
-front-course set on the OBS, reverse sensing handled by the unit.</p>
+<p><strong>Lateral modes.</strong> HDG flies the heading bug; set it before you press
+the button. When you arm NAV or APR from heading mode, the HDG
+annunciator flashes for five seconds as a reminder that you should use
+HDG mode to set up the aircraft for intercept. NAV tracks whatever the
+HSI shows: a VOR radial, a localizer, or — when the CDI source is GPS
+— the flight plan. REV is the back-course mode: front-course set on
+the OBS, reverse sensing handled by the unit.</p>
 <p><strong>NAV arms until you are established.</strong> Press NAV well off the radial
 and you get <strong>NAV ARM</strong>: the unit keeps wings level (or your heading,
 if you keep HDG engaged toward an intercept) until the needle comes
 alive and the capture criteria hold — then it captures and turns on
 course. Intercepts beyond about 45° are not recommended, same as the
 real unit. A capture that never becomes possible — wrong radial, dead
-receiver — stays armed. With <strong>Relaxed NAV arm</strong> disabled in the EFB
-Config tab, arming additionally requires a usable signal at press
+receiver — stays armed. With <strong>Relaxed NAV arming</strong> disabled on the
+EFB Config tab, arming additionally requires a usable signal at press
 time, so a press against a dead needle is rejected immediately.</p>
 <p><strong>Vertical modes.</strong> UP/DN in VS mode: a tap is 100 fpm, holding the
 button ramps at about 300 fpm per second. ALT holds the altitude at
@@ -1219,18 +1249,26 @@ Capture clears the arm; each new target needs a new press.</p>
 the alert light comes on 1000 ft out and extinguishes at 200 ft; after
 capture, deviating more than 200 ft flashes it. The alert tone sounds
 approaching 1000 ft to go and when departing an altitude by 200 ft.</p>
-<p><strong>It talks, if you let it.</strong> The unit speaks five messages. Two are standard
-and always on: "Trim in motion" when the autopilot has been running the pitch
-trim one way for five seconds, and "Check pitch trim" at fifteen — the same
-condition that lights the glareshield TRIM IN MOTION lamp at two seconds and
-flashes <strong>PT</strong> with a direction arrow on the display. The other three —
-"Altitude" 1000 ft before the preselect, "Leaving altitude" 200 ft after
-departing it, and "Autopilot" on disconnect — are an installation option on
-the real unit, so they are off by default and you turn them on with <strong>Enable
-KAP-140 voice messages</strong> in the EFB Config tab. Either way the tones still
-sound; the voice is added to them, never instead of them. Because both
-settings are equally authentic, the Realistic config profile deliberately
-leaves this one alone.</p>
+<p><strong>Voice callouts.</strong> According to the manual, the KAP 140 has a few
+voice callouts which play on the intercom (as opposed to the "beeps"
+which play over the cockpit speaker). I could not find any reference,
+so I don't know what they sound like. Consider the present set of
+samples a placeholder. Two trim warnings are unconditional, the other
+three messages are optional and whether they play is either decided
+when the unit is certified for an airframe or when the unit is
+installed in the airframe (not sure). In the mod, they can be enabled
+on the EFB Config tab.</p>
+<ul>
+<li>"Trim in motion" when the autopilot has been running the pitch
+  trim one way for five seconds</li>
+<li>"Check pitch trim" after fifteen seconds of continuous one way trim</li>
+<li>"Altitude" 1000 ft before the preselect</li>
+<li>"Leaving altitude" 200 ft after departing it</li>
+<li>"Autopilot" on disconnect</li>
+</ul>
+<p>The voice is currently played simultaneously with the beep altitude
+alerter beeps and the disconnect signal. Without reference, I cannot
+say whether that behavior is correct.</p>
 <p><strong>BARO.</strong> A short press shows the altimeter setting for three seconds so you
 can adjust it with the knob; holding for two seconds toggles between inches
 and hectopascals. The preselect logic uses its own blind encoder — your
@@ -1255,12 +1293,15 @@ altimeter mis-set is your problem, as in the real installation.</p>
 <li>NAV "pre-arm" allows arming NAV prematurely (for example, long before closing in to a VOR radial). While "pre-armed", the NAV ARM flag blinks in a slow rhythm. Configurable as "Relaxed NAV arming".</li>
 <li>Display shows a "ghost" of the LED elements while not lit.</li>
 </ul>
+<div class="admonition info">
+<p class="admonition-title">ALT nudging changes the reference altitude</p>
+<p>Note that nudging in ALT HOLD mode changes the <em>altitude hold reference,</em> while the display keeps showing the <em>altitude alerter reference.</em> To see the effect of the nudge, you will have to check the altimeter; there is no feedback on the KAP 140 display.</p>
+</div>
 <h2 id="known-issues">Known issues<a class="headerlink" href="#known-issues" title="Permanent link">&para;</a></h2>
 <ul>
 <li>The AP still uses the Captain's HSI baro instead of its own.</li>
 <li>Preflight test plays a disconnect signal instead of a completion chime when it ends, reference needed.</li>
 <li>The unit engages on a simple press rather than the late-software 0.25s hold, to avoid issues with hardware buttons.</li>
-<li>A <em>solid</em> PT — the manual's trim-fault and stuck-trim-switch indication, as opposed to the flashing one — is never shown. Detecting it needs servo force or a switch position, and the simulator exposes neither.</li>
 <li>The trim announcements only ever fire on autopilot-commanded trim. The real unit watches the electric trim system; the simulator reports one trim position and does not say who moved it, so trimming by hand would otherwise set the warnings off.</li>
 </ul>
 

@@ -2,50 +2,54 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://aurel42.github.io/twotter-revived-manual/</loc>
-         <lastmod>2026-08-02</lastmod>
+         <lastmod>2026-08-03</lastmod>
     </url>
     <url>
          <loc>https://aurel42.github.io/twotter-revived-manual/aircraft/flight-model/</loc>
-         <lastmod>2026-08-02</lastmod>
+         <lastmod>2026-08-03</lastmod>
     </url>
     <url>
          <loc>https://aurel42.github.io/twotter-revived-manual/aircraft/systems/autopilot/kap-140/</loc>
-         <lastmod>2026-08-02</lastmod>
+         <lastmod>2026-08-03</lastmod>
     </url>
     <url>
          <loc>https://aurel42.github.io/twotter-revived-manual/aircraft/systems/autopilot/overview/</loc>
-         <lastmod>2026-08-02</lastmod>
+         <lastmod>2026-08-03</lastmod>
+    </url>
+    <url>
+         <loc>https://aurel42.github.io/twotter-revived-manual/mod/configuration/</loc>
+         <lastmod>2026-08-03</lastmod>
     </url>
     <url>
          <loc>https://aurel42.github.io/twotter-revived-manual/mod/installation/</loc>
-         <lastmod>2026-08-02</lastmod>
+         <lastmod>2026-08-03</lastmod>
     </url>
     <url>
          <loc>https://aurel42.github.io/twotter-revived-manual/mod/mods/</loc>
-         <lastmod>2026-08-02</lastmod>
+         <lastmod>2026-08-03</lastmod>
     </url>
     <url>
          <loc>https://aurel42.github.io/twotter-revived-manual/mod/features/objects/</loc>
-         <lastmod>2026-08-02</lastmod>
+         <lastmod>2026-08-03</lastmod>
     </url>
     <url>
          <loc>https://aurel42.github.io/twotter-revived-manual/project/history/</loc>
-         <lastmod>2026-08-02</lastmod>
+         <lastmod>2026-08-03</lastmod>
     </url>
     <url>
          <loc>https://aurel42.github.io/twotter-revived-manual/project/known-issues/</loc>
-         <lastmod>2026-08-02</lastmod>
+         <lastmod>2026-08-03</lastmod>
     </url>
     <url>
          <loc>https://aurel42.github.io/twotter-revived-manual/project/legal/</loc>
-         <lastmod>2026-08-02</lastmod>
+         <lastmod>2026-08-03</lastmod>
     </url>
     <url>
          <loc>https://aurel42.github.io/twotter-revived-manual/project/plans/</loc>
-         <lastmod>2026-08-02</lastmod>
+         <lastmod>2026-08-03</lastmod>
     </url>
     <url>
          <loc>https://aurel42.github.io/twotter-revived-manual/project/references/</loc>
-         <lastmod>2026-08-02</lastmod>
+         <lastmod>2026-08-03</lastmod>
     </url>
 </urlset>

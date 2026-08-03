@@ -58,6 +58,23 @@
   font-size: 0.8rem;
 }
 
+/* Tables at body size.
+ *
+ * Same defect as the admonition rule above, same fix: Material sets .64rem on
+ * `.md-typeset table:not([class])` against the .8rem of .md-typeset, so a table
+ * renders at 80% of the prose it sits between. Reference tables here carry
+ * running text, not just numbers, and reading one should not feel like reading
+ * a footnote.
+ *
+ * Cells inherit — Material sets no font-size on td/th — so the one rule covers
+ * the whole table, and code spans track it because they are sized in em.
+ * Cell padding is em-based too, so tables get proportionally taller as well as
+ * larger. That is the intended trade, not an oversight.
+ */
+.md-typeset table:not([class]) {
+  font-size: 0.8rem;
+}
+
 /* Never-reviewed pages in the sidebar, classed by scripts/docs/mkdocs_hooks.py.
  *
  * Same reasoning as the badges: a draft is published and readable, so this is a
