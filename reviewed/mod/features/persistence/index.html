@@ -10,31 +10,31 @@
       
       
       
-        <link rel="canonical" href="https://aurel42.github.io/twotter-revived-manual/aircraft/systems/autopilot/overview/">
+        <link rel="canonical" href="https://aurel42.github.io/twotter-revived-manual/mod/features/persistence/">
       
       
-        <link rel="prev" href="../kap-140/">
+        <link rel="prev" href="../objects/">
       
       
-        <link rel="next" href="../../avionics/gns/">
+        <link rel="next" href="../../../project/history/">
       
       
         
       
       
-      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
-        <title>Overview - Twotter Revived</title>
+        <title>Persistence - Twotter Revived</title>
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -53,19 +53,19 @@
       
     
     
-      <link rel="stylesheet" href="../../../../css/print-site.css">
+      <link rel="stylesheet" href="../../../css/print-site.css">
     
-      <link rel="stylesheet" href="../../../../css/print-site-material.css">
+      <link rel="stylesheet" href="../../../css/print-site-material.css">
     
-      <link rel="stylesheet" href="../../../../assets/manual.css">
+      <link rel="stylesheet" href="../../../assets/manual.css">
     
-    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
-  <meta name="docs-page" content="aircraft/systems/autopilot/overview.md">
+  <meta name="docs-page" content="mod/features/persistence.md">
 </head>
   
   
@@ -85,7 +85,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#autopilot-overview" class="md-skip">
+        <a href="#cockpit-and-aircraft-persistence" class="md-skip">
           Skip to content
         </a>
       
@@ -101,7 +101,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../../.." title="Twotter Revived" class="md-header__button md-logo" aria-label="Twotter Revived" data-md-component="logo">
+    <a href="../../.." title="Twotter Revived" class="md-header__button md-logo" aria-label="Twotter Revived" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -121,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Overview
+              Persistence
             
           </span>
         </div>
@@ -227,7 +227,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../.." title="Twotter Revived" class="md-nav__button md-logo" aria-label="Twotter Revived" data-md-component="logo">
+    <a href="../../.." title="Twotter Revived" class="md-nav__button md-logo" aria-label="Twotter Revived" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -245,7 +245,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -269,10 +269,8 @@
       
   
   
-    
   
   
-  
     
     
       
@@ -289,11 +287,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
@@ -314,7 +312,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -332,7 +330,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../flight-model/" class="md-nav__link">
+      <a href="../../../aircraft/flight-model/" class="md-nav__link">
         
   
   
@@ -357,10 +355,8 @@
                 
   
   
-    
   
   
-  
     
     
       
@@ -376,11 +372,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
         
           
           <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
@@ -401,7 +397,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -419,7 +415,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../instruments/" class="md-nav__link">
+      <a href="../../../aircraft/systems/instruments/" class="md-nav__link">
         
   
   
@@ -444,10 +440,8 @@
                 
   
   
-    
   
   
-  
     
     
       
@@ -461,11 +455,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_2" >
         
           
           <label class="md-nav__link" for="__nav_2_2_2" id="__nav_2_2_2_label" tabindex="0">
@@ -486,7 +480,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_2_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -504,7 +498,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../kap-140/" class="md-nav__link">
+      <a href="../../../aircraft/systems/autopilot/kap-140/" class="md-nav__link">
         
   
   
@@ -529,37 +523,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Overview
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../aircraft/systems/autopilot/overview/" class="md-nav__link">
         
   
   
@@ -575,59 +542,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#history" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        History
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#collins-ap-features" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Collins AP features
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#working-title-framework-features" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Working Title framework features
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -703,7 +617,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../avionics/gns/" class="md-nav__link">
+      <a href="../../../aircraft/systems/avionics/gns/" class="md-nav__link">
         
   
   
@@ -731,7 +645,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../avionics/overview/" class="md-nav__link">
+      <a href="../../../aircraft/systems/avionics/overview/" class="md-nav__link">
         
   
   
@@ -779,8 +693,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -801,11 +717,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
@@ -826,7 +742,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -844,7 +760,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../mod/configuration/" class="md-nav__link">
+      <a href="../../configuration/" class="md-nav__link">
         
   
   
@@ -872,7 +788,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../mod/installation/" class="md-nav__link">
+      <a href="../../installation/" class="md-nav__link">
         
   
   
@@ -900,7 +816,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../mod/mods/" class="md-nav__link">
+      <a href="../../mods/" class="md-nav__link">
         
   
   
@@ -925,8 +841,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -940,11 +858,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" checked>
         
           
           <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
@@ -965,7 +883,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -983,7 +901,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../mod/features/objects/" class="md-nav__link">
+      <a href="../objects/" class="md-nav__link">
         
   
   
@@ -1008,10 +926,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../../../mod/features/persistence/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Persistence
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1027,6 +972,48 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Usage
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#known-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known issues
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1118,7 +1105,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../project/history/" class="md-nav__link">
+      <a href="../../../project/history/" class="md-nav__link">
         
   
   
@@ -1146,7 +1133,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../project/known-issues/" class="md-nav__link">
+      <a href="../../../project/known-issues/" class="md-nav__link">
         
   
   
@@ -1174,7 +1161,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../project/legal/" class="md-nav__link">
+      <a href="../../../project/legal/" class="md-nav__link">
         
   
   
@@ -1202,7 +1189,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../project/plans/" class="md-nav__link">
+      <a href="../../../project/plans/" class="md-nav__link">
         
   
   
@@ -1230,7 +1217,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../project/references/" class="md-nav__link">
+      <a href="../../../project/references/" class="md-nav__link">
         
   
   
@@ -1283,7 +1270,7 @@
   
   
     <li class="md-path__item">
-      <a href="../../../.." class="md-path__link">
+      <a href="../../.." class="md-path__link">
         
   <span class="md-ellipsis">
     Introduction
@@ -1301,10 +1288,10 @@
     
     
       <li class="md-path__item">
-        <a href="../../../flight-model/" class="md-path__link">
+        <a href="../../configuration/" class="md-path__link">
           
   <span class="md-ellipsis">
-    Aircraft
+    Mod
   </span>
 
         </a>
@@ -1319,28 +1306,10 @@
     
     
       <li class="md-path__item">
-        <a href="../../instruments/" class="md-path__link">
+        <a href="../objects/" class="md-path__link">
           
   <span class="md-ellipsis">
-    Systems
-  </span>
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-    
-    
-      <li class="md-path__item">
-        <a href="../kap-140/" class="md-path__link">
-          
-  <span class="md-ellipsis">
-    Autopilot
+    Features
   </span>
 
         </a>
@@ -1354,7 +1323,7 @@
 
               
               <article class="md-content__inner md-typeset">
-<div class="review-badge review-badge--reviewed">This is the revision that was reviewed. It may be older than the published page. <a href="../../../../../aircraft/systems/autopilot/overview/">Go to the current version</a></div>
+<div class="review-badge review-badge--reviewed">This is the revision that was reviewed. It may be older than the published page. <a href="../../../../mod/features/persistence/">Go to the current version</a></div>
 
 
                 
@@ -1362,60 +1331,71 @@
 
 
 
-<h1 id="autopilot-overview">Autopilot overview<a class="headerlink" href="#autopilot-overview" title="Permanent link">&para;</a></h1>
-<p>The autopilot is one of the areas where I'm claiming artistic license. While I fixed a couple of "realism gaps" with the default KAP 140, I also created new ones.</p>
-<p>Aerosoft put the Bendix/King KAP 140 in the Twotter for two reasons, afaik: users are familiar with it and the mission statement for the 2020 version was to use default avionics wherever possible. The visual model has all the remnants of the Collins AP-106 (I think) simulated in the Aerosoft Twin Otter X Extended: the annunciators, the mode and altitude panels, the multifunction "knob" on the control column pedestal, the YD button.</p>
-<p>This means the 2020 Twotter's AP is already an unholy abomination, and I leaned into that.</p>
-<h2 id="history">History<a class="headerlink" href="#history" title="Permanent link">&para;</a></h2>
-<p>The autopilot is a prime example of how this project grew as I learned more about the sim. First, I used stick and carrot, controlling the stock autopilot by manipulating the selected altitude and the heading bug while showing the numbers and modes the user expected on the display. That worked well enough, but had some limitations, so I tried taking over the whole autopilot the same way the Working Title framework does, but I missed a single, important switch, causing all my experiments to fail, so I shelved this approach. I went back to stick and carrot and invented more workarounds to allow me to tune the AP behavior further.</p>
-<p>It took an embarrassing amount of time for me to notice what <em>actually</em> drove the AP in the mod since the very first version.</p>
-<div class="admonition info">
-<p class="admonition-title">The very first commit message in this project</p>
-<p>[v2024.0.1] - 2026-03-06</p>
+<h1 id="cockpit-and-aircraft-persistence">Cockpit and aircraft persistence<a class="headerlink" href="#cockpit-and-aircraft-persistence" title="Permanent link">&para;</a></h1>
+<p>The persistence system uses a different lifecycles and layers:</p>
 <ul>
-<li>Updated GNS530 to WT530</li>
-</ul>
-</div>
-<p>As I understand it, whenever Working Title avionics are in play, they put the sim AP in <em>managed mode</em> and control pitch and bank directly. So I pulled the GNS units into the mod and started customizing the directors, moving from hacks and workarounds to a proper solution. But the amount of changes were significant which, for one, makes it hard to follow Working Title's updates closely, and I'm not really comfortable working with JS/TS. So the current goal is to have the state machines that run the AP in WASM, where I can test the  thoroughly without even starting the sim, and to reduce the number of patches I apply to the Working Title code. What remains is just a thin layer around the parts I want to replace, that says "talk to WASM instead", and the actual changes to the GNS user interface.</p>
-<div class="admonition info">
-<p class="admonition-title">Don't let me confuse you</p>
-<p>Whether I use "selected altitude" or "altitude preselect", I mean
-the same thing: the "target altitude" selected by the pilot or set
-when entering alt mode.</p>
-</div>
-<h2 id="collins-ap-features">Collins AP features<a class="headerlink" href="#collins-ap-features" title="Permanent link">&para;</a></h2>
-<ul>
-<li>IAS/FLC mode, yaw damper, and flight director.</li>
-<li>The flight director command bars on the attitude indicator can be hidden via the <strong>Disable Flight Director</strong> toggle in the EFB Config tab.</li>
-<li>Mode buttons and altitude selector are synced with the KAP 140.</li>
-<li>The Collins annunciators are somehow magically driven by the KAP 140.</li>
-<li>The pitch-trim arrow indicator is now a runaway-trim warning indicator (flashes for end-of-travel and same-direction-≥2 s commands). Small trim corrections should no longer cause epileptic seizures in photosensitive pilots.</li>
-<li>Enabled autopilot annunciators for approach arm/capture when using GPS navigation.</li>
-</ul>
-<h2 id="working-title-framework-features">Working Title framework features<a class="headerlink" href="#working-title-framework-features" title="Permanent link">&para;</a></h2>
-<p>The GNS units gained two features which are completely unrealistic (they are present in the G1000NXi, but not in the much older GNS units). You can turn them off if you prefer more authentic behavior.</p>
-<ul>
-<li>Coupled VNAV: whenever you select an approach with vertical guidance, VNAV is armed.<ul>
-<li>You can disable VNAV by pressing the VNAV button on the GNS 530, enabling cursor mode, selecting "DISARM VNAV" and confirming with ENT.</li>
-<li>VNAV respects the selected altitude. VNAV will not initiate a descent if you are in ALT HOLD at the selected altitude. If VNAV is armed but cannot descend because of this restriction, the KAP 140 display will alert you by slow-blinking the VNV-ARM flag. Reduce the selected altitude to the next restraint or the expected altitude for capturing a GS or GP, and verify that VNV-ARM is no longer blinking and that the VNAV page on the GNS 530 displays a plausible time to TOD.</li>
-<li>VNAV will not engage if you're too far from course.</li>
-<li>While armed, the VNAV page on the GNS 530 should display a time to the next top of descent (TOD).</li>
-<li>While active, the VNAV page on the GNS 530 should display the next altitude restraint VNAV is descending to.</li>
-<li>Engage APR mode while descending toward the GS or GP for a smooth capture.</li>
-</ul>
+<li>
+<p>Config settings persist unconditionally.</p>
 </li>
-<li>VISUAL approaches: just like in the G1000NXi, you can set up a "VISUAL" approach for any runway of any airport or airfield.<ul>
-<li>VISUAL approaches have vertical guidance, so VNAV is armed for them. Select an altitude of 800-1000 ft above field elevation for a smooth capture of the glide path (GP).</li>
-</ul>
+<li>
+<p>Some settings are only stored after the user opts-in, and they need
+  to opt-in for every single session. You can go flying at any time
+  without worrying about the aircraft state. Only if you restore the
+  state (or, if it's the first time, "Enable persistence") when the
+  session begins, these vars are stored for when you opt-in the next
+  time.</p>
+</li>
+<li>
+<p>Some settings are stored as LocalVars in state.cfg, using a stock
+  sim mechanism.</p>
+</li>
+<li>
+<p>Some WASM systems store their states separately in files in the
+  sim's <code>WASM/.../work</code> folder.</p>
+</li>
+<li>
+<p>JS/TS-based systems can store data in the cloud, the most prominent
+  example are the GNS units.</p>
 </li>
 </ul>
-<div class="admonition warning">
-<p class="admonition-title">VISUAL approaches are guidance-only</p>
-<p>When you are using VISUAL approaches, you alone are responsible to
-ensure terrain clearance and object avoidance. In difficult
-terrain, relying on a VISUAL appraoch can and probably will kill
-you.</p>
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
+<p>When you use the system for the first time: while on the ground and,
+preferably, cold &amp; dark, use the "Enable Persistence" button on the
+splashscreen of the EFB (or, if you missed it, the button on the Debug
+tab).</p>
+<p>In future sessions with this aircraft variant, the button on the EFB
+splashscreen will say "Restore State" instead. Click it to restore the
+state from the previous session in this variant, or click anywhere
+else to skip the restore for an ad-hoc flight without persistence.</p>
+<p>While the state is being restored, the EFB will show a message. To
+avoid frustration, stand by for a few seconds until the process is
+complete. If you change settings while the restore is in progress,
+these settings might revert to their stored state.</p>
+<p>Resetting the saved state is not recommended and should not be
+necessary unless you encounter a bug. </p>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>It is possible to reset the state of a variant by locating <code>state.cfg</code>
+plus the files in <code>WASM/.../work</code> for the variant in your MSFS folder
+and deleting or renaming the files. Only do this if you're comfortable 
+with it.</p>
 </div>
+<h2 id="known-issues">Known issues<a class="headerlink" href="#known-issues" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Some systems don't persist (battery capacity, hydraulic system
+  state). I have not figured out how to do this yet. Advice is
+  welcome!</li>
+</ul>
+<div class="admonition bug">
+<p class="admonition-title">Please report bugs!</p>
+<p>If any other systems, switches, knobs don't correctly restore
+their state from a previous session, that's a bug. Please be kind
+and report it.</p>
+</div>
+<ul>
+<li>"Restore state" does not prevent you from restoring the state with
+  running engines, but you probably shouldn't.</li>
+</ul>
 
 
 
@@ -1454,7 +1434,7 @@ you.</p>
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../kap-140/" class="md-footer__link md-footer__link--prev" aria-label="Previous: KAP 140">
+          <a href="../objects/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 3D Objects">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1464,20 +1444,20 @@ you.</p>
                 Previous
               </span>
               <div class="md-ellipsis">
-                KAP 140
+                3D Objects
               </div>
             </div>
           </a>
         
         
           
-          <a href="../../avionics/gns/" class="md-footer__link md-footer__link--next" aria-label="Next: GNS 530/430">
+          <a href="../../../project/history/" class="md-footer__link md-footer__link--next" aria-label="Next: Project History">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                GNS 530/430
+                Project History
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -1513,12 +1493,12 @@ you.</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.sections", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.path", "navigation.indexes", "toc.follow", "toc.integrate", "content.code.copy"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.sections", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.path", "navigation.indexes", "toc.follow", "toc.integrate", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
-        <script src="../../../../js/print-site.js"></script>
+        <script src="../../../js/print-site.js"></script>
       
     
   </body>

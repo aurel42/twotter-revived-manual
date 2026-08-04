@@ -847,6 +847,8 @@
       
         
       
+        
+      
     
     
     
@@ -904,6 +906,34 @@
     
   
     3D Objects
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mod/features/persistence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Persistence
   
 
     
@@ -2009,7 +2039,71 @@ float in the air or sink into the ground.</p>
 <p class="admonition-title">For devs</p>
 <p>If you're curious how we spawn objects on a sloped surface, have a
 look at the Sidecar WASM system.</p>
-</div></section></section></section>
+</div></section><section class="print-page" id="mod-features-persistence" heading-number="3.4.2"><h1 id="mod-features-persistence-cockpit-and-aircraft-persistence">Cockpit and aircraft persistence<a class="headerlink" href="#mod-features-persistence-cockpit-and-aircraft-persistence" title="Permanent link">&para;</a></h1>
+<p>The persistence system uses a different lifecycles and layers:</p>
+<ul>
+<li>
+<p>Config settings persist unconditionally.</p>
+</li>
+<li>
+<p>Some settings are only stored after the user opts-in, and they need
+  to opt-in for every single session. You can go flying at any time
+  without worrying about the aircraft state. Only if you restore the
+  state (or, if it's the first time, "Enable persistence") when the
+  session begins, these vars are stored for when you opt-in the next
+  time.</p>
+</li>
+<li>
+<p>Some settings are stored as LocalVars in state.cfg, using a stock
+  sim mechanism.</p>
+</li>
+<li>
+<p>Some WASM systems store their states separately in files in the
+  sim's <code>WASM/.../work</code> folder.</p>
+</li>
+<li>
+<p>JS/TS-based systems can store data in the cloud, the most prominent
+  example are the GNS units.</p>
+</li>
+</ul>
+<h2 id="mod-features-persistence-usage">Usage<a class="headerlink" href="#mod-features-persistence-usage" title="Permanent link">&para;</a></h2>
+<p>When you use the system for the first time: while on the ground and,
+preferably, cold &amp; dark, use the "Enable Persistence" button on the
+splashscreen of the EFB (or, if you missed it, the button on the Debug
+tab).</p>
+<p>In future sessions with this aircraft variant, the button on the EFB
+splashscreen will say "Restore State" instead. Click it to restore the
+state from the previous session in this variant, or click anywhere
+else to skip the restore for an ad-hoc flight without persistence.</p>
+<p>While the state is being restored, the EFB will show a message. To
+avoid frustration, stand by for a few seconds until the process is
+complete. If you change settings while the restore is in progress,
+these settings might revert to their stored state.</p>
+<p>Resetting the saved state is not recommended and should not be
+necessary unless you encounter a bug. </p>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>It is possible to reset the state of a variant by locating <code>state.cfg</code>
+plus the files in <code>WASM/.../work</code> for the variant in your MSFS folder
+and deleting or renaming the files. Only do this if you're comfortable 
+with it.</p>
+</div>
+<h2 id="mod-features-persistence-known-issues">Known issues<a class="headerlink" href="#mod-features-persistence-known-issues" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Some systems don't persist (battery capacity, hydraulic system
+  state). I have not figured out how to do this yet. Advice is
+  welcome!</li>
+</ul>
+<div class="admonition bug">
+<p class="admonition-title">Please report bugs!</p>
+<p>If any other systems, switches, knobs don't correctly restore
+their state from a previous session, that's a bug. Please be kind
+and report it.</p>
+</div>
+<ul>
+<li>"Restore state" does not prevent you from restoring the state with
+  running engines, but you probably shouldn't.</li>
+</ul></section></section></section>
                     <section class='print-page md-section' id='section-4' heading-number='4'>
                         <h1>Project<a class='headerlink' href='#section-4' title='Permanent link'></a>
                         </h1>
@@ -2309,6 +2403,8 @@ redistributed and the WASM build does not depend on it.</p>
 
 .print-site-enumerate-headings #section-3-4 > h1:before { content: '3.4 ' }
 .print-site-enumerate-headings #mod-features-objects > h1:before { content: '3.4.1 ' }
+
+.print-site-enumerate-headings #mod-features-persistence > h1:before { content: '3.4.2 ' }
 
 .print-site-enumerate-headings #section-4 > h1:before { content: '4 ' }
 .print-site-enumerate-headings #project-history > h1:before { content: '4.1 ' }
