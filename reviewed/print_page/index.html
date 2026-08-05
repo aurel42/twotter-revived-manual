@@ -909,6 +909,8 @@
       
         
       
+        
+      
     
     
     
@@ -994,6 +996,34 @@
     
   
     Persistence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mod/features/sound/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sound
   
 
     
@@ -2386,7 +2416,84 @@ and report it.</p>
 <ul>
 <li>"Restore state" does not prevent you from restoring the state with
   running engines, but you probably shouldn't.</li>
-</ul></section></section></section>
+</ul></section><section class="print-page" id="mod-features-sound" heading-number="3.4.3"><h1 id="mod-features-sound-sound">Sound<a class="headerlink" href="#mod-features-sound-sound" title="Permanent link">&para;</a></h1>
+<h2 id="mod-features-sound-overview">Overview<a class="headerlink" href="#mod-features-sound-overview" title="Permanent link">&para;</a></h2>
+<p>The audio of the mod consists of several layers.</p>
+<ul>
+<li>
+<p>The base is the Wwise soundback that comes with your Aerosoft Twin
+  Otter. It contains many standard sounds, but also typical Twin Otter
+  sounds like the whistle of the hydraulic pump.
+  It's not authored very well compared to more modern Wwise banks.</p>
+</li>
+<li>
+<p>The the Aerosoft Wwise soundbank is augmented by a few wav files
+  shipping directly with the mod, for example an interior flaps sound
+  that matches the continuous movement of the flaps better than the
+  default sounds.</p>
+</li>
+<li>
+<p>I created a bunch of callouts using fish.audio to close gaps. All
+  except two autopilot trim warnings can be muted or disabled.</p>
+<ul>
+<li>
+<p>A complete set of TAWS callouts.</p>
+</li>
+<li>
+<p>A set of KAP 140 callouts, based only on mentions in the manual,
+  I could not find any reference material.</p>
+</li>
+<li>
+<p>A set of co-pilot responses to checklist items.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>The distributed archive includes an experimental, separate mod that
+  allows owners of the Black Square Turbine Duke to re-use its
+  excellent Wwise soundback with the Twotter.</p>
+</li>
+</ul>
+<p>The Headset button on the Systems tab only works for sounds from
+  this sound bank and for custom sounds. There is no way (that I know
+  of) to control the volume of events coming from the Aerosoft Wwise
+  soundbank.</p>
+<h2 id="mod-features-sound-known-issues">Known issues<a class="headerlink" href="#mod-features-sound-known-issues" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>Default audio (without the Duke mod) isn't very good.</p>
+</li>
+<li>
+<p>Amphibious and float variants have water effects that trigger when
+  they shouldn't. Work in progress.</p>
+</li>
+</ul>
+<h2 id="mod-features-sound-lvars">L:vars<a class="headerlink" href="#mod-features-sound-lvars" title="Permanent link">&para;</a></h2>
+<p>Variables worth binding to hardware, driving from FSUIPC / Axis&amp;Ohs / SPAD.neXt,
+or reading on an external display. <strong>R</strong> is read-only state; <strong>R/W</strong> can be set.
+This is a selection, not the full list — the aircraft defines around a thousand
+<code>DHC6_*</code> names, most of them internal.</p>
+<table>
+<thead>
+<tr>
+<th>L:var</th>
+<th>R/W</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DHC6_HEADSET</code></td>
+<td>R/W</td>
+<td>Headset attenuation (0..1), 0 is off, 1 mutes the sound completely. The EFB button sets 0.6, a binding can write any value in the range.</td>
+</tr>
+<tr>
+<td><code>DHC6_RAM_AIR</code></td>
+<td>R/W</td>
+<td>RAM air lever (0..100), 0 is closed, 100 is fully open.</td>
+</tr>
+</tbody>
+</table></section></section></section>
                     <section class='print-page md-section' id='section-4' heading-number='4'>
                         <h1>Project<a class='headerlink' href='#section-4' title='Permanent link'></a>
                         </h1>
@@ -2692,6 +2799,8 @@ redistributed and the WASM build does not depend on it.</p>
 .print-site-enumerate-headings #mod-features-objects > h1:before { content: '3.4.1 ' }
 
 .print-site-enumerate-headings #mod-features-persistence > h1:before { content: '3.4.2 ' }
+
+.print-site-enumerate-headings #mod-features-sound > h1:before { content: '3.4.3 ' }
 
 .print-site-enumerate-headings #section-4 > h1:before { content: '4 ' }
 .print-site-enumerate-headings #project-history > h1:before { content: '4.1 ' }
