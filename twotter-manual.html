@@ -902,7 +902,7 @@ https://github.com/squidfunk/mkdocs-material */
   <span class="md-ellipsis">
     
   
-    Additional Mods
+    Companion Mods
   
 
     
@@ -1457,7 +1457,7 @@ https://github.com/squidfunk/mkdocs-material */
   <span class="md-ellipsis">
     
   
-    Chronometer
+    Chronometers
   
 
     
@@ -2434,6 +2434,7 @@ way. Everything else is on the table.</p>
 <li>DHC-6-100 performance, currently guesstimated purely based on SHP</li>
 <li>Needle vibrations</li>
 <li>Wind flutter of control surfaces in walkaround</li>
+<li>Opening doors in flight</li>
 <li>Yaw damper: real-world behavior vs stock sim implementation</li>
 <li>Post-shutdown ticking of cooling exhaust/engine</li>
 <li>Brake heat</li>
@@ -2446,18 +2447,65 @@ way. Everything else is on the table.</p>
 </ul>
 <hr />
 <p><em>Reviewed 2026-08-01.</em></p></section><section class="print-page" id="project-known-issues" heading-number="2.3"><h1 id="project-known-issues-known-issues">Known issues<a class="headerlink" href="#project-known-issues-known-issues" title="Permanent link">&para;</a></h1>
-<h2 id="project-known-issues-from-the-readme">From the README<a class="headerlink" href="#project-known-issues-from-the-readme" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Default audio is shit. Aerosoft's Wwise sound bank limits what I can do.
-  Example #1: engine startup sounds are inconsistent and don't adapt to the physics; the sound bank fades between effects based only on prop RPM, it doesn't care about turbine RPM at all. That's why an engine start with feathered props sounds so horrible. Also, the interior and exterior sounds are wildly different (just compare the interior starter sounds with the exterior version) and switching between interior and exterior can "restart" audio effects. [The sound mod now addresses all of these issues.]
-  Example #2: Stock flap sounds are not continuous.</li>
-<li>There are four "phantom tanks" visible in the Weight &amp; Balance screen of the EFB. I added them to maintain compatibility with FSEconomy after enabling the modular fuel system. This is a purely cosmetical flaw.</li>
-<li>On the world map, the aircraft thumbnail is missing and a default MSFS2024 thumbnail is showing instead. To fix this, I would have to create and maintain a separate set of "modern" (MSFS2024-style) thumbnails for each variant. That doesn't seem worth it. On most other menu screens (e.g. when selecting a variant), the sim should use the existing "legacy" thumbnails.</li>
-<li>Generator load sharing: only one starter-generator actually supplies the bus at a time. As far as I can tell, MSFS 2024's V2 electrical system has no mechanism for two paralleled DC generators to share load. The cockpit loadmeter therefore shows Gen 1 near full load and Gen 2 near zero in normal operation; that's expected, not a bug. If anyone knows how to get real V2 load sharing working, I'd love to hear about it.</li>
-<li>ADF: the system can't react to lightning. The sim doesn't expose the necessary data.</li>
-<li>FLC mode works when the pitot tube is frozen. Somehow, it knows. Sim quirk. (The groundwork to fix this has been done.)</li>
-<li>Pilot and Copilot avatars are not visible.</li>
-<li>KA 51 Slaving Accessory is missing.</li>
+<li>
+<p>Default audio is shit. Aerosoft's Wwise sound bank limits what I can do.</p>
+<ul>
+<li>
+<p>Example #1: engine startup sounds are inconsistent and don't
+  adapt to the physics; the sound bank fades between effects based
+  only on prop RPM, it doesn't care about turbine RPM at
+  all. That's why an engine start with feathered props sounds so
+  horrible. Also, the interior and exterior sounds are wildly
+  different (just compare the interior starter sounds with the
+  exterior version) and switching between interior and exterior
+  can "restart" audio effects. [The sound mod now addresses all of
+  these issues.]</p>
+</li>
+<li>
+<p>Example #2: Stock flap sounds are not continuous.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>There are four "phantom tanks" visible in the Weight &amp; Balance
+  screen of the EFB. I added them to maintain compatibility with
+  FSEconomy after enabling the modular fuel system. This is a purely
+  cosmetical flaw.</p>
+</li>
+<li>
+<p>On the world map, the aircraft thumbnail is missing and a default
+  MSFS2024 thumbnail is showing instead. To fix this, I would have to
+  create and maintain a separate set of "modern" (MSFS2024-style)
+  thumbnails for each variant. That doesn't seem worth it. On most
+  other menu screens (e.g. when selecting a variant), the sim should
+  use the existing "legacy" thumbnails.</p>
+</li>
+<li>
+<p>Generator load sharing: only one starter-generator actually supplies
+  the bus at a time. As far as I can tell, MSFS 2024's V2 electrical
+  system has no mechanism for two paralleled DC generators to share
+  load. The cockpit loadmeter therefore shows Gen 1 near full load and
+  Gen 2 near zero in normal operation; that's expected, not a bug. If
+  anyone knows how to get real V2 load sharing working, I'd love to
+  hear about it. (SU6 might help, we'll see.)</p>
+</li>
+<li>
+<p>ADF: the system can't react to lightning. The sim doesn't expose the
+  necessary data.</p>
+</li>
+<li>
+<p>FLC mode works when the pitot tube is frozen. Somehow, it knows. Sim
+  quirk. (The groundwork to fix this has been done.)</p>
+</li>
+<li>
+<p>Pilot and Copilot avatars are not visible, not sure why. Could be a
+  sim limitation caused by the combination of a 2020 aircraft with
+  2024 systems, or it could be my mistake or lack of understanding.</p>
+</li>
+<li>
+<p>KA 51 Slaving Accessory is STILL missing.</p>
+</li>
 </ul>
 <hr />
 <p><em>Reviewed 2026-08-01.</em></p></section><section class="print-page" id="project-references" heading-number="2.4"><h1 id="project-references-references">References<a class="headerlink" href="#project-references-references" title="Permanent link">&para;</a></h1>
@@ -2724,14 +2772,31 @@ the error persists, please get in touch so we can figure out what's
 happening happen. The installer should work with all popular versions
 of v1.1.1.</p>
 <hr />
-<p><em>Reviewed 2026-08-02.</em></p></section><section class="print-page" id="mod-mods" heading-number="3.2"><h1 id="mod-mods-additional-mods">Additional Mods<a class="headerlink" href="#mod-mods-additional-mods" title="Permanent link">&para;</a></h1>
-<p>These mods are distributed in the same archive as the main mod. They are optional.</p>
+<p><em>Reviewed 2026-08-02.</em></p></section><section class="print-page" id="mod-mods" heading-number="3.2"><h1 id="mod-mods-companion-mods">Companion Mods<a class="headerlink" href="#mod-mods-companion-mods" title="Permanent link">&para;</a></h1>
+<p>These mods are distributed in the same archive as the main mod. They
+are optional.</p>
 <h2 id="mod-mods-prop-blur-mod-ccm">Prop blur mod (CCM)<a class="headerlink" href="#mod-mods-prop-blur-mod-ccm" title="Permanent link">&para;</a></h2>
-<p><code>z_aerosoft-twin-otter-propblur_mod</code> mitigates the "wagon wheel effect" by making the blurred prop phases more transparent, only for the close-up LOD, so screenshots taken from the outside at some distance still get the cinematic look.</p>
+<p><code>z_aerosoft-twin-otter-propblur_mod</code> mitigates the "wagon wheel
+effect" by making the blurred prop phases more transparent, only for
+the close-up LOD, so screenshots taken from the outside at some
+distance still get the cinematic look.</p>
 <h2 id="mod-mods-flat-camera-mod-hobanagerik">Flat camera mod (Hobanagerik)<a class="headerlink" href="#mod-mods-flat-camera-mod-hobanagerik" title="Permanent link">&para;</a></h2>
-<p><code>z_aerosoft-twin-otter-flat_camers</code> replaces some of the default tilted camera views with flat views at the instruments.</p>
+<p><code>z_aerosoft-twin-otter-flat_camers</code> replaces some of the default
+tilted camera views with flat views at the instruments.</p>
 <h2 id="mod-mods-sound-mod-for-turbine-duke-owners">Sound mod for Turbine Duke owners<a class="headerlink" href="#mod-mods-sound-mod-for-turbine-duke-owners" title="Permanent link">&para;</a></h2>
-<p><code>charliebravo-soundmod-twin-otter-turbineduke</code> replaces the default engine sounds and a few other effects with much better versions from the Black Square Turbine Duke. You need to own the Turbine Duke and have it installed somewhere on your system. We don't distribute any part of the soundbank. To activate the mod, you must run the install script in its folder and point it at your Turbine Duke folder. It will copy the soundbank and modify it in order to prevent collisions with the actual Turbine Duke.</p>
+<p><code>charliebravo-soundmod-twin-otter-turbineduke</code> replaces the default
+engine sounds and a few other effects with much better versions from
+the Black Square Turbine Duke.</p>
+<p>You need to own the Turbine Duke and have it installed somewhere on
+your system. We don't distribute any part of the soundbank.</p>
+<p>To activate the mod, you must run the install script in its folder and
+point it at your Turbine Duke folder. It will copy the soundbank and
+modify it in order to prevent collisions with the actual Turbine Duke.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Until the (separate) install script has been executed, this mod,
+too, will be inactive.</p>
+</div>
 <hr />
 <p><em>Reviewed 2026-08-02.</em></p></section><section class="print-page" id="mod-configuration" heading-number="3.3"><h1 id="mod-configuration-configurable-settings">Configurable settings<a class="headerlink" href="#mod-configuration-configurable-settings" title="Permanent link">&para;</a></h1>
 <p>Everything on this page is set on the Config tab in the EFB app.</p>
@@ -3586,51 +3651,41 @@ in.</p>
 </tbody>
 </table>
 <hr />
-<p><em>Reviewed 2026-08-05.</em></p></section><section class="print-page" id="aircraft-systems-chronometer" heading-number="4.2.3"><h1 id="aircraft-systems-chronometer-chronometer">Chronometer<a class="headerlink" href="#aircraft-systems-chronometer-chronometer" title="Permanent link">&para;</a></h1>
-<p>The two panel clocks, and the readouts they carry beyond the time.</p>
-<h2 id="aircraft-systems-chronometer-from-the-readme">From the README<a class="headerlink" href="#aircraft-systems-chronometer-from-the-readme" title="Permanent link">&para;</a></h2>
-<p><em>Redistributed from the former Cockpit instruments page.</em></p>
+<p><em>Reviewed 2026-08-05.</em></p></section><section class="print-page" id="aircraft-systems-chronometer" heading-number="4.2.3"><h1 id="aircraft-systems-chronometer-chronometers">Chronometers<a class="headerlink" href="#aircraft-systems-chronometer-chronometers" title="Permanent link">&para;</a></h1>
+<p>I took some artistic license reimplenting the two cockpit
+clocks. They're powered from a hot bus, so they're always on.</p>
+<p>They can be controlled independently, which might be useful in VR. I
+mostly use the FO-side clock to display the cabin temperature. With my
+elderly headset, the digits are just big enough to make them out from
+the Captain's seat.</p>
+<p>The navigation does not match the labels on the clocks. Use the left
+and right buttons to switch between the functions, the MODE button to
+select the unit or detail within a function.</p>
+<p>Reimplemented chronometers with the following features:</p>
 <ul>
-<li>Reimplemented chronometers with clock, stopwatch, block time and an OAT display. I took some artistic license. The mode button switches the clock between local time and UTC, and OAT between C and F. If you find out what else it can do, don't tell anyone.</li>
-<li>[NEW] The chronometer gained a DME readout, and the temperature display a cabin-temperature mode (mode button selects).</li>
+<li>
+<p>Clock (HH:MM:SS), the MODE button switches between local time and UTC</p>
+</li>
+<li>
+<p>Stopwatch, starts counting as soon as it is selected, it resets when
+  it is re-selected; if you need more functionality, please use the KR
+  87 (ADF radio) stopwatch</p>
+</li>
+<li>
+<p>Block time display, counts while the aircraft is moving under its
+  own power</p>
+</li>
+<li>
+<p>Temperature display, MODE cycles between °C and °F for OAT and cabin
+  temperature</p>
+</li>
+<li>
+<p>DME readout, mode switches between distance in nm, time to station
+  in minutes, and speed relative to station in kts</p>
+</li>
 </ul>
-<h2 id="aircraft-systems-chronometer-from-the-release-notes">From the release notes<a class="headerlink" href="#aircraft-systems-chronometer-from-the-release-notes" title="Permanent link">&para;</a></h2>
-<p>Verbatim from <code>docs/release-notes-*.md</code>, grouped by the section they appeared in. The tag is the version each item first appeared in.</p>
-<h3 id="aircraft-systems-chronometer-cockpit-instruments">Cockpit instruments<a class="headerlink" href="#aircraft-systems-chronometer-cockpit-instruments" title="Permanent link">&para;</a></h3>
-<ul>
-<li>[NEW] Reimplemented chronometers with clock, stopwatch, block time and an OAT display. I took some artistic license. The mode button switches the clock between local time and UTC, and OAT between C and F. If you find out what else it can do, don't tell anyone. <em>(v2024.2.x)</em></li>
-</ul>
-<h2 id="aircraft-systems-chronometer-lvars">L:vars<a class="headerlink" href="#aircraft-systems-chronometer-lvars" title="Permanent link">&para;</a></h2>
-<p>Variables worth binding to hardware, driving from FSUIPC / Axis&amp;Ohs / SPAD.neXt,
-or reading on an external display. <strong>R</strong> is read-only state; <strong>R/W</strong> can be set.
-This is a selection, not the full list — the aircraft defines around a thousand
-<code>DHC6_*</code> names, most of them internal.</p>
-<table>
-<thead>
-<tr>
-<th>L:var</th>
-<th>R/W</th>
-<th>Meaning</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>DHC6_DME_MODE</code></td>
-<td>R/W</td>
-<td>DME readout mode. <strong>No cockpit control</strong> — EFB or binding only</td>
-</tr>
-<tr>
-<td><code>DHC6_DME_HEAD</code></td>
-<td>R/W</td>
-<td>Which DME head the readout follows</td>
-</tr>
-<tr>
-<td><code>DHC6_DME_REQUEST</code></td>
-<td>R/W</td>
-<td>DME request</td>
-</tr>
-</tbody>
-</table></section><section class="print-page" id="aircraft-systems-egpws" heading-number="4.2.4"><h1 id="aircraft-systems-egpws-egpws">EGPWS<a class="headerlink" href="#aircraft-systems-egpws-egpws" title="Permanent link">&para;</a></h1>
+<p>If you find anything else it can do, that's between you and your
+mechanic, so keep it to yourself.</p></section><section class="print-page" id="aircraft-systems-egpws" heading-number="4.2.4"><h1 id="aircraft-systems-egpws-egpws">EGPWS<a class="headerlink" href="#aircraft-systems-egpws-egpws" title="Permanent link">&para;</a></h1>
 <h2 id="aircraft-systems-egpws-from-the-readme">From the README<a class="headerlink" href="#aircraft-systems-egpws-from-the-readme" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Overhauled EGPWS suite based on Honeywell Pilot's Guide and FAA advisories.</li>
