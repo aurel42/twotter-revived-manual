@@ -943,6 +943,8 @@
       
         
       
+        
+      
     
     
     
@@ -984,6 +986,34 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mod/features/checklists/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Checklists
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -2444,7 +2474,69 @@ too, will be inactive.</p>
                     <section class='print-page md-section' id='section-3-4' heading-number='3.4'>
                         <h1>Features<a class='headerlink' href='#section-3-4' title='Permanent link'></a>
                         </h1>
-                    <section class="print-page" id="mod-features-objects" heading-number="3.4.1"><h1 id="mod-features-objects-3d-objects">3D Objects<a class="headerlink" href="#mod-features-objects-3d-objects" title="Permanent link">&para;</a></h1>
+                    <section class="print-page" id="mod-features-checklists" heading-number="3.4.1"><h1 id="mod-features-checklists-checklists">Checklists<a class="headerlink" href="#mod-features-checklists-checklists" title="Permanent link">&para;</a></h1>
+<h2 id="mod-features-checklists-overview">Overview<a class="headerlink" href="#mod-features-checklists-overview" title="Permanent link">&para;</a></h2>
+<p>The mod delivers a custom checklist system as part of the EFB
+app. Three ways to run a checklist:</p>
+<ul>
+<li>
+<p>Default: You manage the checklist and tick off every item yourself.</p>
+</li>
+<li>
+<p>Interactive: You run the checklist, the co-pilot confirms and ticks
+  off the items he confirmed. If the co-pilot gets stuck, you can tick
+  the item yourself to progress.</p>
+</li>
+<li>
+<p>Autocomplete: The co-pilot runs the checklists, applies all
+  settings, runs multi-step tests, confirms every item and ticks
+  it. Autocomplete is not available for some in-flight checklists. </p>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The co-pilot tries to be smart about "as required" items, but, as
+always, the responsibility lies with the captain. Verify the
+co-pilot's judgment calls are sound, especially regarding de-icing
+equipment.</p>
+</div>
+<h2 id="mod-features-checklists-notes">Notes<a class="headerlink" href="#mod-features-checklists-notes" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>Some items will never autocomplete, for example the passenger
+  briefing.  Tick the item after you completed the briefing to let the
+  co-pilot resume.</p>
+</li>
+<li>
+<p>A checklist in autocomplete will continue to run even if the EFB is 
+  closed or you switch to an outside view. It's fun to let the engine start 
+  checklist run on autocomplete while watching the startup in drone view.
+  Especially with the sound mod.</p>
+</li>
+<li>
+<p>The co-pilot callouts are intentionally annoying for maximum
+  authenticity. They can be muted, though, on the Config tab or using
+  the Mute button on the Checklists tab.</p>
+</li>
+<li>
+<p>Float, amphibian and ski variants get their own POH-supplement
+  procedures; cargo variants skip cabin/passenger items.</p>
+</li>
+<li>
+<p>Checklists are aware of the avionics master switch and use it if
+  it's enabled.</p>
+</li>
+<li>
+<p>Take-Off checks: The 85 % Ng pause during start can be skipped.</p>
+</li>
+<li>
+<p>When opening the Checklists tab for the first time, it displays
+  prominently <strong>"For Simulation Use Only",</strong> just in case you forget
+  that you're flying a pixel plane.</p>
+</li>
+</ul>
+<h2 id="mod-features-checklists-lvars">L:vars<a class="headerlink" href="#mod-features-checklists-lvars" title="Permanent link">&para;</a></h2>
+<p><code>DHC6_CFG_COPILOT_MUTE</code> — 0 (default, callouts audible), 1 (callouts muted)</p></section><section class="print-page" id="mod-features-objects" heading-number="3.4.2"><h1 id="mod-features-objects-3d-objects">3D Objects<a class="headerlink" href="#mod-features-objects-3d-objects" title="Permanent link">&para;</a></h1>
 <h2 id="mod-features-objects-context">Context<a class="headerlink" href="#mod-features-objects-context" title="Permanent link">&para;</a></h2>
 <p>Without access to the project source (which we obviously don't have),
 we can't modify the visual model of the base aircraft. What we can do,
@@ -2463,7 +2555,7 @@ float in the air or sink into the ground.</p>
 <p class="admonition-title">For devs</p>
 <p>If you're curious how we spawn objects on a sloped surface, have a
 look at the Sidecar WASM system.</p>
-</div></section><section class="print-page" id="mod-features-persistence" heading-number="3.4.2"><h1 id="mod-features-persistence-cockpit-and-aircraft-persistence">Cockpit and aircraft persistence<a class="headerlink" href="#mod-features-persistence-cockpit-and-aircraft-persistence" title="Permanent link">&para;</a></h1>
+</div></section><section class="print-page" id="mod-features-persistence" heading-number="3.4.3"><h1 id="mod-features-persistence-cockpit-and-aircraft-persistence">Cockpit and aircraft persistence<a class="headerlink" href="#mod-features-persistence-cockpit-and-aircraft-persistence" title="Permanent link">&para;</a></h1>
 <p>The persistence system uses a different lifecycles and layers:</p>
 <ul>
 <li>
@@ -2527,7 +2619,7 @@ and report it.</p>
 <ul>
 <li>"Restore state" does not prevent you from restoring the state with
   running engines, but you probably shouldn't.</li>
-</ul></section><section class="print-page" id="mod-features-sound" heading-number="3.4.3"><h1 id="mod-features-sound-sound">Sound<a class="headerlink" href="#mod-features-sound-sound" title="Permanent link">&para;</a></h1>
+</ul></section><section class="print-page" id="mod-features-sound" heading-number="3.4.4"><h1 id="mod-features-sound-sound">Sound<a class="headerlink" href="#mod-features-sound-sound" title="Permanent link">&para;</a></h1>
 <h2 id="mod-features-sound-overview">Overview<a class="headerlink" href="#mod-features-sound-overview" title="Permanent link">&para;</a></h2>
 <p>The audio of the mod consists of several layers.</p>
 <ul>
@@ -2604,7 +2696,7 @@ This is a selection, not the full list — the aircraft defines around a thousan
 <td>RAM air lever (0..100), 0 is closed, 100 is fully open.</td>
 </tr>
 </tbody>
-</table></section><section class="print-page" id="mod-features-wear-and-tear" heading-number="3.4.4"><h1 id="mod-features-wear-and-tear-wear-tear-damage">Wear, tear, damage<a class="headerlink" href="#mod-features-wear-and-tear-wear-tear-damage" title="Permanent link">&para;</a></h1>
+</table></section><section class="print-page" id="mod-features-wear-and-tear" heading-number="3.4.5"><h1 id="mod-features-wear-and-tear-wear-tear-damage">Wear, tear, damage<a class="headerlink" href="#mod-features-wear-and-tear-wear-tear-damage" title="Permanent link">&para;</a></h1>
 <h2 id="mod-features-wear-and-tear-overview">Overview<a class="headerlink" href="#mod-features-wear-and-tear-overview" title="Permanent link">&para;</a></h2>
 <p>Work on an optional wear/tear/damage system has started. I wired up
 two sample systems as a vertical slice, one of them has an actual
@@ -3032,13 +3124,15 @@ redistributed and the WASM build does not depend on it.</p>
 .print-site-enumerate-headings #mod-mods > h1:before { content: '3.3 ' }
 
 .print-site-enumerate-headings #section-3-4 > h1:before { content: '3.4 ' }
-.print-site-enumerate-headings #mod-features-objects > h1:before { content: '3.4.1 ' }
+.print-site-enumerate-headings #mod-features-checklists > h1:before { content: '3.4.1 ' }
 
-.print-site-enumerate-headings #mod-features-persistence > h1:before { content: '3.4.2 ' }
+.print-site-enumerate-headings #mod-features-objects > h1:before { content: '3.4.2 ' }
 
-.print-site-enumerate-headings #mod-features-sound > h1:before { content: '3.4.3 ' }
+.print-site-enumerate-headings #mod-features-persistence > h1:before { content: '3.4.3 ' }
 
-.print-site-enumerate-headings #mod-features-wear-and-tear > h1:before { content: '3.4.4 ' }
+.print-site-enumerate-headings #mod-features-sound > h1:before { content: '3.4.4 ' }
+
+.print-site-enumerate-headings #mod-features-wear-and-tear > h1:before { content: '3.4.5 ' }
 
 .print-site-enumerate-headings #section-4 > h1:before { content: '4 ' }
 .print-site-enumerate-headings #project-history > h1:before { content: '4.1 ' }

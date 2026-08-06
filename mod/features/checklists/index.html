@@ -723,7 +723,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="./" class="md-nav__link md-nav__link--active md-nav__link--draft">
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -756,10 +756,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#from-the-readme" class="md-nav__link">
+  <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
       
-        From the README
+        Overview
       
     </span>
   </a>
@@ -767,58 +767,24 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#from-the-release-notes" class="md-nav__link">
+  <a href="#notes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        From the release notes
+        Notes
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="From the release notes">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#checklists_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Checklists
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#config-options" class="md-nav__link">
+  <a href="#lvars" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Config options
+        L:vars
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Config options">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#mute-copilot-callouts" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Mute copilot callouts
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -2152,59 +2118,76 @@
 
               
               <article class="md-content__inner md-typeset">
-<div class="review-badge review-badge--draft"><strong>Draft</strong> — this page has not been reviewed yet.</div>
-
-
                 
                   
 
 
 
 <h1 id="checklists">Checklists<a class="headerlink" href="#checklists" title="Permanent link">&para;</a></h1>
-<h2 id="from-the-readme">From the README<a class="headerlink" href="#from-the-readme" title="Permanent link">&para;</a></h2>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>The mod delivers a custom checklist system as part of the EFB
+app. Three ways to run a checklist:</p>
 <ul>
-<li>[CHANGED] Autocomplete: copilot runs and verifies each item, with spoken confirmations (can be muted).</li>
-<li>Interactive: pilot acts, copilot verifies.</li>
-<li>Copilot callouts: Several dozens responses, most with alternate takes so he doesn't sound like a robot. He announces "Checklist complete!" when a page finishes on its own. Our research showed that a soothing copilot voice can help to reduce crew stress and prevent accidents, so we picked the most soothing voice we could find. All callouts are plain wav files.</li>
-<li>"As required" items read the conditions: a few items work out the right setting from the world around you instead of forcing a fixed state (for example: Anti-Ice, Taxi Light).</li>
-<li>In Autocomplete, a page that commands the engines or fuel will ask for confirmation first.</li>
-<li>Climb Power and Cruise Power wait for you: there's no single torque or ITT number a copilot could verify for "climb power" or "cruise power". Even in Autocomplete he stops on these items and waits for you to set the power and tick them off. The copilot won't touch flight controls or power settings while handling in-flight checklists.</li>
-<li>[NEW] Restructured to follow the POH section by section; many items that used to just tick a box now test the underlying system.</li>
-<li>[NEW] Float, amphibian and ski variants get their own POH-supplement procedures; cargo variants skip cabin/passenger items.</li>
-<li>[NEW] Notes, cautions and warnings appear inline as banded rows (no checkbox).</li>
-<li>[NEW] A per-item hint toggle explains what each item wants.</li>
+<li>
+<p>Default: You manage the checklist and tick off every item yourself.</p>
+</li>
+<li>
+<p>Interactive: You run the checklist, the co-pilot confirms and ticks
+  off the items he confirmed. If the co-pilot gets stuck, you can tick
+  the item yourself to progress.</p>
+</li>
+<li>
+<p>Autocomplete: The co-pilot runs the checklists, applies all
+  settings, runs multi-step tests, confirms every item and ticks
+  it. Autocomplete is not available for some in-flight checklists. </p>
+</li>
 </ul>
-<h2 id="from-the-release-notes">From the release notes<a class="headerlink" href="#from-the-release-notes" title="Permanent link">&para;</a></h2>
-<p>Verbatim from <code>docs/release-notes-*.md</code>, grouped by the section they appeared in. The tag is the version each item first appeared in.</p>
-<h3 id="checklists_1">Checklists<a class="headerlink" href="#checklists_1" title="Permanent link">&para;</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The co-pilot tries to be smart about "as required" items, but, as
+always, the responsibility lies with the captain. Verify the
+co-pilot's judgment calls are sound, especially regarding de-icing
+equipment.</p>
+</div>
+<h2 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Fixed autocomplete failing to move the de-ice boot and intake anti-ice switches. <em>(v2024.3.124)</em></li>
-<li>Restructured the checklist suite to follow the POH section by section. Many items that previously only ticked a box now test the underlying system. <em>(v2024.3.174)</em></li>
-<li>Float, amphibian and ski variants have their own procedures and notes. <em>(v2024.3.174)</em></li>
-<li>POH warnings, cautions and notes now appear inline as banded rows without a checkbox. A per-item hint (toolbar toggle) explains what each item wants. <em>(v2024.3.174)</em></li>
-<li>"As required" items determine what's required based on the environment. <em>(v2024.3.174)</em></li>
-<li>A running checklist now survives tab switches; only Cancel or changing pages stops it. In-flight flight-control pages are assist-only, the copilot won't move the controls in the air. <em>(v2024.3.174)</em></li>
-<li>Cargo variants skip cabin and passenger items that don't apply. <em>(v2024.3.174)</em></li>
-<li>The Take-Off Checks are assist-only (no autocomplete), and the 85 % Ng pause during start can be skipped. <em>(v2024.3.174)</em></li>
-<li>You can now mute the copilot's callouts, if you'd rather run the checks in silence. <em>(v2024.3.174)</em></li>
-<li>Feedback: The Shutdown checklist now keeps the fuel boost pumps on until both engines have decelerated below 10 % Ng. <em>(v2024.3.183)</em></li>
-<li>Checklists are aware of the avionics master switch. <em>(v2024.3.183)</em></li>
-<li>Fixed the autofeather items flipping the underlying state without moving the cockpit switch. <em>(v2024.3.183)</em></li>
-<li>Approach flap items accept at or beyond the called setting. <em>(v2024.3.183)</em></li>
-<li>The Weight and Balance item now autocompletes if gross weight and CG are acceptable, leaving the Passenger Briefing as last remaining item in the pre-take-off checklists that (intentionally) doesn't autocomplete. <em>(v2024.3.183)</em></li>
-<li>Fixed some typos and inconsistencies. <em>(v2024.3.183)</em></li>
-<li><strong>Autocomplete</strong> — the copilot runs the list: for each item he executes the action, then verifies the result before moving on, speaking a short confirmation as each item is done. <em>(v2024.3.99)</em></li>
-<li><strong>Interactive</strong> — the copilot just assists by marking verified items complete. <em>(v2024.3.99)</em></li>
-<li>Copilot callouts: Several dozens responses, most with alternate takes so he doesn't sound like a robot. He announces "Checklist complete!" when a page finishes on its own. Our research showed that a soothing copilot voice can help to reduce crew stress and prevent accidents, so we picked the most soothing voice we could find. All callouts are plain wav files. <em>(v2024.3.99)</em></li>
-<li><strong>"As required" items that read the conditions.</strong> A few items work out the right setting from the world around you instead of forcing a fixed state (for example: Anti-Ice, Taxi Light). <em>(v2024.3.99)</em></li>
-<li>In <strong>Autocomplete</strong>, a page that commands the engines or fuel will ask for confirmation first. <em>(v2024.3.99)</em></li>
-<li><strong>Climb Power and Cruise Power wait for you.</strong> There's no single torque or ITT number a copilot could verify for "climb power" or "cruise power". Even in Autocomplete he stops on these items and waits for you to set the power and tick them off. The copilot won't touch flight controls or power settings while handling in-flight checklists. <em>(v2024.3.99)</em></li>
+<li>
+<p>Some items will never autocomplete, for example the passenger
+  briefing.  Tick the item after you completed the briefing to let the
+  co-pilot resume.</p>
+</li>
+<li>
+<p>A checklist in autocomplete will continue to run even if the EFB is 
+  closed or you switch to an outside view. It's fun to let the engine start 
+  checklist run on autocomplete while watching the startup in drone view.
+  Especially with the sound mod.</p>
+</li>
+<li>
+<p>The co-pilot callouts are intentionally annoying for maximum
+  authenticity. They can be muted, though, on the Config tab or using
+  the Mute button on the Checklists tab.</p>
+</li>
+<li>
+<p>Float, amphibian and ski variants get their own POH-supplement
+  procedures; cargo variants skip cabin/passenger items.</p>
+</li>
+<li>
+<p>Checklists are aware of the avionics master switch and use it if
+  it's enabled.</p>
+</li>
+<li>
+<p>Take-Off checks: The 85 % Ng pause during start can be skipped.</p>
+</li>
+<li>
+<p>When opening the Checklists tab for the first time, it displays
+  prominently <strong>"For Simulation Use Only",</strong> just in case you forget
+  that you're flying a pixel plane.</p>
+</li>
 </ul>
-<h2 id="config-options">Config options<a class="headerlink" href="#config-options" title="Permanent link">&para;</a></h2>
-<p>Set from the EFB <strong>Config</strong> tab. Each option is documented on exactly one page; see <a href="../../configuration/">Configuration</a> for how profiles and the per-variant override work.</p>
-<h3 id="mute-copilot-callouts">Mute copilot callouts<a class="headerlink" href="#mute-copilot-callouts" title="Permanent link">&para;</a></h3>
-<p><code>DHC6_CFG_COPILOT_MUTE</code> — default: <strong>off</strong></p>
-<p>Silences the copilot's spoken checklist responses. The checklist still runs at the same pace. Also toggled by the Mute button in the Checklist tab.</p>
+<h2 id="lvars">L:vars<a class="headerlink" href="#lvars" title="Permanent link">&para;</a></h2>
+<p><code>DHC6_CFG_COPILOT_MUTE</code> — 0 (default, callouts audible), 1 (callouts muted)</p>
+<hr />
+<p><em>Reviewed 2026-08-06.</em></p>
 
 
 
