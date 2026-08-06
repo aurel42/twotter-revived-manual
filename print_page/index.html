@@ -644,8 +644,6 @@
       
         
       
-        
-      
     
     
     
@@ -815,34 +813,6 @@
     
   
     Sound
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../mod/features/variants/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Variants
   
 
     
@@ -2125,7 +2095,7 @@ way. Everything else is on the table.</p>
 <li>GPS/GNS spoofing and jamming</li>
 </ul>
 <hr />
-<p><em>Reviewed 2026-08-01.</em></p></section><section class="print-page" id="project-known-issues" heading-number="2.3"><h1 id="project-known-issues-known-issues">Known issues<a class="headerlink" href="#project-known-issues-known-issues" title="Permanent link">&para;</a></h1>
+<p><em>Reviewed 2026-08-06.</em></p></section><section class="print-page" id="project-known-issues" heading-number="2.3"><h1 id="project-known-issues-known-issues">Known issues<a class="headerlink" href="#project-known-issues-known-issues" title="Permanent link">&para;</a></h1>
 <ul>
 <li>
 <p>Default audio is shit. Aerosoft's Wwise sound bank limits what I can do.</p>
@@ -2187,7 +2157,7 @@ way. Everything else is on the table.</p>
 </li>
 </ul>
 <hr />
-<p><em>Reviewed 2026-08-01.</em></p></section><section class="print-page" id="project-references" heading-number="2.4"><h1 id="project-references-references">References<a class="headerlink" href="#project-references-references" title="Permanent link">&para;</a></h1>
+<p><em>Reviewed 2026-08-06.</em></p></section><section class="print-page" id="project-references" heading-number="2.4"><h1 id="project-references-references">References<a class="headerlink" href="#project-references-references" title="Permanent link">&para;</a></h1>
 <h2 id="project-references-the-project">The project<a class="headerlink" href="#project-references-the-project" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://flightsim.to/addon/106069/twotter-revived-beta">Project page</a> on flightsim.to</li>
@@ -2477,7 +2447,7 @@ modify it in order to prevent collisions with the actual Turbine Duke.</p>
 too, will be inactive.</p>
 </div>
 <hr />
-<p><em>Reviewed 2026-08-02.</em></p></section><section class="print-page" id="mod-configuration" heading-number="3.3"><h1 id="mod-configuration-configurable-settings">Configurable settings<a class="headerlink" href="#mod-configuration-configurable-settings" title="Permanent link">&para;</a></h1>
+<p><em>Reviewed 2026-08-06.</em></p></section><section class="print-page" id="mod-configuration" heading-number="3.3"><h1 id="mod-configuration-configurable-settings">Configurable settings<a class="headerlink" href="#mod-configuration-configurable-settings" title="Permanent link">&para;</a></h1>
 <p>Everything on this page is set on the Config tab in the EFB app.</p>
 <p>The default settings are either sim defaults or they enable convenience features.
 The non-default settings strive to be more realistic, and might end up being more annoying.</p>
@@ -3099,70 +3069,84 @@ This is a selection, not the full list — the aircraft defines around a thousan
 <td>RAM air lever (0..100), 0 is closed, 100 is fully open.</td>
 </tr>
 </tbody>
-</table></section><section class="print-page" id="mod-features-variants" heading-number="3.4.6"><h1 id="mod-features-variants-variants">Variants<a class="headerlink" href="#mod-features-variants-variants" title="Permanent link">&para;</a></h1>
-<h2 id="mod-features-variants-from-the-readme">From the README<a class="headerlink" href="#mod-features-variants-from-the-readme" title="Permanent link">&para;</a></h2>
+</table>
+<hr />
+<p><em>Reviewed 2026-08-06.</em></p></section><section class="print-page" id="mod-features-wear-and-tear" heading-number="3.4.6"><h1 id="mod-features-wear-and-tear-wear-tear-damage">Wear, tear, damage<a class="headerlink" href="#mod-features-wear-and-tear-wear-tear-damage" title="Permanent link">&para;</a></h1>
+<h2 id="mod-features-wear-and-tear-overview">Overview<a class="headerlink" href="#mod-features-wear-and-tear-overview" title="Permanent link">&para;</a></h2>
+<p>Work on an optional wear/tear/damage system has started. I wired up
+two sample systems as a vertical slice, one of them has an actual
+effect, albeit a mostly cosmetical one.</p>
+<p>There are two ways that components can decay and break:</p>
 <ul>
-<li>Tundra Pax and Cargo: committed to the tundra tires feel.</li>
-<li>All Pax variants: added passenger layout with individual seats.</li>
-<li>Amphibian and float variants: increased parasitic drag for the floats.</li>
-<li>Added preliminary PT6A-20 tuning for the DHC-6-100 variants.</li>
-<li>Variants with legacy tuning are no longer included. Stick with v2024.3.68 if you prefer the Aerosoft/Metzger tuning.</li>
+<li>
+<p>Abuse leads to component stress, when stress grows above a
+  threshold, it leads to damage. Component stress decays and is
+  ephemeral, damage persists and leads to failures. Damaged components
+  can be repaired or replaced.</p>
+</li>
+<li>
+<p>Components age based on time in service or service cycles. They can
+  fail when they get close to or exceed their normal lifespan.</p>
+</li>
 </ul>
-<h2 id="mod-features-variants-from-the-release-notes">From the release notes<a class="headerlink" href="#mod-features-variants-from-the-release-notes" title="Permanent link">&para;</a></h2>
-<p>Verbatim from <code>docs/release-notes-*.md</code>, grouped by the section they appeared in. The tag is the version each item first appeared in.</p>
-<h3 id="mod-features-variants-variants_1">Variants<a class="headerlink" href="#mod-features-variants-variants_1" title="Permanent link">&para;</a></h3>
+<p>The proof-of-concept components:</p>
 <ul>
-<li>Tundra Pax and Cargo: committed to the tundra tires feel. <em>(v2024.2.x)</em></li>
-<li>All Pax variants: added passenger layout with individual seats. <em>(v2024.2.x)</em></li>
-<li>Amphibian and float variants: increased parasitic drag for the floats. <em>(v2024.2.x)</em></li>
-</ul></section><section class="print-page" id="mod-features-wear-and-tear" heading-number="3.4.7"><h1 id="mod-features-wear-and-tear-wear-and-tear">Wear and tear<a class="headerlink" href="#mod-features-wear-and-tear-wear-and-tear" title="Permanent link">&para;</a></h1>
-<h2 id="mod-features-wear-and-tear-from-the-readme">From the README<a class="headerlink" href="#mod-features-wear-and-tear-from-the-readme" title="Permanent link">&para;</a></h2>
-<p>The aircraft now has an optional Wear &amp; Tear system that ages and damages individual components. This is a vertical slice, covering only two systems:</p>
-<ul>
-<li>Pitot Probe heating elements can burn out if left on for an extended time without airflow. Abuse leads to stress, when stress grows above a threshold, it leads to damage. Stress decays and is ephemeral, damage persists and leads to failures. Damaged components can be repaired or replaced. Test scenario: with the reliability slider not in the "Off" position, in a powered aircraft on the ground with stopped engines (so the Maint tab is available), turn on Pitot Heat and select the Maint tab in the EFB app. You should see the stress and damage bars change.</li>
-<li>Annunciator bulbs age and can burn out. The age affects the brightness. Test scenario: when the aircraft is loaded, all the glareshield annunciators have the same brightness; move the reliability slider from the Off position or click "Re-roll" on the Maint tab, and the brightness of some of the bulbs should change (the effect can be subtle). Each time an annunciator lights up, the filament has a tiny chance to burn out (based on operating time, cycles, current bus voltage; that was some fun math, please tell me if I got it wrong and the bulbs die too often).</li>
-<li>Engines track damage to the hot section. Work in progress.</li>
+<li>
+<p>Abuse: <strong>Pitot Probe heating elements</strong> can burn out if left on for
+  an extended time without airflow in warm ambient conditions.</p>
+</li>
+<li>
+<p>Age: <strong>Glareshield Annunciator bulbs</strong> can burn out. The age affects
+  the brightness.</p>
+</li>
+<li>
+<p>Engines track damage to the hot section. Work in progress.</p>
+</li>
 </ul>
-<p>These systems cover most of the planned wear &amp; tear behaviors: random, physics-based failures of non-essential systems (like annunciator lights), and strictly deterministic stress and damage caused by pilot action, that can lead to (possibly critical) failure.</p>
+<p>These systems cover most of the planned wear/tear/damage behaviors:
+random, physics-based failures of non-essential systems (like
+annunciator lights), and strictly deterministic stress and damage
+caused by pilot action, that can lead to (possibly critical) failure.</p>
+<p>At this stage, I'm not planning to force random failures of critical
+components on users, simply for gameplay reasons.</p>
+<p>Don't expect rapid progress with this feature. Each component added to
+the system needs research, and asking pilots to break parts of their
+plane to provide reference material appears to be frowned upon.</p>
+<h2 id="mod-features-wear-and-tear-usage">Usage<a class="headerlink" href="#mod-features-wear-and-tear-usage" title="Permanent link">&para;</a></h2>
+<p>The system is controlled by the <strong>Reliability</strong> slider on the EFB Config tab:</p>
 <ul>
-<li>The Wear &amp; Tear system is controlled by the <strong>Reliability</strong> slider on the EFB Config tab: <strong>Off</strong>, <strong>Reliable</strong> (nominal wear), <strong>Unreliable</strong> (4× wear), or <strong>Not Airworthy</strong> (16× wear).</li>
-<li>A new <strong>Maintenance tab</strong> in the EFB (available while on the ground with engines shut down) lists every component that has accrued stress or damage. <strong>Re-roll</strong> randomizes the aircraft state (production year, TTAF, and all component states); <strong>Request Service</strong> runs maintenance and produces a per-component report.</li>
-<li>A separate <strong>Reset</strong> button on the Debug tab returns everything to a factory-new state.</li>
-<li>Wear state persists per variant in the WASM work folder.</li>
+<li>
+<p><strong>Off</strong> disables the system and hides the Maintenance tab.</p>
+</li>
+<li>
+<p><strong>Reliable</strong> is the default behavior, I'm aiming for plausible component lifecycles.</p>
+</li>
+<li>
+<p><strong>Unreliable</strong> lets components age four times faster; both time in
+  service and service cycles are affected by the multiplier.</p>
+</li>
+<li>
+<p><strong>Not Airworthy</strong> results in 16× wear and you have a higher chance
+  of replacement components being refurbished instead of new.</p>
+</li>
 </ul>
-<h2 id="mod-features-wear-and-tear-from-the-release-notes">From the release notes<a class="headerlink" href="#mod-features-wear-and-tear-from-the-release-notes" title="Permanent link">&para;</a></h2>
-<p>Verbatim from <code>docs/release-notes-*.md</code>, grouped by the section they appeared in. The tag is the version each item first appeared in.</p>
-<h3 id="mod-features-wear-and-tear-wear-tear">Wear &amp; Tear<a class="headerlink" href="#mod-features-wear-and-tear-wear-tear" title="Permanent link">&para;</a></h3>
+<p>A <strong>Maintenance tab</strong> in the EFB app is available while on the ground
+with engines shut down and lists every component that has accrued
+stress or damage. </p>
 <ul>
-<li>Vertical slice of a new optional system that ages and damages individual aircraft components. Enable via the Reliability slider on the EFB Config tab. <em>(v2024.3.19)</em></li>
-<li>Each glareshield annunciator bulb now has independent age and cycle counts. Bulbs dim continuously as they age and can burn out. <em>(v2024.3.19)</em></li>
-<li>Either pitot heating element can now burn out if the heater is left on for extended periods while stationary. <em>(v2024.3.19)</em></li>
-<li>A Maintenance tab in the EFB app is active while on the ground with engines shut down and lists every component that has accrued stress or damage. <strong>Re-roll</strong> will randomize the aircraft state (production year, TTAF, and all component states) and <strong>Request Service</strong> runs maintenance and produces a per-component report. <em>(v2024.3.19)</em></li>
-<li>A <strong>Reset</strong> button on the Debug tab resets everything to a factory-new state. <em>(v2024.3.19)</em></li>
-<li>Wear state persists per variant in the WASM work folder. <em>(v2024.3.19)</em></li>
+<li>
+<p><strong>Re-roll</strong> randomizes the aircraft state (production year, TTAF,
+  and all component states); </p>
+</li>
+<li>
+<p><strong>Request Service</strong> runs maintenance and produces a per-component
+  report.</p>
+</li>
+<li>
+<p><strong>Reset</strong> returns everything to a factory-new state.</p>
+</li>
 </ul>
-<h3 id="mod-features-wear-and-tear-wear-tear_1">Wear &amp; tear<a class="headerlink" href="#mod-features-wear-and-tear-wear-tear_1" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Pitot-heat wear</strong> now only builds up when it physically should — warm ambient temps and lack of airflow.. <em>(v2024.3.47)</em></li>
-<li>Fixed an issue that would keep glareshield annunciator bulbs inoperative even after a maintenance pass. <em>(v2024.3.47)</em></li>
-</ul>
-<h3 id="mod-features-wear-and-tear-wear-and-tear_1">Wear and tear<a class="headerlink" href="#mod-features-wear-and-tear-wear-and-tear_1" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Added tracking of engine and hot-section condition. <em>(v2024.3.99)</em></li>
-<li>Stopped Maint tab from hiding, instead only the "Request maintenance" button is disabled unless parked. <em>(v2024.3.99)</em></li>
-</ul>
-<h2 id="mod-features-wear-and-tear-autopilot-servos">Autopilot servos<a class="headerlink" href="#mod-features-wear-and-tear-autopilot-servos" title="Permanent link">&para;</a></h2>
-<p>The KAP 140's three servos — roll, pitch, and pitch trim — are wear
-components: they age while the autopilot is engaged, and every
-engagement counts as a cycle. A failure shows up on the autopilot
-display and, like every other component, on the EFB Maintenance tab.
-What each failure does to the autopilot is on the
-<a href="#aircraft-systems-autopilot-kap-140">KAP 140</a> page.</p>
-<h2 id="mod-features-wear-and-tear-config-options">Config options<a class="headerlink" href="#mod-features-wear-and-tear-config-options" title="Permanent link">&para;</a></h2>
-<p>Set from the EFB <strong>Config</strong> tab. Each option is documented on exactly one page; see <a href="#mod-configuration">Configuration</a> for how profiles and the per-variant override work.</p>
-<h3 id="mod-features-wear-and-tear-reliability">Reliability<a class="headerlink" href="#mod-features-wear-and-tear-reliability" title="Permanent link">&para;</a></h3>
-<p><code>DHC6_CFG_RELIABILITY</code> — default: <strong>Off</strong></p>
-<p>Controls the custom damage and wear &amp; tear system — Off / Reliable / Unreliable / Not Airworthy. Off disables it entirely and hides the Maintenance tab; the remaining detents multiply the wear rate by 1, 4 and 16.</p></section></section></section>
+<p>The state persists per variant in the WASM work folder.</p></section></section></section>
                     <section class='print-page md-section' id='section-4' heading-number='4'>
                         <h1>Aircraft<a class='headerlink' href='#section-4' title='Permanent link'></a>
                         </h1>
@@ -3364,7 +3348,9 @@ select the unit or detail within a function.</p>
 </li>
 </ul>
 <p>If you find anything else it can do, that's between you and your
-mechanic, so keep it to yourself.</p></section><section class="print-page" id="aircraft-systems-egpws" heading-number="4.2.4"><h1 id="aircraft-systems-egpws-egpws">EGPWS<a class="headerlink" href="#aircraft-systems-egpws-egpws" title="Permanent link">&para;</a></h1>
+mechanic, so keep it to yourself.</p>
+<hr />
+<p><em>Reviewed 2026-08-06.</em></p></section><section class="print-page" id="aircraft-systems-egpws" heading-number="4.2.4"><h1 id="aircraft-systems-egpws-egpws">EGPWS<a class="headerlink" href="#aircraft-systems-egpws-egpws" title="Permanent link">&para;</a></h1>
 <h2 id="aircraft-systems-egpws-from-the-readme">From the README<a class="headerlink" href="#aircraft-systems-egpws-from-the-readme" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Overhauled EGPWS suite based on Honeywell Pilot's Guide and FAA advisories.</li>
@@ -3789,7 +3775,7 @@ aircraft's magnetic heading and attitude.</p>
 </tbody>
 </table>
 <hr />
-<p><em>Reviewed 2026-08-04.</em></p></section><section class="print-page" id="aircraft-systems-lighting" heading-number="4.2.9"><h1 id="aircraft-systems-lighting-lighting">Lighting<a class="headerlink" href="#aircraft-systems-lighting-lighting" title="Permanent link">&para;</a></h1>
+<p><em>Reviewed 2026-08-06.</em></p></section><section class="print-page" id="aircraft-systems-lighting" heading-number="4.2.9"><h1 id="aircraft-systems-lighting-lighting">Lighting<a class="headerlink" href="#aircraft-systems-lighting-lighting" title="Permanent link">&para;</a></h1>
 <p>Every cockpit light has to pass four gates before it illuminates: the bus has to
 be powered, the circuit's slot switch has to be closed, the potentiometer has to
 be turned up, and the emissive itself has to be working. A lamp that stays dark
@@ -5084,9 +5070,7 @@ State: Mostly complete. The custom signal now drives the steam gauges and the au
 
 .print-site-enumerate-headings #mod-features-sound > h1:before { content: '3.4.5 ' }
 
-.print-site-enumerate-headings #mod-features-variants > h1:before { content: '3.4.6 ' }
-
-.print-site-enumerate-headings #mod-features-wear-and-tear > h1:before { content: '3.4.7 ' }
+.print-site-enumerate-headings #mod-features-wear-and-tear > h1:before { content: '3.4.6 ' }
 
 .print-site-enumerate-headings #section-4 > h1:before { content: '4 ' }
 .print-site-enumerate-headings #aircraft-flight-model > h1:before { content: '4.1 ' }

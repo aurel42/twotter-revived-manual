@@ -941,6 +941,8 @@
       
         
       
+        
+      
     
     
     
@@ -1054,6 +1056,34 @@
     
   
     Sound
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mod/features/wear-and-tear/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Wear and tear
   
 
     
@@ -2574,7 +2604,82 @@ This is a selection, not the full list — the aircraft defines around a thousan
 <td>RAM air lever (0..100), 0 is closed, 100 is fully open.</td>
 </tr>
 </tbody>
-</table></section></section></section>
+</table></section><section class="print-page" id="mod-features-wear-and-tear" heading-number="3.4.4"><h1 id="mod-features-wear-and-tear-wear-tear-damage">Wear, tear, damage<a class="headerlink" href="#mod-features-wear-and-tear-wear-tear-damage" title="Permanent link">&para;</a></h1>
+<h2 id="mod-features-wear-and-tear-overview">Overview<a class="headerlink" href="#mod-features-wear-and-tear-overview" title="Permanent link">&para;</a></h2>
+<p>Work on an optional wear/tear/damage system has started. I wired up
+two sample systems as a vertical slice, one of them has an actual
+effect, albeit a mostly cosmetical one.</p>
+<p>There are two ways that components can decay and break:</p>
+<ul>
+<li>
+<p>Abuse leads to component stress, when stress grows above a
+  threshold, it leads to damage. Component stress decays and is
+  ephemeral, damage persists and leads to failures. Damaged components
+  can be repaired or replaced.</p>
+</li>
+<li>
+<p>Components age based on time in service or service cycles. They can
+  fail when they get close to or exceed their normal lifespan.</p>
+</li>
+</ul>
+<p>The proof-of-concept components:</p>
+<ul>
+<li>
+<p>Abuse: <strong>Pitot Probe heating elements</strong> can burn out if left on for
+  an extended time without airflow in warm ambient conditions.</p>
+</li>
+<li>
+<p>Age: <strong>Glareshield Annunciator bulbs</strong> can burn out. The age affects
+  the brightness.</p>
+</li>
+<li>
+<p>Engines track damage to the hot section. Work in progress.</p>
+</li>
+</ul>
+<p>These systems cover most of the planned wear/tear/damage behaviors:
+random, physics-based failures of non-essential systems (like
+annunciator lights), and strictly deterministic stress and damage
+caused by pilot action, that can lead to (possibly critical) failure.</p>
+<p>At this stage, I'm not planning to force random failures of critical
+components on users, simply for gameplay reasons.</p>
+<p>Don't expect rapid progress with this feature. Each component added to
+the system needs research, and asking pilots to break parts of their
+plane to provide reference material appears to be frowned upon.</p>
+<h2 id="mod-features-wear-and-tear-usage">Usage<a class="headerlink" href="#mod-features-wear-and-tear-usage" title="Permanent link">&para;</a></h2>
+<p>The system is controlled by the <strong>Reliability</strong> slider on the EFB Config tab:</p>
+<ul>
+<li>
+<p><strong>Off</strong> disables the system and hides the Maintenance tab.</p>
+</li>
+<li>
+<p><strong>Reliable</strong> is the default behavior, I'm aiming for plausible component lifecycles.</p>
+</li>
+<li>
+<p><strong>Unreliable</strong> lets components age four times faster; both time in
+  service and service cycles are affected by the multiplier.</p>
+</li>
+<li>
+<p><strong>Not Airworthy</strong> results in 16× wear and you have a higher chance
+  of replacement components being refurbished instead of new.</p>
+</li>
+</ul>
+<p>A <strong>Maintenance tab</strong> in the EFB app is available while on the ground
+with engines shut down and lists every component that has accrued
+stress or damage. </p>
+<ul>
+<li>
+<p><strong>Re-roll</strong> randomizes the aircraft state (production year, TTAF,
+  and all component states); </p>
+</li>
+<li>
+<p><strong>Request Service</strong> runs maintenance and produces a per-component
+  report.</p>
+</li>
+<li>
+<p><strong>Reset</strong> returns everything to a factory-new state.</p>
+</li>
+</ul>
+<p>The state persists per variant in the WASM work folder.</p></section></section></section>
                     <section class='print-page md-section' id='section-4' heading-number='4'>
                         <h1>Project<a class='headerlink' href='#section-4' title='Permanent link'></a>
                         </h1>
@@ -2932,6 +3037,8 @@ redistributed and the WASM build does not depend on it.</p>
 .print-site-enumerate-headings #mod-features-persistence > h1:before { content: '3.4.2 ' }
 
 .print-site-enumerate-headings #mod-features-sound > h1:before { content: '3.4.3 ' }
+
+.print-site-enumerate-headings #mod-features-wear-and-tear > h1:before { content: '3.4.4 ' }
 
 .print-site-enumerate-headings #section-4 > h1:before { content: '4 ' }
 .print-site-enumerate-headings #project-history > h1:before { content: '4.1 ' }
