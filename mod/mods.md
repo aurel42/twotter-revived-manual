@@ -1,0 +1,38 @@
+---
+title: Companion Mods
+review: approved
+---
+
+# Companion Mods
+
+These mods are distributed in the same archive as the main mod. They
+are optional.
+
+## Prop blur mod (CCM)
+
+`z_aerosoft-twin-otter-propblur_mod` mitigates the "wagon wheel
+effect" by making the blurred prop phases more transparent, only for
+the close-up LOD, so screenshots taken from the outside at some
+distance still get the cinematic look.
+
+## Flat camera mod (Hobanagerik)
+
+`z_aerosoft-twin-otter-flat_camers` replaces some of the default
+tilted camera views with flat views at the instruments.
+
+## Sound mod for Turbine Duke owners
+
+`charliebravo-soundmod-twin-otter-turbineduke` replaces the default
+engine sounds and a few other effects with much better versions from
+the Black Square Turbine Duke.
+
+You need to own the Turbine Duke and have it installed somewhere on
+your system. We don't distribute any part of the soundbank.
+
+To activate the mod, you must run the install script in its folder and
+point it at your Turbine Duke folder. It will copy the soundbank and
+modify it in order to prevent collisions with the actual Turbine Duke.
+
+> [!WARNING]
+> Until the (separate) install script has been executed, this mod,
+> too, will be inactive.
