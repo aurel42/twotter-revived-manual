@@ -2346,7 +2346,6 @@ way. Everything else is on the table.</p>
 <li><strong>CCM</strong> — for continuous input, advice, testing, and the flight model.</li>
 <li><strong>JoseColme</strong> — for sharing his experience flying the type.</li>
 <li><strong>Bagolu</strong> — for the wheel-chock visual model, and for fitting the ground power unit to the aircraft.</li>
-<li><strong>omri_ha_muglob</strong> — for the <a href="https://sketchfab.com/3d-models/gpu-aiport-ground-power-unit-b18e62dda2e04e97a95312bb6a284f1c">ground power unit model</a>, used under CC BY 4.0.</li>
 <li><strong>hobanagerik</strong> — for tireless support and encouragement, better lights and cameras.</li>
 <li><strong>Black Square</strong> and <strong>Boris Audio Works</strong> — for their kind permission to use the Turbine Duke soundbank.</li>
 </ul>
@@ -2387,29 +2386,79 @@ way. Everything else is on the table.</p>
 <p><em>Reviewed 2026-08-03.</em></p></section><section class="print-page" id="project-plans" heading-number="2.2"><h1 id="project-plans-plans">Plans<a class="headerlink" href="#project-plans-plans" title="Permanent link">&para;</a></h1>
 <h2 id="project-plans-ongoing-started-but-not-yet-completed">Ongoing (started, but not yet completed)<a class="headerlink" href="#project-plans-ongoing-started-but-not-yet-completed" title="Permanent link">&para;</a></h2>
 <ul>
-<li>System modernization: as Asobo improves sim systems, I adopt the new systems to unlock more authentic behavior and simplify custom code</li>
-<li>Custom engine simulation: constant refinements as reference material becomes available</li>
-<li>Wear/tear/damage: the scaffolding is present, individual systems have been wired up as proof of concept (glareshield annunciators can burn out when they're past their lifetime, pitot probe heaters can fail when they are powered for an extended time without cooling)</li>
-<li>Implement the full feature set of the TwotterX</li>
-<li>Instrument behavior: some instruments are missing correct power-up behavior or real-world idiosyncrasies, they're updated and refined as I discover new reference material</li>
+<li>
+<p>System modernization: as Asobo improves sim systems, I adopt the new
+  systems to unlock more authentic behavior and simplify custom code</p>
+</li>
+<li>
+<p>Custom engine simulation: constant refinements as reference material
+  becomes available</p>
+</li>
+<li>
+<p>Wear/tear/damage: the scaffolding is present, individual systems
+  have been wired up as proof of concept (glareshield annunciators can
+  burn out when they're past their lifetime, pitot probe heaters can
+  fail when they are powered for an extended time without cooling)</p>
+</li>
+<li>
+<p>Implement the full feature set of the TwotterX</p>
+</li>
+<li>
+<p>Instrument behavior: some instruments are missing correct power-up
+  behavior or real-world idiosyncrasies, they're updated and refined
+  as I discover new reference material</p>
+</li>
 </ul>
 <h2 id="project-plans-system-replacements">System replacements<a class="headerlink" href="#project-plans-system-replacements" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Icing: I tried to make all the de-icing equipment useful, but the whole system funnels into a single simvar. To simulate the authentic behavior of the de-icing and anti-ice equipment, the icing model of the sim has to be replaced with custom code.</li>
-<li>Pitot-static system: the stock sim system is limited and probably needs to be replaced with a custom implementation.</li>
+<li>
+<p>Icing: I tried to make all the de-icing equipment useful, but the
+  whole system funnels into a single simvar. To simulate the authentic
+  behavior of the de-icing and anti-ice equipment, the icing model of
+  the sim has to be replaced with custom code.</p>
+</li>
+<li>
+<p>Pitot-static system: the stock sim system is limited and probably
+  needs to be replaced with a custom implementation.</p>
+</li>
+</ul>
+<h2 id="project-plans-other-plans">Other plans<a class="headerlink" href="#project-plans-other-plans" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Some form of "Onboarding" in the EFB, like let the user pick the EFB
+  mode and a config profile</li>
 </ul>
 <h2 id="project-plans-needs-research-references-resources">Needs research, references, resources<a class="headerlink" href="#project-plans-needs-research-references-resources" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Support for four-blade props</li>
-<li>DHC-6-100 performance, currently guesstimated purely based on SHP</li>
-<li>Needle vibrations</li>
-<li>Wind flutter of control surfaces in walkaround</li>
-<li>Opening doors in flight</li>
-<li>Yaw damper: real-world behavior vs stock sim implementation</li>
-<li>Post-shutdown ticking of cooling exhaust/engine</li>
-<li>Brake heat</li>
-<li>Why does crosswind affect the efficiency of the brakes?</li>
-<li>Improve handling of amphibian and float variants in water</li>
+<li>
+<p>Support for four-blade props</p>
+</li>
+<li>
+<p>DHC-6-100 performance, currently guesstimated purely based on SHP</p>
+</li>
+<li>
+<p>Needle vibrations</p>
+</li>
+<li>
+<p>Wind flutter of control surfaces in walkaround</p>
+</li>
+<li>
+<p>Opening doors in flight</p>
+</li>
+<li>
+<p>Yaw damper: real-world behavior vs stock sim implementation</p>
+</li>
+<li>
+<p>Post-shutdown ticking of cooling exhaust/engine</p>
+</li>
+<li>
+<p>Brake heat</p>
+</li>
+<li>
+<p>Why does crosswind affect the efficiency of the brakes?</p>
+</li>
+<li>
+<p>Improve handling of amphibian and float variants in water</p>
+</li>
 </ul>
 <h2 id="project-plans-unexplored-concepts">Unexplored concepts<a class="headerlink" href="#project-plans-unexplored-concepts" title="Permanent link">&para;</a></h2>
 <ul>
@@ -3170,82 +3219,83 @@ equipment.</p>
 <h2 id="mod-features-checklists-lvars">L:vars<a class="headerlink" href="#mod-features-checklists-lvars" title="Permanent link">&para;</a></h2>
 <p><code>DHC6_CFG_COPILOT_MUTE</code> — 0 (default, callouts audible), 1 (callouts muted)</p>
 <hr />
-<p><em>Reviewed 2026-08-06.</em></p></section><section class="print-page" id="mod-features-efb" heading-number="3.4.2"><h1 id="mod-features-efb-the-efb-app">The EFB app<a class="headerlink" href="#mod-features-efb-the-efb-app" title="Permanent link">&para;</a></h1>
-<h2 id="mod-features-efb-from-the-readme">From the README<a class="headerlink" href="#mod-features-efb-from-the-readme" title="Permanent link">&para;</a></h2>
+<p><em>Reviewed 2026-08-06.</em></p></section><section class="print-page" id="mod-features-efb" heading-number="3.4.2"><h1 id="mod-features-efb-the-twotter-efb-app">The "Twotter" EFB app<a class="headerlink" href="#mod-features-efb-the-twotter-efb-app" title="Permanent link">&para;</a></h1>
+<h2 id="mod-features-efb-overview">Overview<a class="headerlink" href="#mod-features-efb-overview" title="Permanent link">&para;</a></h2>
+<p>The EFB app is an integral part of the mod, unlocking many of its
+features. I recommend you make yourself familiar with it when you
+first start the mod.</p>
+<p>This manual is available on the Manual tab of the EFB app.</p>
+<p>Note the toggle at the top, between the notification icon and the
+timestamp. It displays the mode the app is currently in:</p>
 <ul>
-<li>Added EFB app with Load Manager for pax and cargo variants.</li>
-<li>Load manager: short click on a seat or cargo station toggles between 0 and the set weight, long click resets to max weight.</li>
-<li>Sliders allow for quick adjustment of passenger, cargo and fuel loads. All changes take effect immediately.</li>
-<li>Added "Redist Fuel" button to move fuel from wing tips to main FWD/AFT tanks ().</li>
-<li>Added Info and Debug tabs to the EFB.</li>
-<li>Added a Stats tab in lieu of the missing Hobbs meters.</li>
-<li>Added a Doors tab to the EFB for control of all aircraft cabin and cargo doors.</li>
-<li>[CHANGED] Added a Systems tab for chocks, anchor, the hydraulic emergency hand pump, Crew Oxygen panel, DME control head and more.</li>
-<li>Added an Aircraft tab with battery temperature, bleed air pressure, and other system readouts.</li>
-<li>Added a Flight tab with environmental info and ice-accretion statistics.</li>
-<li>Added a Maintenance tab for the Wear &amp; Tear system.</li>
-<li>Added a TAWS tab for debugging and educational purposes.</li>
-<li>Added a Radio tab for debugging and educational purposes.</li>
-<li>Added a Config tab.</li>
-<li>The splash screen with the "Restore state" button only appears if the engines aren't running. You can still restore the state using the button on the debug tab.</li>
-<li>The splash opens in a "Waiting for flight to start" state with no action buttons; Restore State / Continue-without-persistence appear only once the flight is ready.</li>
-<li>[NEW] Reference tab: POH quick-reference pages plus performance charts.</li>
-<li>[NEW] Boot self-check: if the custom WASM module or panel config fails to load, the EFB shows a warning splash.</li>
+<li>
+<p>"Limited" tries to limit the information presented on some of the
+  tabs to what would be available to the pilot in flight. It also
+  hides some tabs completely, e.g. the Radio and TAWS tabs.</p>
+</li>
+<li>
+<p>"Instructional" lifts this restraint and offers insights that might
+  help you understand system internals as they happen.</p>
+</li>
 </ul>
-<h2 id="mod-features-efb-from-the-release-notes">From the release notes<a class="headerlink" href="#mod-features-efb-from-the-release-notes" title="Permanent link">&para;</a></h2>
-<p>Verbatim from <code>docs/release-notes-*.md</code>, grouped by the section they appeared in. The tag is the version each item first appeared in.</p>
-<h3 id="mod-features-efb-efb">EFB<a class="headerlink" href="#mod-features-efb-efb" title="Permanent link">&para;</a></h3>
+<p>Click it any time to switch between modes. If you're a flightsim
+role-player, consider it the "cheat button".</p>
+<p>Recommended first step in the app: check out the 
+<a href="#mod-configuration">Config tab</a>, 
+pick a profile that fits your expectations and adjust the options from
+there.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Information presented in the EFB app that appears to reference 
+real-world data or information is FOR SIMULATION USE ONLY.
+The Checklists and Reference tabs explicitly say so.</p>
+</div>
+<h2 id="mod-features-efb-notes">Notes<a class="headerlink" href="#mod-features-efb-notes" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Made splashscreen more robust. <em>(v2024.2.134)</em></li>
-<li>Redesigned the NDB detail panel on the Radio tab and added the year-scrubber. <em>(v2024.3.124)</em></li>
-<li>Added off-axis signal-loss readouts to the Radio tab. <em>(v2024.3.124)</em></li>
-<li>New Maintenance tab (see Wear &amp; Tear above). <em>(v2024.3.19)</em></li>
-<li>Reliability slider on the Config tab (Off / Reliable / Unreliable / Not Airworthy). <em>(v2024.3.19)</em></li>
-<li>Visible scrollbar added to scrollable content. <em>(v2024.3.19)</em></li>
-<li>Disable Flight Director toggle on the Config tab. <em>(v2024.3.19)</em></li>
-<li>Debug tab reorganized into collapsible sections (Persistence, TurbSim, Wear &amp; Tear). <em>(v2024.3.19)</em></li>
-<li>The splash now starts in a "Waiting for flight to start" state with no action buttons <em>(v2024.3.47)</em></li>
-<li>Added tooltips for config options. <em>(v2024.3.47)</em></li>
-<li>New Config toggle "Alternative lateral modes" (see Autopilot above). <em>(v2024.3.47)</em></li>
-<li>Added DME unit to the Systems tab, Radio tab, TAWS tab. <em>(v2024.3.99)</em></li>
-<li>Added a "max tailwind for landing exceeded" warning (over 10 kt) to the Flight tab, and moved the radio table to the Radio tab. <em>(v2024.3.99)</em></li>
-<li>Removed "Alternate ITT calculation" from Config tab and expanded TAWS section. <em>(v2024.3.99)</em></li>
-<li>New Config toggle "Enable KAP-140 voice messages" (see Autopilot). Off by default, on in the <em>recommended</em> profile; <em>realistic</em> leaves it alone, because the real unit makes it an installation option.</li>
-</ul>
-<h3 id="mod-features-efb-efb-twin-otter-app">EFB "Twin Otter" app<a class="headerlink" href="#mod-features-efb-efb-twin-otter-app" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Added EFB app with Load Manager for pax and cargo variants. <em>(v2024.2.x)</em></li>
-<li>Load manager: short click on a seat or cargo station toggles between 0 and the set weight, long click resets to max weight. <em>(v2024.2.x)</em></li>
-<li>[CHANGED] Sliders allow for quick adjustment of passenger, cargo and fuel loads. All changes take effect immediately (live loading); the explicit "Load aircraft" step is gone. <em>(v2024.2.x)</em></li>
-<li>Added "Redist Fuel" button to move fuel from wing tips to main FWD/AFT tanks. <em>(v2024.2.x)</em></li>
-<li>Added Info and Debug tabs to the EFB. <em>(v2024.2.x)</em></li>
-<li>Added a Stats tab in lieu of the missing Hobbs meters. <em>(v2024.2.x)</em></li>
-<li>Added a Doors tab to the EFB for control of all aircraft cabin and cargo doors. <em>(v2024.2.x)</em></li>
-<li>[NEW] Added a Systems tab for chocks and the hydraulic emergency hand pump. <em>(v2024.2.x)</em></li>
-<li>[NEW] Added an Aircraft tab with battery temperature, bleed air pressure, and other system readouts. <em>(v2024.2.x)</em></li>
-<li>[NEW] Added a Flight tab with environmental info and ice-accretion statistics. <em>(v2024.2.x)</em></li>
-<li>[NEW] Added a Config tab. <em>(v2024.2.x)</em></li>
-</ul>
-<h3 id="mod-features-efb-efb-app">EFB app<a class="headerlink" href="#mod-features-efb-efb-app" title="Permanent link">&para;</a></h3>
-<ul>
-<li>New Reference tab with POH performance charts: rotation speeds, take-off performance, and take-off / max-continuous / max-climb / cruise power nomographs, with your current OAT, pressure altitude and prop RPM plotted onto the chart. <em>(v2024.3.174)</em></li>
-<li>Crew Oxygen panel on the Systems tab: mask-on state per crewmember, the FAR 91.211 30-minute band countdown, tank level and endurance. Refill from the Maintenance tab. The system is flavor only, running out of oxygen has no consquences. <em>(v2024.3.174)</em></li>
-<li>Temperature readouts across the EFB app follow your EFB °C / °F setting. <em>(v2024.3.174)</em></li>
-<li>The Payload tab follows your sim weight-unit setting (lbs or kg) throughout, with a weight breakdown shown in both units. <em>(v2024.3.174)</em></li>
-<li>Configurable default passenger weight: set it once and empty seats fill to that value instead of a fixed 170 lb. <em>(v2024.3.174)</em></li>
-<li>Anchor button (float and amphibian variants) freezes the aircraft in place on the water. It's a hack and placeholder for a realistic anchor or mooring down the line. <em>(v2024.3.174)</em></li>
-<li>Headset toggle on the Systems tab (muffles/reveals engine sound, for the companion sound mod below). <em>(v2024.3.174)</em></li>
-<li>If the WASM module or panel configuration fails to load, the EFB now shows a "DON'T PANIC" splash saying so, with a "continue anyway" option, plus an SOS blink on the hydraulic-pressure warning lamp. <em>(v2024.3.174)</em></li>
-<li>Added profiles to the Config tab: classic is closest to the base aircraft, recommended is what I use. <em>(v2024.3.174)</em></li>
-<li>Fixed the Payload tab showing the wrong MTOW for -100 variants. It now reads the aircraft's own max gross weight. <em>(v2024.3.183)</em></li>
-<li>Updated the "Generators can trip" description to match the reworked generator behaviour. <em>(v2024.3.183)</em></li>
-<li>Fixed some minor layout issues. I know, many EFB tabs could use a beauty pass. <em>(v2024.3.183)</em></li>
-</ul>
-<h3 id="mod-features-efb-the-efb-radio-tab-map">The EFB Radio tab &amp; map<a class="headerlink" href="#mod-features-efb-the-efb-radio-tab-map" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Added Radio tab listing NAV1 / NAV2 / ADF / DME with station ident, name and class, signal state, signal-quality bars and metrics for your educational or amusement purposes. <em>(v2024.3.99)</em></li>
-<li>Interactive map of the surrounding stations: click any navaid for some generic information, click a tuned navaid for details. Tune an ILS and the map centers and zooms on the runway and localizer beam fan. <em>(v2024.3.99)</em></li>
-<li>Path-loss breakdown for the active signal exposes some of the factors that went into the calculation. <em>(v2024.3.99)</em></li>
+<li>
+<p>If the WASM module or panel configuration fails to load, the EFB
+  shows a splash saying so, with a "continue anyway" option, plus an
+  SOS blink on the hydraulic-pressure warning lamp. Note that the
+  aircraft is not airworthy if the basic components fail to load.</p>
+</li>
+<li>
+<p><strong>Systems:</strong> The Anchor button (float and amphibian variants)
+  freezes the aircraft in place on the water. It's a hack and
+  placeholder for a better anchor or mooring system down the line.</p>
+</li>
+<li>
+<p><strong>Systems:</strong> The Headset toggle muffles engine and gyros sound ONLY
+  when the companion sound mod is in use.</p>
+</li>
+<li>
+<p><strong>Payload:</strong> The load manager has a "Redist fuel" button
+  specifically for FSEconomy users. You can also move the fuel slider
+  back and forth to balance the fuel. To set fuel in individual tanks,
+  use the standard Weight &amp; Balance app.</p>
+</li>
+<li>
+<p><strong>Payload:</strong> The default passenger weight is configurable on the
+  Config tab to a fixed or random weight.</p>
+</li>
+<li>
+<p><strong>Instruments, Ice:</strong> Some tabs are work in progress. Who am I
+  kidding?  Everything is constantly work in progress!</p>
+</li>
+<li>
+<p><strong>Reference, Manual:</strong> The navigation bar on the left can be hidded
+  to reveal more of the content.</p>
+</li>
+<li>
+<p><strong>Reference:</strong> The Performance sections contain some experimental
+  renderings of Live Performance Charts that try to help you decipher
+  performance charts.</p>
+</li>
+<li>
+<p><strong>Maint:</strong> The Maintenance tab is only available when the
+  Reliability slider on the Config tab is not in the "Off" position
+  and the session has been restored. It is hidden in "Limited" mode if
+  an engine is running.</p>
+</li>
 </ul></section><section class="print-page" id="mod-features-objects" heading-number="3.4.3"><h1 id="mod-features-objects-3d-objects">3D Objects<a class="headerlink" href="#mod-features-objects-3d-objects" title="Permanent link">&para;</a></h1>
 <h2 id="mod-features-objects-context">Context<a class="headerlink" href="#mod-features-objects-context" title="Permanent link">&para;</a></h2>
 <p>Without access to the project source (which we obviously don't have),
