@@ -1,0 +1,57 @@
+# Twotter Revived
+
+> Manual and system reference for the Twotter Revived mod
+
+The full text of every page below, as one file: https://aurel42.github.io/twotter-revived-manual/llms-full.txt
+
+Markdown source: https://github.com/aurel42/twotter-revived-manual
+
+## Overview
+
+- [Introduction](https://aurel42.github.io/twotter-revived-manual/): Twotter Revived is a free, community-created "total overhaul" mod for Aerosoft's Twin Otter for MSFS (2020).
+
+## Project
+
+- [Project History](https://aurel42.github.io/twotter-revived-manual/project/history/): You know how you have your best flight simming moments that you will (hopefully) never forget and that, after years and years, still fill you with joy when you recall them? One of those moments for…
+- [Plans](https://aurel42.github.io/twotter-revived-manual/project/plans/): System modernization: as Asobo improves sim systems, I adopt the new systems to unlock more authentic behavior and simplify custom code
+- [Known issues](https://aurel42.github.io/twotter-revived-manual/project/known-issues/): Default audio is shit.
+- [References](https://aurel42.github.io/twotter-revived-manual/project/references/): Project page on flightsim.to
+- [Legal](https://aurel42.github.io/twotter-revived-manual/project/legal/): Twotter Revived is a non-commercial fan project, not affiliated with, endorsed by, supported by, or even acknowledged by Microsoft, Asobo, or Aerosoft.
+
+## Mod
+
+- [Installation](https://aurel42.github.io/twotter-revived-manual/mod/installation/): Because of previous drama, this mod is distributed as an archive containing xdelta files and an install script.
+- [Companion Mods](https://aurel42.github.io/twotter-revived-manual/mod/mods/): These mods are distributed in the same archive as the main mod.
+- [Configurable settings](https://aurel42.github.io/twotter-revived-manual/mod/configuration/): Everything on this page is set on the Config tab in the EFB app.
+- [Checklists](https://aurel42.github.io/twotter-revived-manual/mod/features/checklists/): The mod delivers a custom checklist system as part of the EFB app.
+- [The EFB app](https://aurel42.github.io/twotter-revived-manual/mod/features/efb/): The EFB app is an integral part of the mod, unlocking many of its features.
+- [3D Objects](https://aurel42.github.io/twotter-revived-manual/mod/features/objects/): Without access to the project source (which we obviously don't have), we can't modify the visual model of the base aircraft.
+- [Persistence](https://aurel42.github.io/twotter-revived-manual/mod/features/persistence/): The persistence system uses a different lifecycles and layers:
+- [Sound](https://aurel42.github.io/twotter-revived-manual/mod/features/sound/): The audio of the mod consists of several layers.
+- [Wear and tear](https://aurel42.github.io/twotter-revived-manual/mod/features/wear-and-tear/): Work on an optional wear/tear/damage system has started.
+
+## Aircraft
+
+- [Flight model](https://aurel42.github.io/twotter-revived-manual/aircraft/flight-model/): The flight model (including ground handling) has been redone and refined over multiple iterations by CanadianCaptainMoustache.
+- [Autopilot — Overview](https://aurel42.github.io/twotter-revived-manual/aircraft/systems/autopilot/overview/): The autopilot is one of the areas where I'm claiming artistic license.
+- [KAP 140](https://aurel42.github.io/twotter-revived-manual/aircraft/systems/autopilot/kap-140/): A two-axis rate autopilot with altitude preselect.
+- [Avionics — Overview](https://aurel42.github.io/twotter-revived-manual/aircraft/systems/avionics/overview/): The GNS units shipped with the mod are exclusive to it.
+- [GNS 530/430](https://aurel42.github.io/twotter-revived-manual/aircraft/systems/avionics/gns/): Credit where credit is due: the Working Title avionics are among the best features of MSFS.
+- [Brakes](https://aurel42.github.io/twotter-revived-manual/aircraft/systems/brakes/): The toe brakes are hydraulic disc brakes, fed from the aircraft's single hydraulic system through a dedicated brake accumulator.
+- [Cabin climate](https://aurel42.github.io/twotter-revived-manual/aircraft/systems/cabin-climate/): The Cabin Climate system exists for two reasons: for flavor and as a consumer of the heating system which is driven by bleed air.
+- [Chronometers](https://aurel42.github.io/twotter-revived-manual/aircraft/systems/chronometer/): I took some artistic license reimplenting the two cockpit clocks.
+- [EGPWS](https://aurel42.github.io/twotter-revived-manual/aircraft/systems/egpws/): Overhauled EGPWS suite based on Honeywell Pilot's Guide and FAA advisories.
+- [Generators and the GCU](https://aurel42.github.io/twotter-revived-manual/aircraft/systems/electrical/generators/): The goal was: create the dimming effect that Aerosoft captured, but organically.
+- [Engine Start](https://aurel42.github.io/twotter-revived-manual/aircraft/systems/engines/engine-start/): The goal is: pilot can make engines 'splode.
+- [Fuel system](https://aurel42.github.io/twotter-revived-manual/aircraft/systems/fuel/): Migrated to "modern fuel system" (MSFS 2024) architecture.
+- [Hydraulic system](https://aurel42.github.io/twotter-revived-manual/aircraft/systems/hydraulics/): The hydraulic system now has a pump that draws power when it actuates.
+- [Bleed air and ice protection](https://aurel42.github.io/twotter-revived-manual/aircraft/systems/ice-protection/): The Twotter is certified for FIKI (flight into known icing conditions).
+- [Instruments](https://aurel42.github.io/twotter-revived-manual/aircraft/systems/instruments/): Work in progress: many gauges are getting an overhaul, giving them some physicality and changing their behavior, based on reference videos, manuals, pilot feedback and filling in the gaps with…
+- [Lighting](https://aurel42.github.io/twotter-revived-manual/aircraft/systems/lighting/): Every cockpit light has to pass four gates before it illuminates: the bus has to be powered, the circuit's slot switch has to be closed, the potentiometer has to be turned up, and the emissive itself…
+- [Pitot-static](https://aurel42.github.io/twotter-revived-manual/aircraft/systems/pitot-static/): The altimeter and VSI read static pressure; the airspeed indicator reads the difference between pitot and static.
+- [Suspension](https://aurel42.github.io/twotter-revived-manual/aircraft/systems/suspension/): Adjusted nosewheel suspension damping.
+
+## Sim
+
+- [ADF and the KR 87](https://aurel42.github.io/twotter-revived-manual/sim/radio/adf/): An NDB is a vertically polarised transmitter whose ground wave follows terrain and whose sky wave arrives after dark by a different path.
+- [Radio navigation](https://aurel42.github.io/twotter-revived-manual/sim/radio/navigation/): The goal is: replace all navaid signals with a physics- and terrain-based simulation.

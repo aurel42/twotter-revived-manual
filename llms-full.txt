@@ -1,0 +1,2773 @@
+# Twotter Revived — Manual
+
+> Manual and system reference for the Twotter Revived mod
+
+Every page, in reading order. `review:` is the page's state in the project's review workflow — `approved` was read through and signed off, `draft` never has been, `changed` carries an approval that predates its current text.
+
+Markdown source: https://github.com/aurel42/twotter-revived-manual
+
+---
+
+# Introduction
+
+*index.md · review: approved*
+<https://aurel42.github.io/twotter-revived-manual/>
+
+Twotter Revived is a free, community-created "total overhaul" mod for
+Aerosoft's Twin Otter for MSFS (2020).  Our custom code is open-source
+and only restricted by licenses of bundled components.
+
+The goals of the project have changed over time. It started as an
+attempt to fix some of the issues the _Aerosoft Twin Otter (MSFS)_
+started showing in MSFS 2024.
+
+Then the goal became restoring the glory of the _Aerosoft Twin Otter X
+Extended_ for FSX/P3D, the best rendition of the Twotter in the
+Microsoft Flight Simulator ecosystem.
+
+Currently, the goal is to attempt a faithful recreation of this
+legendary aircraft, leveraging the latest systems in MSFS 2024 and
+replacing stock sim systems with custom code wherever sim restrictions
+would hinder us from achieving the stated goal.
+
+## Scope
+
+I cannot modify the 3D model of the actual aircraft in any meaningful
+way. Everything else is on the table.
+
+## Recommended Reading
+
+- If you're interested in how this project came about and where it stands: [Project history](https://aurel42.github.io/twotter-revived-manual/project/history/)
+- Links to the project pages and reference manuals: [References](https://aurel42.github.io/twotter-revived-manual/project/references/)
+- The [Installation](https://aurel42.github.io/twotter-revived-manual/mod/installation/) process
+
+> [!WARNING]
+> Until the install script has been executed, the mod will be inactive.
+
+- The [Configuration](https://aurel42.github.io/twotter-revived-manual/mod/configuration/) options
+
+## Thanks
+
+- **CCM** — for continuous input, advice, testing, and the flight model.
+- **JoseColme** — for sharing his experience flying the type.
+- **Bagolu** — for the wheel-chock visual model, and for fitting the ground power unit to the aircraft.
+- **hobanagerik** — for tireless support and encouragement, better lights and cameras.
+- **Black Square** and **Boris Audio Works** — for their kind permission to use the Turbine Duke soundbank.
+
+---
+
+# Project History
+
+*project/history.md · review: approved*
+<https://aurel42.github.io/twotter-revived-manual/project/history/>
+
+## Pre-History
+
+You know how you have your best flight simming moments that you will (hopefully) never forget and that, after years and years, still fill you with joy when you recall them? One of those moments for me was my first hot start in a Twin Otter in FSX or P3D, about a decade ago. That was the day I learned to treat engines with respect. I started actively looking for aircraft that could break if treated badly, discovered RealAir and A2A, and learned to appreciate deeper simulation.
+
+So the history of this project started, in a way, with the incredible _Aerosoft Twin Otter X Extended_ for FSX/P3D. Aerosoft already had a Twin Otter add-on for FSX (released in 2008), and out of some stroke of genius, they tasked Finn Jacobsen with creating an improved version of it. They gave him carte blanche to define the feature set and the result, released in 2013, showed how passionate he was about the project. It was an amalgamation of existing and new concepts coming together in a complete, well-rounded package. And it was not only supported but actively improved and extended for years.
+
+The Twotter Revived project inherits a design philosophy from the "TwotterX": don't accept sim limitations as blockers, fix them using custom systems.
+
+In 2022, Aerosoft released the _Aerosoft Twin Otter (MSFS)_ to mixed reception. As a TwotterX user, I felt right at home in the cockpit. The KAP 140 seemed like an odd choice for an aircraft of this size, but the visual model overall was excellent. The flight model and systems were intentionally simplified to allow for quicker development and easy accessibility, targeting the mass market created by the release of MSFS on PC and later on Xbox.
+
+The community tried to fix issues with the initial release, but Aerosoft took a heavy-handed stance and had the mod taken down from flightsim.to.
+
+## History has Consequences
+
+Twotter Revived takes extensive steps to avoid distributing any original intellectual property so we don't give the current, as of yet undetermined, rights holder reason to object to the project. Instead of distributing any modified files, we distribute machine-readable instructions on how the files need to be modified ("insert the character X in this position, delete that line").
+
+**What this means for you**
+
+- To use Twotter Revived, you will need to have a pristine, unmodified version of the last official release (v1.1.1) of the base aircraft installed in your Community/ folder, which means that the mod cannot work if you purchased the aircraft on the in-game Marketplace.
+- To activate, or more precisely, assemble the mod, you need to run the install script in the mod folder. Point the script at the `aerosoft-aircraft-twin-otter` folder. The files in this folder will not be modified in any way. The install script reads the original files, applies the changes using `xdelta`, a standard tool commonly used for this task in many modding communities, and creates the actual mod on your disk. You cannot redistribute the mod in the *assembled form,* because it contains intellectual property of the rights holder of the base aircraft.
+
+## Actual Project History
+
+- The work on Twotter Revived started in March 2026.
+- The initial public release (v2024.0.26) on 20/03/2026 came with Working Title's GNS, hot start "theater", cockpit persistence, an EFB load manager, modular fuel system, and it fixed a few v1.1.1 bugs that had never been addressed. The first five-star review is dated 19/03/2026, probably a timezone thing.
+- In April, I broke the original Aerosoft WASM module that was still driving the hydraulics pump, TAWS, and the two clocks. Instead of trying to fix it, I started to replace it. Up to that point, I had maintained a quick release schedule with small iterations, but for the next four weeks, the Twotter was grounded. Your mechanic ripped out the electrical and hydraulic system and rebuilt them from the ground up using the modern, more capable 2024 systems. I started moving systems that had become hard to maintain from classic (hard to read, hard to test) RPN-XML to the WASM module. I built a testing harness so all the C++ code could be checked offline (without having to load the sim), making development not just much quicker, but also more robust.
+- In May, v2024.2.113 saw the light of day. It had all those drastic changes, a first attempt at an autopilot overhaul (focused on the KAP 140), extensive work to make instruments feel more authentic, and the first version of the custom engine simulation. 
+- The v2024.2.x release cycle ended with "The Dunce Cap Release". The EFB app I had created for Twotter Revived had two bugs that played together to famously "cripple the TriStar". The first bug kept the app active when other aircraft were loaded, the second bug caused the app to change the state of an electrical circuit on some of these aircraft. When I got reports by community members that had bisected problems with the recently released TriStar and found my mod was responsible, I contacted iniBuilds support and worked with them to localize and fix the issue within a day. Lesson learned.
+- v2024.3.19 added a vertical slice of the planned Wear/Tear/Damage system.
+- v2024.3.47 released with an all new flight model contributed by CanadianCaptainMoustache. It overhauled flight model, flaps, props, steering, and suspension. This was a game changer for the mod. It restored the classic nose-down Twotter stance and added a new level of authenticity and credibility to the mod. ADF/RMI got the first overhaul, leading to more drastic changes down the line.
+- v2024.3.68 was the first "milestone release". The milestone was that the glareshield annunciators now dimmed when the starter was engaged. All Twotter add-ons have this effect and implement it as "if the starter is running, then dim". The milestone goal had been to create this behavior organically, using the new electrical system and the effect of a physically plausible power draw of a starter-generator (trying to get a turbine moving) on the battery. For most users, it's a tiny thing. For me, it proved that plausibly reverse-engineered custom systems combine organically to let plausible behavior emerge and that the groundwork paid off.
+- In v2024.3.99, we committed to the custom engine simulation and dropped support for the "legacy" flight model. We replaced the stock sim navaids with custom radio code. Other features include a custom checklist system that brought back autocomplete and interactive modes.
+- v2024.3.174 brought another game changer: an optional sound mod lets owners of the Black Square Turbine Duke re-use its beautiful soundbank by Boris Audio Works for the Twotter. The audio is wired up to the custom systems and actually reflects the aircraft state.
+- Current status: we're in the v2024.3.x cycle, still adding and refining systems.
+
+---
+
+# Plans
+
+*project/plans.md · review: approved*
+<https://aurel42.github.io/twotter-revived-manual/project/plans/>
+
+## Ongoing (started, but not yet completed)
+
+- System modernization: as Asobo improves sim systems, I adopt the new
+  systems to unlock more authentic behavior and simplify custom code
+
+- Custom engine simulation: constant refinements as reference material
+  becomes available
+
+- Wear/tear/damage: the scaffolding is present, individual systems
+  have been wired up as proof of concept (glareshield annunciators can
+  burn out when they're past their lifetime, pitot probe heaters can
+  fail when they are powered for an extended time without cooling)
+
+- Implement the full feature set of the TwotterX
+
+- Instrument behavior: some instruments are missing correct power-up
+  behavior or real-world idiosyncrasies, they're updated and refined
+  as I discover new reference material
+
+## System replacements
+
+- Icing: I tried to make all the de-icing equipment useful, but the
+  whole system funnels into a single simvar. To simulate the authentic
+  behavior of the de-icing and anti-ice equipment, the icing model of
+  the sim has to be replaced with custom code.
+
+- Pitot-static system: the stock sim system is limited and probably
+  needs to be replaced with a custom implementation.
+
+## Other plans
+
+- Some form of "Onboarding" in the EFB, like let the user pick the EFB
+  mode and a config profile
+
+## Needs research, references, resources
+
+- Support for four-blade props
+
+- DHC-6-100 performance, currently guesstimated purely based on SHP
+
+- Needle vibrations
+
+- Wind flutter of control surfaces in walkaround
+
+- Opening doors in flight
+
+- Yaw damper: real-world behavior vs stock sim implementation
+
+- Post-shutdown ticking of cooling exhaust/engine
+
+- Brake heat
+
+- Why does crosswind affect the efficiency of the brakes?
+
+- Improve handling of amphibian and float variants in water
+
+## Unexplored concepts
+
+- GPS/GNS spoofing and jamming
+
+---
+
+# Known issues
+
+*project/known-issues.md · review: approved*
+<https://aurel42.github.io/twotter-revived-manual/project/known-issues/>
+
+- Default audio is shit. Aerosoft's Wwise sound bank limits what I can do.
+
+    - Example #1: engine startup sounds are inconsistent and don't
+      adapt to the physics; the sound bank fades between effects based
+      only on prop RPM, it doesn't care about turbine RPM at
+      all. That's why an engine start with feathered props sounds so
+      horrible. Also, the interior and exterior sounds are wildly
+      different (just compare the interior starter sounds with the
+      exterior version) and switching between interior and exterior
+      can "restart" audio effects. [The sound mod now addresses all of
+      these issues.]
+	
+    - Example #2: Stock flap sounds are not continuous.
+	
+- There are four "phantom tanks" visible in the Weight & Balance
+  screen of the EFB. I added them to maintain compatibility with
+  FSEconomy after enabling the modular fuel system. This is a purely
+  cosmetical flaw.
+
+- On the world map, the aircraft thumbnail is missing and a default
+  MSFS2024 thumbnail is showing instead. To fix this, I would have to
+  create and maintain a separate set of "modern" (MSFS2024-style)
+  thumbnails for each variant. That doesn't seem worth it. On most
+  other menu screens (e.g. when selecting a variant), the sim should
+  use the existing "legacy" thumbnails.
+
+- Generator load sharing: only one starter-generator actually supplies
+  the bus at a time. As far as I can tell, MSFS 2024's V2 electrical
+  system has no mechanism for two paralleled DC generators to share
+  load. The cockpit loadmeter therefore shows Gen 1 near full load and
+  Gen 2 near zero in normal operation; that's expected, not a bug. If
+  anyone knows how to get real V2 load sharing working, I'd love to
+  hear about it. (SU6 might help, we'll see.)
+
+- ADF: the system can't react to lightning. The sim doesn't expose the
+  necessary data.
+
+- FLC mode works when the pitot tube is frozen. Somehow, it knows. Sim
+  quirk. (The groundwork to fix this has been done.)
+
+- Pilot and Copilot avatars are not visible, not sure why. Could be a
+  sim limitation caused by the combination of a 2020 aircraft with
+  2024 systems, or it could be my mistake or lack of understanding.
+
+- KA 51 Slaving Accessory is STILL missing.
+
+---
+
+# References
+
+*project/references.md · review: approved*
+<https://aurel42.github.io/twotter-revived-manual/project/references/>
+
+## The project
+
+- [Project page](https://flightsim.to/addon/106069/twotter-revived-beta) on flightsim.to
+- [Discussion thread](https://forums.flightsimulator.com/t/twotter-revived-msfs2024-mod-for-aerosoft-twin-otter-msfs-2020/764913) on the official  MSFS forums
+- [Previews, release candidates, WASM source](https://drive.google.com/drive/folders/1LLd9T7sm3Z3mlowvuzzTSBcMUh5oqerS?usp=sharing) on Google Drive
+
+## Aircraft manuals
+
+- Microsoft DHC-6 Twin Otter
+    - [Aircraft Operating Manual](https://flightsimulator.azureedge.net/wp-content/uploads/2024/11/MSFS2024_DHC-6_TWIN_OTTER_AOM.pdf) (PDF)
+    - [Checklists](https://flightsimulator.azureedge.net/wp-content/uploads/2024/11/MSFS2024_DHC-6_TWIN_OTTER_CHECKLISTS.pdf) (PDF)
+    - [Introduction flight](https://flightsimulator.azureedge.net/wp-content/uploads/2024/11/MSFS2024_DHC-6_TWIN_OTTER_INTRO_FLIGHT.pdf) (PDF)
+
+- Aerosoft DHC-6 Twin Otter
+
+    - [Product Manual MSFS](https://manuals.aerosoft.com/files/Manual_Aerosoft-Aircraft-Twin-Otter_MSFS_eng.pdf) (PDF)
+    - [Product Manual FSX](https://www.aerosoft2.de/downloads/twotter/Manual_DHC6_TwinOtter_engl.pdf) (PDF)
+
+---
+
+# Legal
+
+*project/legal.md · review: approved*
+<https://aurel42.github.io/twotter-revived-manual/project/legal/>
+
+## Disclaimer
+
+Twotter Revived is a non-commercial fan project, not affiliated with,
+endorsed by, supported by, or even acknowledged by Microsoft, Asobo,
+or Aerosoft. We don't accept monetary donations, but we're happy to
+accept code or assets for use in the mod.
+
+Twotter Revived is not endorsed or certified by De Havilland Aircraft
+of Canada.
+
+Twotter Revived is not approved by anyone in any way, shape, or form
+for training or any other real-world application. Any real-world
+references are provided for entertainment and educational simulation
+use only and may be incomplete, outdated, configuration-specific, or
+inaccurate.
+
+## The base aircraft
+
+The base aircraft is **not** redistributed by this project. The mod
+ships as binary deltas that are applied to your own copy of the
+Aerosoft Twin Otter v1.1.1 on your own machine. The original add-on
+remains the property of its rights holder: Aerosoft or Microsoft; the
+ownership situation is genuinely unclear.
+
+The practical consequence: **the assembled mod cannot be
+redistributed.** Once the installer has run, the folder on your disk
+contains reconstructed derivatives of files you licensed from
+Aerosoft. Only the unassembled form — the `.xdelta` patches plus our
+own new files — may be distributed.
+
+Modified sim assets are used under Microsoft's [Game Content Usage
+Rules](https://www.xbox.com/developers/rules) and Working Title's
+MIT-like license.
+
+## Our own code
+
+The complete project source cannot be published, because CFG and XML
+files still contain fragments of the base aircraft. What is published
+is the WASM module source, which is the heart of the mod.
+
+The custom code written for this project, other than the bundled
+components listed below, is placed in the **public domain**. Take it
+apart, use it, modify it, redistribute it.
+
+I only ask that you report bugs so I can fix them for Twotter
+Revived. This is just a polite request, not a legal requirement.
+
+## Licenses
+
+Third-party code included in, or shipped alongside, the mod.
+
+### libradio
+
+- **License:** [CDDL-1.0](https://opensource.org/license/cddl-1-0) — SPDX
+  `CDDL-1.0` — covering **the parts of libradio we ship** (see below), not the
+  underlying ITM code
+- **Attribution:** the thread-safety modification present in these files is
+  **Saso Kiselkov's** contribution
+- **Obtained from:** [libradio](https://github.com/skiselkov/libradio) by Saso
+  Kiselkov, vendored byte-identical and unmodified
+- **Underlying algorithm:** created by the U.S. Department of Commerce
+  **NTIA/ITS**, Institute for Telecommunication Sciences
+
+The two files we ship carry an NTIA banner and **no copyright notice
+or license block of any kind**. That is deliberate upstream: libradio
+has no repository-level license.
+
+Our own glue is separate and not derived from those files: the bridge
+wrapper is an independent reimplementation of the shim libradio ships
+as CDDL-headered code, and the surface-constants table was
+reimplemented from ITU-R P.527 rather than copied.
+
+### puff — DEFLATE inflate
+
+Decompresses the terrain tiles, so the WASM module needs no zlib at runtime.
+
+- **License:** [zlib](https://opensource.org/license/zlib) — SPDX `Zlib`
+- **Copyright:** © 2002–2013 Mark Adler, all rights reserved (version 2.3, 21 Jan 2013)
+- **Upstream:** [zlib](https://github.com/madler/zlib), `contrib/puff`
+
+Clause 2 of the license requires that altered versions be plainly marked, so:
+**this copy is altered.** The `<setjmp.h>` dependency was removed — the MSFS wasm
+sysroot ships no `setjmp.h` — and the original `setjmp`/`longjmp` "out of input"
+escape was replaced with an overrun flag and an error return. The inflate
+algorithm and its output are unchanged, and the changes are marked in the source.
+
+### Working Title GNS 430/530
+
+The GNS 530 and GNS 430 units in the panel. Vendored and patched in-tree.
+
+- **License:** MIT with a field-of-use restriction —
+  [full text](https://github.com/microsoft/msfs-avionics-mirror/blob/main/LICENSE).
+- **Copyright:** Microsoft Corporation. Authored by Working Title Simulations.
+- **Upstream:** [msfs-avionics-mirror](https://github.com/microsoft/msfs-avionics-mirror/)
+
+The restriction is the part that matters: it grants the usual MIT
+permissions — use, modify, distribute, sublicense, sell — but only for
+use *within Microsoft Flight Simulator*. Licensing for anything else
+is prohibited.
+
+The GNS bundle also carries `msfssdk.js` and `garminsdk.js`, built
+from `@microsoft/msfs-sdk` and `@microsoft/msfs-garminsdk`, under the
+same license.
+
+### xdelta3
+
+Reconstructs the modified aircraft files on your machine during
+installation.  Shipped as `xdelta3.exe` in the mod folder — an
+unmodified upstream binary, distributed alongside our work rather than
+linked into it.
+
+- **License:** [GPL-2.0-or-later](https://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
+  — SPDX `GPL-2.0-or-later`
+- **Copyright:** Josh MacDonald
+- **Upstream:** [xdelta](https://github.com/jmacd/xdelta-devel)
+
+## Bundled audio
+
+### FlyByWire Simulations — CC BY-NC-SA 4.0
+
+The `fbw_egpws_*` callout files and `fbw_flap_actuator.wav` derive from
+FlyByWire Simulations' [a32nx-wwise](https://github.com/flybywiresim/a32nx-wwise),
+under **Creative Commons Attribution-NonCommercial-ShareAlike 4.0**.
+
+Most modifications are pure format conversions to 16-bit mono PCM; the
+terrain, glideslope and terrain-ahead clips were additionally cut by
+hand from a longer source clip. All remain CC BY-NC-SA 4.0.
+
+Two obligations follow, and they attach to the mod as distributed, not merely to
+the files:
+
+- **NonCommercial.** This mod may not be sold or distributed commercially.
+- **ShareAlike.** Derivatives of those audio files carry the same license.
+
+### Black Square / Boris Audio Works
+
+The optional Turbine Duke sound mod re-uses the Turbine Duke's Wwise
+soundbank with kind permission from Black Square and Boris Audio
+Works. You must own the Black Square Turbine Duke, no bank content is
+redistributed.
+
+### Project-owned callouts
+
+The custom TAWS bank and the copilot checklist responses, were
+generated by a commercial TTS service for this project and since no
+person was involved in creating them, nobody can claim any rights for
+them. Whether it was ethical to _base_ them on the voice of a person
+is beyond my paygrade. If anyone feels offended, let me know.
+
+## Bundled models
+
+### Ground power unit — CC BY 4.0
+
+The GPU cart that appears beside the aircraft is
+["GPU (Aiport Ground Power Unit)"](https://sketchfab.com/3d-models/gpu-aiport-ground-power-unit-b18e62dda2e04e97a95312bb6a284f1c)
+by **omri_ha_muglob**, under **Creative Commons Attribution 4.0**. Bagolu fitted
+it to the Twin Otter.
+
+The wheel chocks are Bagolu's own model, donated to the project.
+
+## Data
+
+| Source | License |
+|---|---|
+| **ETOPO 2022** 60″ global surface DEM (NOAA NCEI) — terrain elevation | U.S. Government work, public domain |
+| **Natural Earth** 1:10m ocean / lakes / glaciated areas — coastlines, water, ice | public domain |
+| **ESA WorldCover 2021 v200** — land cover | **CC BY 4.0**, attribution required |
+| **OurAirports** `navaids.csv` — navaid coverage | public domain |
+| **FlightGear** `nav.dat` — navaid service ranges, historic NDB database | **GPL-2.0-or-later** |
+
+ESA WorldCover: © ESA WorldCover project / contributors.
+
+FlightGear's `nav.dat` originates in the X-Plane navdata compiled by **Robin A.
+Peel**. The shipped artifacts are derived data — service-range tables and the
+historic NDB database — baked at build time; the GPL source itself is not
+redistributed and the WASM build does not depend on it.
+
+## In practice
+
+If you are redistributing or building on this project:
+
+- The mod as distributed is **NonCommercial**, because of the FlyByWire audio.
+- The assembled mod folder **cannot** be redistributed at all — it contains
+  reconstructed Aerosoft-derived files.
+- Attribution is required for ESA WorldCover, for the FlyByWire audio, and for the
+  ground power unit model.
+- CDDL and GPL components carry source-availability obligations, met by the
+  published WASM source and by xdelta3 being an unmodified upstream binary.
+
+---
+
+# Installation
+
+*mod/installation.md · review: approved*
+<https://aurel42.github.io/twotter-revived-manual/mod/installation/>
+
+Because of [previous drama](https://aurel42.github.io/twotter-revived-manual/project/history/), this mod is
+distributed as an archive containing xdelta files and an install
+script. You will need an original, unmodded installation of the
+_Aerosoft Twin Otter 1.1.1_ (installed using _Aerosoft One,_ the
+legacy Aerosoft installer, or by other means) so the installation
+process can **read** the original files and **write** the changed
+files to the mod folder. **Your original files will not be modified.**
+
+> [!WARNING]
+> **Mod is distributed inert**
+>
+> Until the install script has been executed, the mod will be inactive.
+
+You will still need to have the base model — the `aerosoft-aircraft-twin-otter`
+folder — in your `Community/` folder for the mod to work.
+
+## Contents of the distributed archive
+
+- `charliebravo-aircraftmod-twin-otter` — this is all you need. You must
+  unpack this to use the mod; the rest is optional.
+- `charliebravo-soundmod-twin-otter-turbineduke` — an optional sound mod.
+  Requires that you own the Black Square Turbine Duke.
+- `z_aerosoft-twin-otter_propblur_mod` — an optional mod that makes props
+  blurry when you're close.
+- `z_aerosoft-twin-otter_flat_cameras` — an optional mod that levels out the
+  cockpit camera views (the close pilot view and the three captain's instrument
+  views), instead of having them tilted down at the panel.
+- **`historic_ndb_userpoints.csv`** — can be imported in Little Navmap to show
+  historic (decommissioned) NDB beacons.
+
+## Step by step
+
+1. **Unpack** directly into `Community/`, or wherever you keep your Community
+   add-ons.
+2. **Open** the folder `charliebravo-aircraftmod-twin-otter`.
+3. *Optionally, if you're paranoid or they are actually after you:* **examine**
+   `install.bat` and `install.ps1`, and overwrite the xdelta executable with a
+   version you trust.
+4. **Double-click** `install.bat`.
+5. **Follow the prompts** and select an unmodified `aerosoft-aircraft-twin-otter`
+   folder.
+
+In a perfect world, the changes are applied and you end up with a working mod.
+
+## The sound mod
+
+If you unpacked the soundmod:
+
+1. **Open** the folder `charliebravo-soundmod-twin-otter`.
+2. **Double-click** `install.bat`.
+3. **Follow the prompts** and select your `bksq-aircraft-turbineduke` folder.
+
+## Liveries
+
+Legacy liveries for the Aerosoft model might work, if the loading
+order is carefully managed. Pink textures are supposedly fixed by
+using a layout generator tool to regenerate layout.json for MSFS2024.
+
+## If it goes wrong
+
+Before you report an installation error, please try reinstalling a
+fresh copy of the Aerosoft Twin Otter and trying with that folder. If
+the error persists, please get in touch so we can figure out what's
+happening happen. The installer should work with all popular versions
+of v1.1.1.
+
+---
+
+# Companion Mods
+
+*mod/mods.md · review: approved*
+<https://aurel42.github.io/twotter-revived-manual/mod/mods/>
+
+These mods are distributed in the same archive as the main mod. They
+are optional.
+
+## Prop blur mod (CCM)
+
+`z_aerosoft-twin-otter-propblur_mod` mitigates the "wagon wheel
+effect" by making the blurred prop phases more transparent, only for
+the close-up LOD, so screenshots taken from the outside at some
+distance still get the cinematic look.
+
+## Flat camera mod (Hobanagerik)
+
+`z_aerosoft-twin-otter-flat_camers` replaces some of the default
+tilted camera views with flat views at the instruments.
+
+## Sound mod for Turbine Duke owners
+
+`charliebravo-soundmod-twin-otter-turbineduke` replaces the default
+engine sounds and a few other effects with much better versions from
+the Black Square Turbine Duke.
+
+You need to own the Turbine Duke and have it installed somewhere on
+your system. We don't distribute any part of the soundbank.
+
+To activate the mod, you must run the install script in its folder and
+point it at your Turbine Duke folder. It will copy the soundbank and
+modify it in order to prevent collisions with the actual Turbine Duke.
+
+> [!WARNING]
+> Until the (separate) install script has been executed, this mod,
+> too, will be inactive.
+
+---
+
+# Configurable settings
+
+*mod/configuration.md · review: changed*
+<https://aurel42.github.io/twotter-revived-manual/mod/configuration/>
+
+Everything on this page is set on the Config tab in the EFB app.
+
+The default settings are either sim defaults or they enable convenience features.
+The non-default settings strive to be more realistic, and might end up being more annoying.
+
+## Profiles
+
+The profile buttons at the top of the Config tab reset most of your settings to one of these:
+
+- **Classic**: the original Aerosoft experience. Convenience features on, realism features off, full TAWS with the Aerosoft sound bank, stock-faithful GNS.
+- **Recommended**: what I fly. Realistic battery, generators, gyros and parking brake, with the GNS and HSI convenience features kept.
+- **Realistic**: All realism options are on. Every convenience beyond the real KAP-140, GNS 530W and KI-525A is switched off.
+
+Pressing a button asks whether to apply the profile to this variant only or fleet-wide. If your settings match none of the three, the tab reports the profile as *Custom*.
+
+| Option | Classic | Recommended | Realistic |
+|---|---|---|---|
+| Disable relaxed NAV arming | off | off | on |
+| Enable KAP-140 voice messages | off | on | *untouched* |
+| Disable Flight Director | off | on | on |
+| Enable historic NDBs | off | on | off |
+| Disable visual approaches | on | off | on |
+| Disable coupled VNAV | on | off | on |
+| TAWS installation | Full | Reduced | Legal minimum |
+| TAWS sound bank | Aerosoft | Custom | Custom |
+| TAWS volume | *untouched* | -3 dB | -3 dB |
+| Realistic battery capacity | off | on | on |
+| Realistic parking brake | off | on | on |
+| Generators can trip | off | on | on |
+| Gyros take time to spin up | off | on | on |
+| Disable Auto Fast-Erect | off | on | on |
+| Disable OBS Auto-Slew | off | off | on |
+| Disable ADF Card Slaving | off | off | on |
+
+Two of the gaps are deliberate. Classic leaves the TAWS volume alone because the
+Aerosoft sound bank ignores it. Realistic leaves the KAP-140 voice messages
+alone because the real unit's voice is an installation option: a silent unit and
+a speaking one are equally authentic, and the realism axis has nothing to say
+about it.
+
+Some options are in no profile at all, they're strictly personal
+preference: **Use FDR switch as Avionics switch**, **Mute copilot
+callouts**, **Battery Replacement (NiCad to SLA)**, and
+**Reliability**.
+
+## Options
+
+Some options have an override checkbox on the left: leave it unchecked
+and the setting is shared across all variants that don't override it;
+check it and that variant keeps its own value, independent of the
+rest. This is intended to allow you further individualize the aircraft
+variants you fly.
+
+All other options are fleet-wide.
+
+Every switch below is off by default.
+
+### Avionics
+
+| Option | What turning it on does |
+|---|---|
+| Use FDR switch as Avionics switch<br>`DHC6_CFG_FDR_AS_AVIONICS_MASTER` | Repurposes the unused Flight Data Recorder switch as an avionics master for the aftermarket stack: GNS 530/430, KAP-140, transponder, ADF and audio panel. Round gauges are unaffected. |
+| Disable relaxed NAV arming<br>`DHC6_CFG_AP_STRICT_NAVARM` | Removes the KAP-140's NAV pre-arm. NAV mode will be rejected if not in range of the course. |
+| Enable KAP-140 voice messages<br>`DHC6_CFG_KAP140_VOICE` | Adds the unit's three optional spoken messages: "Altitude" 1000 ft before the preselect, "Leaving altitude" 200 ft after departing it, and "Autopilot" on disconnect. They accompany the tones rather than replacing them. The two standard trim messages are always on either way. |
+| Disable Flight Director<br>`DHC6_CFG_DISABLE_FD` | Hides the command bars on the attitude indicator. The flight director itself still engages. |
+| Disable visual approaches<br>`DHC6_CFG_DISABLE_GNS_VISUAL_APPR` | Hides the GNS per-runway VISUAL approaches. The real 530W/430W has none, so this is the stock-faithful setting. |
+| Disable coupled VNAV<br>`DHC6_CFG_DISABLE_GNS_COUPLED_VNAV` | Takes away the coupled VNAV (PATH) descent, leaving the advisory-only VNAV the real 530W has. |
+| Enable historic NDBs<br>`DHC6_CFG_NDB_SOURCE` | Adds historic NDB beacons that modern navdata has dropped. These take precedence, and the sim's navdata is used only for beacons the historic set doesn't have. |
+
+> [!CAUTION]
+> The GNS options only take effect when the GNS starts
+> up. Currently, this needs you to start (or restart) a
+> flight. A power cycle will most likely not do.
+
+### TAWS
+
+| Option | Positions |
+|---|---|
+| Installation<br>`DHC6_CFG_GPWS` | **Full** (default) — Class A on every aircraft, the full callout set. **Reduced** — passenger variants get Class A, cargo and utility get Class B. **Legal minimum** — passenger variants get Class A, everything else gets nothing. **Class B** — no terrain, glideslope or bank-angle alerts anywhere. **Off** — all callouts muted. |
+| Sound bank<br>`DHC6_CFG_GPWS_AUDIOBANK` | Aerosoft (default), FlyByWire, Custom |
+| Volume<br>`DHC6_CFG_GPWS_VOLUME` | You know how a volume slider works. |
+
+Volume applies to the FlyByWire and Custom banks only. The Aerosoft bank ignores
+it.
+
+> [!NOTE]
+> Letting go of the Volume slider plays a callout so you can hear the level.
+> It picks one at random from the full set, which includes "Pull up" and
+> "Terrain ahead, pull up". Pro tip: Don't change the volume while airborne.
+
+### Systems
+
+| Option | What turning it on does |
+|---|---|
+| Realistic battery capacity<br>`DHC6_CFG_REALISTIC_BATTERY` | Gives the battery a real amp-hour budget that the enabled consumers draw down. Off means unlimited capacity. If you flatten it, change the chemistry or set the source switch to EXT to summon a GPU cart. |
+| Battery Replacement (NiCad to SLA)<br>`DHC6_CFG_BATTERY_SLA` | Swaps the standard NiCad pack for a sealed lead-acid one: different chemistry, more capacity, more weight. |
+| Realistic parking brake<br>`DHC6_CFG_REALISTIC_PARKING_BRAKE` | Models the real DHC-6 sequence: fully depress both toe brakes, pull the lever, release the toe brakes. If the latch doesn't catch, the handle snaps back and you try again. |
+
+The SLA pack weighs 20 lb more, and that weight is added to the
+aircraft as soon as you select it.
+
+### Engines
+
+| Option | What turning it on does |
+|---|---|
+| Generators can trip<br>`DHC6_CFG_GCU_LATCH` | Generators have a small chance to trip when they come online. The annunciator will stay illuminated. A tripped generator stays off until you RESET it: hold the GEN switch to RESET, release to ON.  |
+
+### Instruments
+
+| Option | What turning it on does |
+|---|---|
+| Gyros take time to spin up<br>`DHC6_CFG_REAL_GYROS` | Gyros spool up from rest instead of coming up aligned, which takes a couple of minutes from cold. Pull to Erect shortens it for the attitude indicator, and the HSI can be synced to the whiskey compass from the EFB Systems tab. |
+| Disable Auto Fast-Erect<br>`DHC6_CFG_DISABLE_AUTO_FAST_ERECT` | Stops the attitude indicator from pulling its own fast-erect knob during cold-and-dark erection. Pull it yourself or wait a long time for the horizon to settle. |
+| Disable OBS Auto-Slew<br>`DHC6_CFG_DISABLE_OBS_AUTO_SLEW` | The HSI course pointer stops rotating itself to the active GPS leg. Set the course yourself. |
+| Disable ADF Card Slaving<br>`DHC6_CFG_DISABLE_ADF_CARD_SLAVE` | The ADF compass card stops following the HSI heading, turning a KI-227-01 into a KI-227-00 you set with the HDG knob. |
+
+Disable Auto Fast-Erect only means anything with realistic spin-up on, so the
+tab greys it out when Gyros take time to spin up is off. It keeps its stored
+value while greyed.
+
+### Checklists
+
+| Option | What turning it on does |
+|---|---|
+| Mute copilot callouts<br>`DHC6_CFG_COPILOT_MUTE` | Silences the copilot's spoken checklist responses, including "Checklist complete". The checklist still runs at the same pace. |
+
+This is the same setting as the **Mute** button in the Checklist tab. Either one
+moves the other.
+
+### Wear & Tear
+
+| Option | Positions |
+|---|---|
+| Reliability<br>`DHC6_CFG_RELIABILITY` | **Off** (default) — the wear and tear system is disabled and the Maintenance tab is hidden. **Reliable** — nominal wear rate, experienced mechanic, risk-averse management. **Unreliable** — 4× wear. **Not Airworthy** — 16× wear, an inexperienced mechanic and poor access to new parts. |
+
+Reliability is stored per airframe out of the box, so each variant ages on its
+own unless you uncheck its override.
+
+> [!NOTE]
+> Wear & Tear & Damage is work in progess, and only few systems have been hooked up to it.
+
+---
+
+# Checklists
+
+*mod/features/checklists.md · review: approved*
+<https://aurel42.github.io/twotter-revived-manual/mod/features/checklists/>
+
+## Overview
+
+The mod delivers a custom checklist system as part of the EFB
+app. Three ways to run a checklist:
+
+- Default: You manage the checklist and tick off every item yourself.
+
+- Interactive: You run the checklist, the co-pilot confirms and ticks
+  off the items he confirmed. If the co-pilot gets stuck, you can tick
+  the item yourself to progress.
+
+- Autocomplete: The co-pilot runs the checklists, applies all
+  settings, runs multi-step tests, confirms every item and ticks
+  it. Autocomplete is not available for some in-flight checklists. 
+
+> [!WARNING]
+> The co-pilot tries to be smart about "as required" items, but, as
+> always, the responsibility lies with the captain. Verify the
+> co-pilot's judgment calls are sound, especially regarding de-icing
+> equipment.
+
+## Notes
+
+- Some items will never autocomplete, for example the passenger
+  briefing.  Tick the item after you completed the briefing to let the
+  co-pilot resume.
+
+- A checklist in autocomplete will continue to run even if the EFB is 
+  closed or you switch to an outside view. It's fun to let the engine start 
+  checklist run on autocomplete while watching the startup in drone view.
+  Especially with the sound mod.
+
+- The co-pilot callouts are intentionally annoying for maximum
+  authenticity. They can be muted, though, on the Config tab or using
+  the Mute button on the Checklists tab.
+
+- Float, amphibian and ski variants get their own POH-supplement
+  procedures; cargo variants skip cabin/passenger items.
+
+- Checklists are aware of the avionics master switch and use it if
+  it's enabled.
+
+- Take-Off checks: The 85 % Ng pause during start can be skipped.
+
+- When opening the Checklists tab for the first time, it displays
+  prominently **"For Simulation Use Only",** just in case you forget
+  that you're flying a pixel plane.
+
+## L:vars
+
+`DHC6_CFG_COPILOT_MUTE` — 0 (default, callouts audible), 1 (callouts muted)
+
+---
+
+# The EFB app
+
+*mod/features/efb.md · review: approved*
+<https://aurel42.github.io/twotter-revived-manual/mod/features/efb/>
+
+## Overview
+
+The EFB app is an integral part of the mod, unlocking many of its
+features. I recommend you make yourself familiar with it when you
+first start the mod.
+
+This manual is available on the Manual tab of the EFB app.
+
+Note the toggle at the top, between the notification icon and the
+timestamp. It displays the mode the app is currently in:
+
+- "Limited" tries to limit the information presented on some of the
+  tabs to what would be available to the pilot in flight. It also
+  hides some tabs completely, e.g. the Radio and TAWS tabs.
+
+- "Instructional" lifts this restraint and offers insights that might
+  help you understand system internals as they happen.
+
+Click it any time to switch between modes. If you're a flightsim
+role-player, consider it the "cheat button".
+
+Recommended first step in the app: check out the 
+[Config tab](https://aurel42.github.io/twotter-revived-manual/mod/configuration/), 
+pick a profile that fits your expectations and adjust the options from
+there.
+
+> [!WARNING]
+> Information presented in the EFB app that appears to reference
+
+	real-world data or information is FOR SIMULATION USE ONLY.
+	The Checklists and Reference tabs explicitly say so.
+
+## Notes
+
+- If the WASM module or panel configuration fails to load, the EFB
+  shows a splash saying so, with a "continue anyway" option, plus an
+  SOS blink on the hydraulic-pressure warning lamp. Note that the
+  aircraft is not airworthy if the basic components fail to load.
+
+- **Systems:** The Anchor button (float and amphibian variants)
+  freezes the aircraft in place on the water. It's a hack and
+  placeholder for a better anchor or mooring system down the line.
+
+- **Systems:** The Headset toggle muffles engine and gyros sound ONLY
+  when the companion sound mod is in use.
+
+- **Payload:** The load manager has a "Redist fuel" button
+  specifically for FSEconomy users. You can also move the fuel slider
+  back and forth to balance the fuel. To set fuel in individual tanks,
+  use the standard Weight & Balance app.
+
+- **Payload:** The default passenger weight is configurable on the
+  Config tab to a fixed or random weight.
+
+- **Instruments, Ice:** Some tabs are work in progress. Who am I
+  kidding?  Everything is constantly work in progress!
+
+- **Reference, Manual:** The navigation bar on the left can be hidded
+  to reveal more of the content.
+
+- **Reference:** The Performance sections contain some experimental
+  renderings of Live Performance Charts that try to help you decipher
+  performance charts.
+
+- **Maint:** The Maintenance tab is only available when the
+  Reliability slider on the Config tab is not in the "Off" position
+  and the session has been restored. It is hidden in "Limited" mode if
+  an engine is running.
+
+---
+
+# 3D Objects
+
+*mod/features/objects.md · review: approved*
+<https://aurel42.github.io/twotter-revived-manual/mod/features/objects/>
+
+## Context
+
+Without access to the project source (which we obviously don't have),
+we can't modify the visual model of the base aircraft. What we can do,
+is place arbitrary objects into the game world close to the
+aircraft. Since they are placed relative to the world and not relative
+to the aircraft (= the objects don't move automatically with the
+aircraft), this makes most sense for static ground objects.
+
+Thanks to asset donations by Bagolu, we can show **wheel chocks** and a
+**GPU cart** while the aircraft is parked.
+
+## Limitations
+
+We place the objects so they align with the plane (in the geometrical
+sense) the aircraft sits on. This means they work best on a flat
+apron. If the terrain around the aircraft is irregular, objects might
+float in the air or sink into the ground.
+
+> [!NOTE]
+> **For devs**
+>
+> If you're curious how we spawn objects on a sloped surface, have a
+> look at the Sidecar WASM system.
+
+---
+
+# Persistence
+
+*mod/features/persistence.md · review: approved*
+<https://aurel42.github.io/twotter-revived-manual/mod/features/persistence/>
+
+The persistence system uses a different lifecycles and layers:
+
+- Config settings persist unconditionally.
+
+- Some settings are only stored after the user opts-in, and they need
+  to opt-in for every single session. You can go flying at any time
+  without worrying about the aircraft state. Only if you restore the
+  state (or, if it's the first time, "Enable persistence") when the
+  session begins, these vars are stored for when you opt-in the next
+  time.
+
+- Some settings are stored as LocalVars in state.cfg, using a stock
+  sim mechanism.
+
+- Some WASM systems store their states separately in files in the
+  sim's `WASM/.../work` folder.
+
+- JS/TS-based systems can store data in the cloud, the most prominent
+  example are the GNS units.
+
+## Usage
+
+When you use the system for the first time: while on the ground and,
+preferably, cold & dark, use the "Enable Persistence" button on the
+splashscreen of the EFB (or, if you missed it, the button on the Debug
+tab).
+
+In future sessions with this aircraft variant, the button on the EFB
+splashscreen will say "Restore State" instead. Click it to restore the
+state from the previous session in this variant, or click anywhere
+else to skip the restore for an ad-hoc flight without persistence.
+
+While the state is being restored, the EFB will show a message. To
+avoid frustration, stand by for a few seconds until the process is
+complete. If you change settings while the restore is in progress,
+these settings might revert to their stored state.
+
+Resetting the saved state is not recommended and should not be
+necessary unless you encounter a bug. 
+
+> [!CAUTION]
+> It is possible to reset the state of a variant by locating `state.cfg`
+> plus the files in `WASM/.../work` for the variant in your MSFS folder
+> and deleting or renaming the files. Only do this if you're comfortable
+
+	with it.
+
+## Known issues
+
+- Some systems don't persist (battery capacity, hydraulic system
+  state). I have not figured out how to do this yet. Advice is
+  welcome!
+
+> [!CAUTION]
+> **Please report bugs!**
+>
+> If any other systems, switches, knobs don't correctly restore
+> their state from a previous session, that's a bug. Please be kind
+> and report it.
+
+- "Restore state" does not prevent you from restoring the state with
+  running engines, but you probably shouldn't.
+
+---
+
+# Sound
+
+*mod/features/sound.md · review: approved*
+<https://aurel42.github.io/twotter-revived-manual/mod/features/sound/>
+
+## Overview
+
+The audio of the mod consists of several layers.
+
+- The base is the Wwise soundback that comes with your Aerosoft Twin
+  Otter. It contains many standard sounds, but also typical Twin Otter
+  sounds like the whistle of the hydraulic pump.
+  It's not authored very well compared to more modern Wwise banks.
+
+- The the Aerosoft Wwise soundbank is augmented by a few wav files
+  shipping directly with the mod, for example an interior flaps sound
+  that matches the continuous movement of the flaps better than the
+  default sounds.
+
+- I created a bunch of callouts using fish.audio to close gaps. All
+  except two autopilot trim warnings can be muted or disabled.
+
+    - A complete set of TAWS callouts.
+
+    - A set of KAP 140 callouts, based only on mentions in the manual,
+      I could not find any reference material.
+
+    - A set of co-pilot responses to checklist items.
+
+- The distributed archive includes an experimental, separate mod that
+  allows owners of the Black Square Turbine Duke to re-use its
+  excellent Wwise soundback with the Twotter.
+
+  The Headset button on the Systems tab only works for sounds from
+  this sound bank and for custom sounds. There is no way (that I know
+  of) to control the volume of events coming from the Aerosoft Wwise
+  soundbank.
+
+## Known issues
+
+- Default audio (without the Duke mod) isn't very good.
+
+- Amphibious and float variants have water effects that trigger when
+  they shouldn't. Work in progress.
+## L:vars
+
+Variables worth binding to hardware, driving from FSUIPC / Axis&Ohs / SPAD.neXt,
+or reading on an external display. **R** is read-only state; **R/W** can be set.
+This is a selection, not the full list — the aircraft defines around a thousand
+`DHC6_*` names, most of them internal.
+
+| L:var | R/W | Meaning |
+|---|---|---|
+| `DHC6_HEADSET` | R/W | Headset attenuation (0..1), 0 is off, 1 mutes the sound completely. The EFB button sets 0.6, a binding can write any value in the range. |
+| `DHC6_RAM_AIR` | R/W | RAM air lever (0..100), 0 is closed, 100 is fully open. |
+
+---
+
+# Wear and tear
+
+*mod/features/wear-and-tear.md · review: approved*
+<https://aurel42.github.io/twotter-revived-manual/mod/features/wear-and-tear/>
+
+## Overview
+
+Work on an optional wear/tear/damage system has started. I wired up
+two sample systems as a vertical slice, one of them has an actual
+effect, albeit a mostly cosmetical one.
+
+There are two ways that components can decay and break:
+
+- Abuse leads to component stress, when stress grows above a
+  threshold, it leads to damage. Component stress decays and is
+  ephemeral, damage persists and leads to failures. Damaged components
+  can be repaired or replaced.
+  
+- Components age based on time in service or service cycles. They can
+  fail when they get close to or exceed their normal lifespan.
+
+The proof-of-concept components:
+
+- Abuse: **Pitot Probe heating elements** can burn out if left on for
+  an extended time without airflow in warm ambient conditions.
+
+- Age: **Glareshield Annunciator bulbs** can burn out. The age affects
+  the brightness.
+
+- Engines track damage to the hot section. Work in progress.
+
+These systems cover most of the planned wear/tear/damage behaviors:
+random, physics-based failures of non-essential systems (like
+annunciator lights), and strictly deterministic stress and damage
+caused by pilot action, that can lead to (possibly critical) failure.
+
+At this stage, I'm not planning to force random failures of critical
+components on users, simply for gameplay reasons.
+
+Don't expect rapid progress with this feature. Each component added to
+the system needs research, and asking pilots to break parts of their
+plane to provide reference material appears to be frowned upon.
+
+## Usage
+
+The system is controlled by the **Reliability** slider on the EFB Config tab:
+
+- **Off** disables the system and hides the Maintenance tab.
+
+- **Reliable** is the default behavior, I'm aiming for plausible component lifecycles.
+
+- **Unreliable** lets components age four times faster; both time in
+  service and service cycles are affected by the multiplier.
+
+- **Not Airworthy** results in 16× wear and you have a higher chance
+  of replacement components being refurbished instead of new.
+
+A **Maintenance tab** in the EFB app is available while on the ground
+with engines shut down and lists every component that has accrued
+stress or damage. 
+
+- **Re-roll** randomizes the aircraft state (production year, TTAF,
+  and all component states); 
+
+- **Request Service** runs maintenance and produces a per-component
+  report.
+
+- **Reset** returns everything to a factory-new state.
+
+The state persists per variant in the WASM work folder.
+
+---
+
+# Flight model
+
+*aircraft/flight-model.md · review: approved*
+<https://aurel42.github.io/twotter-revived-manual/aircraft/flight-model/>
+
+The flight model (including ground handling) has been redone and refined over multiple iterations by CanadianCaptainMoustache.
+
+- decreased nosewheel steering sensitivity at medium to high speeds
+- adjusted main gear springiness to stop the rolling back and forth and make it sit slightly nose-low on the ground
+- drastically increased wing incidence angle
+- removed the invisible spoiler
+- added prop drag
+- decreased elevator and rudder sensitivity around neutral
+- increased fuselage side-area
+- added ground friction and crosswind numbers
+- increased icing physical impact to 400%
+- decreased overall rudder maximum effectiveness
+- increased elevator trim effectiveness
+- decreased gyro stability around all axes
+- doubled flap lift
+- added 40% to flap drag
+- decreased blade angle on the ground to minimize aircraft rolling at idle and quasi-simulate beta range
+
+CCM explains:
+
+> This leads to a Twotter that looks and handles much more like the real thing. Expect that iconic DHC nose-down on approach. Expect massive amounts of both lift and drag beyond 20 degrees of flap. The plane will also handle far better on the ground, both in the taxi and on takeoff. I’m by no means claiming this is the be-all, perfect flight model for this plane and it will likely evolve some but for now we’re hitting book numbers in most cases within 1-2% and the plane is a sheer joy to fly.
+
+The Captain has since contributed several rounds of refinements to the flight model, based on Twotter driver and user feedback.
+
+## Known issues
+
+One important feature is currently missing from the flight model: a mechanical linkage between the flaps and a dedicated trim tab compensates for the extra lift those barndoors create. Currently, that compensation is partially baked into the flight model. I prefer to actually simulate the mechanical linkage, I *just* have to convince CCM that's the way to go.
+
+---
+
+# Overview
+
+*aircraft/systems/autopilot/overview.md · review: approved*
+<https://aurel42.github.io/twotter-revived-manual/aircraft/systems/autopilot/overview/>
+
+The autopilot is one of the areas where I'm claiming artistic license. While I fixed a couple of "realism gaps" with the default KAP 140, I also created new ones.
+
+Aerosoft put the Bendix/King KAP 140 in the Twotter for two reasons, afaik: users are familiar with it and the mission statement for the 2020 version was to use default avionics wherever possible. The visual model has all the remnants of the Collins AP-106 (I think) simulated in the Aerosoft Twin Otter X Extended: the annunciators, the mode and altitude panels, the multifunction "knob" on the control column pedestal, the YD button.
+
+This means the 2020 Twotter's AP is already an unholy abomination, and I leaned into that.
+
+## History
+
+The autopilot is a prime example of how this project grew as I learned more about the sim. First, I used stick and carrot, controlling the stock autopilot by manipulating the selected altitude and the heading bug while showing the numbers and modes the user expected on the display. That worked well enough, but had some limitations, so I tried taking over the whole autopilot the same way the Working Title framework does, but I missed a single, important switch, causing all my experiments to fail, so I shelved this approach. I went back to stick and carrot and invented more workarounds to allow me to tune the AP behavior further.
+
+It took an embarrassing amount of time for me to notice what *actually* drove the AP in the mod since the very first version.
+
+> [!NOTE]
+> **The very first commit message in this project**
+>
+> [v2024.0.1] - 2026-03-06
+>
+> - Updated GNS530 to WT530
+
+As I understand it, whenever Working Title avionics are in play, they put the sim AP in *managed mode* and control pitch and bank directly. So I pulled the GNS units into the mod and started customizing the directors, moving from hacks and workarounds to a proper solution. But the amount of changes were significant which, for one, makes it hard to follow Working Title's updates closely, and I'm not really comfortable working with JS/TS. So the current goal is to have the state machines that run the AP in WASM, where I can test the  thoroughly without even starting the sim, and to reduce the number of patches I apply to the Working Title code. What remains is just a thin layer around the parts I want to replace, that says "talk to WASM instead", and the actual changes to the GNS user interface.
+
+> [!NOTE]
+> **Don't let me confuse you**
+>
+> Whether I use "selected altitude" or "altitude preselect", I mean
+> the same thing: the "target altitude" selected by the pilot or set
+> when entering alt mode.
+
+## Collins AP features
+
+- IAS/FLC mode, yaw damper, and flight director.
+- The flight director command bars on the attitude indicator can be hidden via the **Disable Flight Director** toggle in the EFB Config tab.
+- Mode buttons and altitude selector are synced with the KAP 140.
+- The Collins annunciators are somehow magically driven by the KAP 140.
+- The pitch-trim arrow indicator is now a runaway-trim warning indicator (flashes for end-of-travel and same-direction-≥2 s commands). Small trim corrections should no longer cause epileptic seizures in photosensitive pilots.
+- Enabled autopilot annunciators for approach arm/capture when using GPS navigation.
+
+## Working Title framework features
+
+The GNS units gained two features which are completely unrealistic (they are present in the G1000NXi, but not in the much older GNS units). You can turn them off if you prefer more authentic behavior.
+
+- Coupled VNAV: whenever you select an approach with vertical guidance, VNAV is armed.
+    - You can disable VNAV by pressing the VNAV button on the GNS 530, enabling cursor mode, selecting "DISARM VNAV" and confirming with ENT.
+    - VNAV respects the selected altitude. VNAV will not initiate a descent if you are in ALT HOLD at the selected altitude. If VNAV is armed but cannot descend because of this restriction, the KAP 140 display will alert you by slow-blinking the VNV-ARM flag. Reduce the selected altitude to the next restraint or the expected altitude for capturing a GS or GP, and verify that VNV-ARM is no longer blinking and that the VNAV page on the GNS 530 displays a plausible time to TOD.
+    - VNAV will not engage if you're too far from course.
+    - While armed, the VNAV page on the GNS 530 should display a time to the next top of descent (TOD).
+    - While active, the VNAV page on the GNS 530 should display the next altitude restraint VNAV is descending to.
+    - Engage APR mode while descending toward the GS or GP for a smooth capture.
+- VISUAL approaches: just like in the G1000NXi, you can set up a "VISUAL" approach for any runway of any airport or airfield.
+    - VISUAL approaches have vertical guidance, so VNAV is armed for them. Select an altitude of 800-1000 ft above field elevation for a smooth capture of the glide path (GP).
+
+> [!WARNING]
+> **VISUAL approaches are guidance-only**
+>
+> When you are using VISUAL approaches, you alone are responsible to
+> ensure terrain clearance and object avoidance. In difficult
+> terrain, relying on a VISUAL appraoch can and probably will kill
+> you.
+
+---
+
+# KAP 140
+
+*aircraft/systems/autopilot/kap-140.md · review: approved*
+<https://aurel42.github.io/twotter-revived-manual/aircraft/systems/autopilot/kap-140/>
+
+A two-axis rate autopilot with altitude preselect. Pitch and roll, no
+yaw damper, no autothrottle, a 25° bank limit, and a small LCD that
+tells you exactly what it is doing and nothing more. It was designed
+for the *entry level General Aviation market*. To the best of my
+knowledge, the KAP 140 is not certified for installation in any twin
+engine aircraft, let alone in a twin engine turboprop of the size of
+the Twotter.
+
+## References
+
+- [Pilot's Guide](https://www.google.com/search?q=kap-140+pilot%27s+guide+type%3Apdf)
+
+## Operation
+
+**Power-up runs a real preflight test.** On avionics power the unit
+runs its self-test sequence — about forty seconds, timed against
+footage of real hardware, not the ~14 s of the stock sim unit. The AP
+cannot be engaged until PFT completes, and for 30 seconds afterwards
+the pitch axis is locked out — a blinking red **P** on the
+display. The red P is also the G-limit indicator: exceeding roughly
++2.0/−0.5 g while engaged locks pitch engagement, and a serious
+exceedance disconnects the autopilot outright. Pulling avionics power
+in flight runs a fresh PFT with a longer lockout: the manual warns the
+accelerometers may need minutes to settle. On a cold start the
+altitude readout shows dashes until the blind encoder has warmed up,
+which can take up to three minutes.
+
+Loading into a flight already in progress skips all of this.
+
+**Engage in ROL/VS.** The AP button engages wing-leveling and holds
+your current vertical speed — whatever it is. The unit does not level
+off for you and does not know what you meant; check the VS readout
+immediately after engaging. Disengaging flashes the AP annunciator for
+five seconds. The autopilot also lets go on its own if its attitude
+source dies — a failed or spun-down gyro takes the AP with it.
+
+> [!NOTE]
+> ROL is not a bank hold mode, it's a wing leveler.
+
+**Lateral modes.** HDG flies the heading bug; set it before you press
+the button. When you arm NAV, APR, or REV, the HDG annunciator flashes
+for five seconds as a reminder that you should use HDG mode to set up
+the aircraft for intercept. NAV tracks whatever the HSI shows: a VOR
+radial, a localizer, or — when the CDI source is GPS — the flight
+plan. REV is the back-course mode: front-course set on the OBS,
+reverse sensing handled by the unit.
+
+**NAV arms until you are established.** Press NAV well off the radial
+and you get **NAV ARM**: the unit keeps wings level (or your heading,
+if you keep HDG engaged toward an intercept) until the needle comes
+alive and the capture criteria hold — then it captures and turns on
+course. Intercepts beyond about 45° are not recommended, same as the
+real unit. A capture that never becomes possible — wrong radial, dead
+receiver — stays armed. With **Relaxed NAV arming** disabled on the
+EFB Config tab, arming additionally requires a usable signal at press
+time, so a press against a dead needle is rejected immediately.
+
+**Vertical modes.** UP/DN in VS mode: a tap is 100 fpm, holding the
+button ramps at about 300 fpm per second. ALT holds the altitude at
+engagement; taps nudge it 20 ft, holding ramps at 500 fpm — the unit
+stays in ALT while you hold, and the right side of the display shows
+the target altitude rolling. IAS (our custom addition to the KAP 140)
+holds airspeed with pitch: taps 5 kt, held ramps 15 kt/s. The rotary
+knobs set the altitude preselect, shown on the drum above the unit.
+
+> [!NOTE]
+> Nudging (short UP/DN presses) in ALT HOLD mode changes the *altitude
+
+	hold reference,* while the display keeps showing the 
+	*altitude alerter reference.* To see the effect of the nudge, 
+	you will have to check the altimeter; there is no feedback 
+	on the KAP 140 display.
+
+**Altitude preselect.** By default the sim's behavior stands: set the
+preselect, climb or descend at it, and the unit captures. With
+**Realistic altitude arm** enabled (EFB Config tab), the unit runs the
+real two-axis KAP 140's arming lifecycle: only dialing a new preselect
+while the autopilot is engaged arms it automatically. If you set the
+altitude before you engage the AP, you will have to arm it yourself.
+
+**Altitude alerter.** Approaching the preselect, the alert light comes
+on 1000 ft out and extinguishes at 200 ft; after capture, deviating
+more than 200 ft flashes it. The alert tone sounds approaching 1000 ft
+to go and when departing an altitude by 200 ft. Voice callouts are
+optional.
+
+**Voice callouts.** According to the manual, the KAP 140 has a few
+voice callouts which play on the intercom (as opposed to the "beeps"
+which play over the cockpit speaker). I could not find any reference,
+so I don't know what they sound like. Consider the present set of
+samples a placeholder. Two trim warnings are unconditional, the other
+three messages are optional and whether they play is either decided
+when the unit is certified for an airframe or when the unit is
+installed in the airframe (not sure). In the mod, they can be enabled
+on the EFB Config tab.
+
+- "Trim in motion" when the autopilot has been running the pitch
+  trim one way for five seconds, and the trim is already well out
+- "Check pitch trim" after fifteen seconds of continuous one way trim,
+  with the **PT** annunciator flashing an arrow the way the trim is going
+- "Altitude" 1000 ft before the preselect
+- "Leaving altitude" 200 ft after departing it
+- "Autopilot" on disconnect
+
+> [!WARNING]
+> The two trim callouts are not notifications, they are warnings
+
+	telling you that something is wrong.
+
+The voice is currently played simultaneously with the beep altitude
+alerter beeps and the disconnect signal. Without reference, I cannot
+say whether that behavior is correct.
+
+**BARO.** A short press shows the altimeter setting for three seconds so you
+can adjust it with the knob; holding for two seconds toggles between inches
+and hectopascals. The preselect logic uses its own blind encoder — your
+altimeter mis-set is your problem, as in the real installation.
+
+## List of changes
+
+- Capture only when armed, configurable for convenience, faithful to
+  manual — including the manual's automatic arming when a preselect is
+  dialed while the autopilot is engaged.
+
+- "Vertical Trim"
+
+    - Short presses "nudge" by 20 ft (ALT mode), 100 fpm (VS mode) or
+      5 kts (FLC), faithful to the manual (except FLC). In VS and FLC,
+      the first press only brings the value up on the display;
+      stepping starts with the second press, as the manual describes.
+
+    - Holding UP/DN initiates a climb/descend at 500 fpm that is
+      maintained until the button is released, faithful to manual. In
+      VS and FLC mode, holding the buttons quickly changes the
+      reference fpm or speed.
+
+- Pre-Flight Test and initial state
+
+    - Obnoxiously long pre-flight test, based on reference video of a
+      faulty unit, needs validation.
+
+    - A 30s pitch lockout, faithful to manual, apart from the display:
+      a red "P" on display replaces the dedicated warning light which
+      is missing from our visual model.
+
+    - Sticky BARO reminder flashes after the preflight test until the
+      pilot acknowledges by pressing BARO or changing the setting.
+
+- Voice messages, faithful to the manual: the two standard trim
+  announcements always on, the three optional ones behind a config
+  switch as they are behind an installation option on the real unit.
+
+- The PT annunciator and its trim-direction arrows now flash on a
+  sustained autopilot trim run, instead of sitting permanently dark.
+
+- Yaw-Damper (YD) annunciator support.
+
+- NAV "pre-arm" allows arming NAV prematurely (for example, long
+  before closing in to a VOR radial). While "pre-armed", the NAV ARM
+  flag blinks in a slow rhythm. Configurable as "Relaxed NAV arming".
+
+- Display shows a "ghost" of the LED elements while not lit.
+
+## Known issues
+
+- The AP still uses the Captain's HSI baro instead of its own.
+
+- Preflight test plays a disconnect signal instead of a completion
+  chime when it ends, reference needed.
+
+- The unit engages on a simple press rather than the late-software
+  0.25s hold, to avoid issues with hardware buttons.
+
+- The trim announcements only ever fire on autopilot-commanded
+  trim. The real unit watches the electric trim system; the sim
+  reports one trim position and does not say who moved it, so trimming
+  by hand would otherwise set the warnings off.
+
+---
+
+# Overview
+
+*aircraft/systems/avionics/overview.md · review: approved*
+<https://aurel42.github.io/twotter-revived-manual/aircraft/systems/avionics/overview/>
+
+- Removed the button clicks on the soft buttons of GNS 430/530, KAP 140,
+  KT 76C and KR 87. The volume knobs only click on their Off detent.
+
+## GNS 530/430
+
+The GNS units shipped with the mod are exclusive to it. My changes
+should not affect GNS units in any other aircraft. The changes are
+discussed [here](https://aurel42.github.io/twotter-revived-manual/aircraft/systems/avionics/gns/).
+
+## KR 87 (ADF)
+
+I forked the KR 87 mainly to enable persistence for its frequencies,
+to add an LCD ghost to the display, and to fix a tiny bug that has ben
+bothering me forever: changing frequencies or modes worked while the
+unit was off, as if it was a mechanical unit.
+
+## L:vars
+
+**R** is read-only state; **R/W** can be set.
+
+| L:var | R/W | Meaning |
+|---|---|---|
+| `DHC6_ALT_ALERT` | R | Altitude alert state |
+| `DHC6_ALT_ALERT_LIGHT` | R | Altitude alert lamp |
+
+---
+
+# GNS 530/430
+
+*aircraft/systems/avionics/gns.md · review: approved*
+<https://aurel42.github.io/twotter-revived-manual/aircraft/systems/avionics/gns/>
+
+Credit where credit is due: the Working Title avionics are among the
+best features of MSFS. The mod augments the GNS units not because of
+limitations, but because they invite experimentation and
+customization.
+
+## Features
+
+The mod unlocks two WT framework features that do not exist on
+real-life GNS units, both can be disabled on the Config tab, but the
+setting only becomes active on the next flight:
+
+- "VISUAL" approaches
+  Lifted from the G1000 NXi. The unit builds a VISUAL approach for any
+  runway: a straight-in final on a 3° glidepath, listed alongside the
+  published procedures. Select it and the autopilot flies it coupled,
+  with no instrument procedure involved. No real GNS 530W or 430W
+  offers this.
+
+- Coupled VNAV
+  Lifted from the G1000 NXi. The unit computes a descent path to the
+  altitude constraints in your flight plan, and the autopilot flies it
+  as PATH. Arm it from the VNAV page, or by loading a procedure that
+  carries constraints. A real GNS 530W computes the same descent but
+  only advises it.
+
+## Persistence
+
+The persistence is split into parts, dictated by legacy sim behavior:
+frequencies are stored and restored as part of the opt-in persistence
+system. The rest of the internal state of the units uses their own
+persistence layer, independent of the mod. That means that the
+internal state is fleet-wide instead of individual (per variant) and
+stored and restored unconditionally and independent of the opt-in
+system.
+
+I added a few more items to the list, e.g. the state of the ADB-S
+transmitter, the last selected page, and the selected range for each
+page (needs validation vs. the real unit or the official Garmin
+simulator).
+
+---
+
+# Brakes
+
+*aircraft/systems/brakes.md · review: approved*
+<https://aurel42.github.io/twotter-revived-manual/aircraft/systems/brakes/>
+
+## Toe Brakes
+
+The toe brakes are hydraulic disc brakes, fed from the aircraft's
+single [hydraulic system](https://aurel42.github.io/twotter-revived-manual/aircraft/systems/hydraulics/) through a dedicated brake
+accumulator.
+
+> [!NOTE]
+> Pedal force does not generate the pressure. Without pressure there is
+> no braking, however hard you push.
+
+The brake accumulator is fed from the main system, but isolated from
+it. In case of a failure of the hydraulic system, use the handpump to
+get the pressure to 1500 PSI before landing. That should be good for
+two to three applications of the brakes.
+
+## Parking brake
+
+The parking brake works in two modes:
+
+- Simplified: just toggle the parking brake by whatever means.
+
+- Realistic: to set the parking brake, pull the handle while toe
+  brakes are fully depressed, then release toe brakes; to release,
+  depress toe brakes fully to unlatch the mechanism. (For convenience,
+  pushing the handle works as well, but that's not realistic, man!)
+
+Limitation: As I understand it, in the real Twotter, the parking brake
+is a latch that holds the toe brake cylinders in place. I couldn't
+figure out how to prime the hydraulic system when the aircraft is
+loading, so the flight would start with the parking brake latching
+unpressurized toe brakes. Unpressurized brakes are bad, mmmkay? So,
+under the hood, even realistic mode must still rely on the
+conventional parking brake system. This makes FSEconomy happy, too.
+
+## Chocks
+
+Chocks are deployed by default when you spawn cold & dark, and can be
+removed using the EFB app. They are removed automatically once the
+hydraulic brake accumulator is pressurized and you want to start
+moving.
+
+The wheel chocks were donated to the project by Bagolu. Thanks!
+
+## Known Issues
+
+- In Crosswind, the toe brakes can barely hold the aircraft during the
+  85% Ng run-up.
+
+---
+
+# Cabin climate
+
+*aircraft/systems/cabin-climate.md · review: approved*
+<https://aurel42.github.io/twotter-revived-manual/aircraft/systems/cabin-climate/>
+
+## Overview
+
+The Cabin Climate system exists for two reasons: for flavor and as a
+consumer of the heating system which is driven by bleed air.
+
+It's a low-fidelity three-zone thermal model (cockpit / cabin / aft
+cabin) with air and structure temperatures for the zones. 
+
+Heat comes from the heating system (driven by engine bleed air),
+avionics, passenger body heat and a directional solar greenhouse
+effect (sun geometry × heading, mitigated by cloud cover).
+
+Cooling is provided by by ram air (unless you're moving, this needs
+the vent fan), radiation to the sky, and, if ambient conditions allow,
+by opening the doors on the ground (ideally opposed doors in a
+breeze). The cockpit fans (missing in the visual model) help with the
+heat exchange between cockpit air and cockpit structures, they can
+help cool the avionics.
+
+On a cold-and-dark spawn the conditions are based on the assumption
+that the empty aircraft been sitting on the apron for a few hours by
+replaying the preceding hours of sun position. As a simplification,
+the model assumes the weather didn't change during that time.
+
+## Air quality
+
+A cabin air model tracks CO₂, O₂ and humidity, shown on the EFB
+Climate tab alongside the three zone temperatures and the duct. This
+is purely for flavor and to provide some incentive to let fresh air
+in.
+
+## L:vars
+
+| L:var | R/W | Meaning |
+|---|---|---|
+| `DHC6_CABIN_TEMP_COCKPIT` | R | Cockpit zone air temperature |
+| `DHC6_CABIN_TEMP_MID` | R | Mid-cabin zone |
+| `DHC6_CABIN_TEMP_AFT` | R | Aft-cabin zone |
+| `DHC6_CABIN_DUCT_TEMP` | R | Bleed-air duct temperature |
+| `DHC6_DUCT_OVERHEAT` | R | Duct overheat flag |
+| `DHC6_CLIMATE_MODE` | R/W | Manual / Off / Auto |
+| `DHC6_CLIMATE_MANUAL` | R/W | Manual COOL / Hold / WARM |
+| `DHC6_CLIMATE_TEMP_SET` | R/W | Temperature selector |
+| `DHC6_CABIN_VENT_FAN` | R/W | Vent fan — a cockpit switch exists, but worth a hardware binding |
+| `DHC6_COMPT_FANS` | R/W | Compartment fans |
+
+---
+
+# Chronometers
+
+*aircraft/systems/chronometer.md · review: approved*
+<https://aurel42.github.io/twotter-revived-manual/aircraft/systems/chronometer/>
+
+I took some artistic license reimplenting the two cockpit
+clocks. They're powered from a hot bus, so they're always on.
+
+They can be controlled independently, which might be useful in VR. I
+mostly use the FO-side clock to display the cabin temperature. With my
+elderly headset, the digits are just big enough to make them out from
+the Captain's seat.
+
+The navigation does not match the labels on the clocks. Use the left
+and right buttons to switch between the functions, the MODE button to
+select the unit or detail within a function.
+
+Reimplemented chronometers with the following features:
+
+- Clock (HH:MM:SS), the MODE button switches between local time and UTC
+
+- Stopwatch, starts counting as soon as it is selected, it resets when
+  it is re-selected; if you need more functionality, please use the KR
+  87 (ADF radio) stopwatch
+
+- Block time display, counts while the aircraft is moving under its
+  own power
+
+- Temperature display, MODE cycles between °C and °F for OAT and cabin
+  temperature
+
+- DME readout, mode switches between distance in nm, time to station
+  in minutes, and speed relative to station in kts
+
+If you find anything else it can do, that's between you and your
+mechanic, so keep it to yourself.
+
+---
+
+# EGPWS
+
+*aircraft/systems/egpws.md · review: draft*
+<https://aurel42.github.io/twotter-revived-manual/aircraft/systems/egpws/>
+
+## From the README
+
+- Overhauled EGPWS suite based on Honeywell Pilot's Guide and FAA advisories.
+- EGPWS callouts are now configurable via the **TAWS** selector on the EFB Config tab.
+- EPGWS callouts come in selectable soundbanks (Aerosoft, FlyByWire, Custom) with varying coverage. Only Custom has the complete set of callouts.
+- Declutter governor: an advisory is only repeated if the situation degrades.
+- The GPWS INHIBIT button suppresses some callouts and desensitizes others.
+- The EFB has a TAWS tab that shows per-mode margin bars and Honeywell-style envelope plots.
+- EGPWS terrain warnings are now driven by the custom radio-signal / propagation model.
+
+## From the release notes
+
+Verbatim from `docs/release-notes-*.md`, grouped by the section they appeared in. The tag is the version each item first appeared in.
+
+### Terrain awareness (EGPWS)
+
+- Terrain warnings are now driven by the same custom signal-propagation model as everything else. *(v2024.3.124)*
+
+### Terrain awareness (EGPWS / TAWS)
+
+- **New "TAWS" selector on the EFB Config tab (Avionics section).** *(v2024.3.68)*
+- **Full** — every callout on every variant (terrain, sink rate, glideslope, bank angle, the full altitude-callout ladder, MINIMUMS). *(v2024.3.68)*
+- **Typical** — passenger variants get the full set; cargo/utility variants get the reduced Class B set. *(v2024.3.68)*
+- **Legal minimum** — passenger variants only; cargo/utility variants get nothing. *(v2024.3.68)*
+- **Class B** — the reduced TSO-C151 Class B set everywhere (excessive descent rate, altitude loss after takeoff, the "500 feet" callout, and MINIMUMS — no terrain, glideslope or bank-angle callouts). *(v2024.3.68)*
+- **Off** — all callouts muted. *(v2024.3.68)*
+- **No more spurious callouts in normal descents.** Reworked the flight-phase detection so a normal powered descent no longer trips "too low terrain" / "too low flaps" when you aren't configured for landing. *(v2024.3.68)*
+- **Tighter glideslope logic.** The glideslope callout now requires a centered localizer on the front course. *(v2024.3.68)*
+- Implemented declutter governor so advisories are only repeated if the situation degrades. *(v2024.3.68)*
+- The GPWS INHIBIT button is now a shortcut for "turn everything off or down that can be legally turned off or down". It suppresses some callouts and desensitizes others. As I understand it, the real-world unit would have several switches to disable specific features, our implementation bunches them all together in this button. *(v2024.3.68)*
+- Known issues: forward-looking terrain alerting is not yet implemented, but we have a reference implementation in Working Title's EPIC. *(v2024.3.68)*
+- Added Forward-Looking Terrain Alerting (FLTA). *(v2024.3.99)*
+- Added Premature Descent Alert (PDA). *(v2024.3.99)*
+- Fixed "Smart 500". *(v2024.3.99)*
+- Added missing altitude callouts for 1000 and 200 ft, and "approaching minimums." *(v2024.3.99)*
+- **Choice of voices.** New TAWS soundbank selector on the EFB Config tab: the original **Aerosoft** Wwise callouts (the default), a **FlyByWire** voice set, or a **Custom** set. Not all soundbanks support all callouts. Switch to the Custom soundbank to hear the full set. *(v2024.3.99)*
+- Reworked terrain-closure (Mode 2) onto a proper closure-rate-versus-height envelope. *(v2024.3.99)*
+- Fixed a window just after rotation where "too low terrain" could nuisance-fire over rising ground on climb-out. *(v2024.3.99)*
+- Added EFB TAWS tab exposing each mode's margin to its alerting boundary. Somewhat hidden: click the bar to show Honeywell-style envelope plots. *(v2024.3.99)*
+
+## Config options
+
+Set from the EFB **Config** tab. Each option is documented on exactly one page; see [Configuration](https://aurel42.github.io/twotter-revived-manual/mod/configuration/) for how profiles and the per-variant override work.
+
+### Installation
+
+`DHC6_CFG_GPWS` — default: **Full**
+
+Terrain Awareness & Warning System fit — Full / Reduced / Legal minimum / Class B / Off. Selects which callouts the aircraft is equipped for, per variant.
+
+### Sound bank
+
+`DHC6_CFG_GPWS_AUDIOBANK` — default: **Aerosoft**
+
+Which voice set plays: Aerosoft (the original bank), FlyByWire, or Custom (project-owned). See [Legal](https://aurel42.github.io/twotter-revived-manual/project/legal/) for the FlyByWire licence.
+
+### Volume
+
+`DHC6_CFG_GPWS_VOLUME` — default: **0 dB**
+
+Callout volume, in ten detents from Off to 0 dB.
+
+---
+
+# Generators and the GCU
+
+*aircraft/systems/electrical/generators.md · review: draft*
+<https://aurel42.github.io/twotter-revived-manual/aircraft/systems/electrical/generators/>
+
+## From the README
+
+The goal was: create the dimming effect that Aerosoft captured, but organically. Instead of scripting the effect based on the starter switch, it should be based on sagging bus voltage.
+State: Achieved in the first Milestone release v2024.3.68.
+
+Known issues: I could not figure out how to let two power sources share the load on one bus. The solver always prefers one engine and puts the complete load on it, while the other generator idles. If you have advice, please share it. All batteries are always full at the beginning of a flight (unless you save the state manually in a .flt file, I think.) It also takes a couple of seconds for the first generator to come online after toggling its switch, and during GPU starts the voltmeter can move erratically.
+
+- Rebuilt electrical system using v2.2 for more reasonable battery drain and consumer loads.
+- Added opt-in option for realistic battery drain. By default, a magical device keeps the batteries charged.
+- Added option to select NiCd or SLA battery with different capacities and behaviors.
+- Added invisible GPU cart that can be selected using the DC Source selector on the ground. (Same behavior as before, but with different mechanics to satisfy MSFS2024.)
+- Added battery packs to emergency lighting. Armed emergency lights turn on when main power is lost and are powered for at least 15 minutes. (Limitation: the batteries are magically charged by the sim when the flight starts, trickle-charge is currently missing because of... erm... topological challenges.)
+- Adjusted power consumption of most components, based on POH values, research, or gut feeling.
+- Generator Control Unit "simulation": GCU faults can trip a generator, requiring an explicit RESET to bring it back online; tripping can fire on undervoltage if enabled in the EFB Config tab.
+- Battery temperature thermal model: ambient soak, charge/discharge heating, and cooling.
+- BUS TIE switch correctly couples or isolates the two main DC buses symmetrically.
+- Interior light dimming reacts to bus load.
+- Annunciator brightness now uses a per-lamp aging factor.
+- Pitot heat split into two independent circuits. Note: the sim still provides only a single pitot-static system feeding both airspeed indicators. That separation is future work.
+- Battery terminal voltage now sags under heavy load. It's most visible during engine start — the voltmeter dips and the cockpit lighting (including the glareshield annunciators) dims as the starter pulls the bus down. Starter current tapers as the engine spools up. A weak battery cranks noticeably slower and takes longer to stabilize at a lower %Ng.
+- Fixed the loadmeter-needle animation that barely moved under idle load; it now displays POH-correct values (the scale differs depending on whether the bus is on battery or on generator, see POH).
+- Moved the engine starters to the battery bus to align with the POH electrical topology, and added a back-EMF starter model.
+- The GPU cart is no longer invisible. There's a GPU button on the EFB Systems tab that calls one out to the aircraft, and selecting EXT on the DC Source selector calls one too. It parks off the rear-left fuselage with its cable plugged into the external power receptacle. Switching away from EXT does *not* send it away — press the button for that, which it refuses while EXT is selected and the cart is actually carrying the load. It leaves for good the moment you start rolling. Wheeled variants only. Many thanks to Bagolu for providing the model!
+
+Two starter-generators, one per engine, each feeding its own main DC bus. The
+same machine that cranks the engine becomes its generator once the start is over,
+which is why this page and [Engine Start](https://aurel42.github.io/twotter-revived-manual/aircraft/systems/engines/engine-start/) keep
+referring to each other.
+
+## Operation
+
+**The GEN switch is a request, not a command.** *(Config: **Generators can trip**,
+off by default.)* With the option off, generators come on line whenever you ask
+and stay there — the sim's behaviour. With it on, a generator control unit sits
+between you and the bus, and it can refuse:
+
+- **GEN switch left ON through the start** — the trip is certain. This is the one
+  to build a habit around.
+- **Connecting at idle** — a small chance of a trip, rising with engine age.
+- **Connecting slightly above idle** — the most reliable way to do it.
+
+A tripped generator leaves its GEN caution light on. Hold the switch to RESET,
+then release it to ON. The RESET itself can fail and need repeating; that is the
+real unit's behaviour, not an artificial retry tax.
+
+Optionally the GCU will also trip on undervoltage, which turns a sagging bus into
+a cascade rather than a slow fade.
+
+**The loadmeter reads on two different scales.** Whether the bus is on battery or
+on generator changes what full-scale means, so the same needle position is not the
+same current in both cases. The POH scale is the one we drive it to.
+
+**BUS TIE couples the two main buses symmetrically.** With it closed, either
+generator can carry both sides; with it open they are independent. It behaves the
+same in both directions, which was not true before v2024.3.130.
+
+**Starters live on the battery bus.** That is the POH topology and it has a
+visible consequence: the crank pulls the battery down directly, so the voltmeter
+dips and the cockpit and glareshield lighting dim with it. Starter current tapers
+as Ng rises, and we model the back-EMF that causes it, so the sag recovers
+progressively rather than snapping back when the switch releases.
+
+There is a GPU cart, and you can see it. Selecting EXT calls one out, and so does
+the GPU button on the EFB Systems tab — the button exists because wanting a cart
+on stand and wanting to draw power from it are two different things. Once it is
+there, switching away from EXT does not send it away; press the button for that.
+It refuses while EXT is selected and the cart is carrying the load, which is the
+one case where pulling the plug would be a party trick rather than a procedure.
+Start rolling and the cart is gone for good — it is parked in the world, not
+attached to the aircraft, and the alternative was watching it skate along behind
+you. Wheeled variants only: the cable was fitted to that fuselage stance.
+
+> [!WARNING]
+> **Known limitation: no load sharing**
+>
+> Only one starter-generator actually supplies the bus at a time. As far as we
+> can tell, the sim's V2 electrical system has no mechanism for two paralleled
+> DC generators to share load — the solver always picks one. The cockpit
+> loadmeter therefore shows generator 1 near full load and generator 2 near
+> zero in normal operation. That is expected, not a fault you have caused. If
+> you know how to make V2 share load properly, please get in touch.
+
+## Under the hood
+
+A starter-generator is one machine wired two ways. During the start it is a motor
+drawing several hundred amps from the battery bus; once the engine can sustain
+itself, the field is re-excited and the same rotor becomes a shunt generator
+feeding the bus it was drawing from. A GCU sits on the output and decides whether
+that generator is fit to be connected — voltage in band, polarity correct, no
+reverse current — and drops it off line if not.
+
+We build this on the sim's V2 modular electrical system, which gives us real
+buses, real consumers and a real solver, and then add the parts V2 has no concept
+of. The trip model is ours: a probability per connection attempt, conditioned on
+engine speed and accumulated engine age, with a separate and independently
+fallible RESET path. The battery is a modelled cell stack with terminal voltage
+that sags under load and recovers, plus a thermal model that soaks toward ambient
+and self-heats on charge and discharge — a cold battery genuinely cranks worse.
+
+Where it stops: load sharing, as above, is a sim constraint we have not found a
+way around. Trickle charge into the emergency-lighting packs is missing for
+topological reasons — those batteries start each flight full whether they earned
+it or not. And the generators are modelled as ideal sources once connected; there
+is no field-winding behaviour, no ripple, and no frequency-domain anything.
+
+## From the release notes
+
+Verbatim from `docs/release-notes-*.md`, grouped by the section they appeared in. The tag is the version each item first appeared in.
+
+### Annunciators / Glareshield
+
+- DEAD REC annunciator now also lights on NAV1 cone-of-confusion. *(v2024.2.134)*
+- Boost pump annunciators now key on FUELSYSTEM PUMP ACTIVE *(v2024.2.134)*
+- Pneumatic Low Press, 400 Cycle, Fwd/Aft Fuel Low, Aux Battery Active, generator-bus annunciators all rewired to authoritative SimVars/L:vars. *(v2024.2.134)*
+
+### What's new since v2024.1.8
+
+- Rebuilt the electrical system on the V2 modular architecture. *(v2024.2.x)*
+
+### Electrical system
+
+- Rebuilt electrical system using v2.2 for more reasonable battery drain and consumer loads. *(v2024.2.x)*
+- Added opt-in option for realistic battery drain. By default, a magical device keeps the batteries charged. *(v2024.2.x)*
+- Added option to select NiCd or SLA battery with different capacities and behaviors. *(v2024.2.x)*
+- Added invisible GPU cart that can be selected using the DC Source selector on the ground. (Same behavior as before, but with different mechanics to satisfy MSFS2024.) *(v2024.2.x)*
+- Added battery packs to emergency lighting. Armed emergency lights turn on when main power is lost and are powered for at least 15 minutes. (Limitation: the batteries are magically charged by the sim when the flight starts, trickle-charge is currently missing because of... erm... topological challenges.) *(v2024.2.x)*
+- Adjusted power consumption of most components, based on POH values, research, or gut feeling. *(v2024.2.x)*
+- [NEW] Generator Control Unit "simulation": GCU faults can trip a generator, requiring an explicit RESET to bring it back online; tripping can fire on undervoltage if enabled in the EFB Config tab. *(v2024.2.x)*
+- [NEW] Battery temperature thermal model: ambient soak, charge/discharge heating, and cooling. *(v2024.2.x)*
+- [NEW] BUS TIE switch correctly couples or isolates the two main DC buses symmetrically. *(v2024.2.x)*
+- [NEW] Interior light dimming reacts to bus load. *(v2024.2.x)*
+- [NEW] Annunciator brightness now uses a per-lamp aging factor. *(v2024.2.x)*
+- Pitot heat split into two independent circuits. The sim only provides a single pitot-static system that supplies both airspeed indicators. Future work must separate the pitot probes so a single heating element can fail leading to a single airspeed indicator getting stuck. *(v2024.3.19)*
+- **Generators no longer source power with the DC Master in OFF.** Fixed cases where generator output reached the bus while the master switch was closed. *(v2024.3.19)*
+- Changed GPU breaker from 200A to 400A and fixed GPU being disconnected early at engine idle with both generators switched off. This should prevent avionics from rebooting during GPU-powered engine starts. *(v2024.3.19)*
+- **Battery voltage now sags under heavy load.** Most visible during engine start — the voltmeter dips and the cockpit lighting dims as the starter pulls the bus down. Starters draw a realistic current that tapers as the engine spools up. A weak battery cranks noticeably slower and takes longer to stabilize at lower %Ng. *(v2024.3.68)*
+- **Overhauled idle load.** The load of a number of components was estimated on the high side and corrected downwards during a research pass. *(v2024.3.68)*
+- Fixed an animation error that caused the loadmeter needle to barely move under idle load. It should now display POH-correct values. Note that the scale is different based on whether the bus is on battery or on generator, see POH for details. *(v2024.3.68)*
+- As a result of these two fixes, idle load will now **look** much larger, but the battery will nonetheless drain significantly slower. *(v2024.3.68)*
+- Known issues: it takes a couple of seconds for the first generator to come online after toggling the switch; during GPU starts, the voltmeter can move erratically *(v2024.3.68)*
+
+### Bug fixes
+
+- Corrected emergency exit lights logic; they now illuminate correctly in the ARM position upon loss of power. *(v2024.2.x)*
+- [NEW] Annunciator lights work again (regression introduced by SU5 release 1.7.21.0). *(v2024.2.x)*
+
+### Known issues
+
+- Generator load sharing: only one starter-generator actually supplies the bus at a time. As far as I can tell, MSFS 2024's V2 electrical system has no mechanism for two paralleled DC generators to share load. The cockpit loadmeter therefore shows Gen 1 near full load and Gen 2 near zero in normal operation; that's expected, not a bug. If anyone knows how to get real V2 load sharing working, I'd love to hear about it. *(v2024.2.x)*
+
+## Config options
+
+Set from the EFB **Config** tab. Each option is documented on exactly one page; see [Configuration](https://aurel42.github.io/twotter-revived-manual/mod/configuration/) for how profiles and the per-variant override work.
+
+### Generators can trip
+
+`DHC6_CFG_GCU_LATCH` — default: **off**
+
+Models the real generator control unit: the generator connects at the starter-generator handover (about 46 % Ng) and essentially always comes on line, with a slim chance of tripping off that rises with engine age. A tripped generator needs a RESET (hold to RESET, release to ON). Off keeps the generators always on line.
+
+### Realistic battery capacity
+
+`DHC6_CFG_REALISTIC_BATTERY` — default: **off**
+
+Gives the battery a real amp-hour budget. Off means unlimited capacity.
+
+### Battery Replacement (NiCad to SLA)
+
+`DHC6_CFG_BATTERY_SLA` — default: **off**
+
+Swaps the standard NiCad pack for a sealed lead-acid battery with different chemistry and higher weight.
+
+## L:vars
+
+Variables worth binding to hardware, driving from FSUIPC / Axis&Ohs / SPAD.neXt,
+or reading on an external display. **R** is read-only state; **R/W** can be set.
+This is a selection, not the full list — the aircraft defines around a thousand
+`DHC6_*` names, most of them internal.
+
+| L:var | R/W | Meaning |
+|---|---|---|
+| `DHC6_GEN_STATE_1` | R | Generator 1 state — off line, on line, tripped |
+| `DHC6_GEN_STATE_2` | R | Generator 2 state |
+| `DHC6_GEN_RESET_REQUEST_1` | R/W | Request a GCU reset on generator 1, equivalent to holding the switch to RESET |
+| `DHC6_GEN_RESET_REQUEST_2` | R/W | Same, generator 2 |
+| `DHC6_BATT_TERM_V` | R | Battery terminal voltage, sag included — dips during the crank |
+| `DHC6_BATT_TEMP` | R | Battery temperature |
+| `DHC6_AVIONICS_MASTER` | R/W | Avionics rack power, when the FDR-as-avionics-master option is on |
+| `DHC6_FDR_STATUS` | R | Flight Data Recorder switch position |
+
+---
+
+# Engine Start
+
+*aircraft/systems/engines/engine-start.md · review: draft*
+<https://aurel42.github.io/twotter-revived-manual/aircraft/systems/engines/engine-start/>
+
+## From the README
+
+The goal is: pilot can make engines 'splode.
+State: laying the groundwork.
+
+Part of the mod is a turbine "simulation", aka "TurbSim".
+
+Let me be perfectly clear about this: while my goal is to present something that is closer to realism than the oversimplified turbine simulation MSFS provides, I don't know at all what I'm doing here. I vibecoded a basic PT6A simulation based on Wikipedia and publicly available research papers (which are already simplified, not based on actual 1st party data, and cover other PT6A variants), without any insights into the P&W's "secret sauce".
+
+I have a bunch of formulas that try to approximate certain parts of the engine, and I feed them with values that I guessed based on what I want the output to look like to hit targets I found in reference videos. I have never seen a hot start, but when the formulas see fuel pooled in the engine before combustion starts, they can make the ITT go red. It's half physics, half fudge.
+
+Known issues: No hung starts, because of sim limitations. No performance degradation or engine failures implemented yet.
+
+- Calibrated engine fuel flow and N2 mapping for accurate power response.
+- Adjusted engine torque-to-N1 mapping to align with POH performance data.
+- [CHANGED] Added intake deflectors aka inertial separators, enabled doll's eyes indicators, fixed performance penalty for deflectors and ITT penalty for inlet heat. Note: it takes about 80% Ng (POH-faithful) to create the bleed air pressure needed to extend the deflectors.
+- Physics-based "simulation" of the PT6A gas path (TurbSim): two-spool dynamics, staged fuel nozzle with characteristic light-off ITT spike, fuel pool that drives hot starts, ignition-delay light-off, T4→T5 gas path with thermocouple lag, block thermal soak-back.
+- Per-airframe deterministic jitter spreads engine bias across saved airframes. No two engines are equal.
+- Inertial separator needs bleed-air pressure to extend; electrical power is still enough to retract.
+- Mitigated the push-from-idle ITT spike by tightening the low-Ng Wf acceleration ceiling.
+- A small low-Ng FCU metering-valve servo lag (first-order, ~0.2 s) models the hydromechanical metering valve. No effect on startup (handled by a separate FCU schedule) or cruise/takeoff power.
+- Cross-engine-start interlock: starting one engine no longer lets the other engine's running generator back-feed the starter. The opposite generator briefly drops offline during the crank (its GEN annunciator lights) and re-engages once the starter releases. This is a workaround for a sim electrical-system limitation; per the POH (and physics), a cross-engine start isn't possible: the running engine's generator hasn't got the oomph to drive the opposite starter.
+- [CHANGED] TurbSim's fuel control unit (FCU) now owns fuel flow.
+- [NEW] Added compressor map calibrated against POH performance charts.
+- [NEW] Added combustor liner thermal model and breakaway stiction governing the rotor at start.
+- [CHANGED] Intake-deflector penalty corrected: the old flat torque/ITT penalty is gone; the remaining effect is a small power reduction from the restricted inlet, matching the POH power charts. Deflectors extend only above ~80 % Ng and need DC power.
+
+Starting a PT6A is the one part of flying this aircraft where the simulation can
+bite you, and it is the part we have spent the most effort on. This page is not a
+procedure — the in-sim checklist owns that, with per-item hints. This is what the
+engine is doing while you follow it, and why it reacts the way it does.
+
+## Operation
+
+**Stabilized Ng is a number, not a feeling.** On battery, the first engine settles
+somewhere around 16–18 % Ng; the second sits about a percent lower, because the
+first start has already pulled the battery down. Neither figure is a limit — the
+limit is the 12 % floor below which fuel must not be introduced (POH §4.6.1). On
+a GPU you will see it stabilize higher and get there faster. What matters is that
+the needle has *stopped climbing*, not that it has reached any particular mark.
+
+**The hot start is the whole reason step order matters.** Introduce fuel before
+the compressor is moving enough air and it does not burn — it pools. The igniters
+keep trying, and when the mixture finally comes into range the whole puddle lights
+at once. ITT goes wherever the fuel says it goes, which is well past the start
+limit and, in a bad one, out of the exhaust stub as visible flame. The earlier you
+push the condition lever, the more fuel is waiting when that happens.
+
+This is modelled deliberately, and it is the feature the project was started for.
+If you want to see it, push the lever early on purpose. It is worth doing once.
+
+**Losing the boost pumps makes an early start slightly *cooler*.** The
+minimum-pressurizing valve upstream of the nozzles cracks later without tank boost
+pressure — a couple of percent Ng later — so less fuel reaches the combustor
+before light-off. It is a small effect and not a technique; it is simply why two
+otherwise identical early starts can differ.
+
+**Generators can trip.** *(Config: **Generators can trip**, off by default.)*
+Enabled, this models the real generator control unit rather than the sim's
+always-succeeds behaviour:
+
+- Leave the GEN switch ON through the start and the trip is **certain**. The GEN
+  caution light stays on; the switch must be held to RESET and released to ON.
+- Connect at idle and there is a small chance, which grows with engine age.
+- Connect slightly above idle and it is more reliable.
+- A RESET can itself fail and need another attempt, exactly as on the aircraft.
+
+The practical habit: leave the generators off through the start and bring them on
+once the engine is stable. See [Generators and the GCU](https://aurel42.github.io/twotter-revived-manual/aircraft/systems/electrical/generators/)
+for what the switch is actually doing.
+
+**You cannot cross-start.** Starting one engine will not let the other engine's
+running generator back-feed the starter. During the crank the opposite generator
+drops offline — its GEN annunciator lights — and re-engages when the starter
+releases. That is a workaround for a sim electrical-system limitation, but the
+outcome is POH-correct: a running engine's generator has not got the output to
+turn the opposite starter.
+
+**Watch the voltmeter and the lights, not just the gauges.** Battery terminal
+voltage sags under the starter load. The voltmeter dips, the cockpit lighting and
+the glareshield annunciators dim with it, and both recover as starter current
+tapers off with rising Ng. A weak or cold battery cranks visibly slower and
+stabilizes lower — which is precisely the condition in which people introduce fuel
+too early.
+
+**No two of your engines are the same.** A deterministic per-airframe jitter
+spreads a small bias across saved aircraft, so the airframe you always fly has its
+own light-off character and keeps it.
+
+**What a hot start costs you** *(Config: **Reliability**)*. At the default **Off**,
+nothing at all — cook it as often as you like. At **Reliable** and above, ITT
+excursions accumulate against the engine's condition and surface in the EFB
+Maintenance tab, with the wear rate scaling 4× at Unreliable and 16× at Not
+Airworthy.
+
+> [!NOTE]
+> **Cold soak**
+>
+> Below about −30 °C the POH has you motor the engine for five seconds without
+> introducing fuel, rest the battery for a minute, then start normally
+> (§4.6.3). We model the battery recovery, so the rest actually buys you
+> something — skipping it gives you a slower crank and a lower stabilized Ng.
+
+## Under the hood
+
+A PT6A is a free-turbine engine: there is no mechanical link between the gas
+generator spool and the propeller. The starter only has to turn the compressor,
+and the prop stays where it is until there is gas to drive it. That is also why an
+Ng floor exists at all — below roughly 12 %, the compressor simply is not pushing
+enough air to burn fuel as fast as the nozzles deliver it. Everything unpleasant
+about a hot start follows from that one fact.
+
+### What we model
+
+The engine is a physics simulation in `CBDHC6/src/engines/TurbineLogic.cpp`,
+stepped at 10 Hz. It is the sole source of the Ng and ITT you see; there is no
+scripted shaping layer left anywhere in the project.
+
+The gas generator spool is integrated from an actual force balance — starter
+torque, turbine power, compressor absorbed power, windage and friction — rather
+than played back from a curve. Compressor behaviour comes from a map in corrected
+coordinates, which means altitude is *structural*: the density terms cancel at
+equilibrium and the Ng-versus-altitude relationship falls out of the mathematics
+instead of being patched in with an exponent.
+
+Fuel is metered by a modelled FCU with two regimes. During the start it runs a
+staged-nozzle schedule, so you get the characteristic secondary-nozzle step rather
+than the flat delivery the sim would otherwise give you. Once running, it is a
+speed governor closing on Ng, with a topping governor trimming the ceiling.
+
+Light-off is where the interesting part lives:
+
+1. Fuel entering below the light-off speed cannot burn, so it **accumulates as a
+   pool**. Admission itself is gated by a modelled flow-divider crack, which is
+   what the boost-pump effect above comes from.
+2. An **ignition delay** — a couple of seconds after fuel is introduced — has to
+   elapse before combustion can begin.
+3. When it lights, the pool **releases vapour** at a rate set by evaporation off
+   the liquid surface. Crucially, that is a release rate, not a burn rate.
+4. Where the vapour actually burns is decided station by station, by the air
+   available at each: primary zone, then dilution, then downstream of the HPT, and
+   whatever is left over leaves the engine unburnt. The downstream share is added
+   *after* the turbine drop, so it drives indicated ITT without accelerating the
+   compressor — which is why a hot start reads hot without also spooling faster.
+   The unburnt remainder is the smoke or flame at the exhaust stub, and it drives
+   the exhaust effects you can see from outside.
+
+The consequence worth stating plainly: **hot-start severity is an emergent
+property, not a multiplier.** A bigger puddle burns hotter, not merely longer,
+because the air at each station runs out sooner. That was not true before July
+2026 — the old formulation cancelled mass flow out of the temperature rise
+entirely, so a mild and a severe start could not be separated by more than about
+45 K no matter what you tuned. Getting that right is the difference between a
+scripted spike and an engine.
+
+What you read on the gauge is then a modelled *instrument*, not the gas path. The
+ITT indicator is an interstage thermocouple with asymmetric lag, a radiation floor
+from the hot block, and soak-back after shutdown. The Ng tach is a charge-pump
+frequency-to-voltage converter, which is why it steps at low speed and smooths out
+above roughly 17 %. Both mean the number arrives slightly late and slightly low, as
+it would on the aircraft.
+
+### Where it stops
+
+Being straight about this: the model is grounded in published research on the PT6
+family, not in Pratt & Whitney's data. Several constants were fitted to make the
+output match reference video and POH performance charts rather than derived from
+first principles. It is a good deal more than a lookup table and a good deal less
+than a real engine deck.
+
+Not modelled:
+
+- **Hung starts.** A sim limitation rather than a modelling choice.
+- **Compressor stall and surge.** There is a compressor map, but no surge line and
+  no stall behaviour.
+- **FOD and mechanical failure of the gas path.** Engine wear is tracked, but a
+  blade does not leave.
+- **Bleed and accessory-gearbox loads** are present as stubs, not as a real
+  accounting of shaft power.
+
+If you find behaviour that contradicts the POH, that is a bug and worth reporting
+— those are the anchors the whole model is calibrated against.
+
+## From the release notes
+
+Verbatim from `docs/release-notes-*.md`, grouped by the section they appeared in. The tag is the version each item first appeared in.
+
+### General
+
+- Made initialization detection more robust (fixes: TurbSim frequently failing on runway start). *(v2024.2.134)*
+
+### Engines
+
+- DHC-6-100 series variants moved closer to PT6A-20 specs: ITT peak ~1044 °C (vs 1100 °C on the -27), EGT peak and rated fuel flow scaled to the 550 SHP rating. *(v2024.2.142)*
+- TurbSim now also follows the sim's "engine is lit" flag, so failure injection, in-flight flameouts and low-bus igniter cutoffs actually stop the alternate ITT/%Ng simulation from continuing to model a running engine. *(v2024.2.142)*
+- Added engine exhaust flame and smoke visual effect placeholders. WIP, not hooked up yet. *(v2024.2.142)*
+- Calibrated engine fuel flow and N2 mapping for accurate power response. *(v2024.2.x)*
+- Adjusted engine torque-to-N1 mapping to align with POH performance data. *(v2024.2.x)*
+- Added intake deflectors aka inertial separators, enabled doll's eyes indicators, added torque and ITT penalties for deflectors and inlet heat. Note: it takes about 70% Ng to create the bleed air pressure needed to extend the deflectors. *(v2024.2.x)*
+- [NEW] Optional physics-based "simulation" of the PT6A gas path (TurbSim): two-spool dynamics, staged fuel nozzle with characteristic light-off ITT spike, fuel pool that drives hot starts, ignition-delay light-off, T4→T5 gas path with thermocouple lag, block thermal soak-back. Selectable in the EFB Config tab. *(v2024.2.x)*
+- [NEW] Per-airframe deterministic jitter spreads engine bias across saved airframes. No two engines are equal. *(v2024.2.x)*
+- [CHANGED] Inertial separator needs bleed-air pressure to extend; electrical power is still enough to retract. *(v2024.2.x)*
+- Added a compressor map and a fuel control unit (FCU) to TurbSim. The engine now matches the POH power charts across the altitude envelope. *(v2024.3.174)*
+- Improved starter and spool-up behavior in some conditions (extreme temperatures, high elevation fields). *(v2024.3.174)*
+- Fixed engines flaming out when fuel flow was interrupted momentarily by controller issues or a mid-flight restart by the sim's crash recovery. *(v2024.3.174)*
+- Overhauled the generator tripping behavior, making the RESET position of the generator switch matter. *(v2024.3.174)*
+- Closed another physics gap in the engine model for more plausible hot starts. *(v2024.3.183)*
+- Wired up exhaust smoke and flame effects (placeholder art). *(v2024.3.183)*
+- Overhauled the GCU based on real-world feedback: the generator connects at the starter-generator handover (about 46 % Ng) and essentially always comes on line, with a very slim chance of tripping that rises with engine age. A tripped generator still needs a RESET. *(v2024.3.183)*
+- Fixed a generator with collapsing output staying connected to the bus and dragging bus voltage down, which could reboot the avionics. *(v2024.3.183)*
+- **Mitigated push-from-idle ITT spike.** The Wf acceleration ceiling at low Ng was too loose, allowing quick throttle movements from idle to drive ITT into the red. *(v2024.3.19)*
+- Added missing smoothing to the ITT needles. *(v2024.3.19)*
+- Fixed issues that caused both engines to quit during the cinematics on a runway start and, occasionally, one engine to quit after the cinematics completed. *(v2024.3.19)*
+- **Cross-engine-start interlock.** Starting one engine no longer lets the other engine's running generator back-feed the starter. The opposite generator briefly drops offline during the crank (its GEN annunciator lights) and re-engages once the starter releases. This is a workaround for a limitation of the sim's electrical system. According to the POH (and, I think, physics), cross-engine starts are not possible, because the generator of the running engine does not have enough oomph (that's the technical term) to drive the opposite starter. Consider this a placeholder until I figure out how to simulate this properly. *(v2024.3.68)*
+- Closed a physics gap in TurbSim: enthalpic work failed to cool down the gas in some situations. This was the underlying cause of the ITT spikes when the throttle was moved too quickly close to idle. Added the missing term and removed the fudge introduced as workaround (an artificially high FCU valve delay). Normal throttle movements should be responsive again without sending the needle into the red. *(v2024.3.68)*
+- TurbSim is now enforced. *(v2024.3.99)*
+- Ground tailwind can lead to higher ITT. *(v2024.3.99)*
+- Fixed transient ITT bump on firing of the secondary nozzles. *(v2024.3.99)*
+- Fixed engine starts on GPU reading the battery voltage for the starter. *(v2024.3.99)*
+- Enforced coupling between prop RPM and torque (based on pilot feedback). *(v2024.3.99)*
+
+### What's new since v2024.1.8
+
+- Added an optional physics-based "simulation" of the PT6A gas generator and ITT (TurbSim). *(v2024.2.x)*
+
+### Known issues
+
+- Alternate ITT/%Ng calculation (aka TurbSim) tends to be sensitive to fuel flow delta, especially at low power settings. It helps to move the throttle levers slowly. I have no way of knowing whether this is realistic or exaggerated. Without reference data/video, I don't know what to tune for, and I don't want to make something up, so I'm giving TurbSim some artistic license. *(v2024.2.x)*
+
+### Engines (TurbSim)
+
+- Reanchored to reference data. *(v2024.3.124)*
+- Restored intended behavior at altitude (removed a spurious fuel-air-ratio cap). *(v2024.3.124)*
+- Fixed slow starter cranking, and cranking when the electrical bus is de-energized. *(v2024.3.124)*
+
+### Propellers
+
+- **New propeller blur.** CCM's prop-blur textures are included in the archive as a separate mod. <3 CCM <3 *(v2024.3.68)*
+
+### Housekeeping
+
+- TurbSim is no longer optional. *(v2024.3.99)*
+
+## L:vars
+
+Variables worth binding to hardware, driving from FSUIPC / Axis&Ohs / SPAD.neXt,
+or reading on an external display. **R** is read-only state; **R/W** can be set.
+This is a selection, not the full list — the aircraft defines around a thousand
+`DHC6_*` names, most of them internal.
+
+| L:var | R/W | Meaning |
+|---|---|---|
+| `DHC6_ITT_DISPLAY_1` | R | Left ITT as the gauge reads it — thermocouple lag included |
+| `DHC6_ITT_DISPLAY_2` | R | Right ITT |
+| `DHC6_NG_DISPLAY_1` | R | Left Ng as the sync tach reads it |
+| `DHC6_NG_DISPLAY_2` | R | Right Ng |
+| `DHC6_ENGINE_BIAS_1` | R | Per-airframe deterministic bias for engine 1 — why no two engines are identical |
+| `DHC6_ENGINE_BIAS_2` | R | Same, engine 2 |
+| `DHC6_IGNITION_MODE` | R/W | Ignition selector position |
+| `DHC6_AF_TEST_ARM` | R/W | Autofeather test arm |
+| `DHC6_AUTOFEATHER_TEST` | R/W | Autofeather test |
+| `DHC6_FX_SMOKE_LIGHT_1` | R | Exhaust smoke gate, light tier — non-zero during a hot start |
+| `DHC6_FX_FLAME_INTENSITY_1` | R | Visible flame at the exhaust stub; only a severe start reaches this |
+
+---
+
+# Fuel system
+
+*aircraft/systems/fuel.md · review: draft*
+<https://aurel42.github.io/twotter-revived-manual/aircraft/systems/fuel/>
+
+## From the README
+
+- Migrated to "modern fuel system" (MSFS 2024) architecture.
+- Restored the IRL behavior of the wing tanks: the "Engine" position enables the electric pump that feeds fuel from the wing tanks into the main tanks.
+- A valve will pause the transfer around 75-80% per target tank.
+- The wing tanks "refuel" position does nothing.
+- Wing tank pump failure warning lights illuminate when the pumps can't draw fuel.
+
+## From the release notes
+
+Verbatim from `docs/release-notes-*.md`, grouped by the section they appeared in. The tag is the version each item first appeared in.
+
+### Fuel system
+
+- Overhauled boost pumps and fuel selector for more accurate behavior. Restored missing audio, removed conflicting audio. *(v2024.2.142)*
+- Worked around the sim driving engine-driven fuel pump pressure from shaft (propeller) RPM instead of Ng. The pump is now hard-off below 35 % Ng and ramps back in above 40 %, with a small pressure floor so combustion stays alive with a feathered or near-stopped prop. *(v2024.2.142)*
+- Migrated to "modern fuel system" (MSFS 2024) architecture. *(v2024.2.x)*
+- Restored the IRL behavior of the wing tanks: the "Engine" position enables the electric pump that feeds fuel from the wing tanks into the main tanks. *(v2024.2.x)*
+- A valve will pause the transfer around 75-80% per target tank. *(v2024.2.x)*
+- The wing tanks "refuel" position does nothing. *(v2024.2.x)*
+- Wing tank pump failure warning lights illuminate when the pumps can't draw fuel. *(v2024.2.x)*
+- Electric fuel pumps now take a moment to build pressure. *(v2024.3.183)*
+- Feedback: Removed the mandatory boost pump requirement below 8000 ft density altitude. *(v2024.3.183)*
+
+## L:vars
+
+Variables worth binding to hardware, driving from FSUIPC / Axis&Ohs / SPAD.neXt,
+or reading on an external display. **R** is read-only state; **R/W** can be set.
+This is a selection, not the full list — the aircraft defines around a thousand
+`DHC6_*` names, most of them internal.
+
+| L:var | R/W | Meaning |
+|---|---|---|
+| `DHC6_FUEL_WING_TANK_L` | R/W | Left wing-tank selector |
+| `DHC6_FUEL_WING_TANK_R` | R/W | Right wing-tank selector |
+| `DHC6_WING_PUMP_ELEC_L` | R | Left wing electric pump running |
+| `DHC6_WING_PUMP_ELEC_R` | R | Right wing electric pump running |
+| `DHC6_WING_PUMP_WARN_L` | R | Left wing pump can't draw — the warning lamp |
+| `DHC6_WING_PUMP_WARN_R` | R | Right wing pump warning |
+| `DHC6_FUELBOOST_FWD_STATE` | R | Forward boost pump state |
+| `DHC6_FUELBOOST_AFT_STATE` | R | Aft boost pump state |
+
+---
+
+# Hydraulic system
+
+*aircraft/systems/hydraulics.md · review: draft*
+<https://aurel42.github.io/twotter-revived-manual/aircraft/systems/hydraulics/>
+
+## From the README
+
+The hydraulic system now has a pump that draws power when it actuates. You can hear it work when you use the flaps, brakes, or nosewheel steering. It took a bit of trickery to work around sim limitations (or maybe dev limitations, can't be sure) and I haven't figured out how to prime the hydraulics, so every flight starts with an empty system and an invisible mechanic using the hand pump.
+
+- Rebuilt hydraulic system using EX1.
+- Added brake isolation valve to preserve some brake functionality on system failure.
+- Added emergency hand pump to EFB Systems tab to manually restore hydraulic pressure and to prime the system when state is restored.
+- Changed brake and sys pressure gauges to show actual values.
+- Pump inrush: the hydraulic pump now pulls a brief power surge when it cuts in, before settling to its running draw — visible on the loadmeter.
+- System pressure regulation and pressure-gauge calibration carry small per-variant offsets.
+
+## From the release notes
+
+Verbatim from `docs/release-notes-*.md`, grouped by the section they appeared in. The tag is the version each item first appeared in.
+
+### [NEW] Hydraulic system
+
+- Rebuilt hydraulic system using EX1. *(v2024.2.x)*
+- Added brake isolation valve to preserve some brake functionality on system failure. *(v2024.2.x)*
+- Added emergency hand pump to EFB Systems tab to manually restore hydraulic pressure and to prime the system when state is restored. *(v2024.2.x)*
+- Changed brake and sys pressure gauges to show actual values. *(v2024.2.x)*
+
+### Cockpit & systems
+
+- Fixed rudder pedal axis jitter driving the nose wheel steering actuator, triggering a ridiculous amount of hydraulic pump runs. *(v2024.3.183)*
+
+### Hydraulics
+
+- **Pump inrush.** The hydraulic pump now pulls a brief power surge when it cuts in before settling to its running draw, visible on the loadmeter. *(v2024.3.68)*
+- As part of the ongoing work to add individualization to airframes, the system pressure regulation and the pressure-gauge calibration now carry small per-variant offsets. *(v2024.3.68)*
+- **The pump cycles less often** during routine flap, brake and nose-wheel-steering use (actuator volumes retuned). Feedback is welcome. (Still too frequently?) *(v2024.3.68)*
+
+## L:vars
+
+Variables worth binding to hardware, driving from FSUIPC / Axis&Ohs / SPAD.neXt,
+or reading on an external display. **R** is read-only state; **R/W** can be set.
+This is a selection, not the full list — the aircraft defines around a thousand
+`DHC6_*` names, most of them internal.
+
+| L:var | R/W | Meaning |
+|---|---|---|
+| `DHC6_HYD_PUMP_RUN` | R | Hydraulic pump currently running — the cycling you hear |
+| `DHC6_HAND_PUMP` | R/W | Emergency hand pump. **No cockpit control** — EFB Systems tab or a binding only |
+
+---
+
+# Bleed air and ice protection
+
+*aircraft/systems/ice-protection.md · review: draft*
+<https://aurel42.github.io/twotter-revived-manual/aircraft/systems/ice-protection/>
+
+## From the README
+
+The Twotter is certified for FIKI (flight into known icing conditions). It has a beefy de-icing system consisting of leading edge boots on the wings and stabilizers, heated propeller edges and engine ice protection. Because of limitations of the sim, all these systems collapse into one single value that controls the structural icing of the aircraft and its effects on the flight model. I still tried to make each component matter.
+
+- Each boot cycle takes about 16s, and in the last 8s, the blue overhead stab lights will come on.
+- A single boot cycle can be triggered using the MANUAL switch position.
+- In AUTO mode, boots will be actuated every 3m (SLOW) or every 1m (FAST).
+- At the end of each boot cycle, a certain percentage of the ice is shed.
+- Activating Prop Heat increases the percentage (yeah, that's the unrealistic part).
+- Activating Intake Anti-Ice increases the percentage (same).
+- Extending Intake Deflectors protects the engine from ingesting ice that is shed by Intake Anti-Ice (as part of a future engine damage modelling)
+
+Notes: Bleed Air switches don't need to be "on" to extend the deflector. The extension mechanism gets its air upstream. At least one switch needs to be "on" to use the de-icing boots or cabin heating (not implemented yet).
+
+Limitations: MANUAL mode does not behave authentically, it just starts a single boot cycle. IRL, in manual mode, the two extra switches (stab left/right, wing inner/outer) SOMEHOW control the boots directly, but I couldn't find out how, also, it would be complete theater, because of the "one single value" restriction.
+
+Known issue: During the boot cycle, the LOW PNEUMATIC PRESS light can come on temporarily. The boot cycle will complete anyway.
+
+- Rudimentary bleed-air "simulation": per-engine source PSI, manifold PSI after the cockpit shutoff switches, and demand from downstream consumers (deflector, deice boots).
+- Pneumatic de-ice boot system with AUTO and MAN cycle modes. AUTO runs continuous cycles; MAN fires a single cycle and the switch snaps back.
+- Windshield heat circuit mapped to separate DC buses (left and right pane independently).
+- Icing accretion statistics on the EFB Flight tab.
+- Inertial separator deflector deployment now needs bleed-air pressure.
+- Windshield heat is now thermostat-controlled: instead of running flat-out whenever the switch is on, it warms the glass and then cycles to hold temperature. The underlying thermal model is minimal — in flight in cool air the heat stays effectively always-on, so it never interferes with the sim's internal windshield-icing effect (which the mod can't actually see). The thermostat state and modelled window temperature are shown on the EFB Debug tab.
+- CCM applied his signature 400% icing bump, it remains to be tested whether the de-icing can keep up.
+- [CHANGED] The bleed system is now a proper pneumatic model: per-engine source PSI, motorized cockpit shutoff valves, an unregulated duct, and a regulated de-ice manifold, with the POH 25/20 PSI protections. Cabin heat is fed from bleed through the duct, and a DUCT OVERHEAT caution trips above 125 °C (pull RAM AIR to clear).
+
+## From the release notes
+
+Verbatim from `docs/release-notes-*.md`, grouped by the section they appeared in. The tag is the version each item first appeared in.
+
+### What's new since v2024.1.8
+
+- Added pneumatic de-ice boots with AUTO and MAN cycle modes. *(v2024.2.x)*
+
+### Bleed air & ice protection
+
+- Each boot cycle takes about 16s, and in the last 8s, the blue overhead stab lights will come on. *(v2024.2.x)*
+- A single boot cycle can be triggered using the MANUAL switch position. *(v2024.2.x)*
+- In AUTO mode, boots will be actuated every 3m (SLOW) or every 1m (FAST). *(v2024.2.x)*
+- At the end of each boot cycle, a certain percentage of the ice is shed. *(v2024.2.x)*
+- Activating Prop Heat increases the percentage (yeah, that's the unrealistic part). *(v2024.2.x)*
+- Activating Intake Anti-Ice increases the percentage (same). *(v2024.2.x)*
+- Extending Intake Deflectors protects the engine from ingesting ice that is shed by Intake Anti-Ice (as part of a future engine damage modelling) *(v2024.2.x)*
+- [NEW] Rudimentary bleed-air "simulation": per-engine source PSI, manifold PSI after the cockpit shutoff switches, and demand from downstream consumers (deflector, deice boots). *(v2024.2.x)*
+- [NEW] Pneumatic de-ice boot system with AUTO and MAN cycle modes. AUTO runs continuous cycles; MAN fires a single cycle and the switch snaps back. *(v2024.2.x)*
+- [NEW] Windshield heat circuit mapped to separate DC buses (left and right pane independently). *(v2024.2.x)*
+- [NEW] Icing accretion statistics on the EFB Flight tab. *(v2024.2.x)*
+- [NEW] Inertial separator deflector deployment now needs bleed-air pressure. *(v2024.2.x)*
+
+### Bleed air & pneumatics
+
+- Reworked the bleed system into a pneumatic model with motorized shutoff valves, an unregulated duct, and a regulated de-ice manifold. *(v2024.3.174)*
+- Cabin heat is fed from bleed air through the duct, with the POH 25/20 PSI pressure protections. *(v2024.3.174)*
+- Fixed the magnitude of engine performance penalties for bleed air and intake deflectors to be faithful to the POH. *(v2024.3.174)*
+
+### Intake deflectors (inertial separator)
+
+- Rewired to extend/retract on engine pressure and DC bus voltage, per POH. *(v2024.3.174)*
+- Removed an incorrect torque/ITT penalty; the remaining effect is a small power reduction from the restricted inlet, per the POH power charts. *(v2024.3.174)*
+
+### Anti-ice
+
+- The **inertial separator** switch now holds in the Retract position for a moment after you let go. Before, it sometimes snapped back immediately without letting the switch animation play out, which looked broken and confused users. *(v2024.3.47)*
+- **Windshield heat is now thermostat-controlled.** Instead of running flat-out whenever the switch is on, the window heat warms the glass and then cycles to hold temperature. The underlying thermal model is minimal, it should keep the windshield heat constantly on in flight in cool air, so it never interferes with the actual windshield icing effect (funny story, there is no way for the mod to know whether the windshield is iced over, this is purely a sim-internal effect which is not exposed anywhere, as far as I could see). The state of the thermostat and its modelled window temperature are visible on the debug tab. *(v2024.3.68)*
+- Fix: In-air and runway starts have bleed air on. *(v2024.3.68)*
+
+## L:vars
+
+Variables worth binding to hardware, driving from FSUIPC / Axis&Ohs / SPAD.neXt,
+or reading on an external display. **R** is read-only state; **R/W** can be set.
+This is a selection, not the full list — the aircraft defines around a thousand
+`DHC6_*` names, most of them internal.
+
+| L:var | R/W | Meaning |
+|---|---|---|
+| `DHC6_DEICE_BOOTS` | R/W | De-ice boot cycle |
+| `DHC6_DEICE_BOOTS_INFLATING` | R | Boots currently inflating — useful for an external annunciator |
+| `DHC6_INTAKE_DEICE` | R/W | Intake de-ice |
+| `DHC6_DEFLECTOR_CMD` | R/W | Intake deflector command |
+| `DHC6_DEFLECTOR_POS_L` | R | Left deflector actual position — lags the command, needs bleed pressure |
+| `DHC6_DEFLECTOR_POS_R` | R | Right deflector position |
+| `DHC6_DEFLECTOR_EYE_L` | R | Left doll's-eye indicator |
+| `DHC6_BLEED_PSI_DUCT` | R | Duct pressure |
+| `DHC6_BLEED_PSI_MANIFOLD` | R | Manifold pressure |
+| `DHC6_PNEUMATIC_LOW_PRESS` | R | Low pneumatic pressure warning |
+| `DHC6_WINDOW_HEAT_TEMP_L` | R | Left windscreen temperature |
+
+---
+
+# Instruments
+
+*aircraft/systems/instruments.md · review: approved*
+<https://aurel42.github.io/twotter-revived-manual/aircraft/systems/instruments/>
+
+## Overview
+
+Work in progress: many gauges are getting an overhaul, giving them
+some physicality and changing their behavior, based on reference
+videos, manuals, pilot feedback and filling in the gaps with educated
+guesses until I get better references.
+
+> [!NOTE]
+> Some gauges have small calibration issues. Your mechanic tells you
+> that's fine, don't worry about it.
+
+All the gyros are simulated individually, if you can't appreciate the
+concert they play for you during spool-up, use the Headset button. All
+gyros are electrical, their load is simulated. Our Twotter doesn't
+need or have a vacuum system.
+
+## HSI
+
+The Horizontal Situation Indicator (HS) is based on the Bendix/King KI 525A.
+
+- Gyro: CPT slaved at 180°/min; FO free-DG with drift. Chaos-walk precession while spooling.
+- Sync — EFB "Sync Gyros" is standing in for the KA-51B CW/CCW procedure.
+- Course pointer — 30°/s slew, referenced to the gyro card. FO references the CPT value.
+- Flags — NAV on signal/receiver state, GPS-blanked. HDG on avionics, rotor < 0.95, or lost slaving 26V. Independent paths, so HDG fail leaves the nav display live.
+- AP disconnect on HDG-flag conditions or during sync.
+- KI-227 ADF cards slaved to per-side gyro.
+
+> [!CAUTION]
+> **TODO**
+>
+> The Slaving Control unit is not yet implemented.
+
+## Altimeters
+
+The captain's is based on an Intercontinental Dynamic Corporation
+Encoding Altimeter (28V), a servo-driven encoding unit, not a plain
+aneroid. Everything that moves on the face is driven by the motor, the
+needle as well as the drums. The first officer's is a plain aneroid,
+connected to static and needing no power at all.
+
+The drums are geared. They sit locked on their current digit until the
+hundreds drum passes 920, then roll through to the next in the last
+eighty feet. The ten-thousands drum only moves in that same
+eighty-foot window before each ten thousand.
+
+Cut power to the instrument and it freezes with everything where it
+stood. The Kollsman scale still turns and moves the needle, because
+that linkage is mechanical.
+
+## Whiskey Compass
+
+The stock sim compass is pretty much perfect. All I added to it was a
+deflection when Windshield Heat is in use and the thermostat turns on
+the heating elements. The amplitude of the deflection depends on the
+aircraft's magnetic heading and attitude.
+
+## Radio Altimeter
+
+- Equipped with a highly reponsive servo.
+
+## L:vars
+
+**R** is read-only state; **R/W** can be set.
+
+| L:var | R/W | Meaning |
+|---|---|---|
+| `DHC6_GYRO_SYNC_REQUEST` | R/W | Sync the HSI card to the whiskey compass. **No cockpit control** — EFB or binding only |
+| `DHC6_GYRO_CPT_HEADING` | R | Captain's gyro heading, drift included |
+| `DHC6_GYRO_FO_HEADING` | R | First officer's gyro heading |
+| `DHC6_GYRO_CPT_OMEGA` | R | Captain's gyro rotor speed |
+| `DHC6_ADF_NEEDLE_CPT` | R | Captain's ADF needle bearing |
+| `DHC6_ADF_CARD_CPT_OFFSET` | R | ADF card offset from the slaved heading |
+| `DHC6_COMPASS_DEV_OFFSET` | R | Whiskey compass deviation |
+| `DHC6_ALT_ALERT` | R | Altitude alert state |
+| `DHC6_ALT_ALERT_LIGHT` | R | Altitude alert lamp |
+
+---
+
+# Lighting
+
+*aircraft/systems/lighting.md · review: draft*
+<https://aurel42.github.io/twotter-revived-manual/aircraft/systems/lighting/>
+
+Every cockpit light has to pass four gates before it illuminates: the bus has to
+be powered, the circuit's slot switch has to be closed, the potentiometer has to
+be turned up, and the emissive itself has to be working. A lamp that stays dark
+has failed one of those four, and they fail for different reasons.
+
+## From the README
+
+### Interior
+
+- Battery terminal voltage now sags under heavy load. It's most visible during engine start — the voltmeter dips and the cockpit lighting (including the glareshield annunciators) dims as the starter pulls the bus down.
+- Interior light dimming reacts to bus load.
+- Annunciator brightness now uses a per-lamp aging factor.
+- Added battery packs to emergency lighting. Armed emergency lights turn on when main power is lost and are powered for at least 15 minutes. (Limitation: the batteries are magically charged by the sim when the flight starts, trickle-charge is currently missing because of... erm... topological challenges.)
+- Corrected emergency exit lights logic; they now illuminate correctly in the ARM position upon loss of power.
+- Gated cockpit lighting and spoiler triggers to stop spamming events.
+
+### Exterior
+
+- Included hobanagerik's landing and taxi light tuning, with intensity brought up to MSFS 2024 values.
+
+## From the release notes
+
+Verbatim from `docs/release-notes-*.md`. The tag is the version each item first
+appeared in.
+
+### Interior
+
+- [NEW] Interior light dimming reacts to bus load. *(v2024.2.x)*
+- [NEW] Annunciator brightness now uses a per-lamp aging factor. *(v2024.2.x)*
+- Added battery packs to emergency lighting. Armed emergency lights turn on when main power is lost and are powered for at least 15 minutes. *(v2024.2.x)*
+- Corrected emergency exit lights logic; they now illuminate correctly in the ARM position upon loss of power. *(v2024.2.x)*
+- Gated cockpit lighting and spoiler triggers to stop spamming events. *(v2024.2.x)*
+- [NEW] Annunciator lights work again (regression introduced by SU5 release 1.7.21.0). *(v2024.2.x)*
+- **Battery voltage now sags under heavy load.** Most visible during engine start — the voltmeter dips and the cockpit lighting dims as the starter pulls the bus down. *(v2024.3.68)*
+- Each glareshield annunciator bulb now has independent age and cycle counts. Bulbs dim continuously as they age and can burn out. *(v2024.3.19)*
+- Fixed the missing cockpit flashlight at night. *(v2024.3.183)*
+- Fixed incorrect default lighting, avionics and system states across the spawn scenarios. *(v2024.3.183)*
+
+### Exterior
+
+- Landing and taxi lights: cones tuned by hobanagerik <3, based on reference images, with intensity brought up to MSFS 2024 values. *(v2024.3.183)*
+
+## L:vars
+
+For home-cockpit builders: **every light switch, not a selection.** Bind these
+from FSUIPC, Axis&Ohs, SPAD.neXt or MobiFlight. **R** is read-only state; **R/W**
+can be set.
+
+### Exterior
+
+| L:var | R/W | Meaning |
+|---|---|---|
+| `DHC6_LIGHT_LANDING_1` | R/W | Left landing light |
+| `DHC6_LIGHT_LANDING_2` | R/W | Right landing light |
+| `DHC6_LIGHT_TAXI` | R/W | Taxi light |
+| `DHC6_LIGHT_NAV` | R/W | Navigation lights |
+| `DHC6_LIGHT_BEACON` | R/W | Beacon |
+| `DHC6_LIGHT_STROBE` | R/W | Strobes |
+| `DHC6_LIGHT_WING` | R/W | Wing inspection light |
+
+### Interior
+
+| L:var | R/W | Meaning |
+|---|---|---|
+| `DHC6_COCKPIT_LT` | R/W | Cockpit lighting |
+| `DHC6_UTIL_LTS` | R/W | Utility lights |
+| `DHC6_UTIL_LT_CPT_RED` | R/W | Captain's utility light, red mode |
+| `DHC6_UTIL_LT_FO_RED` | R/W | First officer's utility light, red mode |
+| `DHC6_READING_LTS` | R/W | Reading lights |
+| `DHC6_ENTRANCE_LTS` | R/W | Entrance lights |
+| `DHC6_EMER_LT_STATE` | R/W | Emergency lighting: off / armed / on |
+| `DHC6_SEAT_BELTS` | R/W | Seat-belt sign |
+| `DHC6_ANNUN_LT_BRT` | R/W | Annunciator panel brightness |
+| `DHC6_DIMMER_INT_FACTOR` | R | Interior dim factor the load model is applying — drops as the bus sags |
+| `DHC6_DIMMER_EXT_FACTOR` | R | Exterior dim factor |
+| `DHC6_DIMMER_ANN_FACTOR` | R | Annunciator dim factor, reconstructed from battery current |
+
+## Input events (B:)
+
+MSFS 2024 Input Events are the sim's own binding mechanism, and unlike L:vars they
+are **enumerable** — MobiFlight, SPAD.neXt and Axis&Ohs discover them from the sim
+without anyone publishing a list, and Dev Mode's Behaviors tab shows the one under
+your cursor with `Ctrl`+`G`. That is why most aircraft publish L:var lists but not
+Input Event lists.
+
+The Twin Otter currently exposes only two lighting Input Events:
+
+| Input event | Covers |
+|---|---|
+| `B:LIGHTING_IE_CEILING_LT_Set` | Ceiling light |
+| `B:LIGHTING_STROBE_1`, `B:LIGHTING_STROBE_1_Set` | Strobes |
+
+Everything else in the tables above is L:var only. For a hardware panel that is a
+real gap, not a documentation gap — Input Events accept `_Set` / `_Inc` / `_Dec` /
+`_Toggle` variants and are the better target for a physical switch.
+
+Bulb ageing and burn-out are part of the
+[Wear and tear](https://aurel42.github.io/twotter-revived-manual/mod/features/wear-and-tear/) system, not of lighting itself.
+
+---
+
+# Pitot-static
+
+*aircraft/systems/pitot-static.md · review: draft*
+<https://aurel42.github.io/twotter-revived-manual/aircraft/systems/pitot-static/>
+
+The altimeter and VSI read static pressure; the airspeed indicator reads the
+difference between pitot and static. Pitot *heat* is covered under
+[Ice protection](https://aurel42.github.io/twotter-revived-manual/aircraft/systems/ice-protection/).
+
+## From the README
+
+*Redistributed from the former Cockpit instruments page.*
+
+- Implemented Captain-side altimeter with aneroid simulation, a servo motor that drives needle and drum with realistic latching mechanism, the baro knob is mechanically linked. Based on IDC Encoding Altimeter 28V.
+- Added calibration differences between mirrored instruments (altimeters, HSI, RMI).
+
+## From the release notes
+
+Verbatim from `docs/release-notes-*.md`, grouped by the section they appeared in. The tag is the version each item first appeared in.
+
+### Cockpit instruments
+
+- [NEW] Implemented Captain-side altimeter with aneroid simulation, a servo motor that drives needle and drum with realistic latching mechanism, the baro knob is mechanically linked. Based on IDC Encoding Altimeter 28V. *(v2024.2.x)*
+
+### Plans
+
+- Pitot-static system *(v2024.2.x)*
+
+### Instruments & controls
+
+- **Calibration errors.** Work has started on inducing variations between mirrored instruments (altimeters, HSI, RMI). *(v2024.3.47)*
+
+## L:vars
+
+Variables worth binding to hardware, driving from FSUIPC / Axis&Ohs / SPAD.neXt,
+or reading on an external display. **R** is read-only state; **R/W** can be set.
+This is a selection, not the full list — the aircraft defines around a thousand
+`DHC6_*` names, most of them internal.
+
+| L:var | R/W | Meaning |
+|---|---|---|
+| `DHC6_ALT_CPT_DISPLAYED` | R | Captain's altimeter as displayed — servo lag and latching included |
+| `DHC6_ALT_CPT_ANEROID` | R | The aneroid's own reading, before the servo |
+| `DHC6_ALT_CPT_DRUM_1000` | R | 1000 ft drum position |
+| `DHC6_ALT_CPT_DRUM_10000` | R | 10000 ft drum position |
+| `DHC6_ALT_FO_BIAS_FT` | R | FO altimeter calibration offset from the captain's |
+
+---
+
+# Suspension
+
+*aircraft/systems/suspension.md · review: draft*
+<https://aurel42.github.io/twotter-revived-manual/aircraft/systems/suspension/>
+
+## From the README
+
+- Adjusted nosewheel suspension damping.
+- Adjusted ground contact model parameters and gear flex damping.
+- Tuned Tundra Pax based on the tundra wheel variant of the Aerosoft Twin Otter X Extended.
+
+## From the release notes
+
+Verbatim from `docs/release-notes-*.md`, grouped by the section they appeared in. The tag is the version each item first appeared in.
+
+### Suspension
+
+- Adjusted nosewheel suspension damping. *(v2024.2.x)*
+- Adjusted ground contact model parameters and gear flex damping. *(v2024.2.x)*
+- Tuned Tundra Pax based on the tundra wheel variant of the Aerosoft Twin Otter X Extended. *(v2024.2.x)*
+
+---
+
+# ADF and the KR 87
+
+*sim/radio/adf.md · review: draft*
+<https://aurel42.github.io/twotter-revived-manual/sim/radio/adf/>
+
+> [!CAUTION]
+> **Placeholder**
+>
+> This page exists to demonstrate a never-approved page in the PoC. It has
+> real content but is deliberately thin, and it should not appear in the
+> published manual.
+
+## Operation
+
+**The needle is not a pointer, it is a measurement.** Bearing accuracy degrades
+with signal strength rather than switching between "works" and "does not work",
+so a distant or weak NDB gives you a needle that wanders around the true bearing
+instead of one that suddenly flags. Close in, it is steady.
+
+**Historic beacons are available.** *(Config: **Enable historic NDBs**.)* Modern
+navdata has dropped most of the beacons that made low-altitude navigation
+interesting; the option restores decommissioned stations from our own database.
+Frequencies below 160 kHz with no gameplay relevance are excluded.
+
+## Under the hood
+
+An NDB is a vertically polarised transmitter whose ground wave follows terrain and
+whose sky wave arrives after dark by a different path. The receiver cannot tell
+them apart, which is the physical basis of night effect.
+
+We drive needle accuracy from a signal-strength model anchored on ICAO rated
+coverage — antenna efficiency, station class and field-strength contours — rather
+than a distance cutoff. The bearing error added on top is deterministic and keyed
+to that signal level, so the same station at the same range behaves the same way
+every time.
+
+Not modelled: lightning. The sim does not expose the data that would be needed to
+bend the needle toward a storm cell.
+
+## From the release notes
+
+Verbatim from `docs/release-notes-*.md`, grouped by the section they appeared in. The tag is the version each item first appeared in.
+
+### Instruments — gyros, attitude, HSI, ADF, NAV
+
+- ADF noise model rewritten. *(v2024.2.134)*
+- KI 227 ADF card now slaves to the gyro. Default behaviour: card follows `DHC6_GYRO_{CPT,FO}_HEADING`; the HDG knob nudges the gyro card directly (KI-227-01). New EFB option **"Disable ADF Card Slaving"** reverts to the legacy KI-227-00 manual-knob path. *(v2024.2.134)*
+
+### Cockpit instruments
+
+- [NEW] Added needle and radio physics to the ADF gauge. Based on KI 227. *(v2024.2.x)*
+
+### Bug fixes
+
+- Updated ADF circuit to 31 to match standard electrical configurations. *(v2024.2.x)*
+
+### ADF / NDB realism
+
+- **Historical NDB database.** Added a curated database of historical NDB beacons, with a year-scrubber panel on the EFB Radio tab to filter beacons to those active in a given year. Stations are auto-classified (class and range) from their location and surrounding terrain. *(v2024.3.124)*
+- **Propagation overhaul.** Reworked LF/MF ground-wave and night sky-wave propagation: terrain relief and signal bending around mountains, urban multipath, coastal refraction, atmospheric noise, smoother sky-wave transitions around sunrise/sunset, and dedicated ground types for permafrost and wet tundra. *(v2024.3.124)*
+- Fixes: signals receivable well beyond their realistic range, daytime sky-wave incorrectly extending range. *(v2024.3.124)*
+
+### ADF realism overhaul (with input from CCM)
+
+- **Bank/dip error.** Overfly a station in a turn and the needle leans toward the low wing. This falls straight out of the geometry (the loop antenna tilts with the airframe). *(v2024.3.47)*
+- **Quadrantal error.** Each airframe carries its own small bearing distortion off the cardinal headings, rolled per session — so no two Twotters read quite identically. *(v2024.3.47)*
+- In a tight cone directly overhead the station, multipath interference confuses the receiver. *(v2024.3.47)*
+- **Distance and weak signal.** More wander the farther out you are; on a fading signal the needle twitches, and on a sustained loss it parks to 90° ("back to the peg"). *(v2024.3.47)*
+- **Night and dusk.** Extra skywave wander after dark, driven by the position of the sun. *(v2024.3.47)*
+- **Per-station character.** Each NDB feels a little different and drifts gently within a session. This RNG-driven effect is not grounded in physics as such, it stands in for actual effects we cannot simulate because of sim limitations (like terrain, coastal refraction, weather etc.). *(v2024.3.47)*
+- **Real station altitude.** The cone now uses the tuned NDB's actual elevation from the nav database, so a mountain-top beacon behaves differently from a sea-level one. *(v2024.3.47)*
+- ANT mode parks the needle (per KR 87 manual). *(v2024.3.47)*
+- Needle freezes in position on receiver power loss. No magical parking without the receiver driving it. *(v2024.3.47)*
+- Fixed: frequency and modes can no longer be changed while the receiver is off or unpowered. *(v2024.3.47)*
+- Known issues: the system cannot react to lightning, the sim doesn't provide the necessary data. *(v2024.3.47)*
+
+### The KR-87 ADF unit
+
+- ADF frequencies restore more reliably. *(v2024.3.99)*
+
+## Config options
+
+Set from the EFB **Config** tab. Each option is documented on exactly one page; see [Configuration](https://aurel42.github.io/twotter-revived-manual/mod/configuration/) for how profiles and the per-variant override work.
+
+### Enable historic NDBs
+
+`DHC6_CFG_NDB_SOURCE` — default: **off**
+
+Adds historic NDB beacons that modern navdata has dropped. When on, these take precedence over the sim's navdata; the sim is used only for NDBs not in the historic set.
+
+### (historic NDB vintage)
+
+`DHC6_CFG_NDB_YEAR` — default: **—**
+
+Selects which year's beacon set the historic NDB database presents. Set from the EFB alongside the option above rather than being a switch of its own.
+
+### Disable ADF Card Slaving
+
+`DHC6_CFG_DISABLE_ADF_CARD_SLAVE` — default: **off**
+
+Stops the ADF compass card from following the HSI heading.
+
+---
+
+# Radio navigation
+
+*sim/radio/navigation.md · review: draft*
+<https://aurel42.github.io/twotter-revived-manual/sim/radio/navigation/>
+
+## From the README
+
+The goal is: replace all navaid signals with a physics- and terrain-based simulation.
+State: Mostly complete. The custom signal now drives the steam gauges and the autopilot directors.
+
+All radio navaid signals are now simulated in custom code. All of the needles, TAWS and AP are driven by signal-strength-first propagation models. Stations fade, drop out behind ridges, interfere with each other, and the needles wander, jitter and lag. And there's an EFB tab to show you why.
+
+Note: At this point, ONLY the steam gauges are migrated to the new system. AP and GNS units are still using stock sim data (but not for very much longer). If the needles show a slight deviation while you're on AP, that's expected. If the needles do one thing and the AP does a totally different thing, that's possibly a bug that should be reported, ideally with video or screenshots of the Radio tab.
+
+**UHF/VHF: VOR, ILS localizer & glideslope, DME** (line-of-sight bands):
+- Free-space path loss: inverse-square spreading on the true slant range (Friis free-space formula).
+- Terrain diffraction & shadowing: the Longley-Rice Irregular Terrain Model (the NTIA/ITS ITM), run against a baked global terrain and land-cover dataset (≈1.85 km cells, derived from ESA WorldCover land cover and Natural Earth water/ice).
+- DME on its real frequency: DME is paired to its true UHF / L-band channel (ICAO Annex 10) and run through a separate terrain pass, so it digs a deeper shadow behind a ridge than the co-located VOR.
+- Service volume & antenna pattern: per-class range and elevation/cone roll-off curves (ICAO service volumes; libradio curves).
+- Co-channel interference (12 dB capture): of all stations on the tuned frequency, the receiver locks only the strongest, and only if it leads the runner-up by ≥ 12 dB; inside that margin it garbles to a dropout (ICAO capture ratio).
+- Radial & CDI geometry: the VOR radial and course deviation are built from the station's position, its commissioned magnetic variation, and your OBS course (ICAO Annex 10).
+- Per-runway localizer width: the on-course sector width is derived from the actual runway geometry, clamped to the Annex-10 bounds.
+- False glideslopes: capture lobes at odd multiples of the true GS angle, falling out of the antenna geometry (ICAO Annex 10).
+- Independent glideslope signal: GS strength is computed separately from the localizer.
+- Signal-dependent needle lag: the weaker the signal, the heavier the servo smoothing and the more the needle lags (libradio lag law).
+- Usable / identifiable floor (hysteretic): usable at −70 dB, can't-ID below −73 dB; below the floor the CDI parks to centre, the GS retracts, TO/FROM reads OFF and the NAV flag drops (libradio dB thresholds).
+- DME receiver behaviour: slant range, an overhead no-track zone, memory/hold on signal loss, and a line-of-sight horizon range limit (modelled on the KN-62).
+
+**LF/MF: NDB** (ground-wave + night sky-wave):
+- Ground-wave field strength: ITU-R Recommendation P.368 ground-wave curves (1 kW vertical-monopole reference) over detailed ground regimes based on nine terrain types plus permafrost and wet tundra.
+- Mixed land–sea paths: Millington's method (P.368 Annex 2); surface conductivity comes from the baked land-cover/water dataset.
+- Transmit power by class: NDB power scaled per service class.
+- Height gain: an elevated-receiver correction, since the surface-only P.368 curves under-read for an aircraft at altitude.
+- LF terrain masking: a gentle knife-edge loss (3–15 dB, vs VHF's 20–60), because long LF wavelengths bend around terrain.
+- Night sky-wave range extension: ITU-R Recommendation P.1147 single-hop E-layer night field, power-summed with the ground wave.
+- Diurnal variation: the P.1147 hourly absorption factor: sky-wave is crushed by day and deepest in the middle of the night.
+- Seasonal variation: a P.1147-style seasonal term (MF semi-annual / LF annual, scaled by frequency and latitude, hemisphere-aware).
+- Geomagnetic-latitude absorption: the dominant night-field absorption scales with geomagnetic latitude (centered-dipole model).
+- Coastal refraction: bearings bend where the signal path crosses a coastline at a shallow angle (P.368 coastal effect).
+- Quadrantal error: airframe re-radiation distorts the bearing as a per-airframe sine series (FAA Order 6740.6).
+- Bank / dip error: falls out of a full 3-D line-to-station projection: a bank tilts the loop plane and the needle errs, worst at the fore/aft headings.
+- NDB cone of silence: a narrow overhead cone (~0.2 NM radius at 10,000 ft) where the needle wanders.
+- Night-effect bearing swing: twilight ionospheric fluctuation, gated by solar elevation, that makes the needle swing around dawn and dusk.
+- Near-field multipath: a slowly-rotating reflection ghost whose near-field zone scales with the tuned wavelength.
+- Deterministic, signal-driven bearing error.
+- Curated historical NDB database (~9k beacons) with baked class/range and first/last-seen years.
+- Offline NDB classification: station class/range derived from location + terrain heuristics.
+- Terrain relief & urban bending, coastal-refraction overhaul, noise floor varying with geography/time/season, and co-channel stations combining as a field-weighted resultant bearing.
+
+## From the release notes
+
+Verbatim from `docs/release-notes-*.md`, grouped by the section they appeared in. The tag is the version each item first appeared in.
+
+### Instruments — gyros, attitude, HSI, ADF, NAV
+
+- VOR cone-of-confusion modelled. Work in progress. Disabled in this build, because it doesn't look realistic yet. *(v2024.2.134)*
+
+### Radio navigation
+
+- Fixed standalone DME and TACAN stations incorrectly deflecting the CDI. *(v2024.3.130)*
+- Toned down overdone jitter of localizer signals. *(v2024.3.130)*
+- Mitigated spurious terrain occlusion affecting localizers, caused by limitations of the terrain data. *(v2024.3.130)*
+- Fixed the glideslope indicator parking on some precision approaches. *(v2024.3.130)*
+- Free-space path loss: inverse-square spreading on the true slant range (Friis free-space formula). *(v2024.3.99)*
+- Terrain diffraction & shadowing: the Longley-Rice Irregular Terrain Model (the NTIA/ITS ITM), run against a baked global terrain and land-cover dataset (≈1.85 km cells, derived from ESA WorldCover land cover and Natural Earth water/ice). *(v2024.3.99)*
+- DME on its real frequency: DME is paired to its true UHF / L-band channel (ICAO Annex 10) and run through a separate terrain pass, so it digs a deeper shadow behind a ridge than the co-located VOR. *(v2024.3.99)*
+- Service volume & antenna pattern: per-class range and elevation/cone roll-off curves (ICAO service volumes; libradio curves). *(v2024.3.99)*
+- Co-channel interference (12 dB capture): of all stations on the tuned frequency, the receiver locks only the strongest, and only if it leads the runner-up by ≥ 12 dB; inside that margin it garbles to a dropout (ICAO capture ratio). *(v2024.3.99)*
+- Radial & CDI geometry: the VOR radial and course deviation are built from the station's position, its commissioned magnetic variation, and your OBS course (ICAO Annex 10). *(v2024.3.99)*
+- Per-runway localizer width: the on-course sector width is derived from the actual runway geometry, clamped to the Annex-10 bounds. *(v2024.3.99)*
+- False glideslopes: capture lobes at odd multiples of the true GS angle, falling out of the antenna geometry (ICAO Annex 10). *(v2024.3.99)*
+- Independent glideslope signal: GS strength is computed separately from the localizer. *(v2024.3.99)*
+- Signal-dependent needle lag: the weaker the signal, the heavier the servo smoothing and the more the needle lags (libradio lag law). *(v2024.3.99)*
+- Usable / identifiable floor (hysteretic): usable at −70 dB, can't-ID below −73 dB; below the floor the CDI parks to centre, the GS retracts, TO/FROM reads OFF and the NAV flag drops (libradio dB thresholds). *(v2024.3.99)*
+- DME receiver behaviour: slant range, an overhead no-track zone, memory/hold on signal loss, and a line-of-sight horizon range limit (modelled on the KN-62). *(v2024.3.99)*
+- Ground-wave field strength: ITU-R Recommendation P.368 ground-wave curves (1 kW vertical-monopole reference) over four ground regimes (sea / wet ground / good land / poor land). *(v2024.3.99)*
+- Mixed land–sea paths: Millington's method (P.368 Annex 2); surface conductivity comes from the baked land-cover/water dataset. *(v2024.3.99)*
+- Transmit power by class: NDB power scaled per service class. *(v2024.3.99)*
+- Height gain: an elevated-receiver correction, since the surface-only P.368 curves under-read for an aircraft at altitude. *(v2024.3.99)*
+- LF terrain masking: a gentle knife-edge loss (3–15 dB, vs VHF's 20–60), because long LF wavelengths bend around terrain. *(v2024.3.99)*
+- Night sky-wave range extension: ITU-R Recommendation P.1147 single-hop E-layer night field, power-summed with the ground wave. *(v2024.3.99)*
+- Diurnal variation: the P.1147 hourly absorption factor: sky-wave is crushed by day and deepest in the middle of the night. *(v2024.3.99)*
+- Seasonal variation: a P.1147-style seasonal term (MF semi-annual / LF annual, scaled by frequency and latitude, hemisphere-aware). *(v2024.3.99)*
+- Geomagnetic-latitude absorption: the dominant night-field absorption scales with geomagnetic latitude (centered-dipole model). *(v2024.3.99)*
+- Coastal refraction: bearings bend where the signal path crosses a coastline at a shallow angle (P.368 coastal effect). *(v2024.3.99)*
+- Quadrantal error: airframe re-radiation distorts the bearing as a per-airframe sine series (FAA Order 6740.6). *(v2024.3.99)*
+- Bank / dip error: falls out of a full 3-D line-to-station projection: a bank tilts the loop plane and the needle errs, worst at the fore/aft headings. *(v2024.3.99)*
+- NDB cone of silence: a narrow overhead cone (~0.2 NM radius at 10,000 ft) where the needle wanders. *(v2024.3.99)*
+- Night-effect bearing swing: twilight ionospheric fluctuation, gated by solar elevation, that makes the needle swing around dawn and dusk. *(v2024.3.99)*
+- Near-field multipath: a slowly-rotating reflection ghost whose near-field zone scales with the tuned wavelength. *(v2024.3.99)*
+
+### DME
+
+- Added a KDI-572-inspired readout on the EFB app Systems tab with station ident, frequency, slant distance, DME ground speed, time-to-station. *(v2024.3.99)*
+- "HOLD" locks the current station so you can re-tune your NAV radios without changing the DME. *(v2024.3.99)*
