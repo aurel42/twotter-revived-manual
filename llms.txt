@@ -24,7 +24,7 @@ Markdown source: https://github.com/aurel42/twotter-revived-manual
 - [Companion Mods](https://aurel42.github.io/twotter-revived-manual/mod/mods/): These mods are distributed in the same archive as the main mod.
 - [Configurable settings](https://aurel42.github.io/twotter-revived-manual/mod/configuration/): Everything on this page is set on the Config tab in the EFB app.
 - [Checklists](https://aurel42.github.io/twotter-revived-manual/mod/features/checklists/): The mod delivers a custom checklist system as part of the EFB app.
-- [The EFB app](https://aurel42.github.io/twotter-revived-manual/mod/features/efb/): The EFB app is an integral part of the mod, unlocking many of its features.
+- [EFB app](https://aurel42.github.io/twotter-revived-manual/mod/features/efb/): The EFB app is an integral part of the mod, unlocking many of its features.
 - [3D Objects](https://aurel42.github.io/twotter-revived-manual/mod/features/objects/): Without access to the project source (which we obviously don't have), we can't modify the visual model of the base aircraft.
 - [Persistence](https://aurel42.github.io/twotter-revived-manual/mod/features/persistence/): The persistence system uses a different lifecycles and layers:
 - [Sound](https://aurel42.github.io/twotter-revived-manual/mod/features/sound/): The audio of the mod consists of several layers.

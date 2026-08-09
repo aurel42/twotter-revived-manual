@@ -553,7 +553,7 @@ modify it in order to prevent collisions with the actual Turbine Duke.
 
 # Configurable settings
 
-*mod/configuration.md · review: changed*
+*mod/configuration.md · review: approved*
 <https://aurel42.github.io/twotter-revived-manual/mod/configuration/>
 
 Everything on this page is set on the Config tab in the EFB app.
@@ -758,7 +758,7 @@ app. Three ways to run a checklist:
 
 ---
 
-# The EFB app
+# EFB app
 
 *mod/features/efb.md · review: approved*
 <https://aurel42.github.io/twotter-revived-manual/mod/features/efb/>
