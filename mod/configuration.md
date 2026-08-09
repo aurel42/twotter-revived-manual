@@ -1,6 +1,6 @@
 ---
 title: Configurable settings
-review: changed
+review: approved
 ---
 
 # Configurable settings

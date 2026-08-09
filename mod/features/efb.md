@@ -1,5 +1,5 @@
 ---
-title: The EFB app
+title: EFB app
 review: approved
 ---
 

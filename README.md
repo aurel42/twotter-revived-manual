@@ -41,9 +41,9 @@ Unmarked pages have been reviewed. `draft` never has been; `changed` carries an 
 
 - [Installation](mod/installation.md)
 - [Companion Mods](mod/mods.md)
-- [Configurable settings](mod/configuration.md) — _changed_
+- [Configurable settings](mod/configuration.md)
 - [Checklists](mod/features/checklists.md)
-- [The EFB app](mod/features/efb.md)
+- [EFB app](mod/features/efb.md)
 - [3D Objects](mod/features/objects.md)
 - [Persistence](mod/features/persistence.md)
 - [Sound](mod/features/sound.md)
