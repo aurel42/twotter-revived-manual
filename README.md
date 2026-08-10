@@ -59,7 +59,6 @@ Unmarked pages have been reviewed. `draft` never has been; `changed` carries an 
 - [Brakes](aircraft/systems/brakes.md)
 - [Cabin climate](aircraft/systems/cabin-climate.md)
 - [Chronometers](aircraft/systems/chronometer.md)
-- [EGPWS](aircraft/systems/egpws.md) — _draft_
 - [Generators and the GCU](aircraft/systems/electrical/generators.md) — _draft_
 - [Engine Start](aircraft/systems/engines/engine-start.md) — _draft_
 - [Fuel system](aircraft/systems/fuel.md) — _draft_
@@ -69,6 +68,8 @@ Unmarked pages have been reviewed. `draft` never has been; `changed` carries an 
 - [Lighting](aircraft/systems/lighting.md) — _draft_
 - [Pitot-static](aircraft/systems/pitot-static.md) — _draft_
 - [Suspension](aircraft/systems/suspension.md) — _draft_
+- [Taws — Overview](aircraft/systems/taws/overview.md)
+- [Regulations](aircraft/systems/taws/regulations.md)
 
 ### Sim
 
