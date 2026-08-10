@@ -22,7 +22,7 @@ Markdown source: https://github.com/aurel42/twotter-revived-manual
 
 - [Installation](https://aurel42.github.io/twotter-revived-manual/mod/installation/): Because of previous drama, this mod is distributed as an archive containing xdelta files and an install script.
 - [Companion Mods](https://aurel42.github.io/twotter-revived-manual/mod/mods/): These mods are distributed in the same archive as the main mod.
-- [Configurable settings](https://aurel42.github.io/twotter-revived-manual/mod/configuration/): Everything on this page is set on the Config tab in the EFB app.
+- [Configurable settings](https://aurel42.github.io/twotter-revived-manual/mod/configuration/): Everything on this page is set on the Config tab in the "Twotter" EFB app.
 - [Checklists](https://aurel42.github.io/twotter-revived-manual/mod/features/checklists/): The mod delivers a custom checklist system as part of the EFB app.
 - [EFB app](https://aurel42.github.io/twotter-revived-manual/mod/features/efb/): The EFB app is an integral part of the mod, unlocking many of its features.
 - [3D Objects](https://aurel42.github.io/twotter-revived-manual/mod/features/objects/): Without access to the project source (which we obviously don't have), we can't modify the visual model of the base aircraft.
@@ -53,5 +53,4 @@ Markdown source: https://github.com/aurel42/twotter-revived-manual
 
 ## Sim
 
-- [ADF and the KR 87](https://aurel42.github.io/twotter-revived-manual/sim/radio/adf/): An NDB is a vertically polarised transmitter whose ground wave follows terrain and whose sky wave arrives after dark by a different path.
-- [Radio navigation](https://aurel42.github.io/twotter-revived-manual/sim/radio/navigation/): The goal is: replace all navaid signals with a physics- and terrain-based simulation.
+- [Radio navigation](https://aurel42.github.io/twotter-revived-manual/sim/radio/): The mod completely replaces the stock sim system.

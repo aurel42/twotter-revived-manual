@@ -2158,91 +2158,8 @@ https://github.com/squidfunk/mkdocs-material */
   
   
   
-    
-    
-      
-        
-      
-        
-      
-    
-    
-    
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
-        
-          
-          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Radio
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_1">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Radio
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
     <li class="md-nav__item">
-      <a href="../sim/radio/adf/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    ADF and the KR 87
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../sim/radio/navigation/" class="md-nav__link">
+      <a href="../sim/radio/" class="md-nav__link">
         
   
   
@@ -2258,14 +2175,6 @@ https://github.com/squidfunk/mkdocs-material */
   
 
       </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
     </li>
   
 
@@ -2339,7 +2248,12 @@ way. Everything else is on the table.</p>
 <p>Until the install script has been executed, the mod will be inactive.</p>
 </div>
 <ul>
-<li>The <a href="#mod-configuration">Configuration</a> options</li>
+<li>
+<p>The <a href="#mod-configuration">Configuration</a> options</p>
+</li>
+<li>
+<p>The <a href="#mod-features-efb">"Twotter" EFB app</a></p>
+</li>
 </ul>
 <h2 id="index-thanks">Thanks<a class="headerlink" href="#index-thanks" title="Permanent link">&para;</a></h2>
 <ul>
@@ -2350,7 +2264,7 @@ way. Everything else is on the table.</p>
 <li><strong>Black Square</strong> and <strong>Boris Audio Works</strong> — for their kind permission to use the Turbine Duke soundbank.</li>
 </ul>
 <hr />
-<p><em>Reviewed 2026-08-08.</em></p></section>
+<p><em>Reviewed 2026-08-09.</em></p></section>
                     <section class='print-page md-section' id='section-2' heading-number='2'>
                         <h1>Project<a class='headerlink' href='#section-2' title='Permanent link'></a>
                         </h1>
@@ -2818,7 +2732,8 @@ too, will be inactive.</p>
 </div>
 <hr />
 <p><em>Reviewed 2026-08-06.</em></p></section><section class="print-page" id="mod-configuration" heading-number="3.3"><h1 id="mod-configuration-configurable-settings">Configurable settings<a class="headerlink" href="#mod-configuration-configurable-settings" title="Permanent link">&para;</a></h1>
-<p>Everything on this page is set on the Config tab in the EFB app.</p>
+<p>Everything on this page is set on the Config tab in the 
+<a href="#mod-features-efb">"Twotter" EFB app</a>.</p>
 <p>The default settings are either sim defaults or they enable convenience features.
 The non-default settings strive to be more realistic, and might end up being more annoying.</p>
 <h2 id="mod-configuration-profiles">Profiles<a class="headerlink" href="#mod-configuration-profiles" title="Permanent link">&para;</a></h2>
@@ -2946,6 +2861,8 @@ about it.</p>
 preference: <strong>Use FDR switch as Avionics switch</strong>, <strong>Mute copilot
 callouts</strong>, <strong>Battery Replacement (NiCad to SLA)</strong>, and
 <strong>Reliability</strong>.</p>
+<!-- EDIT: moved the <br> + DHC6_CFG_* L:vars from the Option column to the end of the second column in every Options-table row -->
+
 <h2 id="mod-configuration-options">Options<a class="headerlink" href="#mod-configuration-options" title="Permanent link">&para;</a></h2>
 <p>Some options have an override checkbox on the left: leave it unchecked
 and the setting is shared across all variants that don't override it;
@@ -2964,32 +2881,32 @@ variants you fly.</p>
 </thead>
 <tbody>
 <tr>
-<td>Use FDR switch as Avionics switch<br><code>DHC6_CFG_FDR_AS_AVIONICS_MASTER</code></td>
-<td>Repurposes the unused Flight Data Recorder switch as an avionics master for the aftermarket stack: GNS 530/430, KAP-140, transponder, ADF and audio panel. Round gauges are unaffected.</td>
+<td>Use FDR switch as Avionics switch</td>
+<td>Repurposes the unused Flight Data Recorder switch as an avionics master for the aftermarket stack: GNS 530/430, KAP-140, transponder, ADF and audio panel. Round gauges are unaffected.<br><code>DHC6_CFG_FDR_AS_AVIONICS_MASTER</code></td>
 </tr>
 <tr>
-<td>Disable relaxed NAV arming<br><code>DHC6_CFG_AP_STRICT_NAVARM</code></td>
-<td>Removes the KAP-140's NAV pre-arm. NAV mode will be rejected if not in range of the course.</td>
+<td>Disable relaxed NAV arming</td>
+<td>Removes the KAP-140's NAV pre-arm. NAV mode will be rejected if not in range of the course.<br><code>DHC6_CFG_AP_STRICT_NAVARM</code></td>
 </tr>
 <tr>
-<td>Enable KAP-140 voice messages<br><code>DHC6_CFG_KAP140_VOICE</code></td>
-<td>Adds the unit's three optional spoken messages: "Altitude" 1000 ft before the preselect, "Leaving altitude" 200 ft after departing it, and "Autopilot" on disconnect. They accompany the tones rather than replacing them. The two standard trim messages are always on either way.</td>
+<td>Enable KAP-140 voice messages</td>
+<td>Adds the unit's three optional spoken messages: "Altitude" 1000 ft before the preselect, "Leaving altitude" 200 ft after departing it, and "Autopilot" on disconnect. They accompany the tones rather than replacing them. The two standard trim messages are always on either way.<br><code>DHC6_CFG_KAP140_VOICE</code></td>
 </tr>
 <tr>
-<td>Disable Flight Director<br><code>DHC6_CFG_DISABLE_FD</code></td>
-<td>Hides the command bars on the attitude indicator. The flight director itself still engages.</td>
+<td>Disable Flight Director</td>
+<td>Hides the command bars on the attitude indicator. The flight director itself still engages.<br><code>DHC6_CFG_DISABLE_FD</code></td>
 </tr>
 <tr>
-<td>Disable visual approaches<br><code>DHC6_CFG_DISABLE_GNS_VISUAL_APPR</code></td>
-<td>Hides the GNS per-runway VISUAL approaches. The real 530W/430W has none, so this is the stock-faithful setting.</td>
+<td>Disable visual approaches</td>
+<td>Hides the GNS per-runway VISUAL approaches. The real 530W/430W has none, so this is the stock-faithful setting.<br><code>DHC6_CFG_DISABLE_GNS_VISUAL_APPR</code></td>
 </tr>
 <tr>
-<td>Disable coupled VNAV<br><code>DHC6_CFG_DISABLE_GNS_COUPLED_VNAV</code></td>
-<td>Takes away the coupled VNAV (PATH) descent, leaving the advisory-only VNAV the real 530W has.</td>
+<td>Disable coupled VNAV</td>
+<td>Takes away the coupled VNAV (PATH) descent, leaving the advisory-only VNAV the real 530W has.<br><code>DHC6_CFG_DISABLE_GNS_COUPLED_VNAV</code></td>
 </tr>
 <tr>
-<td>Enable historic NDBs<br><code>DHC6_CFG_NDB_SOURCE</code></td>
-<td>Adds historic NDB beacons that modern navdata has dropped. These take precedence, and the sim's navdata is used only for beacons the historic set doesn't have.</td>
+<td>Enable historic NDBs</td>
+<td>Adds historic NDB beacons that modern navdata has dropped. These take precedence, and the sim's navdata is used only for beacons the historic set doesn't have.<br><code>DHC6_CFG_NDB_SOURCE</code></td>
 </tr>
 </tbody>
 </table>
@@ -3009,16 +2926,16 @@ flight. A power cycle will most likely not do.</p>
 </thead>
 <tbody>
 <tr>
-<td>Installation<br><code>DHC6_CFG_GPWS</code></td>
-<td><strong>Full</strong> (default) — Class A on every aircraft, the full callout set. <strong>Reduced</strong> — passenger variants get Class A, cargo and utility get Class B. <strong>Legal minimum</strong> — passenger variants get Class A, everything else gets nothing. <strong>Class B</strong> — no terrain, glideslope or bank-angle alerts anywhere. <strong>Off</strong> — all callouts muted.</td>
+<td>Installation</td>
+<td><strong>Full</strong> (default) — Class A on every aircraft, the full callout set. <strong>Reduced</strong> — passenger variants get Class A, cargo and utility get Class B. <strong>Legal minimum</strong> — passenger variants get Class A, everything else gets nothing. <strong>Class B</strong> — no terrain, glideslope or bank-angle alerts anywhere. <strong>Off</strong> — all callouts muted.<br><code>DHC6_CFG_GPWS</code></td>
 </tr>
 <tr>
-<td>Sound bank<br><code>DHC6_CFG_GPWS_AUDIOBANK</code></td>
-<td>Aerosoft (default), FlyByWire, Custom</td>
+<td>Sound bank</td>
+<td>Aerosoft (default), FlyByWire, Custom<br><code>DHC6_CFG_GPWS_AUDIOBANK</code></td>
 </tr>
 <tr>
-<td>Volume<br><code>DHC6_CFG_GPWS_VOLUME</code></td>
-<td>You know how a volume slider works.</td>
+<td>Volume</td>
+<td>You know how a volume slider works.<br><code>DHC6_CFG_GPWS_VOLUME</code></td>
 </tr>
 </tbody>
 </table>
@@ -3040,16 +2957,16 @@ It picks one at random from the full set, which includes "Pull up" and
 </thead>
 <tbody>
 <tr>
-<td>Realistic battery capacity<br><code>DHC6_CFG_REALISTIC_BATTERY</code></td>
-<td>Gives the battery a real amp-hour budget that the enabled consumers draw down. Off means unlimited capacity. If you flatten it, change the chemistry or set the source switch to EXT to summon a GPU cart.</td>
+<td>Realistic battery capacity</td>
+<td>Gives the battery a real amp-hour budget that the enabled consumers draw down. Off means unlimited capacity. If you flatten it, change the chemistry or set the source switch to EXT to summon a GPU cart.<br><code>DHC6_CFG_REALISTIC_BATTERY</code></td>
 </tr>
 <tr>
-<td>Battery Replacement (NiCad to SLA)<br><code>DHC6_CFG_BATTERY_SLA</code></td>
-<td>Swaps the standard NiCad pack for a sealed lead-acid one: different chemistry, more capacity, more weight.</td>
+<td>Battery Replacement (NiCad to SLA)</td>
+<td>Swaps the standard NiCad pack for a sealed lead-acid one: different chemistry, more capacity, more weight.<br><code>DHC6_CFG_BATTERY_SLA</code></td>
 </tr>
 <tr>
-<td>Realistic parking brake<br><code>DHC6_CFG_REALISTIC_PARKING_BRAKE</code></td>
-<td>Models the real DHC-6 sequence: fully depress both toe brakes, pull the lever, release the toe brakes. If the latch doesn't catch, the handle snaps back and you try again.</td>
+<td>Realistic parking brake</td>
+<td>Models the real DHC-6 sequence: fully depress both toe brakes, pull the lever, release the toe brakes. If the latch doesn't catch, the handle snaps back and you try again.<br><code>DHC6_CFG_REALISTIC_PARKING_BRAKE</code></td>
 </tr>
 </tbody>
 </table>
@@ -3065,8 +2982,8 @@ aircraft as soon as you select it.</p>
 </thead>
 <tbody>
 <tr>
-<td>Generators can trip<br><code>DHC6_CFG_GCU_LATCH</code></td>
-<td>Generators have a small chance to trip when they come online. The annunciator will stay illuminated. A tripped generator stays off until you RESET it: hold the GEN switch to RESET, release to ON.</td>
+<td>Generators can trip</td>
+<td>Generators have a small chance to trip when they come online. The annunciator will stay illuminated. A tripped generator stays off until you RESET it: hold the GEN switch to RESET, release to ON.<br><code>DHC6_CFG_GCU_LATCH</code></td>
 </tr>
 </tbody>
 </table>
@@ -3080,20 +2997,20 @@ aircraft as soon as you select it.</p>
 </thead>
 <tbody>
 <tr>
-<td>Gyros take time to spin up<br><code>DHC6_CFG_REAL_GYROS</code></td>
-<td>Gyros spool up from rest instead of coming up aligned, which takes a couple of minutes from cold. Pull to Erect shortens it for the attitude indicator, and the HSI can be synced to the whiskey compass from the EFB Systems tab.</td>
+<td>Gyros take time to spin up</td>
+<td>Gyros spool up from rest instead of coming up aligned, which takes a couple of minutes from cold. Pull to Erect shortens it for the attitude indicator, and the HSI can be synced to the whiskey compass from the EFB Systems tab.<br><code>DHC6_CFG_REAL_GYROS</code></td>
 </tr>
 <tr>
-<td>Disable Auto Fast-Erect<br><code>DHC6_CFG_DISABLE_AUTO_FAST_ERECT</code></td>
-<td>Stops the attitude indicator from pulling its own fast-erect knob during cold-and-dark erection. Pull it yourself or wait a long time for the horizon to settle.</td>
+<td>Disable Auto Fast-Erect</td>
+<td>Stops the attitude indicator from pulling its own fast-erect knob during cold-and-dark erection. Pull it yourself or wait a long time for the horizon to settle.<br><code>DHC6_CFG_DISABLE_AUTO_FAST_ERECT</code></td>
 </tr>
 <tr>
-<td>Disable OBS Auto-Slew<br><code>DHC6_CFG_DISABLE_OBS_AUTO_SLEW</code></td>
-<td>The HSI course pointer stops rotating itself to the active GPS leg. Set the course yourself.</td>
+<td>Disable OBS Auto-Slew</td>
+<td>The HSI course pointer stops rotating itself to the active GPS leg. Set the course yourself.<br><code>DHC6_CFG_DISABLE_OBS_AUTO_SLEW</code></td>
 </tr>
 <tr>
-<td>Disable ADF Card Slaving<br><code>DHC6_CFG_DISABLE_ADF_CARD_SLAVE</code></td>
-<td>The ADF compass card stops following the HSI heading, turning a KI-227-01 into a KI-227-00 you set with the HDG knob.</td>
+<td>Disable ADF Card Slaving</td>
+<td>The ADF compass card stops following the HSI heading, turning a KI-227-01 into a KI-227-00 you set with the HDG knob.<br><code>DHC6_CFG_DISABLE_ADF_CARD_SLAVE</code></td>
 </tr>
 </tbody>
 </table>
@@ -3110,8 +3027,8 @@ value while greyed.</p>
 </thead>
 <tbody>
 <tr>
-<td>Mute copilot callouts<br><code>DHC6_CFG_COPILOT_MUTE</code></td>
-<td>Silences the copilot's spoken checklist responses, including "Checklist complete". The checklist still runs at the same pace.</td>
+<td>Mute copilot callouts</td>
+<td>Silences the copilot's spoken checklist responses, including "Checklist complete". The checklist still runs at the same pace.<br><code>DHC6_CFG_COPILOT_MUTE</code></td>
 </tr>
 </tbody>
 </table>
@@ -3127,8 +3044,8 @@ moves the other.</p>
 </thead>
 <tbody>
 <tr>
-<td>Reliability<br><code>DHC6_CFG_RELIABILITY</code></td>
-<td><strong>Off</strong> (default) — the wear and tear system is disabled and the Maintenance tab is hidden. <strong>Reliable</strong> — nominal wear rate, experienced mechanic, risk-averse management. <strong>Unreliable</strong> — 4× wear. <strong>Not Airworthy</strong> — 16× wear, an inexperienced mechanic and poor access to new parts.</td>
+<td>Reliability</td>
+<td><strong>Off</strong> (default) — the wear and tear system is disabled and the Maintenance tab is hidden. <strong>Reliable</strong> — nominal wear rate, experienced mechanic, risk-averse management. <strong>Unreliable</strong> — 4× wear. <strong>Not Airworthy</strong> — 16× wear, an inexperienced mechanic and poor access to new parts.<br><code>DHC6_CFG_RELIABILITY</code></td>
 </tr>
 </tbody>
 </table>
@@ -3139,7 +3056,7 @@ own unless you uncheck its override.</p>
 <p>Wear &amp; Tear &amp; Damage is work in progess, and only few systems have been hooked up to it.</p>
 </div>
 <hr />
-<p><em>Reviewed 2026-08-05.</em></p></section>
+<p><em>Reviewed 2026-08-09.</em></p></section>
                     <section class='print-page md-section' id='section-3-4' heading-number='3.4'>
                         <h1>Features<a class='headerlink' href='#section-3-4' title='Permanent link'></a>
                         </h1>
@@ -3212,7 +3129,13 @@ equipment.</p>
 <p>The EFB app is an integral part of the mod, unlocking many of its
 features. I recommend you make yourself familiar with it when you
 first start the mod.</p>
-<p>This manual is available on the Manual tab of the EFB app.</p>
+<p>The app can be started from the "More Apps" tab of the EFB (bottom row
+of the EFB, rightmost icon).</p>
+<p>Recommended first step in the app: check out the 
+<a href="#mod-configuration">Config tab</a>, 
+pick a profile that fits your expectations and adjust the options from
+there.</p>
+<h2 id="mod-features-efb-disclosure-modes">Disclosure modes<a class="headerlink" href="#mod-features-efb-disclosure-modes" title="Permanent link">&para;</a></h2>
 <p>Note the toggle at the top, between the notification icon and the
 timestamp. It displays the mode the app is currently in:</p>
 <ul>
@@ -3226,12 +3149,8 @@ timestamp. It displays the mode the app is currently in:</p>
   help you understand system internals as they happen.</p>
 </li>
 </ul>
-<p>Click it any time to switch between modes. If you're a flightsim
-role-player, consider it the "cheat button".</p>
-<p>Recommended first step in the app: check out the 
-<a href="#mod-configuration">Config tab</a>, 
-pick a profile that fits your expectations and adjust the options from
-there.</p>
+<p>Click it any time to switch between modes. If you're a roleplayer,
+consider it the "cheat button".</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Information presented in the EFB app that appears to reference 
@@ -3240,6 +3159,9 @@ The Checklists and Reference tabs explicitly say so.</p>
 </div>
 <h2 id="mod-features-efb-notes">Notes<a class="headerlink" href="#mod-features-efb-notes" title="Permanent link">&para;</a></h2>
 <ul>
+<li>
+<p>This manual is available on the Manual tab of the EFB app.</p>
+</li>
 <li>
 <p>If the WASM module or panel configuration fails to load, the EFB
   shows a splash saying so, with a "continue anyway" option, plus an
@@ -3286,7 +3208,7 @@ The Checklists and Reference tabs explicitly say so.</p>
 </li>
 </ul>
 <hr />
-<p><em>Reviewed 2026-08-08.</em></p></section><section class="print-page" id="mod-features-objects" heading-number="3.4.3"><h1 id="mod-features-objects-3d-objects">3D Objects<a class="headerlink" href="#mod-features-objects-3d-objects" title="Permanent link">&para;</a></h1>
+<p><em>Reviewed 2026-08-09.</em></p></section><section class="print-page" id="mod-features-objects" heading-number="3.4.3"><h1 id="mod-features-objects-3d-objects">3D Objects<a class="headerlink" href="#mod-features-objects-3d-objects" title="Permanent link">&para;</a></h1>
 <h2 id="mod-features-objects-context">Context<a class="headerlink" href="#mod-features-objects-context" title="Permanent link">&para;</a></h2>
 <p>Without access to the project source (which we obviously don't have),
 we can't modify the visual model of the base aircraft. What we can do,
@@ -5256,170 +5178,102 @@ This is a selection, not the full list — the aircraft defines around a thousan
                     <section class='print-page md-section' id='section-5' heading-number='5'>
                         <h1>Sim<a class='headerlink' href='#section-5' title='Permanent link'></a>
                         </h1>
-                    
-                    <section class='print-page md-section' id='section-5-1' heading-number='5.1'>
-                        <h1>Radio<a class='headerlink' href='#section-5-1' title='Permanent link'></a>
-                        </h1>
-                    <section class="print-page" id="sim-radio-adf" heading-number="5.1.1"><h1 id="sim-radio-adf-adf-and-the-kr-87">ADF and the KR 87<a class="headerlink" href="#sim-radio-adf-adf-and-the-kr-87" title="Permanent link">&para;</a></h1>
-<div class="admonition danger">
-<p class="admonition-title">Placeholder</p>
-<p>This page exists to demonstrate a never-approved page in the PoC. It has
-real content but is deliberately thin, and it should not appear in the
-published manual.</p>
+                    <section class="print-page" id="sim-radio" heading-number="5.1"><h1 id="sim-radio-radio-navigation">Radio navigation<a class="headerlink" href="#sim-radio-radio-navigation" title="Permanent link">&para;</a></h1>
+<h2 id="sim-radio-overview">Overview<a class="headerlink" href="#sim-radio-overview" title="Permanent link">&para;</a></h2>
+<p>The mod completely replaces the stock sim system. It reads the
+currently active nav database (NavBlue, Navigraph, whatever) from the
+sim, optionally adds decommissioned NDB stations, and calculates all
+signals in custom code.</p>
+<p>The code was inspired by libradio but is not based on it. The
+implementation is based on ITU publications and data created using
+publicly available tools and data sources.</p>
+<p>In order to provide performant terrain lookups over long ranges, the
+mod ships a global terrain database in a custom, optimized format that
+allows for efficient lookups and only contains exactly the details we
+need (terrain elevation and land classes).</p>
+<p>All gauges, the autopilot and the TAWS implementation exclusively use
+the signals from the custom system.</p>
+<p>All calculations use the physical effects appropriate for the specific
+frequency ranges. If you're interested, the Radio tab in the EFB shows
+many of the details and the code is open source. In this manual, I
+will focus on the differences you might see compared to the stock sim
+system.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There is some (defensible) cheating going on: </p>
+<p>The regulations are pretty clear that stations must reach their 
+published range, but they're not allowed to use more power than 
+necessary to achieve that range, in order to avoid interference. </p>
+<p>The actual transmitter wattage is <strong>not published.</strong> So I try to 
+recreate that regulatory decision for every station individually 
+and pick the least powerful equipment that can satisfy the range 
+based on the location and terrain around the station.</p>
 </div>
-<h2 id="sim-radio-adf-operation">Operation<a class="headerlink" href="#sim-radio-adf-operation" title="Permanent link">&para;</a></h2>
-<p><strong>The needle is not a pointer, it is a measurement.</strong> Bearing accuracy degrades
-with signal strength rather than switching between "works" and "does not work",
-so a distant or weak NDB gives you a needle that wanders around the true bearing
-instead of one that suddenly flags. Close in, it is steady.</p>
-<p><strong>Historic beacons are available.</strong> <em>(Config: </em><em>Enable historic NDBs</em><em>.)</em> Modern
-navdata has dropped most of the beacons that made low-altitude navigation
-interesting; the option restores decommissioned stations from our own database.
-Frequencies below 160 kHz with no gameplay relevance are excluded.</p>
-<h2 id="sim-radio-adf-under-the-hood">Under the hood<a class="headerlink" href="#sim-radio-adf-under-the-hood" title="Permanent link">&para;</a></h2>
-<p>An NDB is a vertically polarised transmitter whose ground wave follows terrain and
-whose sky wave arrives after dark by a different path. The receiver cannot tell
-them apart, which is the physical basis of night effect.</p>
-<p>We drive needle accuracy from a signal-strength model anchored on ICAO rated
-coverage — antenna efficiency, station class and field-strength contours — rather
-than a distance cutoff. The bearing error added on top is deterministic and keyed
-to that signal level, so the same station at the same range behaves the same way
-every time.</p>
-<p>Not modelled: lightning. The sim does not expose the data that would be needed to
-bend the needle toward a storm cell.</p>
-<h2 id="sim-radio-adf-from-the-release-notes">From the release notes<a class="headerlink" href="#sim-radio-adf-from-the-release-notes" title="Permanent link">&para;</a></h2>
-<p>Verbatim from <code>docs/release-notes-*.md</code>, grouped by the section they appeared in. The tag is the version each item first appeared in.</p>
-<h3 id="sim-radio-adf-instruments-gyros-attitude-hsi-adf-nav">Instruments — gyros, attitude, HSI, ADF, NAV<a class="headerlink" href="#sim-radio-adf-instruments-gyros-attitude-hsi-adf-nav" title="Permanent link">&para;</a></h3>
-<ul>
-<li>ADF noise model rewritten. <em>(v2024.2.134)</em></li>
-<li>KI 227 ADF card now slaves to the gyro. Default behaviour: card follows <code>DHC6_GYRO_{CPT,FO}_HEADING</code>; the HDG knob nudges the gyro card directly (KI-227-01). New EFB option <strong>"Disable ADF Card Slaving"</strong> reverts to the legacy KI-227-00 manual-knob path. <em>(v2024.2.134)</em></li>
-</ul>
-<h3 id="sim-radio-adf-cockpit-instruments">Cockpit instruments<a class="headerlink" href="#sim-radio-adf-cockpit-instruments" title="Permanent link">&para;</a></h3>
-<ul>
-<li>[NEW] Added needle and radio physics to the ADF gauge. Based on KI 227. <em>(v2024.2.x)</em></li>
-</ul>
-<h3 id="sim-radio-adf-bug-fixes">Bug fixes<a class="headerlink" href="#sim-radio-adf-bug-fixes" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Updated ADF circuit to 31 to match standard electrical configurations. <em>(v2024.2.x)</em></li>
-</ul>
-<h3 id="sim-radio-adf-adf-ndb-realism">ADF / NDB realism<a class="headerlink" href="#sim-radio-adf-adf-ndb-realism" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Historical NDB database.</strong> Added a curated database of historical NDB beacons, with a year-scrubber panel on the EFB Radio tab to filter beacons to those active in a given year. Stations are auto-classified (class and range) from their location and surrounding terrain. <em>(v2024.3.124)</em></li>
-<li><strong>Propagation overhaul.</strong> Reworked LF/MF ground-wave and night sky-wave propagation: terrain relief and signal bending around mountains, urban multipath, coastal refraction, atmospheric noise, smoother sky-wave transitions around sunrise/sunset, and dedicated ground types for permafrost and wet tundra. <em>(v2024.3.124)</em></li>
-<li>Fixes: signals receivable well beyond their realistic range, daytime sky-wave incorrectly extending range. <em>(v2024.3.124)</em></li>
-</ul>
-<h3 id="sim-radio-adf-adf-realism-overhaul-with-input-from-ccm">ADF realism overhaul (with input from CCM)<a class="headerlink" href="#sim-radio-adf-adf-realism-overhaul-with-input-from-ccm" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Bank/dip error.</strong> Overfly a station in a turn and the needle leans toward the low wing. This falls straight out of the geometry (the loop antenna tilts with the airframe). <em>(v2024.3.47)</em></li>
-<li><strong>Quadrantal error.</strong> Each airframe carries its own small bearing distortion off the cardinal headings, rolled per session — so no two Twotters read quite identically. <em>(v2024.3.47)</em></li>
-<li>In a tight cone directly overhead the station, multipath interference confuses the receiver. <em>(v2024.3.47)</em></li>
-<li><strong>Distance and weak signal.</strong> More wander the farther out you are; on a fading signal the needle twitches, and on a sustained loss it parks to 90° ("back to the peg"). <em>(v2024.3.47)</em></li>
-<li><strong>Night and dusk.</strong> Extra skywave wander after dark, driven by the position of the sun. <em>(v2024.3.47)</em></li>
-<li><strong>Per-station character.</strong> Each NDB feels a little different and drifts gently within a session. This RNG-driven effect is not grounded in physics as such, it stands in for actual effects we cannot simulate because of sim limitations (like terrain, coastal refraction, weather etc.). <em>(v2024.3.47)</em></li>
-<li><strong>Real station altitude.</strong> The cone now uses the tuned NDB's actual elevation from the nav database, so a mountain-top beacon behaves differently from a sea-level one. <em>(v2024.3.47)</em></li>
-<li>ANT mode parks the needle (per KR 87 manual). <em>(v2024.3.47)</em></li>
-<li>Needle freezes in position on receiver power loss. No magical parking without the receiver driving it. <em>(v2024.3.47)</em></li>
-<li>Fixed: frequency and modes can no longer be changed while the receiver is off or unpowered. <em>(v2024.3.47)</em></li>
-<li>Known issues: the system cannot react to lightning, the sim doesn't provide the necessary data. <em>(v2024.3.47)</em></li>
-</ul>
-<h3 id="sim-radio-adf-the-kr-87-adf-unit">The KR-87 ADF unit<a class="headerlink" href="#sim-radio-adf-the-kr-87-adf-unit" title="Permanent link">&para;</a></h3>
-<ul>
-<li>ADF frequencies restore more reliably. <em>(v2024.3.99)</em></li>
-</ul>
-<h2 id="sim-radio-adf-config-options">Config options<a class="headerlink" href="#sim-radio-adf-config-options" title="Permanent link">&para;</a></h2>
-<p>Set from the EFB <strong>Config</strong> tab. Each option is documented on exactly one page; see <a href="#mod-configuration">Configuration</a> for how profiles and the per-variant override work.</p>
-<h3 id="sim-radio-adf-enable-historic-ndbs">Enable historic NDBs<a class="headerlink" href="#sim-radio-adf-enable-historic-ndbs" title="Permanent link">&para;</a></h3>
-<p><code>DHC6_CFG_NDB_SOURCE</code> — default: <strong>off</strong></p>
-<p>Adds historic NDB beacons that modern navdata has dropped. When on, these take precedence over the sim's navdata; the sim is used only for NDBs not in the historic set.</p>
-<h3 id="sim-radio-adf-historic-ndb-vintage">(historic NDB vintage)<a class="headerlink" href="#sim-radio-adf-historic-ndb-vintage" title="Permanent link">&para;</a></h3>
-<p><code>DHC6_CFG_NDB_YEAR</code> — default: <strong>—</strong></p>
-<p>Selects which year's beacon set the historic NDB database presents. Set from the EFB alongside the option above rather than being a switch of its own.</p>
-<h3 id="sim-radio-adf-disable-adf-card-slaving">Disable ADF Card Slaving<a class="headerlink" href="#sim-radio-adf-disable-adf-card-slaving" title="Permanent link">&para;</a></h3>
-<p><code>DHC6_CFG_DISABLE_ADF_CARD_SLAVE</code> — default: <strong>off</strong></p>
-<p>Stops the ADF compass card from following the HSI heading.</p></section><section class="print-page" id="sim-radio-navigation" heading-number="5.1.2"><h1 id="sim-radio-navigation-radio-navigation">Radio navigation<a class="headerlink" href="#sim-radio-navigation-radio-navigation" title="Permanent link">&para;</a></h1>
-<h2 id="sim-radio-navigation-from-the-readme">From the README<a class="headerlink" href="#sim-radio-navigation-from-the-readme" title="Permanent link">&para;</a></h2>
-<p>The goal is: replace all navaid signals with a physics- and terrain-based simulation.
-State: Mostly complete. The custom signal now drives the steam gauges and the autopilot directors.</p>
-<p>All radio navaid signals are now simulated in custom code. All of the needles, TAWS and AP are driven by signal-strength-first propagation models. Stations fade, drop out behind ridges, interfere with each other, and the needles wander, jitter and lag. And there's an EFB tab to show you why.</p>
-<p>Note: At this point, ONLY the steam gauges are migrated to the new system. AP and GNS units are still using stock sim data (but not for very much longer). If the needles show a slight deviation while you're on AP, that's expected. If the needles do one thing and the AP does a totally different thing, that's possibly a bug that should be reported, ideally with video or screenshots of the Radio tab.</p>
-<p><strong>UHF/VHF: VOR, ILS localizer &amp; glideslope, DME</strong> (line-of-sight bands):
-- Free-space path loss: inverse-square spreading on the true slant range (Friis free-space formula).
-- Terrain diffraction &amp; shadowing: the Longley-Rice Irregular Terrain Model (the NTIA/ITS ITM), run against a baked global terrain and land-cover dataset (≈1.85 km cells, derived from ESA WorldCover land cover and Natural Earth water/ice).
-- DME on its real frequency: DME is paired to its true UHF / L-band channel (ICAO Annex 10) and run through a separate terrain pass, so it digs a deeper shadow behind a ridge than the co-located VOR.
-- Service volume &amp; antenna pattern: per-class range and elevation/cone roll-off curves (ICAO service volumes; libradio curves).
-- Co-channel interference (12 dB capture): of all stations on the tuned frequency, the receiver locks only the strongest, and only if it leads the runner-up by ≥ 12 dB; inside that margin it garbles to a dropout (ICAO capture ratio).
-- Radial &amp; CDI geometry: the VOR radial and course deviation are built from the station's position, its commissioned magnetic variation, and your OBS course (ICAO Annex 10).
-- Per-runway localizer width: the on-course sector width is derived from the actual runway geometry, clamped to the Annex-10 bounds.
-- False glideslopes: capture lobes at odd multiples of the true GS angle, falling out of the antenna geometry (ICAO Annex 10).
-- Independent glideslope signal: GS strength is computed separately from the localizer.
-- Signal-dependent needle lag: the weaker the signal, the heavier the servo smoothing and the more the needle lags (libradio lag law).
-- Usable / identifiable floor (hysteretic): usable at −70 dB, can't-ID below −73 dB; below the floor the CDI parks to centre, the GS retracts, TO/FROM reads OFF and the NAV flag drops (libradio dB thresholds).
-- DME receiver behaviour: slant range, an overhead no-track zone, memory/hold on signal loss, and a line-of-sight horizon range limit (modelled on the KN-62).</p>
-<p><strong>LF/MF: NDB</strong> (ground-wave + night sky-wave):
-- Ground-wave field strength: ITU-R Recommendation P.368 ground-wave curves (1 kW vertical-monopole reference) over detailed ground regimes based on nine terrain types plus permafrost and wet tundra.
-- Mixed land–sea paths: Millington's method (P.368 Annex 2); surface conductivity comes from the baked land-cover/water dataset.
-- Transmit power by class: NDB power scaled per service class.
-- Height gain: an elevated-receiver correction, since the surface-only P.368 curves under-read for an aircraft at altitude.
-- LF terrain masking: a gentle knife-edge loss (3–15 dB, vs VHF's 20–60), because long LF wavelengths bend around terrain.
-- Night sky-wave range extension: ITU-R Recommendation P.1147 single-hop E-layer night field, power-summed with the ground wave.
-- Diurnal variation: the P.1147 hourly absorption factor: sky-wave is crushed by day and deepest in the middle of the night.
-- Seasonal variation: a P.1147-style seasonal term (MF semi-annual / LF annual, scaled by frequency and latitude, hemisphere-aware).
-- Geomagnetic-latitude absorption: the dominant night-field absorption scales with geomagnetic latitude (centered-dipole model).
-- Coastal refraction: bearings bend where the signal path crosses a coastline at a shallow angle (P.368 coastal effect).
-- Quadrantal error: airframe re-radiation distorts the bearing as a per-airframe sine series (FAA Order 6740.6).
-- Bank / dip error: falls out of a full 3-D line-to-station projection: a bank tilts the loop plane and the needle errs, worst at the fore/aft headings.
-- NDB cone of silence: a narrow overhead cone (~0.2 NM radius at 10,000 ft) where the needle wanders.
-- Night-effect bearing swing: twilight ionospheric fluctuation, gated by solar elevation, that makes the needle swing around dawn and dusk.
-- Near-field multipath: a slowly-rotating reflection ghost whose near-field zone scales with the tuned wavelength.
-- Deterministic, signal-driven bearing error.
-- Curated historical NDB database (~9k beacons) with baked class/range and first/last-seen years.
-- Offline NDB classification: station class/range derived from location + terrain heuristics.
-- Terrain relief &amp; urban bending, coastal-refraction overhaul, noise floor varying with geography/time/season, and co-channel stations combining as a field-weighted resultant bearing.</p>
-<h2 id="sim-radio-navigation-from-the-release-notes">From the release notes<a class="headerlink" href="#sim-radio-navigation-from-the-release-notes" title="Permanent link">&para;</a></h2>
-<p>Verbatim from <code>docs/release-notes-*.md</code>, grouped by the section they appeared in. The tag is the version each item first appeared in.</p>
-<h3 id="sim-radio-navigation-instruments-gyros-attitude-hsi-adf-nav">Instruments — gyros, attitude, HSI, ADF, NAV<a class="headerlink" href="#sim-radio-navigation-instruments-gyros-attitude-hsi-adf-nav" title="Permanent link">&para;</a></h3>
-<ul>
-<li>VOR cone-of-confusion modelled. Work in progress. Disabled in this build, because it doesn't look realistic yet. <em>(v2024.2.134)</em></li>
-</ul>
-<h3 id="sim-radio-navigation-radio-navigation_1">Radio navigation<a class="headerlink" href="#sim-radio-navigation-radio-navigation_1" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Fixed standalone DME and TACAN stations incorrectly deflecting the CDI. <em>(v2024.3.130)</em></li>
-<li>Toned down overdone jitter of localizer signals. <em>(v2024.3.130)</em></li>
-<li>Mitigated spurious terrain occlusion affecting localizers, caused by limitations of the terrain data. <em>(v2024.3.130)</em></li>
-<li>Fixed the glideslope indicator parking on some precision approaches. <em>(v2024.3.130)</em></li>
-<li>Free-space path loss: inverse-square spreading on the true slant range (Friis free-space formula). <em>(v2024.3.99)</em></li>
-<li>Terrain diffraction &amp; shadowing: the Longley-Rice Irregular Terrain Model (the NTIA/ITS ITM), run against a baked global terrain and land-cover dataset (≈1.85 km cells, derived from ESA WorldCover land cover and Natural Earth water/ice). <em>(v2024.3.99)</em></li>
-<li>DME on its real frequency: DME is paired to its true UHF / L-band channel (ICAO Annex 10) and run through a separate terrain pass, so it digs a deeper shadow behind a ridge than the co-located VOR. <em>(v2024.3.99)</em></li>
-<li>Service volume &amp; antenna pattern: per-class range and elevation/cone roll-off curves (ICAO service volumes; libradio curves). <em>(v2024.3.99)</em></li>
-<li>Co-channel interference (12 dB capture): of all stations on the tuned frequency, the receiver locks only the strongest, and only if it leads the runner-up by ≥ 12 dB; inside that margin it garbles to a dropout (ICAO capture ratio). <em>(v2024.3.99)</em></li>
-<li>Radial &amp; CDI geometry: the VOR radial and course deviation are built from the station's position, its commissioned magnetic variation, and your OBS course (ICAO Annex 10). <em>(v2024.3.99)</em></li>
-<li>Per-runway localizer width: the on-course sector width is derived from the actual runway geometry, clamped to the Annex-10 bounds. <em>(v2024.3.99)</em></li>
-<li>False glideslopes: capture lobes at odd multiples of the true GS angle, falling out of the antenna geometry (ICAO Annex 10). <em>(v2024.3.99)</em></li>
-<li>Independent glideslope signal: GS strength is computed separately from the localizer. <em>(v2024.3.99)</em></li>
-<li>Signal-dependent needle lag: the weaker the signal, the heavier the servo smoothing and the more the needle lags (libradio lag law). <em>(v2024.3.99)</em></li>
-<li>Usable / identifiable floor (hysteretic): usable at −70 dB, can't-ID below −73 dB; below the floor the CDI parks to centre, the GS retracts, TO/FROM reads OFF and the NAV flag drops (libradio dB thresholds). <em>(v2024.3.99)</em></li>
-<li>DME receiver behaviour: slant range, an overhead no-track zone, memory/hold on signal loss, and a line-of-sight horizon range limit (modelled on the KN-62). <em>(v2024.3.99)</em></li>
-<li>Ground-wave field strength: ITU-R Recommendation P.368 ground-wave curves (1 kW vertical-monopole reference) over four ground regimes (sea / wet ground / good land / poor land). <em>(v2024.3.99)</em></li>
-<li>Mixed land–sea paths: Millington's method (P.368 Annex 2); surface conductivity comes from the baked land-cover/water dataset. <em>(v2024.3.99)</em></li>
-<li>Transmit power by class: NDB power scaled per service class. <em>(v2024.3.99)</em></li>
-<li>Height gain: an elevated-receiver correction, since the surface-only P.368 curves under-read for an aircraft at altitude. <em>(v2024.3.99)</em></li>
-<li>LF terrain masking: a gentle knife-edge loss (3–15 dB, vs VHF's 20–60), because long LF wavelengths bend around terrain. <em>(v2024.3.99)</em></li>
-<li>Night sky-wave range extension: ITU-R Recommendation P.1147 single-hop E-layer night field, power-summed with the ground wave. <em>(v2024.3.99)</em></li>
-<li>Diurnal variation: the P.1147 hourly absorption factor: sky-wave is crushed by day and deepest in the middle of the night. <em>(v2024.3.99)</em></li>
-<li>Seasonal variation: a P.1147-style seasonal term (MF semi-annual / LF annual, scaled by frequency and latitude, hemisphere-aware). <em>(v2024.3.99)</em></li>
-<li>Geomagnetic-latitude absorption: the dominant night-field absorption scales with geomagnetic latitude (centered-dipole model). <em>(v2024.3.99)</em></li>
-<li>Coastal refraction: bearings bend where the signal path crosses a coastline at a shallow angle (P.368 coastal effect). <em>(v2024.3.99)</em></li>
-<li>Quadrantal error: airframe re-radiation distorts the bearing as a per-airframe sine series (FAA Order 6740.6). <em>(v2024.3.99)</em></li>
-<li>Bank / dip error: falls out of a full 3-D line-to-station projection: a bank tilts the loop plane and the needle errs, worst at the fore/aft headings. <em>(v2024.3.99)</em></li>
-<li>NDB cone of silence: a narrow overhead cone (~0.2 NM radius at 10,000 ft) where the needle wanders. <em>(v2024.3.99)</em></li>
-<li>Night-effect bearing swing: twilight ionospheric fluctuation, gated by solar elevation, that makes the needle swing around dawn and dusk. <em>(v2024.3.99)</em></li>
-<li>Near-field multipath: a slowly-rotating reflection ghost whose near-field zone scales with the tuned wavelength. <em>(v2024.3.99)</em></li>
-</ul>
-<h3 id="sim-radio-navigation-dme">DME<a class="headerlink" href="#sim-radio-navigation-dme" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Added a KDI-572-inspired readout on the EFB app Systems tab with station ident, frequency, slant distance, DME ground speed, time-to-station. <em>(v2024.3.99)</em></li>
-<li>"HOLD" locks the current station so you can re-tune your NAV radios without changing the DME. <em>(v2024.3.99)</em></li>
-</ul></section></section></section></div><style>.print-site-enumerate-headings #index > h1:before { content: '1 ' }
+<h2 id="sim-radio-lfmf">LF/MF<a class="headerlink" href="#sim-radio-lfmf" title="Permanent link">&para;</a></h2>
+<p>An NDB signal is low or medium frequency and mostly travels along the
+ground, following the terrain. It doesn't depend on line-of-sight. The
+range varies massively based on the conductivity of the terrain the
+signal traverses. </p>
+<p>A coastal NDB that reaches its published range inland will have a much
+higher range when you approach it over water.</p>
+<p>NDB signals are much less reliable than you're used to from the stock
+system. They tend to become more reliable as you get closer, but even
+up close, the signal can be skewed by coastal refraction, terrain
+"bending", or reflection by buildings in urban areas.</p>
+<p>For me, this makes ADF navigation a lot more fun. You can't just
+follow the needle when it comes alive, you have to consider whether
+the direction it's pointing to is plausible, maybe wait a bit for the
+needle to settle before you trust it.</p>
+<p>Known issue: the ADF radio should react to lightning, but the sim
+doesn't provide the necessary data that would be needed to bend the
+needle toward a storm cell.</p>
+<h2 id="sim-radio-vhf">VHF<a class="headerlink" href="#sim-radio-vhf" title="Permanent link">&para;</a></h2>
+<p>The Very High frequency (VHF) band is used by VOR and localizers. They
+reach their optimal range when you have line-of-sight to the station.</p>
+<p>If terrain is blocking LOS, you can still receive the signal refracted
+by the terrain, but it will lower its range.</p>
+<p>Localizers are shaped beams that, by regulation, must cover a specific
+cone and range.</p>
+<h2 id="sim-radio-uhf">UHF<a class="headerlink" href="#sim-radio-uhf" title="Permanent link">&para;</a></h2>
+<p>ILS glideslopes and DME signals use ultra-high frequencies.</p>
+<p>The DME frequency (VHF) you set in your radio is not actually the real
+DME frequency (UHF). To keep pilots from having to dial in yet another
+frequency, the DME interrogator uses a frequency that is paired with a
+specific VHF frequency.</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>If you set your NAV radio to a VOR on 117.40, there are two paths to
+get a distance:</p>
+<p><strong>Garmin avionics</strong> will listen for the station ID (the Morse code) to
+positively identify the VOR station, then they look up the station
+(based on ID and frequency) in their database, get the station’s GPS
+location, and calculate the ground distance based only on the GPS
+coordinates.</p>
+<p>A <strong>DME interrogator</strong> is a piece of hardware that is part of your radio 
+stack. It determines the actual DME frequencies from the
+NAV radio’s frequency: in our example, 117.40 MHz (VHF) results in
+a request frequency of 1135 Mhz (UHF), the response is received on 
+1198 MHz (UHF).</p>
+<p>The DME interrogator then sends signals to the ground station (the
+transponder) which responds after a fixed delay. Slant distance is
+then calculated based on the round-trip time.</p>
+<p>The Twotter does not simulate that handshake, that would be
+pointless, but it does determine the correct UHF frequency and uses
+it to simulate the propagation of the DME signal, because the
+frequency determines how well the signal traverses terrain,
+which affects the range.</p>
+</div>
+<p>Main difference to the stock sim: VOR signals and their paired DME
+signals have different ranges.</p>
+<p>The same applies pretty much to the ILS glideslope. Glideslopes have
+other fun properties like false lobes that appear above the actual
+glideslopes, making a "slam dunk" capture from above way more
+exciting.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The false glideslope lobes for a standard 3° approach sit at 6° and 9°, 
+and the one at 6° produces reversed guidance.</p>
+</div></section></section></div><style>.print-site-enumerate-headings #index > h1:before { content: '1 ' }
 
                 .print-site-enumerate-headings #index h2:before { content: '1.' counter(counter-index-2) ' ' }
                 .print-site-enumerate-headings #index h2 {  counter-increment: counter-index-2 }
@@ -5498,10 +5352,7 @@ State: Mostly complete. The custom signal now drives the steam gauges and the au
 .print-site-enumerate-headings #aircraft-systems-engines-engine-start > h1:before { content: '4.2.15.1 ' }
 
 .print-site-enumerate-headings #section-5 > h1:before { content: '5 ' }
-.print-site-enumerate-headings #section-5-1 > h1:before { content: '5.1 ' }
-.print-site-enumerate-headings #sim-radio-adf > h1:before { content: '5.1.1 ' }
-
-.print-site-enumerate-headings #sim-radio-navigation > h1:before { content: '5.1.2 ' }
+.print-site-enumerate-headings #sim-radio > h1:before { content: '5.1 ' }
 </style>
 
 

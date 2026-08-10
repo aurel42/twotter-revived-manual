@@ -1990,91 +1990,8 @@
   
   
   
-    
-    
-      
-        
-      
-        
-      
-    
-    
-    
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
-        
-          
-          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Radio
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_1">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Radio
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
     <li class="md-nav__item">
-      <a href="../../sim/radio/adf/" class="md-nav__link md-nav__link--draft">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    ADF and the KR 87
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../sim/radio/navigation/" class="md-nav__link md-nav__link--draft">
+      <a href="../../sim/radio/" class="md-nav__link">
         
   
   
@@ -2090,14 +2007,6 @@
   
 
       </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
     </li>
   
 
@@ -2176,7 +2085,8 @@
 
 
 <h1 id="configurable-settings">Configurable settings<a class="headerlink" href="#configurable-settings" title="Permanent link">&para;</a></h1>
-<p>Everything on this page is set on the Config tab in the EFB app.</p>
+<p>Everything on this page is set on the Config tab in the 
+<a href="../features/efb/">"Twotter" EFB app</a>.</p>
 <p>The default settings are either sim defaults or they enable convenience features.
 The non-default settings strive to be more realistic, and might end up being more annoying.</p>
 <h2 id="profiles">Profiles<a class="headerlink" href="#profiles" title="Permanent link">&para;</a></h2>
@@ -2304,6 +2214,8 @@ about it.</p>
 preference: <strong>Use FDR switch as Avionics switch</strong>, <strong>Mute copilot
 callouts</strong>, <strong>Battery Replacement (NiCad to SLA)</strong>, and
 <strong>Reliability</strong>.</p>
+<!-- EDIT: moved the <br> + DHC6_CFG_* L:vars from the Option column to the end of the second column in every Options-table row -->
+
 <h2 id="options">Options<a class="headerlink" href="#options" title="Permanent link">&para;</a></h2>
 <p>Some options have an override checkbox on the left: leave it unchecked
 and the setting is shared across all variants that don't override it;
@@ -2322,32 +2234,32 @@ variants you fly.</p>
 </thead>
 <tbody>
 <tr>
-<td>Use FDR switch as Avionics switch<br><code>DHC6_CFG_FDR_AS_AVIONICS_MASTER</code></td>
-<td>Repurposes the unused Flight Data Recorder switch as an avionics master for the aftermarket stack: GNS 530/430, KAP-140, transponder, ADF and audio panel. Round gauges are unaffected.</td>
+<td>Use FDR switch as Avionics switch</td>
+<td>Repurposes the unused Flight Data Recorder switch as an avionics master for the aftermarket stack: GNS 530/430, KAP-140, transponder, ADF and audio panel. Round gauges are unaffected.<br><code>DHC6_CFG_FDR_AS_AVIONICS_MASTER</code></td>
 </tr>
 <tr>
-<td>Disable relaxed NAV arming<br><code>DHC6_CFG_AP_STRICT_NAVARM</code></td>
-<td>Removes the KAP-140's NAV pre-arm. NAV mode will be rejected if not in range of the course.</td>
+<td>Disable relaxed NAV arming</td>
+<td>Removes the KAP-140's NAV pre-arm. NAV mode will be rejected if not in range of the course.<br><code>DHC6_CFG_AP_STRICT_NAVARM</code></td>
 </tr>
 <tr>
-<td>Enable KAP-140 voice messages<br><code>DHC6_CFG_KAP140_VOICE</code></td>
-<td>Adds the unit's three optional spoken messages: "Altitude" 1000 ft before the preselect, "Leaving altitude" 200 ft after departing it, and "Autopilot" on disconnect. They accompany the tones rather than replacing them. The two standard trim messages are always on either way.</td>
+<td>Enable KAP-140 voice messages</td>
+<td>Adds the unit's three optional spoken messages: "Altitude" 1000 ft before the preselect, "Leaving altitude" 200 ft after departing it, and "Autopilot" on disconnect. They accompany the tones rather than replacing them. The two standard trim messages are always on either way.<br><code>DHC6_CFG_KAP140_VOICE</code></td>
 </tr>
 <tr>
-<td>Disable Flight Director<br><code>DHC6_CFG_DISABLE_FD</code></td>
-<td>Hides the command bars on the attitude indicator. The flight director itself still engages.</td>
+<td>Disable Flight Director</td>
+<td>Hides the command bars on the attitude indicator. The flight director itself still engages.<br><code>DHC6_CFG_DISABLE_FD</code></td>
 </tr>
 <tr>
-<td>Disable visual approaches<br><code>DHC6_CFG_DISABLE_GNS_VISUAL_APPR</code></td>
-<td>Hides the GNS per-runway VISUAL approaches. The real 530W/430W has none, so this is the stock-faithful setting.</td>
+<td>Disable visual approaches</td>
+<td>Hides the GNS per-runway VISUAL approaches. The real 530W/430W has none, so this is the stock-faithful setting.<br><code>DHC6_CFG_DISABLE_GNS_VISUAL_APPR</code></td>
 </tr>
 <tr>
-<td>Disable coupled VNAV<br><code>DHC6_CFG_DISABLE_GNS_COUPLED_VNAV</code></td>
-<td>Takes away the coupled VNAV (PATH) descent, leaving the advisory-only VNAV the real 530W has.</td>
+<td>Disable coupled VNAV</td>
+<td>Takes away the coupled VNAV (PATH) descent, leaving the advisory-only VNAV the real 530W has.<br><code>DHC6_CFG_DISABLE_GNS_COUPLED_VNAV</code></td>
 </tr>
 <tr>
-<td>Enable historic NDBs<br><code>DHC6_CFG_NDB_SOURCE</code></td>
-<td>Adds historic NDB beacons that modern navdata has dropped. These take precedence, and the sim's navdata is used only for beacons the historic set doesn't have.</td>
+<td>Enable historic NDBs</td>
+<td>Adds historic NDB beacons that modern navdata has dropped. These take precedence, and the sim's navdata is used only for beacons the historic set doesn't have.<br><code>DHC6_CFG_NDB_SOURCE</code></td>
 </tr>
 </tbody>
 </table>
@@ -2367,16 +2279,16 @@ flight. A power cycle will most likely not do.</p>
 </thead>
 <tbody>
 <tr>
-<td>Installation<br><code>DHC6_CFG_GPWS</code></td>
-<td><strong>Full</strong> (default) — Class A on every aircraft, the full callout set. <strong>Reduced</strong> — passenger variants get Class A, cargo and utility get Class B. <strong>Legal minimum</strong> — passenger variants get Class A, everything else gets nothing. <strong>Class B</strong> — no terrain, glideslope or bank-angle alerts anywhere. <strong>Off</strong> — all callouts muted.</td>
+<td>Installation</td>
+<td><strong>Full</strong> (default) — Class A on every aircraft, the full callout set. <strong>Reduced</strong> — passenger variants get Class A, cargo and utility get Class B. <strong>Legal minimum</strong> — passenger variants get Class A, everything else gets nothing. <strong>Class B</strong> — no terrain, glideslope or bank-angle alerts anywhere. <strong>Off</strong> — all callouts muted.<br><code>DHC6_CFG_GPWS</code></td>
 </tr>
 <tr>
-<td>Sound bank<br><code>DHC6_CFG_GPWS_AUDIOBANK</code></td>
-<td>Aerosoft (default), FlyByWire, Custom</td>
+<td>Sound bank</td>
+<td>Aerosoft (default), FlyByWire, Custom<br><code>DHC6_CFG_GPWS_AUDIOBANK</code></td>
 </tr>
 <tr>
-<td>Volume<br><code>DHC6_CFG_GPWS_VOLUME</code></td>
-<td>You know how a volume slider works.</td>
+<td>Volume</td>
+<td>You know how a volume slider works.<br><code>DHC6_CFG_GPWS_VOLUME</code></td>
 </tr>
 </tbody>
 </table>
@@ -2398,16 +2310,16 @@ It picks one at random from the full set, which includes "Pull up" and
 </thead>
 <tbody>
 <tr>
-<td>Realistic battery capacity<br><code>DHC6_CFG_REALISTIC_BATTERY</code></td>
-<td>Gives the battery a real amp-hour budget that the enabled consumers draw down. Off means unlimited capacity. If you flatten it, change the chemistry or set the source switch to EXT to summon a GPU cart.</td>
+<td>Realistic battery capacity</td>
+<td>Gives the battery a real amp-hour budget that the enabled consumers draw down. Off means unlimited capacity. If you flatten it, change the chemistry or set the source switch to EXT to summon a GPU cart.<br><code>DHC6_CFG_REALISTIC_BATTERY</code></td>
 </tr>
 <tr>
-<td>Battery Replacement (NiCad to SLA)<br><code>DHC6_CFG_BATTERY_SLA</code></td>
-<td>Swaps the standard NiCad pack for a sealed lead-acid one: different chemistry, more capacity, more weight.</td>
+<td>Battery Replacement (NiCad to SLA)</td>
+<td>Swaps the standard NiCad pack for a sealed lead-acid one: different chemistry, more capacity, more weight.<br><code>DHC6_CFG_BATTERY_SLA</code></td>
 </tr>
 <tr>
-<td>Realistic parking brake<br><code>DHC6_CFG_REALISTIC_PARKING_BRAKE</code></td>
-<td>Models the real DHC-6 sequence: fully depress both toe brakes, pull the lever, release the toe brakes. If the latch doesn't catch, the handle snaps back and you try again.</td>
+<td>Realistic parking brake</td>
+<td>Models the real DHC-6 sequence: fully depress both toe brakes, pull the lever, release the toe brakes. If the latch doesn't catch, the handle snaps back and you try again.<br><code>DHC6_CFG_REALISTIC_PARKING_BRAKE</code></td>
 </tr>
 </tbody>
 </table>
@@ -2423,8 +2335,8 @@ aircraft as soon as you select it.</p>
 </thead>
 <tbody>
 <tr>
-<td>Generators can trip<br><code>DHC6_CFG_GCU_LATCH</code></td>
-<td>Generators have a small chance to trip when they come online. The annunciator will stay illuminated. A tripped generator stays off until you RESET it: hold the GEN switch to RESET, release to ON.</td>
+<td>Generators can trip</td>
+<td>Generators have a small chance to trip when they come online. The annunciator will stay illuminated. A tripped generator stays off until you RESET it: hold the GEN switch to RESET, release to ON.<br><code>DHC6_CFG_GCU_LATCH</code></td>
 </tr>
 </tbody>
 </table>
@@ -2438,20 +2350,20 @@ aircraft as soon as you select it.</p>
 </thead>
 <tbody>
 <tr>
-<td>Gyros take time to spin up<br><code>DHC6_CFG_REAL_GYROS</code></td>
-<td>Gyros spool up from rest instead of coming up aligned, which takes a couple of minutes from cold. Pull to Erect shortens it for the attitude indicator, and the HSI can be synced to the whiskey compass from the EFB Systems tab.</td>
+<td>Gyros take time to spin up</td>
+<td>Gyros spool up from rest instead of coming up aligned, which takes a couple of minutes from cold. Pull to Erect shortens it for the attitude indicator, and the HSI can be synced to the whiskey compass from the EFB Systems tab.<br><code>DHC6_CFG_REAL_GYROS</code></td>
 </tr>
 <tr>
-<td>Disable Auto Fast-Erect<br><code>DHC6_CFG_DISABLE_AUTO_FAST_ERECT</code></td>
-<td>Stops the attitude indicator from pulling its own fast-erect knob during cold-and-dark erection. Pull it yourself or wait a long time for the horizon to settle.</td>
+<td>Disable Auto Fast-Erect</td>
+<td>Stops the attitude indicator from pulling its own fast-erect knob during cold-and-dark erection. Pull it yourself or wait a long time for the horizon to settle.<br><code>DHC6_CFG_DISABLE_AUTO_FAST_ERECT</code></td>
 </tr>
 <tr>
-<td>Disable OBS Auto-Slew<br><code>DHC6_CFG_DISABLE_OBS_AUTO_SLEW</code></td>
-<td>The HSI course pointer stops rotating itself to the active GPS leg. Set the course yourself.</td>
+<td>Disable OBS Auto-Slew</td>
+<td>The HSI course pointer stops rotating itself to the active GPS leg. Set the course yourself.<br><code>DHC6_CFG_DISABLE_OBS_AUTO_SLEW</code></td>
 </tr>
 <tr>
-<td>Disable ADF Card Slaving<br><code>DHC6_CFG_DISABLE_ADF_CARD_SLAVE</code></td>
-<td>The ADF compass card stops following the HSI heading, turning a KI-227-01 into a KI-227-00 you set with the HDG knob.</td>
+<td>Disable ADF Card Slaving</td>
+<td>The ADF compass card stops following the HSI heading, turning a KI-227-01 into a KI-227-00 you set with the HDG knob.<br><code>DHC6_CFG_DISABLE_ADF_CARD_SLAVE</code></td>
 </tr>
 </tbody>
 </table>
@@ -2468,8 +2380,8 @@ value while greyed.</p>
 </thead>
 <tbody>
 <tr>
-<td>Mute copilot callouts<br><code>DHC6_CFG_COPILOT_MUTE</code></td>
-<td>Silences the copilot's spoken checklist responses, including "Checklist complete". The checklist still runs at the same pace.</td>
+<td>Mute copilot callouts</td>
+<td>Silences the copilot's spoken checklist responses, including "Checklist complete". The checklist still runs at the same pace.<br><code>DHC6_CFG_COPILOT_MUTE</code></td>
 </tr>
 </tbody>
 </table>
@@ -2485,8 +2397,8 @@ moves the other.</p>
 </thead>
 <tbody>
 <tr>
-<td>Reliability<br><code>DHC6_CFG_RELIABILITY</code></td>
-<td><strong>Off</strong> (default) — the wear and tear system is disabled and the Maintenance tab is hidden. <strong>Reliable</strong> — nominal wear rate, experienced mechanic, risk-averse management. <strong>Unreliable</strong> — 4× wear. <strong>Not Airworthy</strong> — 16× wear, an inexperienced mechanic and poor access to new parts.</td>
+<td>Reliability</td>
+<td><strong>Off</strong> (default) — the wear and tear system is disabled and the Maintenance tab is hidden. <strong>Reliable</strong> — nominal wear rate, experienced mechanic, risk-averse management. <strong>Unreliable</strong> — 4× wear. <strong>Not Airworthy</strong> — 16× wear, an inexperienced mechanic and poor access to new parts.<br><code>DHC6_CFG_RELIABILITY</code></td>
 </tr>
 </tbody>
 </table>
@@ -2497,7 +2409,7 @@ own unless you uncheck its override.</p>
 <p>Wear &amp; Tear &amp; Damage is work in progess, and only few systems have been hooked up to it.</p>
 </div>
 <hr />
-<p><em>Reviewed 2026-08-05.</em></p>
+<p><em>Reviewed 2026-08-09.</em></p>
 
 
 
