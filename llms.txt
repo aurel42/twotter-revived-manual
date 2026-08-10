@@ -40,7 +40,6 @@ Markdown source: https://github.com/aurel42/twotter-revived-manual
 - [Brakes](https://aurel42.github.io/twotter-revived-manual/aircraft/systems/brakes/): The toe brakes are hydraulic disc brakes, fed from the aircraft's single hydraulic system through a dedicated brake accumulator.
 - [Cabin climate](https://aurel42.github.io/twotter-revived-manual/aircraft/systems/cabin-climate/): The Cabin Climate system exists for two reasons: for flavor and as a consumer of the heating system which is driven by bleed air.
 - [Chronometers](https://aurel42.github.io/twotter-revived-manual/aircraft/systems/chronometer/): I took some artistic license reimplenting the two cockpit clocks.
-- [EGPWS](https://aurel42.github.io/twotter-revived-manual/aircraft/systems/egpws/): Overhauled EGPWS suite based on Honeywell Pilot's Guide and FAA advisories.
 - [Generators and the GCU](https://aurel42.github.io/twotter-revived-manual/aircraft/systems/electrical/generators/): The goal was: create the dimming effect that Aerosoft captured, but organically.
 - [Engine Start](https://aurel42.github.io/twotter-revived-manual/aircraft/systems/engines/engine-start/): The goal is: pilot can make engines 'splode.
 - [Fuel system](https://aurel42.github.io/twotter-revived-manual/aircraft/systems/fuel/): Migrated to "modern fuel system" (MSFS 2024) architecture.
@@ -50,6 +49,8 @@ Markdown source: https://github.com/aurel42/twotter-revived-manual
 - [Lighting](https://aurel42.github.io/twotter-revived-manual/aircraft/systems/lighting/): Every cockpit light has to pass four gates before it illuminates: the bus has to be powered, the circuit's slot switch has to be closed, the potentiometer has to be turned up, and the emissive itself…
 - [Pitot-static](https://aurel42.github.io/twotter-revived-manual/aircraft/systems/pitot-static/): The altimeter and VSI read static pressure; the airspeed indicator reads the difference between pitot and static.
 - [Suspension](https://aurel42.github.io/twotter-revived-manual/aircraft/systems/suspension/): Adjusted nosewheel suspension damping.
+- [Taws — Overview](https://aurel42.github.io/twotter-revived-manual/aircraft/systems/taws/overview/): The TAWS system in the mod is inspired by a Honeywell EGPWS suite, inherited from the base model.
+- [Regulations](https://aurel42.github.io/twotter-revived-manual/aircraft/systems/taws/regulations/): Class A TAWS is mandatory for all turbine-powered civil airplanes configured with 10 or more passenger seats (excluding any pilot seats).
 
 ## Sim
 

@@ -373,6 +373,8 @@
       
         
       
+        
+      
     
     
     
@@ -744,6 +746,125 @@
     
   
     Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_7" id="__nav_2_2_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Taws
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Taws
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aircraft/systems/taws/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aircraft/systems/taws/regulations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Regulations
   
 
     
@@ -2178,7 +2299,126 @@ unit was off, as if it was a mechanical unit.</p>
 <td>Altitude alert lamp</td>
 </tr>
 </tbody>
-</table></section></section></section></section>
+</table></section></section>
+                    <section class='print-page md-section' id='section-2-2-7' heading-number='2.2.7'>
+                        <h1>Taws<a class='headerlink' href='#section-2-2-7' title='Permanent link'></a>
+                        </h1>
+                    <section class="print-page" id="aircraft-systems-taws-overview" heading-number="2.2.7.1"><h1 id="aircraft-systems-taws-overview-terrain-awareness-and-warning-system-taws">Terrain Awareness and Warning System (TAWS)<a class="headerlink" href="#aircraft-systems-taws-overview-terrain-awareness-and-warning-system-taws" title="Permanent link">&para;</a></h1>
+<h2 id="aircraft-systems-taws-overview-overview">Overview<a class="headerlink" href="#aircraft-systems-taws-overview-overview" title="Permanent link">&para;</a></h2>
+<p>The TAWS system in the mod is inspired by a Honeywell EGPWS suite,
+inherited from the base model. It's a custom implementation based
+primarily on FAA advisories and the pilot's guide.</p>
+<p>Details about the supported modes are <a href="#aircraft-systems-taws-regulations">here</a>.</p>
+<h2 id="aircraft-systems-taws-overview-configuration">Configuration<a class="headerlink" href="#aircraft-systems-taws-overview-configuration" title="Permanent link">&para;</a></h2>
+<p>You can select between different TAWS loadouts:</p>
+<ul>
+<li>
+<p><strong>Full:</strong> every callout on every variant</p>
+</li>
+<li>
+<p><strong>Typical:</strong> passenger variants get the full set; cargo/utility
+  variants get the reduced Class B set</p>
+</li>
+<li>
+<p><strong>Legal minimum:</strong> passenger variants only; cargo/utility variants
+  get nothing</p>
+</li>
+<li>
+<p><strong>Class B:</strong> the reduced Class B set everywhere (excessive descent
+  rate, altitude loss after takeoff, the "500 feet" callout, and
+  MINIMUMS — no terrain, glideslope or bank-angle callouts)</p>
+</li>
+<li>
+<p><strong>Off:</strong> all callouts muted</p>
+</li>
+</ul>
+<p>You can also select between different voice banks based on personal
+preference. Only the "Custom" set contains all possible callouts.</p>
+<h2 id="aircraft-systems-taws-overview-features">Features<a class="headerlink" href="#aircraft-systems-taws-overview-features" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>Declutter governor: an advisory is only repeated if the situation degrades.</p>
+</li>
+<li>
+<p>The GPWS INHIB button suppresses some callouts and desensitizes others.</p>
+</li>
+<li>
+<p>A TAWS tab in the EFB app (visible in Instructional mode) is trying
+  to give you the tools to understand why and when TAWS callouts
+  trigger.</p>
+</li>
+<li>
+<p>TAWS uses the Twotter's custom navaid system and runway information
+  obtained from the sim.</p>
+</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>I filter out small grass and dirt strips, because they wouldn't
+be covered by the database of an EGPWS suite. To minimize the 
+number of spurious callouts when approaching a small strip, you
+should make use of GPWS INHIB.</p>
+</div>
+<h2 id="aircraft-systems-taws-overview-known-issues">Known issues<a class="headerlink" href="#aircraft-systems-taws-overview-known-issues" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>Windsheer alerts are missing (no sim data).</p>
+</li>
+<li>
+<p>Lower priority callouts cannot be interrupted by higher priority
+  callouts.</p>
+</li>
+</ul></section><section class="print-page" id="aircraft-systems-taws-regulations" heading-number="2.2.7.2"><h1 id="aircraft-systems-taws-regulations-taws-regulations">TAWS Regulations<a class="headerlink" href="#aircraft-systems-taws-regulations-taws-regulations" title="Permanent link">&para;</a></h1>
+<h2 id="aircraft-systems-taws-regulations-class-a">Class A<a class="headerlink" href="#aircraft-systems-taws-regulations-class-a" title="Permanent link">&para;</a></h2>
+<p>Class A TAWS is mandatory for all turbine-powered civil airplanes
+configured with 10 or more passenger seats (excluding any pilot
+seats). A Class A system provides comprehensive, high-integrity
+protection against Controlled Flight Into Terrain (CFIT) through an
+integrated suite of alerting modes and continuous situational
+awareness displays.</p>
+<h3 id="aircraft-systems-taws-regulations-required-alerting-modes">Required Alerting Modes<a class="headerlink" href="#aircraft-systems-taws-regulations-required-alerting-modes" title="Permanent link">&para;</a></h3>
+<p>Mode 1: Excessive descent rate (Sink Rate, Pull Up)</p>
+<p>Mode 2: Excessive terrain closure rate (Terrain Terrain, Pull Up)</p>
+<p>Mode 3: Altitude loss after takeoff or go-around (Don't Sink)</p>
+<p>Mode 4: Unsafe proximity to terrain (Too Low - Terrain / Gear / Flaps)</p>
+<p>Mode 5: Excessive downward deviation from an ILS glideslope</p>
+<p>Mode 6: Minimums callouts and advisory voice outputs</p>
+<p>Mode 7: Predictive windshear detection and reactive warnings (not
+modelled in the Twotter)</p>
+<p>Forward-Looking Terrain Avoidance (FLTA): Must calculate a projected
+flight path to provide early clearance cautions and impending hazard
+warnings.</p>
+<p>Terrain Clearance Floor (TCF): Must establish an increasing
+terrain-protection floor independent of local barometric altimetry
+settings near runways.</p>
+<h3 id="aircraft-systems-taws-regulations-display-requirements">Display Requirements<a class="headerlink" href="#aircraft-systems-taws-regulations-display-requirements" title="Permanent link">&para;</a></h3>
+<p>Must include a dedicated, continuous visual terrain situational
+awareness display (typically integrated into an MFD, PFD, or dedicated
+screen) providing clear, color-coded threat differentiation (Green for
+clear, Yellow for caution, Red for warning).</p>
+<h2 id="aircraft-systems-taws-regulations-class-b">Class B<a class="headerlink" href="#aircraft-systems-taws-regulations-class-b" title="Permanent link">&para;</a></h2>
+<p>Class B TAWS is mandatory for turbine-powered civil airplanes
+configured with 6 to 9 passenger seats (excluding any pilot
+seats). (Note: Operators of aircraft exempt from Class A/B mandates
+frequently elect to install Class B equipment as a voluntary safety
+enhancement).</p>
+<p>Class B systems provide scaled-down yet robust terrain protection
+tailored for smaller turbine aircraft operations, balancing high-level
+safety alerting with spatial and economic constraints common in light
+corporate and regional fleets.</p>
+<h3 id="aircraft-systems-taws-regulations-required-alerting-modes_1">Required Alerting Modes<a class="headerlink" href="#aircraft-systems-taws-regulations-required-alerting-modes_1" title="Permanent link">&para;</a></h3>
+<p>Includes core reactive modes adapted for smaller performance profiles
+(specifically Modes 1, 3, 4, and 6).</p>
+<p>Forward-Looking Terrain Avoidance (FLTA): Must provide predictive
+terrain clearance cautions and warnings.</p>
+<p>Terrain Clearance Floor (TCF): Must feature the runway-centric terrain
+protection floor.</p>
+<h3 id="aircraft-systems-taws-regulations-display-requirements_1">Display Requirements<a class="headerlink" href="#aircraft-systems-taws-regulations-display-requirements_1" title="Permanent link">&para;</a></h3>
+<p>While a graphical terrain display is strongly recommended and standard
+on modern Class B installations, legacy configurations may satisfy
+minimum requirements via visual caution/warning lamps and audio-only
+voice annunciations, provided a regional terrain database is actively
+monitored by the system.</p></section></section></section></section>
                     <section class='print-page md-section' id='section-3' heading-number='3'>
                         <h1>Mod<a class='headerlink' href='#section-3' title='Permanent link'></a>
                         </h1>
@@ -3462,6 +3702,11 @@ and the one at 6° produces reversed guidance.</p>
 .print-site-enumerate-headings #aircraft-systems-avionics-gns > h1:before { content: '2.2.6.1 ' }
 
 .print-site-enumerate-headings #aircraft-systems-avionics-overview > h1:before { content: '2.2.6.2 ' }
+
+.print-site-enumerate-headings #section-2-2-7 > h1:before { content: '2.2.7 ' }
+.print-site-enumerate-headings #aircraft-systems-taws-overview > h1:before { content: '2.2.7.1 ' }
+
+.print-site-enumerate-headings #aircraft-systems-taws-regulations > h1:before { content: '2.2.7.2 ' }
 
 .print-site-enumerate-headings #section-3 > h1:before { content: '3 ' }
 .print-site-enumerate-headings #mod-configuration > h1:before { content: '3.1 ' }

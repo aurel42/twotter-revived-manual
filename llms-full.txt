@@ -1587,75 +1587,6 @@ mechanic, so keep it to yourself.
 
 ---
 
-# EGPWS
-
-*aircraft/systems/egpws.md · review: draft*
-<https://aurel42.github.io/twotter-revived-manual/aircraft/systems/egpws/>
-
-## From the README
-
-- Overhauled EGPWS suite based on Honeywell Pilot's Guide and FAA advisories.
-- EGPWS callouts are now configurable via the **TAWS** selector on the EFB Config tab.
-- EPGWS callouts come in selectable soundbanks (Aerosoft, FlyByWire, Custom) with varying coverage. Only Custom has the complete set of callouts.
-- Declutter governor: an advisory is only repeated if the situation degrades.
-- The GPWS INHIBIT button suppresses some callouts and desensitizes others.
-- The EFB has a TAWS tab that shows per-mode margin bars and Honeywell-style envelope plots.
-- EGPWS terrain warnings are now driven by the custom radio-signal / propagation model.
-
-## From the release notes
-
-Verbatim from `docs/release-notes-*.md`, grouped by the section they appeared in. The tag is the version each item first appeared in.
-
-### Terrain awareness (EGPWS)
-
-- Terrain warnings are now driven by the same custom signal-propagation model as everything else. *(v2024.3.124)*
-
-### Terrain awareness (EGPWS / TAWS)
-
-- **New "TAWS" selector on the EFB Config tab (Avionics section).** *(v2024.3.68)*
-- **Full** — every callout on every variant (terrain, sink rate, glideslope, bank angle, the full altitude-callout ladder, MINIMUMS). *(v2024.3.68)*
-- **Typical** — passenger variants get the full set; cargo/utility variants get the reduced Class B set. *(v2024.3.68)*
-- **Legal minimum** — passenger variants only; cargo/utility variants get nothing. *(v2024.3.68)*
-- **Class B** — the reduced TSO-C151 Class B set everywhere (excessive descent rate, altitude loss after takeoff, the "500 feet" callout, and MINIMUMS — no terrain, glideslope or bank-angle callouts). *(v2024.3.68)*
-- **Off** — all callouts muted. *(v2024.3.68)*
-- **No more spurious callouts in normal descents.** Reworked the flight-phase detection so a normal powered descent no longer trips "too low terrain" / "too low flaps" when you aren't configured for landing. *(v2024.3.68)*
-- **Tighter glideslope logic.** The glideslope callout now requires a centered localizer on the front course. *(v2024.3.68)*
-- Implemented declutter governor so advisories are only repeated if the situation degrades. *(v2024.3.68)*
-- The GPWS INHIBIT button is now a shortcut for "turn everything off or down that can be legally turned off or down". It suppresses some callouts and desensitizes others. As I understand it, the real-world unit would have several switches to disable specific features, our implementation bunches them all together in this button. *(v2024.3.68)*
-- Known issues: forward-looking terrain alerting is not yet implemented, but we have a reference implementation in Working Title's EPIC. *(v2024.3.68)*
-- Added Forward-Looking Terrain Alerting (FLTA). *(v2024.3.99)*
-- Added Premature Descent Alert (PDA). *(v2024.3.99)*
-- Fixed "Smart 500". *(v2024.3.99)*
-- Added missing altitude callouts for 1000 and 200 ft, and "approaching minimums." *(v2024.3.99)*
-- **Choice of voices.** New TAWS soundbank selector on the EFB Config tab: the original **Aerosoft** Wwise callouts (the default), a **FlyByWire** voice set, or a **Custom** set. Not all soundbanks support all callouts. Switch to the Custom soundbank to hear the full set. *(v2024.3.99)*
-- Reworked terrain-closure (Mode 2) onto a proper closure-rate-versus-height envelope. *(v2024.3.99)*
-- Fixed a window just after rotation where "too low terrain" could nuisance-fire over rising ground on climb-out. *(v2024.3.99)*
-- Added EFB TAWS tab exposing each mode's margin to its alerting boundary. Somewhat hidden: click the bar to show Honeywell-style envelope plots. *(v2024.3.99)*
-
-## Config options
-
-Set from the EFB **Config** tab. Each option is documented on exactly one page; see [Configuration](https://aurel42.github.io/twotter-revived-manual/mod/configuration/) for how profiles and the per-variant override work.
-
-### Installation
-
-`DHC6_CFG_GPWS` — default: **Full**
-
-Terrain Awareness & Warning System fit — Full / Reduced / Legal minimum / Class B / Off. Selects which callouts the aircraft is equipped for, per variant.
-
-### Sound bank
-
-`DHC6_CFG_GPWS_AUDIOBANK` — default: **Aerosoft**
-
-Which voice set plays: Aerosoft (the original bank), FlyByWire, or Custom (project-owned). See [Legal](https://aurel42.github.io/twotter-revived-manual/project/legal/) for the FlyByWire licence.
-
-### Volume
-
-`DHC6_CFG_GPWS_VOLUME` — default: **0 dB**
-
-Callout volume, in ten detents from Off to 0 dB.
-
----
-
 # Generators and the GCU
 
 *aircraft/systems/electrical/generators.md · review: draft*
@@ -2577,6 +2508,149 @@ Verbatim from `docs/release-notes-*.md`, grouped by the section they appeared in
 - Adjusted nosewheel suspension damping. *(v2024.2.x)*
 - Adjusted ground contact model parameters and gear flex damping. *(v2024.2.x)*
 - Tuned Tundra Pax based on the tundra wheel variant of the Aerosoft Twin Otter X Extended. *(v2024.2.x)*
+
+---
+
+# Overview
+
+*aircraft/systems/taws/overview.md · review: approved*
+<https://aurel42.github.io/twotter-revived-manual/aircraft/systems/taws/overview/>
+
+## Overview
+
+The TAWS system in the mod is inspired by a Honeywell EGPWS suite,
+inherited from the base model. It's a custom implementation based
+primarily on FAA advisories and the pilot's guide.
+
+Details about the supported modes are [here](https://aurel42.github.io/twotter-revived-manual/aircraft/systems/taws/regulations/).
+
+## Configuration
+
+You can select between different TAWS loadouts:
+
+- **Full:** every callout on every variant
+
+- **Typical:** passenger variants get the full set; cargo/utility
+  variants get the reduced Class B set
+
+- **Legal minimum:** passenger variants only; cargo/utility variants
+  get nothing
+
+- **Class B:** the reduced Class B set everywhere (excessive descent
+  rate, altitude loss after takeoff, the "500 feet" callout, and
+  MINIMUMS — no terrain, glideslope or bank-angle callouts)
+
+- **Off:** all callouts muted
+
+You can also select between different voice banks based on personal
+preference. Only the "Custom" set contains all possible callouts.
+
+## Features
+
+- Declutter governor: an advisory is only repeated if the situation degrades.
+
+- The GPWS INHIB button suppresses some callouts and desensitizes others.
+
+- A TAWS tab in the EFB app (visible in Instructional mode) is trying
+  to give you the tools to understand why and when TAWS callouts
+  trigger.
+
+- TAWS uses the Twotter's custom navaid system and runway information
+  obtained from the sim.
+  
+> [!TIP]
+> I filter out small grass and dirt strips, because they wouldn't
+
+	be covered by the database of an EGPWS suite. To minimize the 
+	number of spurious callouts when approaching a small strip, you
+	should make use of GPWS INHIB.
+
+## Known issues
+
+- Windsheer alerts are missing (no sim data).
+
+- Lower priority callouts cannot be interrupted by higher priority
+  callouts.
+
+---
+
+# Regulations
+
+*aircraft/systems/taws/regulations.md · review: approved*
+<https://aurel42.github.io/twotter-revived-manual/aircraft/systems/taws/regulations/>
+
+## Class A
+
+Class A TAWS is mandatory for all turbine-powered civil airplanes
+configured with 10 or more passenger seats (excluding any pilot
+seats). A Class A system provides comprehensive, high-integrity
+protection against Controlled Flight Into Terrain (CFIT) through an
+integrated suite of alerting modes and continuous situational
+awareness displays.
+
+### Required Alerting Modes
+
+Mode 1: Excessive descent rate (Sink Rate, Pull Up)
+
+Mode 2: Excessive terrain closure rate (Terrain Terrain, Pull Up)
+
+Mode 3: Altitude loss after takeoff or go-around (Don't Sink)
+
+Mode 4: Unsafe proximity to terrain (Too Low - Terrain / Gear / Flaps)
+
+Mode 5: Excessive downward deviation from an ILS glideslope
+
+Mode 6: Minimums callouts and advisory voice outputs
+
+Mode 7: Predictive windshear detection and reactive warnings (not
+modelled in the Twotter)
+
+Forward-Looking Terrain Avoidance (FLTA): Must calculate a projected
+flight path to provide early clearance cautions and impending hazard
+warnings.
+
+Terrain Clearance Floor (TCF): Must establish an increasing
+terrain-protection floor independent of local barometric altimetry
+settings near runways.
+
+### Display Requirements
+
+Must include a dedicated, continuous visual terrain situational
+awareness display (typically integrated into an MFD, PFD, or dedicated
+screen) providing clear, color-coded threat differentiation (Green for
+clear, Yellow for caution, Red for warning).
+
+## Class B
+
+Class B TAWS is mandatory for turbine-powered civil airplanes
+configured with 6 to 9 passenger seats (excluding any pilot
+seats). (Note: Operators of aircraft exempt from Class A/B mandates
+frequently elect to install Class B equipment as a voluntary safety
+enhancement).
+
+Class B systems provide scaled-down yet robust terrain protection
+tailored for smaller turbine aircraft operations, balancing high-level
+safety alerting with spatial and economic constraints common in light
+corporate and regional fleets.
+
+### Required Alerting Modes
+
+Includes core reactive modes adapted for smaller performance profiles
+(specifically Modes 1, 3, 4, and 6).
+
+Forward-Looking Terrain Avoidance (FLTA): Must provide predictive
+terrain clearance cautions and warnings.
+
+Terrain Clearance Floor (TCF): Must feature the runway-centric terrain
+protection floor.
+
+### Display Requirements
+
+While a graphical terrain display is strongly recommended and standard
+on modern Class B installations, legacy configurations may satisfy
+minimum requirements via visual caution/warning lamps and audio-only
+voice annunciations, provided a regional terrain database is actively
+monitored by the system.
 
 ---
 
