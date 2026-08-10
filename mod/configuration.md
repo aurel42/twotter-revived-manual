@@ -5,7 +5,8 @@ review: approved
 
 # Configurable settings
 
-Everything on this page is set on the Config tab in the EFB app.
+Everything on this page is set on the Config tab in the 
+["Twotter" EFB app](features/efb.md).
 
 The default settings are either sim defaults or they enable convenience features.
 The non-default settings strive to be more realistic, and might end up being more annoying.
@@ -66,13 +67,13 @@ Every switch below is off by default.
 
 | Option | What turning it on does |
 |---|---|
-| Use FDR switch as Avionics switch<br>`DHC6_CFG_FDR_AS_AVIONICS_MASTER` | Repurposes the unused Flight Data Recorder switch as an avionics master for the aftermarket stack: GNS 530/430, KAP-140, transponder, ADF and audio panel. Round gauges are unaffected. |
-| Disable relaxed NAV arming<br>`DHC6_CFG_AP_STRICT_NAVARM` | Removes the KAP-140's NAV pre-arm. NAV mode will be rejected if not in range of the course. |
-| Enable KAP-140 voice messages<br>`DHC6_CFG_KAP140_VOICE` | Adds the unit's three optional spoken messages: "Altitude" 1000 ft before the preselect, "Leaving altitude" 200 ft after departing it, and "Autopilot" on disconnect. They accompany the tones rather than replacing them. The two standard trim messages are always on either way. |
-| Disable Flight Director<br>`DHC6_CFG_DISABLE_FD` | Hides the command bars on the attitude indicator. The flight director itself still engages. |
-| Disable visual approaches<br>`DHC6_CFG_DISABLE_GNS_VISUAL_APPR` | Hides the GNS per-runway VISUAL approaches. The real 530W/430W has none, so this is the stock-faithful setting. |
-| Disable coupled VNAV<br>`DHC6_CFG_DISABLE_GNS_COUPLED_VNAV` | Takes away the coupled VNAV (PATH) descent, leaving the advisory-only VNAV the real 530W has. |
-| Enable historic NDBs<br>`DHC6_CFG_NDB_SOURCE` | Adds historic NDB beacons that modern navdata has dropped. These take precedence, and the sim's navdata is used only for beacons the historic set doesn't have. |
+| Use FDR switch as Avionics switch | Repurposes the unused Flight Data Recorder switch as an avionics master for the aftermarket stack: GNS 530/430, KAP-140, transponder, ADF and audio panel. Round gauges are unaffected.<br>`DHC6_CFG_FDR_AS_AVIONICS_MASTER` |
+| Disable relaxed NAV arming | Removes the KAP-140's NAV pre-arm. NAV mode will be rejected if not in range of the course.<br>`DHC6_CFG_AP_STRICT_NAVARM` |
+| Enable KAP-140 voice messages | Adds the unit's three optional spoken messages: "Altitude" 1000 ft before the preselect, "Leaving altitude" 200 ft after departing it, and "Autopilot" on disconnect. They accompany the tones rather than replacing them. The two standard trim messages are always on either way.<br>`DHC6_CFG_KAP140_VOICE` |
+| Disable Flight Director | Hides the command bars on the attitude indicator. The flight director itself still engages.<br>`DHC6_CFG_DISABLE_FD` |
+| Disable visual approaches | Hides the GNS per-runway VISUAL approaches. The real 530W/430W has none, so this is the stock-faithful setting.<br>`DHC6_CFG_DISABLE_GNS_VISUAL_APPR` |
+| Disable coupled VNAV | Takes away the coupled VNAV (PATH) descent, leaving the advisory-only VNAV the real 530W has.<br>`DHC6_CFG_DISABLE_GNS_COUPLED_VNAV` |
+| Enable historic NDBs | Adds historic NDB beacons that modern navdata has dropped. These take precedence, and the sim's navdata is used only for beacons the historic set doesn't have.<br>`DHC6_CFG_NDB_SOURCE` |
 
 > [!CAUTION]
 > The GNS options only take effect when the GNS starts
@@ -83,9 +84,9 @@ Every switch below is off by default.
 
 | Option | Positions |
 |---|---|
-| Installation<br>`DHC6_CFG_GPWS` | **Full** (default) — Class A on every aircraft, the full callout set. **Reduced** — passenger variants get Class A, cargo and utility get Class B. **Legal minimum** — passenger variants get Class A, everything else gets nothing. **Class B** — no terrain, glideslope or bank-angle alerts anywhere. **Off** — all callouts muted. |
-| Sound bank<br>`DHC6_CFG_GPWS_AUDIOBANK` | Aerosoft (default), FlyByWire, Custom |
-| Volume<br>`DHC6_CFG_GPWS_VOLUME` | You know how a volume slider works. |
+| Installation | **Full** (default) — Class A on every aircraft, the full callout set. **Reduced** — passenger variants get Class A, cargo and utility get Class B. **Legal minimum** — passenger variants get Class A, everything else gets nothing. **Class B** — no terrain, glideslope or bank-angle alerts anywhere. **Off** — all callouts muted.<br>`DHC6_CFG_GPWS` |
+| Sound bank | Aerosoft (default), FlyByWire, Custom<br>`DHC6_CFG_GPWS_AUDIOBANK` |
+| Volume | You know how a volume slider works.<br>`DHC6_CFG_GPWS_VOLUME` |
 
 Volume applies to the FlyByWire and Custom banks only. The Aerosoft bank ignores
 it.
@@ -99,9 +100,9 @@ it.
 
 | Option | What turning it on does |
 |---|---|
-| Realistic battery capacity<br>`DHC6_CFG_REALISTIC_BATTERY` | Gives the battery a real amp-hour budget that the enabled consumers draw down. Off means unlimited capacity. If you flatten it, change the chemistry or set the source switch to EXT to summon a GPU cart. |
-| Battery Replacement (NiCad to SLA)<br>`DHC6_CFG_BATTERY_SLA` | Swaps the standard NiCad pack for a sealed lead-acid one: different chemistry, more capacity, more weight. |
-| Realistic parking brake<br>`DHC6_CFG_REALISTIC_PARKING_BRAKE` | Models the real DHC-6 sequence: fully depress both toe brakes, pull the lever, release the toe brakes. If the latch doesn't catch, the handle snaps back and you try again. |
+| Realistic battery capacity | Gives the battery a real amp-hour budget that the enabled consumers draw down. Off means unlimited capacity. If you flatten it, change the chemistry or set the source switch to EXT to summon a GPU cart.<br>`DHC6_CFG_REALISTIC_BATTERY` |
+| Battery Replacement (NiCad to SLA) | Swaps the standard NiCad pack for a sealed lead-acid one: different chemistry, more capacity, more weight.<br>`DHC6_CFG_BATTERY_SLA` |
+| Realistic parking brake | Models the real DHC-6 sequence: fully depress both toe brakes, pull the lever, release the toe brakes. If the latch doesn't catch, the handle snaps back and you try again.<br>`DHC6_CFG_REALISTIC_PARKING_BRAKE` |
 
 The SLA pack weighs 20 lb more, and that weight is added to the
 aircraft as soon as you select it.
@@ -110,16 +111,16 @@ aircraft as soon as you select it.
 
 | Option | What turning it on does |
 |---|---|
-| Generators can trip<br>`DHC6_CFG_GCU_LATCH` | Generators have a small chance to trip when they come online. The annunciator will stay illuminated. A tripped generator stays off until you RESET it: hold the GEN switch to RESET, release to ON.  |
+| Generators can trip | Generators have a small chance to trip when they come online. The annunciator will stay illuminated. A tripped generator stays off until you RESET it: hold the GEN switch to RESET, release to ON.<br>`DHC6_CFG_GCU_LATCH` |
 
 ### Instruments
 
 | Option | What turning it on does |
 |---|---|
-| Gyros take time to spin up<br>`DHC6_CFG_REAL_GYROS` | Gyros spool up from rest instead of coming up aligned, which takes a couple of minutes from cold. Pull to Erect shortens it for the attitude indicator, and the HSI can be synced to the whiskey compass from the EFB Systems tab. |
-| Disable Auto Fast-Erect<br>`DHC6_CFG_DISABLE_AUTO_FAST_ERECT` | Stops the attitude indicator from pulling its own fast-erect knob during cold-and-dark erection. Pull it yourself or wait a long time for the horizon to settle. |
-| Disable OBS Auto-Slew<br>`DHC6_CFG_DISABLE_OBS_AUTO_SLEW` | The HSI course pointer stops rotating itself to the active GPS leg. Set the course yourself. |
-| Disable ADF Card Slaving<br>`DHC6_CFG_DISABLE_ADF_CARD_SLAVE` | The ADF compass card stops following the HSI heading, turning a KI-227-01 into a KI-227-00 you set with the HDG knob. |
+| Gyros take time to spin up | Gyros spool up from rest instead of coming up aligned, which takes a couple of minutes from cold. Pull to Erect shortens it for the attitude indicator, and the HSI can be synced to the whiskey compass from the EFB Systems tab.<br>`DHC6_CFG_REAL_GYROS` |
+| Disable Auto Fast-Erect | Stops the attitude indicator from pulling its own fast-erect knob during cold-and-dark erection. Pull it yourself or wait a long time for the horizon to settle.<br>`DHC6_CFG_DISABLE_AUTO_FAST_ERECT` |
+| Disable OBS Auto-Slew | The HSI course pointer stops rotating itself to the active GPS leg. Set the course yourself.<br>`DHC6_CFG_DISABLE_OBS_AUTO_SLEW` |
+| Disable ADF Card Slaving | The ADF compass card stops following the HSI heading, turning a KI-227-01 into a KI-227-00 you set with the HDG knob.<br>`DHC6_CFG_DISABLE_ADF_CARD_SLAVE` |
 
 Disable Auto Fast-Erect only means anything with realistic spin-up on, so the
 tab greys it out when Gyros take time to spin up is off. It keeps its stored
@@ -129,7 +130,7 @@ value while greyed.
 
 | Option | What turning it on does |
 |---|---|
-| Mute copilot callouts<br>`DHC6_CFG_COPILOT_MUTE` | Silences the copilot's spoken checklist responses, including "Checklist complete". The checklist still runs at the same pace. |
+| Mute copilot callouts | Silences the copilot's spoken checklist responses, including "Checklist complete". The checklist still runs at the same pace.<br>`DHC6_CFG_COPILOT_MUTE` |
 
 This is the same setting as the **Mute** button in the Checklist tab. Either one
 moves the other.
@@ -138,7 +139,7 @@ moves the other.
 
 | Option | Positions |
 |---|---|
-| Reliability<br>`DHC6_CFG_RELIABILITY` | **Off** (default) — the wear and tear system is disabled and the Maintenance tab is hidden. **Reliable** — nominal wear rate, experienced mechanic, risk-averse management. **Unreliable** — 4× wear. **Not Airworthy** — 16× wear, an inexperienced mechanic and poor access to new parts. |
+| Reliability | **Off** (default) — the wear and tear system is disabled and the Maintenance tab is hidden. **Reliable** — nominal wear rate, experienced mechanic, risk-averse management. **Unreliable** — 4× wear. **Not Airworthy** — 16× wear, an inexperienced mechanic and poor access to new parts.<br>`DHC6_CFG_RELIABILITY` |
 
 Reliability is stored per airframe out of the box, so each variant ages on its
 own unless you uncheck its override.

@@ -38,6 +38,8 @@ way. Everything else is on the table.
 
 - The [Configuration](mod/configuration.md) options
 
+- The ["Twotter" EFB app](mod/features/efb.md)
+
 ## Thanks
 
 - **CCM** — for continuous input, advice, testing, and the flight model.

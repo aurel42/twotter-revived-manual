@@ -72,8 +72,7 @@ Unmarked pages have been reviewed. `draft` never has been; `changed` carries an 
 
 ### Sim
 
-- [ADF and the KR 87](sim/radio/adf.md) — _draft_
-- [Radio navigation](sim/radio/navigation.md) — _draft_
+- [Radio navigation](sim/radio.md)
 
 ## Disclaimer
 

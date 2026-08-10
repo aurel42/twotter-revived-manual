@@ -11,7 +11,15 @@ The EFB app is an integral part of the mod, unlocking many of its
 features. I recommend you make yourself familiar with it when you
 first start the mod.
 
-This manual is available on the Manual tab of the EFB app.
+The app can be started from the "More Apps" tab of the EFB (bottom row
+of the EFB, rightmost icon).
+
+Recommended first step in the app: check out the 
+[Config tab](../configuration.md), 
+pick a profile that fits your expectations and adjust the options from
+there.
+
+## Disclosure modes
 
 Note the toggle at the top, between the notification icon and the
 timestamp. It displays the mode the app is currently in:
@@ -23,13 +31,8 @@ timestamp. It displays the mode the app is currently in:
 - "Instructional" lifts this restraint and offers insights that might
   help you understand system internals as they happen.
 
-Click it any time to switch between modes. If you're a flightsim
-role-player, consider it the "cheat button".
-
-Recommended first step in the app: check out the 
-[Config tab](../configuration.md), 
-pick a profile that fits your expectations and adjust the options from
-there.
+Click it any time to switch between modes. If you're a roleplayer,
+consider it the "cheat button".
 
 > [!WARNING]
 > Information presented in the EFB app that appears to reference
@@ -38,6 +41,8 @@ there.
 	The Checklists and Reference tabs explicitly say so.
 
 ## Notes
+
+- This manual is available on the Manual tab of the EFB app.
 
 - If the WASM module or panel configuration fails to load, the EFB
   shows a splash saying so, with a "continue anyway" option, plus an
