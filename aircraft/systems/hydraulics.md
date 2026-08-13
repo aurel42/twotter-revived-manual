@@ -1,50 +1,42 @@
 ---
 title: Hydraulic system
-review: draft
+review: approved
 ---
 
 # Hydraulic system
 
-## From the README
+The hydraulic system powers the flaps, nose-wheel steering, and toe
+brakes from a single electrical pump that cycles on and off via a
+pressure switch to keep the system at 1550 ± 50 PSI.  Its
+characteristical sound can be heard while operating the mentioned
+systems.
 
-The hydraulic system now has a pump that draws power when it actuates. You can hear it work when you use the flaps, brakes, or nosewheel steering. It took a bit of trickery to work around sim limitations (or maybe dev limitations, can't be sure) and I haven't figured out how to prime the hydraulics, so every flight starts with an empty system and an invisible mechanic using the hand pump.
+> [!NOTE]
+> I tried different ways to make the sound quieter so it would be less
+> annoying, so far without success. Also, I have no reference material
+> that would let me reverse engineer the actual numbers, so the
+> frequency of the pump actuation is only based on halfway plausible
+> physics and the behavior of the Aerosoft models.
+>
+> I will adjust it as soon as I get my hands on better reference material.
 
-- Rebuilt hydraulic system using EX1.
-- Added brake isolation valve to preserve some brake functionality on system failure.
-- Added emergency hand pump to EFB Systems tab to manually restore hydraulic pressure and to prime the system when state is restored.
-- Changed brake and sys pressure gauges to show actual values.
-- Pump inrush: the hydraulic pump now pulls a brief power surge when it cuts in, before settling to its running draw — visible on the loadmeter.
-- System pressure regulation and pressure-gauge calibration carry small per-variant offsets.
+Two nitrogen-precharged accumulators retain pressure so it's available
+immediately on demand. The brake accumulator is isolated from the main
+system to keep the brakes working even if the main system loses
+pressure to a leak.
 
-## From the release notes
+An emergency hand pump provides a manual backup to re-pressurize the
+accumulators if the electric pump fails.
 
-Verbatim from `docs/release-notes-*.md`, grouped by the section they appeared in. The tag is the version each item first appeared in.
+The mod's hydraulic system has been rebuilt using the sim's modern
+("EX1") architecture.
 
-### [NEW] Hydraulic system
-
-- Rebuilt hydraulic system using EX1. *(v2024.2.x)*
-- Added brake isolation valve to preserve some brake functionality on system failure. *(v2024.2.x)*
-- Added emergency hand pump to EFB Systems tab to manually restore hydraulic pressure and to prime the system when state is restored. *(v2024.2.x)*
-- Changed brake and sys pressure gauges to show actual values. *(v2024.2.x)*
-
-### Cockpit & systems
-
-- Fixed rudder pedal axis jitter driving the nose wheel steering actuator, triggering a ridiculous amount of hydraulic pump runs. *(v2024.3.183)*
-
-### Hydraulics
-
-- **Pump inrush.** The hydraulic pump now pulls a brief power surge when it cuts in before settling to its running draw, visible on the loadmeter. *(v2024.3.68)*
-- As part of the ongoing work to add individualization to airframes, the system pressure regulation and the pressure-gauge calibration now carry small per-variant offsets. *(v2024.3.68)*
-- **The pump cycles less often** during routine flap, brake and nose-wheel-steering use (actuator volumes retuned). Feedback is welcome. (Still too frequently?) *(v2024.3.68)*
-
-## L:vars
-
-Variables worth binding to hardware, driving from FSUIPC / Axis&Ohs / SPAD.neXt,
-or reading on an external display. **R** is read-only state; **R/W** can be set.
-This is a selection, not the full list — the aircraft defines around a thousand
-`DHC6_*` names, most of them internal.
-
-| L:var | R/W | Meaning |
-|---|---|---|
-| `DHC6_HYD_PUMP_RUN` | R | Hydraulic pump currently running — the cycling you hear |
-| `DHC6_HAND_PUMP` | R/W | Emergency hand pump. **No cockpit control** — EFB Systems tab or a binding only |
+> [!NOTE]
+> I haven't figured out how to prime the hydraulics when the aircraft
+> loads. Every flight technically starts with an empty system. To get
+> around this sim limitation (or dev limitation, I can't be sure), an
+> invisible mechanic uses the hand pump to prime the system for you on
+> load.
+>
+> If you need to manually restore hydraulic pressure, you can access the
+> emergency hand pump via the Systems tab on the EFB.

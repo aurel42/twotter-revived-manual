@@ -42,12 +42,12 @@ Unmarked pages have been reviewed. `draft` never has been; `changed` carries an 
 - [Installation](mod/installation.md)
 - [Companion Mods](mod/mods.md)
 - [Configurable settings](mod/configuration.md)
-- [Checklists](mod/features/checklists.md)
 - [EFB app](mod/features/efb.md)
-- [3D Objects](mod/features/objects.md)
 - [Persistence](mod/features/persistence.md)
-- [Sound](mod/features/sound.md)
+- [Checklists](mod/features/checklists.md)
 - [Wear and tear](mod/features/wear-and-tear.md)
+- [3D Objects](mod/features/objects.md)
+- [Sound](mod/features/sound.md)
 
 ### Aircraft
 
@@ -61,8 +61,8 @@ Unmarked pages have been reviewed. `draft` never has been; `changed` carries an 
 - [Chronometers](aircraft/systems/chronometer.md)
 - [Generators and the GCU](aircraft/systems/electrical/generators.md) — _draft_
 - [Engine Start](aircraft/systems/engines/engine-start.md) — _draft_
-- [Fuel system](aircraft/systems/fuel.md) — _draft_
-- [Hydraulic system](aircraft/systems/hydraulics.md) — _draft_
+- [Fuel system](aircraft/systems/fuel.md)
+- [Hydraulic system](aircraft/systems/hydraulics.md)
 - [Bleed air and ice protection](aircraft/systems/ice-protection.md) — _draft_
 - [Instruments](aircraft/systems/instruments.md)
 - [Lighting](aircraft/systems/lighting.md) — _draft_
