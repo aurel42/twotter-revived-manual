@@ -23,12 +23,12 @@ Markdown source: https://github.com/aurel42/twotter-revived-manual
 - [Installation](https://aurel42.github.io/twotter-revived-manual/mod/installation/): Because of previous drama, this mod is distributed as an archive containing xdelta files and an install script.
 - [Companion Mods](https://aurel42.github.io/twotter-revived-manual/mod/mods/): These mods are distributed in the same archive as the main mod.
 - [Configurable settings](https://aurel42.github.io/twotter-revived-manual/mod/configuration/): Everything on this page is set on the Config tab in the "Twotter" EFB app.
-- [Checklists](https://aurel42.github.io/twotter-revived-manual/mod/features/checklists/): The mod delivers a custom checklist system as part of the EFB app.
 - [EFB app](https://aurel42.github.io/twotter-revived-manual/mod/features/efb/): The EFB app is an integral part of the mod, unlocking many of its features.
-- [3D Objects](https://aurel42.github.io/twotter-revived-manual/mod/features/objects/): Without access to the project source (which we obviously don't have), we can't modify the visual model of the base aircraft.
 - [Persistence](https://aurel42.github.io/twotter-revived-manual/mod/features/persistence/): The persistence system uses a different lifecycles and layers:
-- [Sound](https://aurel42.github.io/twotter-revived-manual/mod/features/sound/): The audio of the mod consists of several layers.
+- [Checklists](https://aurel42.github.io/twotter-revived-manual/mod/features/checklists/): The mod delivers a custom checklist system as part of the EFB app.
 - [Wear and tear](https://aurel42.github.io/twotter-revived-manual/mod/features/wear-and-tear/): Work on an optional wear/tear/damage system has started.
+- [3D Objects](https://aurel42.github.io/twotter-revived-manual/mod/features/objects/): Without access to the project source (which we obviously don't have), we can't modify the visual model of the base aircraft.
+- [Sound](https://aurel42.github.io/twotter-revived-manual/mod/features/sound/): The audio of the mod consists of several layers.
 
 ## Aircraft
 
@@ -42,8 +42,8 @@ Markdown source: https://github.com/aurel42/twotter-revived-manual
 - [Chronometers](https://aurel42.github.io/twotter-revived-manual/aircraft/systems/chronometer/): I took some artistic license reimplenting the two cockpit clocks.
 - [Generators and the GCU](https://aurel42.github.io/twotter-revived-manual/aircraft/systems/electrical/generators/): The goal was: create the dimming effect that Aerosoft captured, but organically.
 - [Engine Start](https://aurel42.github.io/twotter-revived-manual/aircraft/systems/engines/engine-start/): The goal is: pilot can make engines 'splode.
-- [Fuel system](https://aurel42.github.io/twotter-revived-manual/aircraft/systems/fuel/): Migrated to "modern fuel system" (MSFS 2024) architecture.
-- [Hydraulic system](https://aurel42.github.io/twotter-revived-manual/aircraft/systems/hydraulics/): The hydraulic system now has a pump that draws power when it actuates.
+- [Fuel system](https://aurel42.github.io/twotter-revived-manual/aircraft/systems/fuel/): The mod uses Asobo's modern, modular fuel system which simulates fuel lines, pumps, and valves to connect tanks to engines.
+- [Hydraulic system](https://aurel42.github.io/twotter-revived-manual/aircraft/systems/hydraulics/): The hydraulic system powers the flaps, nose-wheel steering, and toe brakes from a single electrical pump that cycles on and off via a pressure switch to keep the system at 1550 ± 50 PSI.
 - [Bleed air and ice protection](https://aurel42.github.io/twotter-revived-manual/aircraft/systems/ice-protection/): The Twotter is certified for FIKI (flight into known icing conditions).
 - [Instruments](https://aurel42.github.io/twotter-revived-manual/aircraft/systems/instruments/): Work in progress: many gauges are getting an overhaul, giving them some physicality and changing their behavior, based on reference videos, manuals, pilot feedback and filling in the gaps with…
 - [Lighting](https://aurel42.github.io/twotter-revived-manual/aircraft/systems/lighting/): Every cockpit light has to pass four gates before it illuminates: the bus has to be powered, the circuit's slot switch has to be closed, the potentiometer has to be turned up, and the emissive itself…
