@@ -1,15 +1,16 @@
 ---
-title: Hydraulic system
+title: Hydraulics
 review: approved
 ---
 
 # Hydraulic system
 
 The hydraulic system powers the flaps, nose-wheel steering, and toe
-brakes from a single electrical pump that cycles on and off via a
-pressure switch to keep the system at 1550 ± 50 PSI.  Its
-characteristical sound can be heard while operating the mentioned
-systems.
+brakes from a single electrical pump (running off the left DC bus)
+that cycles on and off via a pressure switch.  The pump engages
+whenever the pressure in the main accumulator falls below ca. 1350
+PSI.  Its characteristical sound can be heard while operating the
+mentioned systems.
 
 > [!NOTE]
 > I tried different ways to make the sound quieter so it would be less
@@ -28,15 +29,22 @@ pressure to a leak.
 An emergency hand pump provides a manual backup to re-pressurize the
 accumulators if the electric pump fails.
 
-The mod's hydraulic system has been rebuilt using the sim's modern
-("EX1") architecture.
-
-> [!NOTE]
-> I haven't figured out how to prime the hydraulics when the aircraft
-> loads. Every flight technically starts with an empty system. To get
-> around this sim limitation (or dev limitation, I can't be sure), an
-> invisible mechanic uses the hand pump to prime the system for you on
-> load.
->
+> [!TIP]
 > If you need to manually restore hydraulic pressure, you can access the
 > emergency hand pump via the Systems tab on the EFB.
+
+If the pressure falls below 800-1000 PSI, expect reduced performance
+of the hydraulically powered systems. Flaps will extend more slowly,
+brakes will be less effective, and at some point in the future, the
+nose-wheel steering will be affected as well.
+
+The mod's hydraulic system has been rebuilt using the sim's modern
+("EX1") architecture, and updated to version 2 with the release of
+SU6.
+
+> [!CAUTION]
+
+	I don't know how to prime the hydraulics system correctly at the
+	beginning of a flight. Over the course of this project, I spent
+	several days on this, but I still can't figure out how to keep the
+	hydraulics system from draining itself during the cinematics.

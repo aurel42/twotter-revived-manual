@@ -31,24 +31,22 @@ The parking brake works in two modes:
   depress toe brakes fully to unlatch the mechanism. (For convenience,
   pushing the handle works as well, but that's not realistic, man!)
 
-Limitation: As I understand it, in the real Twotter, the parking brake
-is a latch that holds the toe brake cylinders in place. I couldn't
-figure out how to prime the hydraulic system when the aircraft is
-loading, so the flight would start with the parking brake latching
-unpressurized toe brakes. Unpressurized brakes are bad, mmmkay? So,
-under the hood, even realistic mode must still rely on the
-conventional parking brake system. This makes FSEconomy happy, too.
-
 ## Chocks
 
 Chocks are deployed by default when you spawn cold & dark, and can be
-removed using the EFB app. They are removed automatically once the
-hydraulic brake accumulator is pressurized and you want to start
-moving.
+removed using the EFB app. They are removed automatically when you
+release the parking brake.
 
 The wheel chocks were donated to the project by Bagolu. Thanks!
 
 ## Known Issues
+
+- Limitation: In the real Twotter, the parking brake is a latch that
+  holds the toe brake cylinders in place. The mod relies under the
+  hood on the stock parking brake system to hold the aircraft in
+  place, this makes FSEconomy happy. This might be subject to change
+  now that I've figured out how to prime the hydraulics system during
+  load.
 
 - In Crosswind, the toe brakes can barely hold the aircraft during the
   85% Ng run-up.

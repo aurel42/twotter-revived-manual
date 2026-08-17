@@ -24,6 +24,9 @@ review: approved
   behavior or real-world idiosyncrasies, they're updated and refined
   as I discover new reference material
 
+- Hydraulics: more faithful behavior as I get new reference material;
+  todo: low-pressure behavior of nosewheel steering
+
 ## System replacements
 
 - Icing: I tried to make all the de-icing equipment useful, but the
@@ -38,6 +41,10 @@ review: approved
 
 - Some form of "Onboarding" in the EFB, like let the user pick the EFB
   mode and a config profile
+
+- Morse idents for all station types that have them, with range and
+  noise based on the custom radio propagation model. That should be
+  easy with Wwise, right?
 
 ## Needs research, references, resources
 
@@ -60,6 +67,8 @@ review: approved
 - Why does crosswind affect the efficiency of the brakes?
 
 - Improve handling of amphibian and float variants in water
+
+- NiCd battery: thermal runaway
 
 ## Unexplored concepts
 

@@ -12,9 +12,9 @@ currently active nav database (NavBlue, Navigraph, whatever) from the
 sim, optionally adds decommissioned NDB stations, and calculates all
 signals in custom code.
 
-The code was inspired by libradio but is not based on it. The
-implementation is based on ITU publications and data created using
-publicly available tools and data sources.
+The code was initially **heavily inspired** by libradio but is not
+based on it. The implementation is based on ITU publications and data
+created using publicly available tools and data sources.
 
 In order to provide performant terrain lookups over long ranges, the
 mod ships a global terrain database in a custom, optimized format that

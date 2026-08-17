@@ -59,10 +59,10 @@ Unmarked pages have been reviewed. `draft` never has been; `changed` carries an 
 - [Brakes](aircraft/systems/brakes.md)
 - [Cabin climate](aircraft/systems/cabin-climate.md)
 - [Chronometers](aircraft/systems/chronometer.md)
-- [Generators and the GCU](aircraft/systems/electrical/generators.md) — _draft_
+- [Electrics](aircraft/systems/electrical.md)
 - [Engine Start](aircraft/systems/engines/engine-start.md) — _draft_
 - [Fuel system](aircraft/systems/fuel.md)
-- [Hydraulic system](aircraft/systems/hydraulics.md)
+- [Hydraulics](aircraft/systems/hydraulics.md)
 - [Bleed air and ice protection](aircraft/systems/ice-protection.md) — _draft_
 - [Instruments](aircraft/systems/instruments.md)
 - [Lighting](aircraft/systems/lighting.md) — _draft_

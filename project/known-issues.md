@@ -37,7 +37,7 @@ review: approved
   load. The cockpit loadmeter therefore shows Gen 1 near full load and
   Gen 2 near zero in normal operation; that's expected, not a bug. If
   anyone knows how to get real V2 load sharing working, I'd love to
-  hear about it. (SU6 might help, we'll see.)
+  hear about it.
 
 - ADF: the system can't react to lightning. The sim doesn't expose the
   necessary data.
@@ -50,3 +50,7 @@ review: approved
   2024 systems, or it could be my mistake or lack of understanding.
 
 - KA 51 Slaving Accessory is STILL missing.
+
+- The hydraulics drain during the cinematics and I don't know why or
+  how to prevent it. There are workarounds in place to mitigate the
+  effects, but I wish they weren't necessary.

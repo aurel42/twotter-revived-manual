@@ -16,20 +16,33 @@ guesses until I get better references.
 > Some gauges have small calibration issues. Your mechanic tells you
 > that's fine, don't worry about it.
 
-All the gyros are simulated individually, if you can't appreciate the
-concert they play for you during spool-up, use the Headset button. All
-gyros are electrical, their load is simulated. Our Twotter doesn't
-need or have a vacuum system.
+> [!NOTE]
+
+	For users of the Turbine Duke sound mod: All the gyros are simulated
+	individually, if you can't appreciate the concert they play for you
+	during spool-up, use the Headset button. All gyros are electrical,
+	their load is simulated. Our Twotter doesn't need or have a vacuum
+	system.
 
 ## HSI
 
 The Horizontal Situation Indicator (HS) is based on the Bendix/King KI 525A.
 
-- Gyro: CPT slaved at 180°/min; FO free-DG with drift. Chaos-walk precession while spooling.
-- Sync — EFB "Sync Gyros" is standing in for the KA-51B CW/CCW procedure.
-- Course pointer — 30°/s slew, referenced to the gyro card. FO references the CPT value.
-- Flags — NAV on signal/receiver state, GPS-blanked. HDG on avionics, rotor < 0.95, or lost slaving 26V. Independent paths, so HDG fail leaves the nav display live.
+- Gyro: CPT slaved at 180°/min; FO free-DG with drift. Chaos-walk
+  precession while spooling.
+
+- Sync — EFB "Sync Gyros" is standing in for the KA-51B CW/CCW
+  procedure.
+
+- Course pointer — 30°/s slew, referenced to the gyro card. FO
+  references the CPT value.
+
+- Flags — NAV on signal/receiver state, GPS-blanked. HDG on avionics,
+  rotor < 0.95, or lost slaving 26V. Independent paths, so HDG fail
+  leaves the nav display live.
+
 - AP disconnect on HDG-flag conditions or during sync.
+
 - KI-227 ADF cards slaved to per-side gyro.
 
 > [!CAUTION]
@@ -61,9 +74,25 @@ deflection when Windshield Heat is in use and the thermostat turns on
 the heating elements. The amplitude of the deflection depends on the
 aircraft's magnetic heading and attitude.
 
-## Radio Altimeter
+## DME Control Head
 
-- Equipped with a highly reponsive servo.
+The DME control head is missing in the visual model. I added a
+representation inspired by an era-correct Bendix/King KN 62 to the
+Instruments tab of the EFB app.
+
+> [!NOTE]
+
+	The KN 62 doesn't show a station ident, instead it feeds an audio
+	channel to the audio panel (that's why it has a DME button) in order
+	for the pilot to identify the Morse identifier of the station.
+
+	Since the sim doesn't seem to generate Morse identifiers for DME
+	stations, I added the ident as text to the virtual instrument.
+
+For convenience, the in-cockpit chronometers have a DME mode that
+shows either distance in nm, relative speed in kts, or time to station
+in minutes. In DME mode, the chronometers display the data for the
+station that has been selected in the EFB app, or "NO DME".
 
 ## L:vars
 
@@ -71,7 +100,6 @@ aircraft's magnetic heading and attitude.
 
 | L:var | R/W | Meaning |
 |---|---|---|
-| `DHC6_GYRO_SYNC_REQUEST` | R/W | Sync the HSI card to the whiskey compass. **No cockpit control** — EFB or binding only |
 | `DHC6_GYRO_CPT_HEADING` | R | Captain's gyro heading, drift included |
 | `DHC6_GYRO_FO_HEADING` | R | First officer's gyro heading |
 | `DHC6_GYRO_CPT_OMEGA` | R | Captain's gyro rotor speed |
