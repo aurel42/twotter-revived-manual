@@ -48,7 +48,8 @@ review: approved
 
 ## Needs research, references, resources
 
-- Support for four-blade props
+- Everything propellers: better beta, better sound, working
+  autofeather, better behavior of four-blade props
 
 - DHC-6-100 performance, currently guesstimated purely based on SHP
 
