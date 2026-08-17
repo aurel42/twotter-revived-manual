@@ -27,7 +27,7 @@
     
     
       
-        <title>Hydraulic system - Twotter Revived</title>
+        <title>Hydraulics - Twotter Revived</title>
       
     
     
@@ -121,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Hydraulic system
+              Hydraulics
             
           </span>
         </div>
@@ -1130,6 +1130,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../electrical/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Electrics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../fuel/" class="md-nav__link">
         
   
@@ -1174,7 +1202,7 @@
   <span class="md-ellipsis">
     
   
-    Hydraulic system
+    Hydraulics
   
 
     
@@ -1352,10 +1380,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_11" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_12" >
         
           
-          <label class="md-nav__link" for="__nav_4_2_11" id="__nav_4_2_11_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4_2_12" id="__nav_4_2_12_label" tabindex="0">
             
   
   
@@ -1373,8 +1401,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_11_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_2_11">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_12">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1471,10 +1499,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_12" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_13" >
         
           
-          <label class="md-nav__link" for="__nav_4_2_12" id="__nav_4_2_12_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4_2_13" id="__nav_4_2_13_label" tabindex="0">
             
   
   
@@ -1492,8 +1520,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_12_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_2_12">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_13">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1546,95 +1574,6 @@
     
   
     GNS 530/430
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-    
-    
-    
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_13" >
-        
-          
-          <label class="md-nav__link" for="__nav_4_2_13" id="__nav_4_2_13_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Electrical
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_13_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_2_13">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Electrical
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../electrical/generators/" class="md-nav__link md-nav__link--draft">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Generators and the GCU
   
 
     
@@ -2055,10 +1994,11 @@
 
 <h1 id="hydraulic-system">Hydraulic system<a class="headerlink" href="#hydraulic-system" title="Permanent link">&para;</a></h1>
 <p>The hydraulic system powers the flaps, nose-wheel steering, and toe
-brakes from a single electrical pump that cycles on and off via a
-pressure switch to keep the system at 1550 ± 50 PSI.  Its
-characteristical sound can be heard while operating the mentioned
-systems.</p>
+brakes from a single electrical pump (running off the left DC bus)
+that cycles on and off via a pressure switch.  The pump engages
+whenever the pressure in the main accumulator falls below ca. 1350
+PSI.  Its characteristical sound can be heard while operating the
+mentioned systems.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>I tried different ways to make the sound quieter so it would be less
@@ -2074,20 +2014,27 @@ system to keep the brakes working even if the main system loses
 pressure to a leak.</p>
 <p>An emergency hand pump provides a manual backup to re-pressurize the
 accumulators if the electric pump fails.</p>
-<p>The mod's hydraulic system has been rebuilt using the sim's modern
-("EX1") architecture.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>I haven't figured out how to prime the hydraulics when the aircraft
-loads. Every flight technically starts with an empty system. To get
-around this sim limitation (or dev limitation, I can't be sure), an
-invisible mechanic uses the hand pump to prime the system for you on
-load.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
 <p>If you need to manually restore hydraulic pressure, you can access the
 emergency hand pump via the Systems tab on the EFB.</p>
 </div>
+<p>If the pressure falls below 800-1000 PSI, expect reduced performance
+of the hydraulically powered systems. Flaps will extend more slowly,
+brakes will be less effective, and at some point in the future, the
+nose-wheel steering will be affected as well.</p>
+<p>The mod's hydraulic system has been rebuilt using the sim's modern
+("EX1") architecture, and updated to version 2 with the release of
+SU6.</p>
+<div class="admonition bug">
+<p class="admonition-title">Bug</p>
+<p>I don't know how to prime the hydraulics system correctly at the
+beginning of a flight. Over the course of this project, I spent
+several days on this, but I still can't figure out how to keep the
+hydraulics system from draining itself during the cinematics.</p>
+</div>
 <hr />
-<p><em>Reviewed 2026-08-12.</em></p>
+<p><em>Reviewed 2026-08-16.</em></p>
 
 
 

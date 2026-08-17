@@ -124,6 +124,9 @@ Twotter Revived takes extensive steps to avoid distributing any original intelle
   behavior or real-world idiosyncrasies, they're updated and refined
   as I discover new reference material
 
+- Hydraulics: more faithful behavior as I get new reference material;
+  todo: low-pressure behavior of nosewheel steering
+
 ## System replacements
 
 - Icing: I tried to make all the de-icing equipment useful, but the
@@ -138,6 +141,10 @@ Twotter Revived takes extensive steps to avoid distributing any original intelle
 
 - Some form of "Onboarding" in the EFB, like let the user pick the EFB
   mode and a config profile
+
+- Morse idents for all station types that have them, with range and
+  noise based on the custom radio propagation model. That should be
+  easy with Wwise, right?
 
 ## Needs research, references, resources
 
@@ -160,6 +167,8 @@ Twotter Revived takes extensive steps to avoid distributing any original intelle
 - Why does crosswind affect the efficiency of the brakes?
 
 - Improve handling of amphibian and float variants in water
+
+- NiCd battery: thermal runaway
 
 ## Unexplored concepts
 
@@ -204,7 +213,7 @@ Twotter Revived takes extensive steps to avoid distributing any original intelle
   load. The cockpit loadmeter therefore shows Gen 1 near full load and
   Gen 2 near zero in normal operation; that's expected, not a bug. If
   anyone knows how to get real V2 load sharing working, I'd love to
-  hear about it. (SU6 might help, we'll see.)
+  hear about it.
 
 - ADF: the system can't react to lightning. The sim doesn't expose the
   necessary data.
@@ -217,6 +226,10 @@ Twotter Revived takes extensive steps to avoid distributing any original intelle
   2024 systems, or it could be my mistake or lack of understanding.
 
 - KA 51 Slaving Accessory is STILL missing.
+
+- The hydraulics drain during the cinematics and I don't know why or
+  how to prevent it. There are workarounds in place to mitigate the
+  effects, but I wish they weren't necessary.
 
 ---
 
@@ -1471,24 +1484,22 @@ The parking brake works in two modes:
   depress toe brakes fully to unlatch the mechanism. (For convenience,
   pushing the handle works as well, but that's not realistic, man!)
 
-Limitation: As I understand it, in the real Twotter, the parking brake
-is a latch that holds the toe brake cylinders in place. I couldn't
-figure out how to prime the hydraulic system when the aircraft is
-loading, so the flight would start with the parking brake latching
-unpressurized toe brakes. Unpressurized brakes are bad, mmmkay? So,
-under the hood, even realistic mode must still rely on the
-conventional parking brake system. This makes FSEconomy happy, too.
-
 ## Chocks
 
 Chocks are deployed by default when you spawn cold & dark, and can be
-removed using the EFB app. They are removed automatically once the
-hydraulic brake accumulator is pressurized and you want to start
-moving.
+removed using the EFB app. They are removed automatically when you
+release the parking brake.
 
 The wheel chocks were donated to the project by Bagolu. Thanks!
 
 ## Known Issues
+
+- Limitation: In the real Twotter, the parking brake is a latch that
+  holds the toe brake cylinders in place. The mod relies under the
+  hood on the stock parking brake system to hold the aircraft in
+  place, this makes FSEconomy happy. This might be subject to change
+  now that I've figured out how to prime the hydraulics system during
+  load.
 
 - In Crosswind, the toe brakes can barely hold the aircraft during the
   85% Ng run-up.
@@ -1587,182 +1598,166 @@ mechanic, so keep it to yourself.
 
 ---
 
-# Generators and the GCU
+# Electrics
 
-*aircraft/systems/electrical/generators.md · review: draft*
-<https://aurel42.github.io/twotter-revived-manual/aircraft/systems/electrical/generators/>
+*aircraft/systems/electrical.md · review: approved*
+<https://aurel42.github.io/twotter-revived-manual/aircraft/systems/electrical/>
 
-## From the README
+## Overview
 
-The goal was: create the dimming effect that Aerosoft captured, but organically. Instead of scripting the effect based on the starter switch, it should be based on sagging bus voltage.
-State: Achieved in the first Milestone release v2024.3.68.
+Most Twotter systems run on 28V DC, supplied by the main battery, a
+GPU cart, or the starter-generators in the engines. AC power for the
+remaining systems is supplied by one of two inverters.
 
-Known issues: I could not figure out how to let two power sources share the load on one bus. The solver always prefers one engine and puts the complete load on it, while the other generator idles. If you have advice, please share it. All batteries are always full at the beginning of a flight (unless you save the state manually in a .flt file, I think.) It also takes a couple of seconds for the first generator to come online after toggling its switch, and during GPU starts the voltmeter can move erratically.
+> [!TIP]
 
-- Rebuilt electrical system using v2.2 for more reasonable battery drain and consumer loads.
-- Added opt-in option for realistic battery drain. By default, a magical device keeps the batteries charged.
-- Added option to select NiCd or SLA battery with different capacities and behaviors.
-- Added invisible GPU cart that can be selected using the DC Source selector on the ground. (Same behavior as before, but with different mechanics to satisfy MSFS2024.)
-- Added battery packs to emergency lighting. Armed emergency lights turn on when main power is lost and are powered for at least 15 minutes. (Limitation: the batteries are magically charged by the sim when the flight starts, trickle-charge is currently missing because of... erm... topological challenges.)
-- Adjusted power consumption of most components, based on POH values, research, or gut feeling.
-- Generator Control Unit "simulation": GCU faults can trip a generator, requiring an explicit RESET to bring it back online; tripping can fire on undervoltage if enabled in the EFB Config tab.
-- Battery temperature thermal model: ambient soak, charge/discharge heating, and cooling.
-- BUS TIE switch correctly couples or isolates the two main DC buses symmetrically.
-- Interior light dimming reacts to bus load.
-- Annunciator brightness now uses a per-lamp aging factor.
-- Pitot heat split into two independent circuits. Note: the sim still provides only a single pitot-static system feeding both airspeed indicators. That separation is future work.
-- Battery terminal voltage now sags under heavy load. It's most visible during engine start — the voltmeter dips and the cockpit lighting (including the glareshield annunciators) dims as the starter pulls the bus down. Starter current tapers as the engine spools up. A weak battery cranks noticeably slower and takes longer to stabilize at a lower %Ng.
-- Fixed the loadmeter-needle animation that barely moved under idle load; it now displays POH-correct values (the scale differs depending on whether the bus is on battery or on generator, see POH).
-- Moved the engine starters to the battery bus to align with the POH electrical topology, and added a back-EMF starter model.
-- The GPU cart is no longer invisible. There's a GPU button on the EFB Systems tab that calls one out to the aircraft, and selecting EXT on the DC Source selector calls one too. It parks off the rear-left fuselage with its cable plugged into the external power receptacle. Switching away from EXT does *not* send it away — press the button for that, which it refuses while EXT is selected and the cart is actually carrying the load. It leaves for good the moment you start rolling. Wheeled variants only. Many thanks to Bagolu for providing the model!
+	The Inverter switch is above and behind the captain, not covered by
+	any of the camera views.
 
-Two starter-generators, one per engine, each feeding its own main DC bus. The
-same machine that cranks the engine becomes its generator once the start is over,
-which is why this page and [Engine Start](https://aurel42.github.io/twotter-revived-manual/aircraft/systems/engines/engine-start/) keep
-referring to each other.
+## Components
 
-## Operation
+The electrical system is modelled in quite some detail using the
+modern system Asobo introduced. It has been upgraded to v2.3 for SU6.
+Custom code is used to augment it where necessary.
 
-**The GEN switch is a request, not a command.** *(Config: **Generators can trip**,
-off by default.)* With the option off, generators come on line whenever you ask
-and stay there — the sim's behaviour. With it on, a generator control unit sits
-between you and the bus, and it can refuse:
+### Buses
 
-- **GEN switch left ON through the start** — the trip is certain. This is the one
-  to build a habit around.
-- **Connecting at idle** — a small chance of a trip, rising with engine age.
-- **Connecting slightly above idle** — the most reliable way to do it.
+One might call the left DC bus the "main" bus. It's powered by the
+battery, the GPU, the left engine's starter-generator and/or (if Bus
+Tie is in the NORM position) the right engine's starter-generator, and
+it's the bus the voltmeter queries.
 
-A tripped generator leaves its GEN caution light on. Hold the switch to RESET,
-then release it to ON. The RESET itself can fail and need repeating; that is the
-real unit's behaviour, not an artificial retry tax.
+Opening the Bus Tie separates the left and right side DC buses, the
+right side will go dark unless the right engine is running and its
+generator is producing power.
 
-Optionally the GCU will also trip on undervoltage, which turns a sagging bus into
-a cascade rather than a slow fade.
+The battery bus is hot (always on). The visible effect: the entrance
+lights stay powered with the DC Master switch in the Off position.
 
-**The loadmeter reads on two different scales.** Whether the bus is on battery or
-on generator changes what full-scale means, so the same needle position is not the
-same current in both cases. The POH scale is the one we drive it to.
+The starters draw directly from the battery bus because they need a
+ridiculous amount of power.
 
-**BUS TIE couples the two main buses symmetrically.** With it closed, either
-generator can carry both sides; with it open they are independent. It behaves the
-same in both directions, which was not true before v2024.3.130.
+I added a separate avionics bus which isn't documented in the POH, but
+the whole avionics stack is out of scope of the POH, and it seems
+plausible that it would have been added as part of the avionics
+installation. The separate avionics bus exists mostly to support the
+optional avionics master switch (I repurposed the Flight Data Recorder
+switch for this).
 
-**Starters live on the battery bus.** That is the POH topology and it has a
-visible consequence: the crank pulls the battery down directly, so the voltmeter
-dips and the cockpit and glareshield lighting dim with it. Starter current tapers
-as Ng rises, and we model the back-EMF that causes it, so the sag recovers
-progressively rather than snapping back when the switch releases.
+### Batteries
 
-There is a GPU cart, and you can see it. Selecting EXT calls one out, and so does
-the GPU button on the EFB Systems tab — the button exists because wanting a cart
-on stand and wanting to draw power from it are two different things. Once it is
-there, switching away from EXT does not send it away; press the button for that.
-It refuses while EXT is selected and the cart is carrying the load, which is the
-one case where pulling the plug would be a party trick rather than a procedure.
-Start rolling and the cart is gone for good — it is parked in the world, not
-attached to the aircraft, and the alternative was watching it skate along behind
-you. Wheeled variants only: the cable was fitted to that fuselage stance.
+The default main battery is a 40 Ah NiCd pack. You can swap it for a
+36 Ah SLA (sealed lead-acid) battery, which is heavier but doesn't sag
+as much while the starters are cranking.
 
-> [!WARNING]
-> **Known limitation: no load sharing**
->
-> Only one starter-generator actually supplies the bus at a time. As far as we
-> can tell, the sim's V2 electrical system has no mechanism for two paralleled
-> DC generators to share load — the solver always picks one. The cockpit
-> loadmeter therefore shows generator 1 near full load and generator 2 near
-> zero in normal operation. That is expected, not a fault you have caused. If
-> you know how to make V2 share load properly, please get in touch.
+> [!NOTE]
 
-## Under the hood
+	A magical device keeps the pack topped up unless you select the
+	**Realistic battery capacity** option.
 
-A starter-generator is one machine wired two ways. During the start it is a motor
-drawing several hundred amps from the battery bus; once the engine can sustain
-itself, the field is re-excited and the same rotor becomes a shunt generator
-feeding the bus it was drawing from. A GCU sits on the output and decides whether
-that generator is fit to be connected — voltage in band, polarity correct, no
-reverse current — and drops it off line if not.
+Battery temperature is modeled, thermal runaway isn't (yet). The NiCd
+heats and cools roughly twice as fast as the lead-acid pack.
 
-We build this on the sim's V2 modular electrical system, which gives us real
-buses, real consumers and a real solver, and then add the parts V2 has no concept
-of. The trip model is ours: a probability per connection attempt, conditioned on
-engine speed and accumulated engine age, with a separate and independently
-fallible RESET path. The battery is a modelled cell stack with terminal voltage
-that sags under load and recovers, plus a thermal model that soaks toward ambient
-and self-heats on charge and discharge — a cold battery genuinely cranks worse.
+The TEST button on the battery temperature gauge drives the needle to
+the top of the scale and lights the 150 °F lamp.
 
-Where it stops: load sharing, as above, is a sim constraint we have not found a
-way around. Trickle charge into the emergency-lighting packs is missing for
-topological reasons — those batteries start each flight full whether they earned
-it or not. And the generators are modelled as ideal sources once connected; there
-is no field-winding behaviour, no ripple, and no frequency-domain anything.
+To improve the reliability during engine starts in cold weather, a
+small auxiliary battery provides power exclusively to engine control
+relays and ignition. I think the idea is to keep the engine alive even
+if the main battery sags too deep. In the mod, the auxiliary battery
+powers the igniters during engine starts and in manual mode.
 
-## From the release notes
+The emergency lights are powered by an independent battery pack that
+is trickle-charged while the bus is running (the trickle charging is
+not implemented, the battery is just magically charged like all other
+batteries when a flight starts). The emergency lighs are guaranteed to
+stay up for at least one hour.
 
-Verbatim from `docs/release-notes-*.md`, grouped by the section they appeared in. The tag is the version each item first appeared in.
+> [!NOTE]
 
-### Annunciators / Glareshield
+	The batteries as Asobo models them are quite stiff and behave in an
+	idealized way. Some custom code helps them to behave, erm, less
+	idealized.
 
-- DEAD REC annunciator now also lights on NAV1 cone-of-confusion. *(v2024.2.134)*
-- Boost pump annunciators now key on FUELSYSTEM PUMP ACTIVE *(v2024.2.134)*
-- Pneumatic Low Press, 400 Cycle, Fwd/Aft Fuel Low, Aux Battery Active, generator-bus annunciators all rewired to authoritative SimVars/L:vars. *(v2024.2.134)*
+### The starter-generators
 
-### What's new since v2024.1.8
+A starter-generator acts either as starter or as generator, never as
+both at the same time. While cranking, it is a motor drawing several
+hundred amps from the battery bus.  When the engine can sustain
+itself, the field is re-excited and device starts feeding power back.
 
-- Rebuilt the electrical system on the V2 modular architecture. *(v2024.2.x)*
+You cannot cross-start one engine using just the generator of the
+other engine. In the real world, physics make this impossible. In the
+mod, I enforce this by taking the opposite side generator offline
+while the starter is cranking.
 
-### Electrical system
+### The GCU
 
-- Rebuilt electrical system using v2.2 for more reasonable battery drain and consumer loads. *(v2024.2.x)*
-- Added opt-in option for realistic battery drain. By default, a magical device keeps the batteries charged. *(v2024.2.x)*
-- Added option to select NiCd or SLA battery with different capacities and behaviors. *(v2024.2.x)*
-- Added invisible GPU cart that can be selected using the DC Source selector on the ground. (Same behavior as before, but with different mechanics to satisfy MSFS2024.) *(v2024.2.x)*
-- Added battery packs to emergency lighting. Armed emergency lights turn on when main power is lost and are powered for at least 15 minutes. (Limitation: the batteries are magically charged by the sim when the flight starts, trickle-charge is currently missing because of... erm... topological challenges.) *(v2024.2.x)*
-- Adjusted power consumption of most components, based on POH values, research, or gut feeling. *(v2024.2.x)*
-- [NEW] Generator Control Unit "simulation": GCU faults can trip a generator, requiring an explicit RESET to bring it back online; tripping can fire on undervoltage if enabled in the EFB Config tab. *(v2024.2.x)*
-- [NEW] Battery temperature thermal model: ambient soak, charge/discharge heating, and cooling. *(v2024.2.x)*
-- [NEW] BUS TIE switch correctly couples or isolates the two main DC buses symmetrically. *(v2024.2.x)*
-- [NEW] Interior light dimming reacts to bus load. *(v2024.2.x)*
-- [NEW] Annunciator brightness now uses a per-lamp aging factor. *(v2024.2.x)*
-- Pitot heat split into two independent circuits. The sim only provides a single pitot-static system that supplies both airspeed indicators. Future work must separate the pitot probes so a single heating element can fail leading to a single airspeed indicator getting stuck. *(v2024.3.19)*
-- **Generators no longer source power with the DC Master in OFF.** Fixed cases where generator output reached the bus while the master switch was closed. *(v2024.3.19)*
-- Changed GPU breaker from 200A to 400A and fixed GPU being disconnected early at engine idle with both generators switched off. This should prevent avionics from rebooting during GPU-powered engine starts. *(v2024.3.19)*
-- **Battery voltage now sags under heavy load.** Most visible during engine start — the voltmeter dips and the cockpit lighting dims as the starter pulls the bus down. Starters draw a realistic current that tapers as the engine spools up. A weak battery cranks noticeably slower and takes longer to stabilize at lower %Ng. *(v2024.3.68)*
-- **Overhauled idle load.** The load of a number of components was estimated on the high side and corrected downwards during a research pass. *(v2024.3.68)*
-- Fixed an animation error that caused the loadmeter needle to barely move under idle load. It should now display POH-correct values. Note that the scale is different based on whether the bus is on battery or on generator, see POH for details. *(v2024.3.68)*
-- As a result of these two fixes, idle load will now **look** much larger, but the battery will nonetheless drain significantly slower. *(v2024.3.68)*
-- Known issues: it takes a couple of seconds for the first generator to come online after toggling the switch; during GPU starts, the voltmeter can move erratically *(v2024.3.68)*
+The Generator Control Unit (GCU) connects a generator to its DC bus
+when it provides power and the Generator switch is in the ON position.
 
-### Bug fixes
+If the **Generators can trip** option is enabled, generators have a
+small chance to trip when they come on line. When this happens, the
+Generator annunciator will stay lit until the pilot puts the
+respective Generator switch to the RESET position for a moment.
 
-- Corrected emergency exit lights logic; they now illuminate correctly in the ARM position upon loss of power. *(v2024.2.x)*
-- [NEW] Annunciator lights work again (regression introduced by SU5 release 1.7.21.0). *(v2024.2.x)*
+> [!NOTE]
 
-### Known issues
+	If you take a long time to start up, possibly with heavy electrical
+	consumers running, you should consider starting only one engine, and
+	then take a few minutes to recharge the battery from that
+	generator. You should not attempt an engine start if the battery
+	voltage is below 20V before you engage the starter.
+	
+	Or you can call the GPU cart.
 
-- Generator load sharing: only one starter-generator actually supplies the bus at a time. As far as I can tell, MSFS 2024's V2 electrical system has no mechanism for two paralleled DC generators to share load. The cockpit loadmeter therefore shows Gen 1 near full load and Gen 2 near zero in normal operation; that's expected, not a bug. If anyone knows how to get real V2 load sharing working, I'd love to hear about it. *(v2024.2.x)*
+### GPU cart
 
-## Config options
+Setting the DC SOURCE switch to EXT or clicking the GPU button on the
+Systems tab of the EFB app summons a GPU cart. It's despawned
+automatically when you get ready to move.
 
-Set from the EFB **Config** tab. Each option is documented on exactly one page; see [Configuration](https://aurel42.github.io/twotter-revived-manual/mod/configuration/) for how profiles and the per-variant override work.
+> [!NOTE]
+> Many thanks to Bagolu for fitting the model to the Twotter!
 
-### Generators can trip
+### Inverters and the AC buses
 
-`DHC6_CFG_GCU_LATCH` — default: **off**
+A switch behind and above the Captain's right shoulder selects either
+of two 400-Hz inverters providing 115V and 26V AC for the instruments
+that need them. The usual procedure is to switch to the other inverter
+before the first flight of the day to balance the lifetime load.
 
-Models the real generator control unit: the generator connects at the starter-generator handover (about 46 % Ng) and essentially always comes on line, with a slim chance of tripping off that rises with engine age. A tripped generator needs a RESET (hold to RESET, release to ON). Off keeps the generators always on line.
+AC-powered devices:
 
-### Realistic battery capacity
+- both attitude indicators
+- the Captain's slaved HSI gyro
+- the First Officer's directional gyro
+- the fuel quantity indicators
+- torque, oil pressure and fuel flow gauges
 
-`DHC6_CFG_REALISTIC_BATTERY` — default: **off**
+### The gauges
 
-Gives the battery a real amp-hour budget. Off means unlimited capacity.
+The voltmeter displays the voltage of the left DC bus.
 
-### Battery Replacement (NiCad to SLA)
+The loadmeter changes scale based on the selected source. In the
+center position, it shows the battery load on a 100A scale. When a
+generator is selected, the scale changes to 200A. Since the starter
+draw exceeds the scale, the loadmeter is disconnected while the
+starters are running.
 
-`DHC6_CFG_BATTERY_SLA` — default: **off**
+## Known Issues
 
-Swaps the standard NiCad pack for a sealed lead-acid battery with different chemistry and higher weight.
+- I could not figure out how to let two power sources share the load
+  on one bus. The solver always prefers one generator and puts the
+  complete load on it, while the other generator idles. If you have
+  advice, please *share* it (pun intended).
+
+- All batteries are fully charged at the beginning of a flight.  There
+  doesn't seem to be a good way to persist their charged capacity.
+
+- Since the circuit breakers are not animated in the visual model, I
+  didn't bother to model them.  I might, if it makes sense at some
+  point in the future.
 
 ## L:vars
 
@@ -1779,8 +1774,6 @@ This is a selection, not the full list — the aircraft defines around a thousan
 | `DHC6_GEN_RESET_REQUEST_2` | R/W | Same, generator 2 |
 | `DHC6_BATT_TERM_V` | R | Battery terminal voltage, sag included — dips during the crank |
 | `DHC6_BATT_TEMP` | R | Battery temperature |
-| `DHC6_AVIONICS_MASTER` | R/W | Avionics rack power, when the FDR-as-avionics-master option is on |
-| `DHC6_FDR_STATUS` | R | Flight Data Recorder switch position |
 
 ---
 
@@ -1857,7 +1850,7 @@ always-succeeds behaviour:
 - A RESET can itself fail and need another attempt, exactly as on the aircraft.
 
 The practical habit: leave the generators off through the start and bring them on
-once the engine is stable. See [Generators and the GCU](https://aurel42.github.io/twotter-revived-manual/aircraft/systems/electrical/generators/)
+once the engine is stable. See [Generators and the GCU](../electrical/generators.md)
 for what the switch is actually doing.
 
 **You cannot cross-start.** Starting one engine will not let the other engine's
@@ -2101,16 +2094,17 @@ does nothing.
 
 ---
 
-# Hydraulic system
+# Hydraulics
 
 *aircraft/systems/hydraulics.md · review: approved*
 <https://aurel42.github.io/twotter-revived-manual/aircraft/systems/hydraulics/>
 
 The hydraulic system powers the flaps, nose-wheel steering, and toe
-brakes from a single electrical pump that cycles on and off via a
-pressure switch to keep the system at 1550 ± 50 PSI.  Its
-characteristical sound can be heard while operating the mentioned
-systems.
+brakes from a single electrical pump (running off the left DC bus)
+that cycles on and off via a pressure switch.  The pump engages
+whenever the pressure in the main accumulator falls below ca. 1350
+PSI.  Its characteristical sound can be heard while operating the
+mentioned systems.
 
 > [!NOTE]
 > I tried different ways to make the sound quieter so it would be less
@@ -2129,18 +2123,25 @@ pressure to a leak.
 An emergency hand pump provides a manual backup to re-pressurize the
 accumulators if the electric pump fails.
 
-The mod's hydraulic system has been rebuilt using the sim's modern
-("EX1") architecture.
-
-> [!NOTE]
-> I haven't figured out how to prime the hydraulics when the aircraft
-> loads. Every flight technically starts with an empty system. To get
-> around this sim limitation (or dev limitation, I can't be sure), an
-> invisible mechanic uses the hand pump to prime the system for you on
-> load.
->
+> [!TIP]
 > If you need to manually restore hydraulic pressure, you can access the
 > emergency hand pump via the Systems tab on the EFB.
+
+If the pressure falls below 800-1000 PSI, expect reduced performance
+of the hydraulically powered systems. Flaps will extend more slowly,
+brakes will be less effective, and at some point in the future, the
+nose-wheel steering will be affected as well.
+
+The mod's hydraulic system has been rebuilt using the sim's modern
+("EX1") architecture, and updated to version 2 with the release of
+SU6.
+
+> [!CAUTION]
+
+	I don't know how to prime the hydraulics system correctly at the
+	beginning of a flight. Over the course of this project, I spent
+	several days on this, but I still can't figure out how to keep the
+	hydraulics system from draining itself during the cinematics.
 
 ---
 
@@ -2255,20 +2256,33 @@ guesses until I get better references.
 > Some gauges have small calibration issues. Your mechanic tells you
 > that's fine, don't worry about it.
 
-All the gyros are simulated individually, if you can't appreciate the
-concert they play for you during spool-up, use the Headset button. All
-gyros are electrical, their load is simulated. Our Twotter doesn't
-need or have a vacuum system.
+> [!NOTE]
+
+	For users of the Turbine Duke sound mod: All the gyros are simulated
+	individually, if you can't appreciate the concert they play for you
+	during spool-up, use the Headset button. All gyros are electrical,
+	their load is simulated. Our Twotter doesn't need or have a vacuum
+	system.
 
 ## HSI
 
 The Horizontal Situation Indicator (HS) is based on the Bendix/King KI 525A.
 
-- Gyro: CPT slaved at 180°/min; FO free-DG with drift. Chaos-walk precession while spooling.
-- Sync — EFB "Sync Gyros" is standing in for the KA-51B CW/CCW procedure.
-- Course pointer — 30°/s slew, referenced to the gyro card. FO references the CPT value.
-- Flags — NAV on signal/receiver state, GPS-blanked. HDG on avionics, rotor < 0.95, or lost slaving 26V. Independent paths, so HDG fail leaves the nav display live.
+- Gyro: CPT slaved at 180°/min; FO free-DG with drift. Chaos-walk
+  precession while spooling.
+
+- Sync — EFB "Sync Gyros" is standing in for the KA-51B CW/CCW
+  procedure.
+
+- Course pointer — 30°/s slew, referenced to the gyro card. FO
+  references the CPT value.
+
+- Flags — NAV on signal/receiver state, GPS-blanked. HDG on avionics,
+  rotor < 0.95, or lost slaving 26V. Independent paths, so HDG fail
+  leaves the nav display live.
+
 - AP disconnect on HDG-flag conditions or during sync.
+
 - KI-227 ADF cards slaved to per-side gyro.
 
 > [!CAUTION]
@@ -2300,9 +2314,25 @@ deflection when Windshield Heat is in use and the thermostat turns on
 the heating elements. The amplitude of the deflection depends on the
 aircraft's magnetic heading and attitude.
 
-## Radio Altimeter
+## DME Control Head
 
-- Equipped with a highly reponsive servo.
+The DME control head is missing in the visual model. I added a
+representation inspired by an era-correct Bendix/King KN 62 to the
+Instruments tab of the EFB app.
+
+> [!NOTE]
+
+	The KN 62 doesn't show a station ident, instead it feeds an audio
+	channel to the audio panel (that's why it has a DME button) in order
+	for the pilot to identify the Morse identifier of the station.
+
+	Since the sim doesn't seem to generate Morse identifiers for DME
+	stations, I added the ident as text to the virtual instrument.
+
+For convenience, the in-cockpit chronometers have a DME mode that
+shows either distance in nm, relative speed in kts, or time to station
+in minutes. In DME mode, the chronometers display the data for the
+station that has been selected in the EFB app, or "NO DME".
 
 ## L:vars
 
@@ -2310,7 +2340,6 @@ aircraft's magnetic heading and attitude.
 
 | L:var | R/W | Meaning |
 |---|---|---|
-| `DHC6_GYRO_SYNC_REQUEST` | R/W | Sync the HSI card to the whiskey compass. **No cockpit control** — EFB or binding only |
 | `DHC6_GYRO_CPT_HEADING` | R | Captain's gyro heading, drift included |
 | `DHC6_GYRO_FO_HEADING` | R | First officer's gyro heading |
 | `DHC6_GYRO_CPT_OMEGA` | R | Captain's gyro rotor speed |
@@ -2655,9 +2684,9 @@ currently active nav database (NavBlue, Navigraph, whatever) from the
 sim, optionally adds decommissioned NDB stations, and calculates all
 signals in custom code.
 
-The code was inspired by libradio but is not based on it. The
-implementation is based on ITU publications and data created using
-publicly available tools and data sources.
+The code was initially **heavily inspired** by libradio but is not
+based on it. The implementation is based on ITU publications and data
+created using publicly available tools and data sources.
 
 In order to provide performant terrain lookups over long ranges, the
 mod ships a global terrain database in a custom, optimized format that
